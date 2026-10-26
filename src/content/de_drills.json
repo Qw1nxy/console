@@ -466,12 +466,12 @@
     "family": "prep.twoway",
     "instruction": "Fill the gap with the preposition and the correct article, then say the whole sentence.",
     "cue": "Ich stelle die Kiste ___ Lager. (in, das Lager)",
-    "answer": "Ich stelle die Kiste in das Lager.",
+    "answer": "Ich stelle die Kiste ins Lager.",
     "accepted": [
-      "Ich stelle die Kiste in das Lager",
-      "Ich stelle die Kiste ins Lager"
+      "Ich stelle die Kiste ins Lager",
+      "Ich stelle die Kiste in das Lager"
     ],
-    "explain": "stellen = movement (wohin?) → accusative: in das Lager (ins Lager).",
+    "explain": "stellen = movement (wohin?) → accusative: in das Lager, usually shortened to ins.",
     "tags": [
       "two-way",
       "wohin",

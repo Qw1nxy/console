@@ -474,6 +474,6 @@
  "morphemes": [
   {"form": "nyár", "role": "stem", "label": "summer (back stem; the long á stays before a case suffix)"},
   {"form": "on", "role": "case", "label": "superessive — on; with seasons means 'in' (back form of -on/-en/-ön)"}],
- "explain": "Seasons take the surface case: nyáron, télen. The stem shortens only before linking-vowel suffixes (nyarak).",
+ "explain": "Summer and winter take the surface case: nyáron, télen (but tavasszal, ősszel). The stem shortens only before linking-vowel suffixes (nyarak).",
  "tags": ["case.surface", "harmony.3form", "stem.back"]}
 ]

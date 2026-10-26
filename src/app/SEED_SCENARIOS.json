@@ -24,7 +24,7 @@
    "seedQuestions":["Mióta dolgozik Magyarországon?","Mennyit keres havonta?","Van háziállata?","Mikor szeretne beköltözni?","Tud kauciót fizetni?"],
    "recoveryMoves":["Elnézést, nem értettem.","Úgy érti, hogy …?","Lassabban, kérem."]},
   {"id":"hu-scn-003","lang":"hu","title":"Job interview (állásinterjú)","city":"Budapest","register":"Ön","difficulty":2,
-   "seedQuestions":["Meséljen magáról!","Miért szeretne nálunk dolgozni?","Milyen tapasztalata van gépekkel?","Dolgozott már több műszakban?","Mikor tudna kezdeni?"],
+   "seedQuestions":["Meséljen magáról!","Miért szeretne nálunk dolgozni?","Milyen tapasztalata van gépekkel?","Dolgozott már váltott műszakban?","Mikor tudna kezdeni?"],
    "recoveryMoves":["Hát …","Egy pillanat.","Még tanulok magyarul, de értem a lényeget.","Megismételné, kérem?"]},
   {"id":"hu-scn-004","lang":"hu","title":"Police stop (igazoltatás)","city":"Budapest","register":"Ön","difficulty":2,
    "seedQuestions":["Jó napot kívánok, kérem az iratait!","Hová tart?","Tudja, miért állítottam meg?","Hol volt ma este?","Az Öné ez az autó?"],
