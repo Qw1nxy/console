@@ -1,0 +1,479 @@
+[
+{"id": "hu-decon-001", "lang": "hu", "module": "decon", "word": "házaimban", "gloss": "in my houses",
+ "morphemes": [
+  {"form": "ház", "role": "stem", "label": "house (back-vowel stem)"},
+  {"form": "a", "role": "link", "label": "linking vowel (low stem: a, not o)"},
+  {"form": "i", "role": "poss-pl", "label": "plural of the possessed thing"},
+  {"form": "m", "role": "poss", "label": "1SG possessor — my"},
+  {"form": "ban", "role": "case", "label": "inessive — in (back form of -ban/-ben)"}],
+ "explain": "Order is always stem → (linking vowel) → number/possessive → case. ház is a back stem, so every two-form suffix takes its back form.",
+ "tags": ["case.interior", "poss.pl", "stem.low"]},
+
+{"id": "hu-decon-002", "lang": "hu", "module": "decon", "word": "házban", "gloss": "in a house",
+ "morphemes": [
+  {"form": "ház", "role": "stem", "label": "house (back-vowel stem: á)"},
+  {"form": "ban", "role": "case", "label": "inessive — in (back form of -ban/-ben)"}],
+ "explain": "Two-form suffix: back stem → -ban. The case attaches straight to the base, no linking vowel.",
+ "tags": ["case.interior", "harmony.2form", "stem.back"]},
+
+{"id": "hu-decon-003", "lang": "hu", "module": "decon", "word": "kertben", "gloss": "in a garden",
+ "morphemes": [
+  {"form": "kert", "role": "stem", "label": "garden (front-vowel stem: e)"},
+  {"form": "ben", "role": "case", "label": "inessive — in (front form of -ban/-ben)"}],
+ "explain": "Two-form suffix: front stem → -ben.",
+ "tags": ["case.interior", "harmony.2form", "stem.front"]},
+
+{"id": "hu-decon-004", "lang": "hu", "module": "decon", "word": "könyvben", "gloss": "in a book",
+ "morphemes": [
+  {"form": "könyv", "role": "stem", "label": "book (front-rounded stem: ö)"},
+  {"form": "ben", "role": "case", "label": "inessive — in (front form; two-form suffixes have no separate rounded form)"}],
+ "explain": "Front-rounded stems take the same -ben as plain front stems: two-form suffixes only distinguish back vs front.",
+ "tags": ["case.interior", "harmony.2form", "stem.frontRounded"]},
+
+{"id": "hu-decon-005", "lang": "hu", "module": "decon", "word": "asztalon", "gloss": "on a table",
+ "morphemes": [
+  {"form": "asztal", "role": "stem", "label": "table (back-vowel stem: a)"},
+  {"form": "on", "role": "case", "label": "superessive — on (back form of -on/-en/-ön)"}],
+ "explain": "Three-form suffix after a consonant: back stem → -on.",
+ "tags": ["case.surface", "harmony.3form", "stem.back"]},
+
+{"id": "hu-decon-006", "lang": "hu", "module": "decon", "word": "széken", "gloss": "on a chair",
+ "morphemes": [
+  {"form": "szék", "role": "stem", "label": "chair (front-vowel stem: é)"},
+  {"form": "en", "role": "case", "label": "superessive — on (front unrounded form of -on/-en/-ön)"}],
+ "explain": "Three-form suffix: front unrounded stem → -en.",
+ "tags": ["case.surface", "harmony.3form", "stem.front"]},
+
+{"id": "hu-decon-007", "lang": "hu", "module": "decon", "word": "földön", "gloss": "on the ground",
+ "morphemes": [
+  {"form": "föld", "role": "stem", "label": "earth, ground (front-rounded stem: ö)"},
+  {"form": "ön", "role": "case", "label": "superessive — on (front rounded form of -on/-en/-ön)"}],
+ "explain": "Three-form suffix: last vowel ö → -ön. Only three-form suffixes have this rounded variant.",
+ "tags": ["case.surface", "harmony.3form", "stem.frontRounded"]},
+
+{"id": "hu-decon-008", "lang": "hu", "module": "decon", "word": "házhoz", "gloss": "to the house (up to it)",
+ "morphemes": [
+  {"form": "ház", "role": "stem", "label": "house (back-vowel stem)"},
+  {"form": "hoz", "role": "case", "label": "allative — to, up to (back form of -hoz/-hez/-höz)"}],
+ "explain": "Three-form suffix: back stem → -hoz. Attaches directly to the base.",
+ "tags": ["case.proximity", "harmony.3form", "stem.back"]},
+
+{"id": "hu-decon-009", "lang": "hu", "module": "decon", "word": "kerthez", "gloss": "to the garden (up to it)",
+ "morphemes": [
+  {"form": "kert", "role": "stem", "label": "garden (front-vowel stem)"},
+  {"form": "hez", "role": "case", "label": "allative — to, up to (front unrounded form of -hoz/-hez/-höz)"}],
+ "explain": "Three-form suffix: front unrounded stem → -hez.",
+ "tags": ["case.proximity", "harmony.3form", "stem.front"]},
+
+{"id": "hu-decon-010", "lang": "hu", "module": "decon", "word": "könyvhöz", "gloss": "to the book (up to it)",
+ "morphemes": [
+  {"form": "könyv", "role": "stem", "label": "book (front-rounded stem: ö)"},
+  {"form": "höz", "role": "case", "label": "allative — to, up to (front rounded form of -hoz/-hez/-höz)"}],
+ "explain": "Three-form suffix: last vowel ö → -höz.",
+ "tags": ["case.proximity", "harmony.3form", "stem.frontRounded"]},
+
+{"id": "hu-decon-011", "lang": "hu", "module": "decon", "word": "boltba", "gloss": "into the shop",
+ "morphemes": [
+  {"form": "bolt", "role": "stem", "label": "shop (back-vowel stem: o)"},
+  {"form": "ba", "role": "case", "label": "illative — into (back form of -ba/-be)"}],
+ "explain": "Movement into → -ba/-be. Back stem → -ba.",
+ "tags": ["case.interior", "harmony.2form", "stem.back"]},
+
+{"id": "hu-decon-012", "lang": "hu", "module": "decon", "word": "étteremből", "gloss": "out of the restaurant",
+ "morphemes": [
+  {"form": "étterem", "role": "stem", "label": "restaurant (front-vowel stem; full form, the fleeting e stays before a case suffix)"},
+  {"form": "ből", "role": "case", "label": "elative — out of (front form of -ból/-ből)"}],
+ "explain": "Case suffixes attach to the full stem étterem-; the fleeting vowel drops only before linking-vowel suffixes (éttermet, éttermek).",
+ "tags": ["case.interior", "harmony.2form", "stem.front", "stem.fleeting"]},
+
+{"id": "hu-decon-013", "lang": "hu", "module": "decon", "word": "autóra", "gloss": "onto the car",
+ "morphemes": [
+  {"form": "autó", "role": "stem", "label": "car (back-vowel stem, ends in a long vowel — no lengthening needed)"},
+  {"form": "ra", "role": "case", "label": "sublative — onto (back form of -ra/-re)"}],
+ "explain": "Movement onto → -ra/-re. Back stem → -ra.",
+ "tags": ["case.surface", "harmony.2form", "stem.back"]},
+
+{"id": "hu-decon-014", "lang": "hu", "module": "decon", "word": "Budapestről", "gloss": "from Budapest / about Budapest",
+ "morphemes": [
+  {"form": "Budapest", "role": "stem", "label": "Budapest — mixed-vowel name that behaves as a FRONT stem (exception)"},
+  {"form": "ről", "role": "case", "label": "delative — off / from the surface of; also 'about' (front form of -ról/-ről)"}],
+ "explain": "Budapest takes front suffixes (Budapesten, Budapestre, Budapestről) even though it has back vowels — learn it as an exception.",
+ "tags": ["case.surface", "harmony.2form", "stem.mixed"]},
+
+{"id": "hu-decon-015", "lang": "hu", "module": "decon", "word": "orvosnál", "gloss": "at the doctor's",
+ "morphemes": [
+  {"form": "orvos", "role": "stem", "label": "doctor (back-vowel stem: o)"},
+  {"form": "nál", "role": "case", "label": "adessive — at, by, near (back form of -nál/-nél)"}],
+ "explain": "Being near/at someone or something → -nál/-nél. Back stem → -nál.",
+ "tags": ["case.proximity", "harmony.2form", "stem.back"]},
+
+{"id": "hu-decon-016", "lang": "hu", "module": "decon", "word": "tanártól", "gloss": "from the teacher",
+ "morphemes": [
+  {"form": "tanár", "role": "stem", "label": "teacher (back-vowel stem: a, á)"},
+  {"form": "tól", "role": "case", "label": "ablative — from (away from near) (back form of -tól/-től)"}],
+ "explain": "Movement away from someone/something → -tól/-től. Back stem → -tól.",
+ "tags": ["case.proximity", "harmony.2form", "stem.back"]},
+
+{"id": "hu-decon-017", "lang": "hu", "module": "decon", "word": "házakban", "gloss": "in houses",
+ "morphemes": [
+  {"form": "ház", "role": "stem", "label": "house (back stem)"},
+  {"form": "a", "role": "link", "label": "linking vowel before plural -k (low stem: a, not o)"},
+  {"form": "k", "role": "pl", "label": "plural"},
+  {"form": "ban", "role": "case", "label": "inessive — in (back form)"}],
+ "explain": "Plural -k needs a linking vowel after a consonant; ház is a low stem, so a. Case comes last.",
+ "tags": ["plural", "case.interior", "stem.low"]},
+
+{"id": "hu-decon-018", "lang": "hu", "module": "decon", "word": "kertekben", "gloss": "in gardens",
+ "morphemes": [
+  {"form": "kert", "role": "stem", "label": "garden (front stem)"},
+  {"form": "e", "role": "link", "label": "linking vowel before plural -k (front stem: e)"},
+  {"form": "k", "role": "pl", "label": "plural"},
+  {"form": "ben", "role": "case", "label": "inessive — in (front form)"}],
+ "explain": "Front stem: linking vowel e, suffix -ben.",
+ "tags": ["plural", "case.interior", "stem.front"]},
+
+{"id": "hu-decon-019", "lang": "hu", "module": "decon", "word": "könyvekben", "gloss": "in books",
+ "morphemes": [
+  {"form": "könyv", "role": "stem", "label": "book (front-rounded stem)"},
+  {"form": "e", "role": "link", "label": "linking vowel before plural -k — könyv takes e, not ö"},
+  {"form": "k", "role": "pl", "label": "plural"},
+  {"form": "ben", "role": "case", "label": "inessive — in (front form)"}],
+ "explain": "The plural linking vowel is a lexical property: könyv → könyvek (not *könyvök), unlike sör → sörök.",
+ "tags": ["plural", "case.interior", "stem.frontRounded"]},
+
+{"id": "hu-decon-020", "lang": "hu", "module": "decon", "word": "autókon", "gloss": "on cars",
+ "morphemes": [
+  {"form": "autó", "role": "stem", "label": "car (back stem, vowel-final)"},
+  {"form": "k", "role": "pl", "label": "plural — no linking vowel after a vowel"},
+  {"form": "on", "role": "case", "label": "superessive — on (back form of -on/-en/-ön, after the consonant k)"}],
+ "explain": "Vowel-final stems add -k directly. After plural -k the superessive needs its full form -on.",
+ "tags": ["plural", "case.surface", "harmony.3form", "stem.back"]},
+
+{"id": "hu-decon-021", "lang": "hu", "module": "decon", "word": "házat", "gloss": "house (direct object)",
+ "morphemes": [
+  {"form": "ház", "role": "stem", "label": "house (back stem)"},
+  {"form": "a", "role": "link", "label": "linking vowel before -t (low stem: a)"},
+  {"form": "t", "role": "case", "label": "accusative — direct object"}],
+ "explain": "After z the accusative -t needs a linking vowel; ház is a low stem, so a.",
+ "tags": ["case.acc", "stem.low"]},
+
+{"id": "hu-decon-022", "lang": "hu", "module": "decon", "word": "asztalt", "gloss": "table (direct object)",
+ "morphemes": [
+  {"form": "asztal", "role": "stem", "label": "table (back stem)"},
+  {"form": "t", "role": "case", "label": "accusative — direct object; -t attaches directly after l (also after r, n, ny, s, sz, z, zs, j)"}],
+ "explain": "Stems ending in l, r, n, ny, s, sz, z, zs, j usually take -t with no linking vowel: asztalt, tanárt, várost.",
+ "tags": ["case.acc", "stem.back"]},
+
+{"id": "hu-decon-023", "lang": "hu", "module": "decon", "word": "széket", "gloss": "chair (direct object)",
+ "morphemes": [
+  {"form": "szék", "role": "stem", "label": "chair (front stem)"},
+  {"form": "e", "role": "link", "label": "linking vowel before -t (front stem: e)"},
+  {"form": "t", "role": "case", "label": "accusative — direct object"}],
+ "explain": "After k the accusative needs a linking vowel; front stem → e.",
+ "tags": ["case.acc", "stem.front"]},
+
+{"id": "hu-decon-024", "lang": "hu", "module": "decon", "word": "kutyát", "gloss": "dog (direct object)",
+ "morphemes": [
+  {"form": "kutyá", "role": "stem", "label": "dog — final a lengthens to á before a suffix"},
+  {"form": "t", "role": "case", "label": "accusative — direct object (-t directly after a vowel)"}],
+ "explain": "Vowel-final stems take -t directly; a final short a/e lengthens first (kutya → kutyát).",
+ "tags": ["case.acc", "lengthen", "stem.back"]},
+
+{"id": "hu-decon-025", "lang": "hu", "module": "decon", "word": "házamban", "gloss": "in my house",
+ "morphemes": [
+  {"form": "ház", "role": "stem", "label": "house (back stem)"},
+  {"form": "a", "role": "link", "label": "linking vowel before the possessive (low stem: a)"},
+  {"form": "m", "role": "poss", "label": "1SG possessor — my"},
+  {"form": "ban", "role": "case", "label": "inessive — in (back form)"}],
+ "explain": "Possessive before case: ház-a-m-ban. Same linking vowel as the plural (házak, házam).",
+ "tags": ["poss.sg", "case.interior", "stem.low"]},
+
+{"id": "hu-decon-026", "lang": "hu", "module": "decon", "word": "kertjében", "gloss": "in his/her garden",
+ "morphemes": [
+  {"form": "kert", "role": "stem", "label": "garden (front stem)"},
+  {"form": "jé", "role": "poss", "label": "3SG possessor -je (kert takes j); its final e lengthens to é before the case"},
+  {"form": "ben", "role": "case", "label": "inessive — in (front form)"}],
+ "explain": "kertje + ben → kertjében: the possessive's final e lengthens before a case suffix.",
+ "tags": ["poss.sg", "case.interior", "lengthen", "stem.front"]},
+
+{"id": "hu-decon-027", "lang": "hu", "module": "decon", "word": "autónkkal", "gloss": "with our car",
+ "morphemes": [
+  {"form": "autó", "role": "stem", "label": "car (back stem, vowel-final)"},
+  {"form": "nk", "role": "poss", "label": "1PL possessor — our (-nk after a vowel; -unk/-ünk after a consonant)"},
+  {"form": "kal", "role": "case", "label": "instrumental -val: v assimilates to the final k (autónk + val → autónkkal)"}],
+ "explain": "After a vowel the 1PL possessive is just -nk. -val then assimilates to the k: autónkkal.",
+ "tags": ["poss.sg", "case.instr", "assimilation", "stem.back"]},
+
+{"id": "hu-decon-028", "lang": "hu", "module": "decon", "word": "barátjától", "gloss": "from his/her friend",
+ "morphemes": [
+  {"form": "barát", "role": "stem", "label": "friend (back stem)"},
+  {"form": "já", "role": "poss", "label": "3SG possessor -ja (barát takes j); its final a lengthens to á before the case"},
+  {"form": "tól", "role": "case", "label": "ablative — from (back form of -tól/-től)"}],
+ "explain": "barátja + tól → barátjától: lengthening of the possessive's final a before the case suffix.",
+ "tags": ["poss.sg", "case.proximity", "lengthen", "stem.back"]},
+
+{"id": "hu-decon-029", "lang": "hu", "module": "decon", "word": "kertjeimben", "gloss": "in my gardens",
+ "morphemes": [
+  {"form": "kert", "role": "stem", "label": "garden (front stem)"},
+  {"form": "je", "role": "link", "label": "j + linking vowel e before plural-possessed -i (kert is a j-stem: kertje, kertjeim)"},
+  {"form": "i", "role": "poss-pl", "label": "plural of the possessed thing"},
+  {"form": "m", "role": "poss", "label": "1SG possessor — my"},
+  {"form": "ben", "role": "case", "label": "inessive — in (front form)"}],
+ "explain": "Stems with 3SG -je usually keep the j in the plural possessed: kertje → kertjei → kertjeim → kertjeimben.",
+ "tags": ["poss.pl", "case.interior", "stem.front"]},
+
+{"id": "hu-decon-030", "lang": "hu", "module": "decon", "word": "barátaink", "gloss": "our friends",
+ "morphemes": [
+  {"form": "barát", "role": "stem", "label": "friend (back stem)"},
+  {"form": "a", "role": "link", "label": "linking vowel before plural-possessed -i — no j here although 3SG is barátja"},
+  {"form": "i", "role": "poss-pl", "label": "plural of the possessed thing"},
+  {"form": "nk", "role": "poss", "label": "1PL possessor — our"}],
+ "explain": "barát takes j in barátja but not in the plural possessed: barátaim, barátai, barátaink.",
+ "tags": ["poss.pl", "stem.back"]},
+
+{"id": "hu-decon-031", "lang": "hu", "module": "decon", "word": "könyveidről", "gloss": "about your books",
+ "morphemes": [
+  {"form": "könyv", "role": "stem", "label": "book (front-rounded stem)"},
+  {"form": "e", "role": "link", "label": "linking vowel e before plural-possessed -i (always a/e here, never ö)"},
+  {"form": "i", "role": "poss-pl", "label": "plural of the possessed thing"},
+  {"form": "d", "role": "poss", "label": "2SG possessor — your"},
+  {"form": "ről", "role": "case", "label": "delative — about / off (front form of -ról/-ről)"}],
+ "explain": "Plural possessed: könyv-e-i-d; -ról/-ről after a noun often means 'about'.",
+ "tags": ["poss.pl", "case.surface", "stem.frontRounded"]},
+
+{"id": "hu-decon-032", "lang": "hu", "module": "decon", "word": "kezet", "gloss": "hand (direct object)",
+ "morphemes": [
+  {"form": "kez", "role": "stem", "label": "hand — kéz shortens to kez- before a linking-vowel suffix"},
+  {"form": "e", "role": "link", "label": "linking vowel before -t (front stem: e)"},
+  {"form": "t", "role": "case", "label": "accusative — direct object"}],
+ "explain": "Vowel-shortening stem: kéz → kezet, kezek, kezem; but kézben, kézzel keep the long vowel.",
+ "tags": ["stem.alternation", "case.acc", "stem.front"]},
+
+{"id": "hu-decon-033", "lang": "hu", "module": "decon", "word": "lovat", "gloss": "horse (direct object)",
+ "morphemes": [
+  {"form": "lov", "role": "stem", "label": "horse — ló becomes lov- before linking-vowel suffixes"},
+  {"form": "a", "role": "link", "label": "linking vowel before -t (lov- is a low stem: a)"},
+  {"form": "t", "role": "case", "label": "accusative — direct object"}],
+ "explain": "v-stem: ló → lovat, lovak, lovam, lovon; but lóban, lóval.",
+ "tags": ["stem.alternation", "case.acc", "stem.back"]},
+
+{"id": "hu-decon-034", "lang": "hu", "module": "decon", "word": "madarak", "gloss": "birds",
+ "morphemes": [
+  {"form": "madar", "role": "stem", "label": "bird — madár shortens to madar- before a linking-vowel suffix"},
+  {"form": "a", "role": "link", "label": "linking vowel before plural -k (low stem: a)"},
+  {"form": "k", "role": "pl", "label": "plural"}],
+ "explain": "Vowel-shortening stem: madár → madarak, madarat, madaram; but madárban, madárral.",
+ "tags": ["stem.alternation", "plural", "stem.back"]},
+
+{"id": "hu-decon-035", "lang": "hu", "module": "decon", "word": "tüzet", "gloss": "fire (direct object)",
+ "morphemes": [
+  {"form": "tüz", "role": "stem", "label": "fire — tűz shortens to tüz- before a linking-vowel suffix"},
+  {"form": "e", "role": "link", "label": "linking vowel before -t (e, even for this ü-stem)"},
+  {"form": "t", "role": "case", "label": "accusative — direct object"}],
+ "explain": "Vowel-shortening stem: tűz → tüzet, tüzek, tüzem; but tűzben, tűzzel.",
+ "tags": ["stem.alternation", "case.acc", "stem.frontRounded"]},
+
+{"id": "hu-decon-036", "lang": "hu", "module": "decon", "word": "utat", "gloss": "road, trip (direct object)",
+ "morphemes": [
+  {"form": "ut", "role": "stem", "label": "road — út shortens to ut- before a linking-vowel suffix"},
+  {"form": "a", "role": "link", "label": "linking vowel before -t (low stem: a)"},
+  {"form": "t", "role": "case", "label": "accusative — direct object"}],
+ "explain": "Vowel-shortening stem: út → utat, utak, utam; but úton, útja, úttal.",
+ "tags": ["stem.alternation", "case.acc", "stem.back"]},
+
+{"id": "hu-decon-037", "lang": "hu", "module": "decon", "word": "kövek", "gloss": "stones",
+ "morphemes": [
+  {"form": "köv", "role": "stem", "label": "stone — kő becomes köv- before linking-vowel suffixes"},
+  {"form": "e", "role": "link", "label": "linking vowel before plural -k (e)"},
+  {"form": "k", "role": "pl", "label": "plural"}],
+ "explain": "v-stem: kő → kövek, követ, kövem, kövön; but kőben, kővel.",
+ "tags": ["stem.alternation", "plural", "stem.frontRounded"]},
+
+{"id": "hu-decon-038", "lang": "hu", "module": "decon", "word": "házzal", "gloss": "with a house",
+ "morphemes": [
+  {"form": "ház", "role": "stem", "label": "house (back stem)"},
+  {"form": "zal", "role": "case", "label": "instrumental -val: v assimilates to the final consonant (ház + val → házzal)"}],
+ "explain": "-val/-vel after a consonant: the v becomes a copy of that consonant.",
+ "tags": ["case.instr", "assimilation", "stem.back"]},
+
+{"id": "hu-decon-039", "lang": "hu", "module": "decon", "word": "kerttel", "gloss": "with a garden",
+ "morphemes": [
+  {"form": "kert", "role": "stem", "label": "garden (front stem)"},
+  {"form": "tel", "role": "case", "label": "instrumental -vel: v assimilates to the final t (kert + vel → kerttel)"}],
+ "explain": "Front stem → -vel; after t the v becomes t: kerttel.",
+ "tags": ["case.instr", "assimilation", "stem.front"]},
+
+{"id": "hu-decon-040", "lang": "hu", "module": "decon", "word": "busszal", "gloss": "by bus",
+ "morphemes": [
+  {"form": "bus", "role": "stem", "label": "bus — busz; the final digraph sz is doubled as ssz, so the second s belongs with the suffix in this split"},
+  {"form": "szal", "role": "case", "label": "instrumental -val: v assimilates to sz; a doubled digraph is written by doubling only its first letter (sz → ssz)"}],
+ "explain": "busz + val → busszal. Doubled digraphs double only the first letter: ssz, ggy, ccs, nny.",
+ "tags": ["case.instr", "assimilation", "digraph", "stem.back"]},
+
+{"id": "hu-decon-041", "lang": "hu", "module": "decon", "word": "heggyel", "gloss": "with a mountain",
+ "morphemes": [
+  {"form": "heg", "role": "stem", "label": "mountain — hegy; the final digraph gy is doubled as ggy, so the y belongs with the suffix in this split"},
+  {"form": "gyel", "role": "case", "label": "instrumental -vel: v assimilates to gy; the doubled digraph is spelled ggy"}],
+ "explain": "hegy + vel → heggyel. Same rule as busszal: gy → ggy.",
+ "tags": ["case.instr", "assimilation", "digraph", "stem.front"]},
+
+{"id": "hu-decon-042", "lang": "hu", "module": "decon", "word": "kutyában", "gloss": "in a dog",
+ "morphemes": [
+  {"form": "kutyá", "role": "stem", "label": "dog — final a lengthens to á before a suffix"},
+  {"form": "ban", "role": "case", "label": "inessive — in (back form)"}],
+ "explain": "kutya + ban → kutyában: a final short a lengthens before every suffix.",
+ "tags": ["lengthen", "case.interior", "stem.back"]},
+
+{"id": "hu-decon-043", "lang": "hu", "module": "decon", "word": "kutyák", "gloss": "dogs",
+ "morphemes": [
+  {"form": "kutyá", "role": "stem", "label": "dog — final a lengthens to á before a suffix"},
+  {"form": "k", "role": "pl", "label": "plural — no linking vowel after a vowel"}],
+ "explain": "Vowel-final stem: plural is just -k, with the final a lengthened: kutyák.",
+ "tags": ["lengthen", "plural", "stem.back"]},
+
+{"id": "hu-decon-044", "lang": "hu", "module": "decon", "word": "almát", "gloss": "apple (direct object)",
+ "morphemes": [
+  {"form": "almá", "role": "stem", "label": "apple — final a lengthens to á before a suffix"},
+  {"form": "t", "role": "case", "label": "accusative — direct object (-t directly after a vowel)"}],
+ "explain": "alma + t → almát: lengthening, then -t directly.",
+ "tags": ["lengthen", "case.acc", "stem.back"]},
+
+{"id": "hu-decon-045", "lang": "hu", "module": "decon", "word": "háznak", "gloss": "to/for the house",
+ "morphemes": [
+  {"form": "ház", "role": "stem", "label": "house (back stem)"},
+  {"form": "nak", "role": "case", "label": "dative — to, for (back form of -nak/-nek)"}],
+ "explain": "Dative -nak/-nek is a two-form suffix: back stem → -nak.",
+ "tags": ["case.dat", "harmony.2form", "stem.back"]},
+
+{"id": "hu-decon-046", "lang": "hu", "module": "decon", "word": "kertnek", "gloss": "to/for the garden",
+ "morphemes": [
+  {"form": "kert", "role": "stem", "label": "garden (front stem)"},
+  {"form": "nek", "role": "case", "label": "dative — to, for (front form of -nak/-nek)"}],
+ "explain": "Front stem → -nek.",
+ "tags": ["case.dat", "harmony.2form", "stem.front"]},
+
+{"id": "hu-decon-047", "lang": "hu", "module": "decon", "word": "sörök", "gloss": "beers",
+ "morphemes": [
+  {"form": "sör", "role": "stem", "label": "beer (front-rounded stem: ö)"},
+  {"form": "ö", "role": "link", "label": "linking vowel before plural -k — sör takes ö (three-form linking vowel o/e/ö)"},
+  {"form": "k", "role": "pl", "label": "plural"}],
+ "explain": "The plural linking vowel can be o/e/ö by harmony: sörök, but könyvek — it is lexical, learn it with the noun.",
+ "tags": ["plural", "harmony.3form", "stem.frontRounded"]},
+
+{"id": "hu-decon-048", "lang": "hu", "module": "decon", "word": "gyümölcsöt", "gloss": "fruit (direct object)",
+ "morphemes": [
+  {"form": "gyümölcs", "role": "stem", "label": "fruit (front-rounded stem: ü, ö)"},
+  {"form": "ö", "role": "link", "label": "linking vowel ö before -t (front rounded)"},
+  {"form": "t", "role": "case", "label": "accusative — direct object"}],
+ "explain": "Three-form linking vowel: gyümölcsöt, gyümölcsök, gyümölcsöm.",
+ "tags": ["case.acc", "harmony.3form", "stem.frontRounded"]},
+
+{"id": "hu-decon-049", "lang": "hu", "module": "decon", "word": "útlevelet", "gloss": "passport (direct object)",
+ "morphemes": [
+  {"form": "útlevel", "role": "stem", "label": "passport — út+levél; levél shortens to level- before a linking-vowel suffix"},
+  {"form": "e", "role": "link", "label": "linking vowel before -t (harmony follows the last member levél: front, e)"},
+  {"form": "t", "role": "case", "label": "accusative — direct object"}],
+ "explain": "Compounds follow their last member: útlevél behaves like levél → útlevelet, útlevelek, útlevelem; útlevélben, útlevéllel.",
+ "tags": ["stem.alternation", "case.acc", "stem.front", "compound"]},
+
+{"id": "hu-decon-050", "lang": "hu", "module": "decon", "word": "családjával", "gloss": "with his/her family",
+ "morphemes": [
+  {"form": "család", "role": "stem", "label": "family (back stem)"},
+  {"form": "já", "role": "poss", "label": "3SG possessor -ja (család takes j); its final a lengthens to á before the case"},
+  {"form": "val", "role": "case", "label": "instrumental — with (-val unchanged after a vowel)"}],
+ "explain": "After a vowel -val/-vel does not assimilate: családjá + val → családjával.",
+ "tags": ["poss.sg", "case.instr", "lengthen", "stem.back"]},
+
+{"id": "hu-decon-051", "lang": "hu", "module": "decon", "word": "konzulátuson", "gloss": "at the consulate",
+ "morphemes": [
+  {"form": "konzulátus", "role": "stem", "label": "consulate (back stem: o, u, á, u)"},
+  {"form": "on", "role": "case", "label": "superessive — on/at (back form of -on/-en/-ön); used for institutions you are 'at'"}],
+ "explain": "Many institutions and events take the surface case: a konzulátuson, a pályaudvaron, az egyetemen.",
+ "tags": ["case.surface", "harmony.3form", "stem.back"]},
+
+{"id": "hu-decon-052", "lang": "hu", "module": "decon", "word": "iskolába", "gloss": "to school (into)",
+ "morphemes": [
+  {"form": "iskolá", "role": "stem", "label": "school — final a lengthens to á before a suffix"},
+  {"form": "ba", "role": "case", "label": "illative — into (back form of -ba/-be)"}],
+ "explain": "iskola + ba → iskolába: lengthening, then the back two-form suffix.",
+ "tags": ["lengthen", "case.interior", "harmony.2form", "stem.back"]},
+
+{"id": "hu-decon-053", "lang": "hu", "module": "decon", "word": "nagymamámnak", "gloss": "to/for my grandmother",
+ "morphemes": [
+  {"form": "nagymamá", "role": "stem", "label": "grandmother — final a lengthens to á before a suffix"},
+  {"form": "m", "role": "poss", "label": "1SG possessor — my (no linking vowel after a vowel)"},
+  {"form": "nak", "role": "case", "label": "dative — to, for (back form of -nak/-nek)"}],
+ "explain": "Vowel-final stem: possessive -m attaches directly after lengthening; then the case: nagymamámnak.",
+ "tags": ["poss.sg", "case.dat", "lengthen", "stem.back"]},
+
+{"id": "hu-decon-054", "lang": "hu", "module": "decon", "word": "lakásunkban", "gloss": "in our flat",
+ "morphemes": [
+  {"form": "lakás", "role": "stem", "label": "flat, apartment (back stem)"},
+  {"form": "unk", "role": "poss", "label": "1PL possessor — our (-unk after a consonant, back form of -unk/-ünk)"},
+  {"form": "ban", "role": "case", "label": "inessive — in (back form)"}],
+ "explain": "After a consonant the 1PL possessive is -unk/-ünk by harmony: lakásunk, kertünk.",
+ "tags": ["poss.sg", "case.interior", "stem.back"]},
+
+{"id": "hu-decon-055", "lang": "hu", "module": "decon", "word": "gyerekeink", "gloss": "our children",
+ "morphemes": [
+  {"form": "gyerek", "role": "stem", "label": "child (front stem)"},
+  {"form": "e", "role": "link", "label": "linking vowel e before plural-possessed -i"},
+  {"form": "i", "role": "poss-pl", "label": "plural of the possessed thing"},
+  {"form": "nk", "role": "poss", "label": "1PL possessor — our"}],
+ "explain": "Plural possessed: gyerek-e-i-nk. Compare the plain plural gyerekek.",
+ "tags": ["poss.pl", "stem.front"]},
+
+{"id": "hu-decon-056", "lang": "hu", "module": "decon", "word": "éttermek", "gloss": "restaurants",
+ "morphemes": [
+  {"form": "étterm", "role": "stem", "label": "restaurant — étterem drops its last e (fleeting vowel) before a linking-vowel suffix"},
+  {"form": "e", "role": "link", "label": "linking vowel before plural -k (front stem: e)"},
+  {"form": "k", "role": "pl", "label": "plural"}],
+ "explain": "Fleeting-vowel stem: étterem → éttermek, éttermet, éttermem; but étteremben, étteremmel.",
+ "tags": ["stem.alternation", "plural", "stem.front", "stem.fleeting"]},
+
+{"id": "hu-decon-057", "lang": "hu", "module": "decon", "word": "tükörben", "gloss": "in a mirror",
+ "morphemes": [
+  {"form": "tükör", "role": "stem", "label": "mirror (front-rounded stem; the full form stays before a case suffix)"},
+  {"form": "ben", "role": "case", "label": "inessive — in (front form)"}],
+ "explain": "Fleeting-vowel stem tükör: tükörben, tükörrel keep the ö; tükröt, tükrök, tükröm drop it.",
+ "tags": ["case.interior", "harmony.2form", "stem.frontRounded", "stem.fleeting"]},
+
+{"id": "hu-decon-058", "lang": "hu", "module": "decon", "word": "szülőktől", "gloss": "from the parents",
+ "morphemes": [
+  {"form": "szülő", "role": "stem", "label": "parent (front-rounded stem, vowel-final)"},
+  {"form": "k", "role": "pl", "label": "plural — no linking vowel after a vowel"},
+  {"form": "től", "role": "case", "label": "ablative — from (front form of -tól/-től)"}],
+ "explain": "Plural, then case: szülő-k-től.",
+ "tags": ["plural", "case.proximity", "harmony.2form", "stem.frontRounded"]},
+
+{"id": "hu-decon-059", "lang": "hu", "module": "decon", "word": "testvéremmel", "gloss": "with my sibling",
+ "morphemes": [
+  {"form": "testvér", "role": "stem", "label": "sibling (front stem)"},
+  {"form": "e", "role": "link", "label": "linking vowel before the possessive (front stem: e)"},
+  {"form": "m", "role": "poss", "label": "1SG possessor — my"},
+  {"form": "mel", "role": "case", "label": "instrumental -vel: v assimilates to the final m of the possessive (testvérem + vel → testvéremmel)"}],
+ "explain": "Assimilation applies to whatever consonant ends the word, including a possessive: testvéremmel, barátommal.",
+ "tags": ["poss.sg", "case.instr", "assimilation", "stem.front"]},
+
+{"id": "hu-decon-060", "lang": "hu", "module": "decon", "word": "pénzt", "gloss": "money (direct object)",
+ "morphemes": [
+  {"form": "pénz", "role": "stem", "label": "money (front stem)"},
+  {"form": "t", "role": "case", "label": "accusative — direct object; -t attaches directly after z"}],
+ "explain": "After z, s, sz, l, r, n, ny, j the accusative usually needs no linking vowel: pénzt, várost, embert.",
+ "tags": ["case.acc", "stem.front"]},
+
+{"id": "hu-decon-061", "lang": "hu", "module": "decon", "word": "hetek", "gloss": "weeks",
+ "morphemes": [
+  {"form": "het", "role": "stem", "label": "week — hét shortens to het- before a linking-vowel suffix"},
+  {"form": "e", "role": "link", "label": "linking vowel before plural -k (front stem: e)"},
+  {"form": "k", "role": "pl", "label": "plural"}],
+ "explain": "Vowel-shortening stem: hét → hetek, hetet, hete; but héten, héttel.",
+ "tags": ["stem.alternation", "plural", "stem.front"]},
+
+{"id": "hu-decon-062", "lang": "hu", "module": "decon", "word": "nyáron", "gloss": "in summer",
+ "morphemes": [
+  {"form": "nyár", "role": "stem", "label": "summer (back stem; the long á stays before a case suffix)"},
+  {"form": "on", "role": "case", "label": "superessive — on; with seasons means 'in' (back form of -on/-en/-ön)"}],
+ "explain": "Seasons take the surface case: nyáron, télen. The stem shortens only before linking-vowel suffixes (nyarak).",
+ "tags": ["case.surface", "harmony.3form", "stem.back"]}
+]

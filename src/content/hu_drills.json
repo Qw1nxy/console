@@ -1,0 +1,2136 @@
+[
+ {
+  "id": "hu-drill-001",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.interior",
+  "instruction": "Replace the place with the cued noun, same case.",
+  "cue": "A házban vagyok. → (a kert)",
+  "answer": "A kertben vagyok.",
+  "accepted": [
+   "A kertben vagyok"
+  ],
+  "explain": "kert is a front stem, so -ban becomes -ben.",
+  "tags": [
+   "harmony.2form",
+   "inessive",
+   "ban/ben"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-002",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.interior",
+  "instruction": "Replace the place with the cued noun, same case.",
+  "cue": "A boltba megyek. → (az étterem)",
+  "answer": "Az étterembe megyek.",
+  "accepted": [
+   "Az étterembe megyek"
+  ],
+  "explain": "Movement into: -ba/-be. étterem is front → -be.",
+  "tags": [
+   "harmony.2form",
+   "illative",
+   "ba/be"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-003",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.interior",
+  "instruction": "Replace the place with the cued noun, same case.",
+  "cue": "A kertből jövök. → (a ház)",
+  "answer": "A házból jövök.",
+  "accepted": [
+   "A házból jövök"
+  ],
+  "explain": "Out of: -ból/-ből. ház is back → -ból.",
+  "tags": [
+   "harmony.2form",
+   "elative",
+   "ból/ből"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-004",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.interior",
+  "instruction": "Replace the place with the cued noun, same case.",
+  "cue": "A kulcs az autóban van. → (a lakás)",
+  "answer": "A kulcs a lakásban van.",
+  "accepted": [
+   "A kulcs a lakásban van"
+  ],
+  "explain": "Location inside: -ban/-ben. lakás is back → -ban.",
+  "tags": [
+   "harmony.2form",
+   "inessive",
+   "ban/ben"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-005",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.interior",
+  "instruction": "Replace the place with the cued noun, same case.",
+  "cue": "A gyárban dolgozom. → (a hivatal)",
+  "answer": "A hivatalban dolgozom.",
+  "accepted": [
+   "A hivatalban dolgozom"
+  ],
+  "explain": "hivatal is a mixed stem with back harmony → -ban.",
+  "tags": [
+   "harmony.2form",
+   "inessive",
+   "mixed-stem"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-006",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.interior",
+  "instruction": "Replace the place with the cued noun, same case.",
+  "cue": "A pénz a házban van. → (a könyv)",
+  "answer": "A pénz a könyvben van.",
+  "accepted": [
+   "A pénz a könyvben van"
+  ],
+  "explain": "Front-rounded stems take -ben: two-form suffixes only split back/front.",
+  "tags": [
+   "harmony.2form",
+   "inessive",
+   "frontRounded"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-007",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.interior",
+  "instruction": "Replace the place with the cued noun, same case.",
+  "cue": "A szobába megyek. → (az iskola)",
+  "answer": "Az iskolába megyek.",
+  "accepted": [
+   "Az iskolába megyek"
+  ],
+  "explain": "Final a lengthens to á before a suffix: iskola → iskolába.",
+  "tags": [
+   "harmony.2form",
+   "illative",
+   "lengthening"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-008",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.surface",
+  "instruction": "Replace the place with the cued noun, same case.",
+  "cue": "A könyv az asztalon van. → (a szék)",
+  "answer": "A könyv a széken van.",
+  "accepted": [
+   "A könyv a széken van"
+  ],
+  "explain": "On a surface: -on/-en/-ön. szék is front unrounded → -en.",
+  "tags": [
+   "harmony.3form",
+   "superessive",
+   "on/en/ön"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-009",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.surface",
+  "instruction": "Replace the place with the cued noun, same case.",
+  "cue": "A kávé az asztalon van. → (a föld)",
+  "answer": "A kávé a földön van.",
+  "accepted": [
+   "A kávé a földön van"
+  ],
+  "explain": "föld has ö → the rounded form -ön.",
+  "tags": [
+   "harmony.3form",
+   "superessive",
+   "frontRounded"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-010",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.surface",
+  "instruction": "Replace the place with the cued noun, same case.",
+  "cue": "A kutya a földön van. → (az autó)",
+  "answer": "A kutya az autón van.",
+  "accepted": [
+   "A kutya az autón van"
+  ],
+  "explain": "After a vowel the superessive is just -n: autón.",
+  "tags": [
+   "harmony.3form",
+   "superessive",
+   "vowel-final"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-011",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.surface",
+  "instruction": "Replace the place with the cued noun, same case.",
+  "cue": "Budapesten lakom. → (Magyarország)",
+  "answer": "Magyarországon lakom.",
+  "accepted": [
+   "Magyarországon lakom"
+  ],
+  "explain": "Countries and cities often take the surface case: Magyarországon, Budapesten.",
+  "tags": [
+   "harmony.3form",
+   "superessive",
+   "place-names"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-012",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.surface",
+  "instruction": "Replace the destination with the cued noun, same case.",
+  "cue": "A könyvet az asztalra teszem. → (a szék)",
+  "answer": "A könyvet a székre teszem.",
+  "accepted": [
+   "A könyvet a székre teszem"
+  ],
+  "explain": "Onto: -ra/-re. szék is front → -re.",
+  "tags": [
+   "harmony.2form",
+   "sublative",
+   "ra/re"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-013",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.surface",
+  "instruction": "Replace the topic with the cued noun, same case.",
+  "cue": "A székről beszélünk. → (a könyv)",
+  "answer": "A könyvről beszélünk.",
+  "accepted": [
+   "A könyvről beszélünk"
+  ],
+  "explain": "-ról/-ről also means 'about'. könyv is front → -ről.",
+  "tags": [
+   "harmony.2form",
+   "delative",
+   "ról/ről"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-014",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.surface",
+  "instruction": "Replace the place with the cued noun, same case.",
+  "cue": "A vonaton ülök. → (a busz)",
+  "answer": "A buszon ülök.",
+  "accepted": [
+   "A buszon ülök"
+  ],
+  "explain": "Vehicles you sit on take -on/-en/-ön: buszon, vonaton.",
+  "tags": [
+   "harmony.3form",
+   "superessive",
+   "transport"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-015",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "response",
+  "family": "case.surface",
+  "instruction": "Answer in a full sentence with the cued place.",
+  "cue": "Hol vagy? → (Budapest)",
+  "answer": "Budapesten vagyok.",
+  "accepted": [
+   "Budapesten vagyok"
+  ],
+  "explain": "Budapest is an exception: front suffixes despite its back vowels.",
+  "tags": [
+   "harmony.3form",
+   "superessive",
+   "exception"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-016",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.proximity",
+  "instruction": "Replace the place with the cued noun, same case.",
+  "cue": "A háznál várok. → (a bolt)",
+  "answer": "A boltnál várok.",
+  "accepted": [
+   "A boltnál várok"
+  ],
+  "explain": "At/near: -nál/-nél. bolt is back → -nál.",
+  "tags": [
+   "harmony.2form",
+   "adessive",
+   "nál/nél"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-017",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.proximity",
+  "instruction": "Replace the person with the cued noun, same case.",
+  "cue": "Az orvosnál vagyok. → (a tanár)",
+  "answer": "A tanárnál vagyok.",
+  "accepted": [
+   "A tanárnál vagyok"
+  ],
+  "explain": "At someone's place: -nál/-nél. tanár is back → -nál.",
+  "tags": [
+   "harmony.2form",
+   "adessive",
+   "nál/nél"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-018",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.proximity",
+  "instruction": "Replace the place with the cued noun, same case.",
+  "cue": "A házhoz megyek. → (a kert)",
+  "answer": "A kerthez megyek.",
+  "accepted": [
+   "A kerthez megyek"
+  ],
+  "explain": "Up to: -hoz/-hez/-höz. kert is front unrounded → -hez.",
+  "tags": [
+   "harmony.3form",
+   "allative",
+   "hoz/hez/höz"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-019",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.proximity",
+  "instruction": "Replace the place with the cued noun, same case.",
+  "cue": "Az asztalhoz megyek. → (a tükör)",
+  "answer": "A tükörhöz megyek.",
+  "accepted": [
+   "A tükörhöz megyek"
+  ],
+  "explain": "tükör has ö → the rounded form -höz.",
+  "tags": [
+   "harmony.3form",
+   "allative",
+   "frontRounded"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-020",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.proximity",
+  "instruction": "Replace the people with the cued noun, same case.",
+  "cue": "Péterhez megyek. → (a szülők)",
+  "answer": "A szülőkhöz megyek.",
+  "accepted": [
+   "A szülőkhöz megyek"
+  ],
+  "explain": "After plural -k the allative is full -hoz/-hez/-höz; szülők → -höz.",
+  "tags": [
+   "harmony.3form",
+   "allative",
+   "plural"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-021",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.proximity",
+  "instruction": "Replace the person with the cued noun, same case.",
+  "cue": "A barátomtól jövök. → (az orvos)",
+  "answer": "Az orvostól jövök.",
+  "accepted": [
+   "Az orvostól jövök"
+  ],
+  "explain": "From someone: -tól/-től. orvos is back → -tól.",
+  "tags": [
+   "harmony.2form",
+   "ablative",
+   "tól/től"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-022",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.proximity",
+  "instruction": "Replace the person with the cued noun, same case.",
+  "cue": "A tanártól kapok levelet. → (a nagymama)",
+  "answer": "A nagymamától kapok levelet.",
+  "accepted": [
+   "A nagymamától kapok levelet"
+  ],
+  "explain": "Final a lengthens: nagymama → nagymamától.",
+  "tags": [
+   "harmony.2form",
+   "ablative",
+   "lengthening"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-023",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.proximity",
+  "instruction": "Replace the place with the cued noun, same case.",
+  "cue": "A boltnál találkozunk. → (az étterem)",
+  "answer": "Az étteremnél találkozunk.",
+  "accepted": [
+   "Az étteremnél találkozunk"
+  ],
+  "explain": "étterem is front → -nél. Case suffixes keep the full stem étterem-.",
+  "tags": [
+   "harmony.2form",
+   "adessive",
+   "nál/nél"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-024",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.acc",
+  "instruction": "Replace the object with the cued noun, same case.",
+  "cue": "Látok egy házat. → (asztal)",
+  "answer": "Látok egy asztalt.",
+  "accepted": [
+   "Látok egy asztalt"
+  ],
+  "explain": "After l the accusative -t attaches directly: asztalt.",
+  "tags": [
+   "accusative",
+   "direct-t"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-025",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.acc",
+  "instruction": "Replace the object with the cued noun, same case.",
+  "cue": "Látok egy házat. → (kutya)",
+  "answer": "Látok egy kutyát.",
+  "accepted": [
+   "Látok egy kutyát"
+  ],
+  "explain": "Vowel-final: -t directly, final a lengthens: kutyát.",
+  "tags": [
+   "accusative",
+   "lengthening"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-026",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.acc",
+  "instruction": "Replace the object with the cued noun, same case.",
+  "cue": "Veszek egy széket. → (könyv)",
+  "answer": "Veszek egy könyvet.",
+  "accepted": [
+   "Veszek egy könyvet"
+  ],
+  "explain": "After v a linking vowel is needed; front stem → -et.",
+  "tags": [
+   "accusative",
+   "linking-vowel",
+   "frontRounded"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-027",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.acc",
+  "instruction": "Replace the object with the cued noun, same case.",
+  "cue": "Kérek egy kávét. → (sör)",
+  "answer": "Kérek egy sört.",
+  "accepted": [
+   "Kérek egy sört"
+  ],
+  "explain": "sör takes -t directly: sört (but plural sörök).",
+  "tags": [
+   "accusative",
+   "direct-t"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-028",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.acc",
+  "instruction": "Replace the object with the cued noun, same case.",
+  "cue": "Látom a házat. → (a város)",
+  "answer": "Látom a várost.",
+  "accepted": [
+   "Látom a várost"
+  ],
+  "explain": "After s the accusative -t attaches directly: várost.",
+  "tags": [
+   "accusative",
+   "direct-t"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-029",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.acc",
+  "instruction": "Replace the object with the cued noun, same case.",
+  "cue": "Keresem a kulcsot. → (az útlevél)",
+  "answer": "Keresem az útlevelet.",
+  "accepted": [
+   "Keresem az útlevelet"
+  ],
+  "explain": "útlevél shortens like levél: útlevelet.",
+  "tags": [
+   "accusative",
+   "linking-vowel",
+   "shortening"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-030",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.acc",
+  "instruction": "Replace the object with the cued noun, same case.",
+  "cue": "Kérek egy almát. → (gyümölcs)",
+  "answer": "Kérek egy gyümölcsöt.",
+  "accepted": [
+   "Kérek egy gyümölcsöt"
+  ],
+  "explain": "gyümölcs takes the rounded linking vowel: gyümölcsöt.",
+  "tags": [
+   "accusative",
+   "linking-vowel",
+   "frontRounded"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-031",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "plural",
+  "instruction": "Make the subject plural; change the verb to match.",
+  "cue": "Itt van a ház. → plural",
+  "answer": "Itt vannak a házak.",
+  "accepted": [
+   "Itt vannak a házak"
+  ],
+  "explain": "ház is a low stem: házak (a, not o). van → vannak.",
+  "tags": [
+   "plural",
+   "linking-vowel",
+   "van/vannak"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": false
+ },
+ {
+  "id": "hu-drill-032",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "plural",
+  "instruction": "Make the subject plural; the adjective agrees.",
+  "cue": "A kert szép. → plural",
+  "answer": "A kertek szépek.",
+  "accepted": [
+   "A kertek szépek"
+  ],
+  "explain": "Predicate adjectives take the plural too: kertek szépek.",
+  "tags": [
+   "plural",
+   "adjective-agreement"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": false
+ },
+ {
+  "id": "hu-drill-033",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "plural",
+  "instruction": "Make the subject plural; change the verb to match.",
+  "cue": "A könyv az asztalon van. → plural",
+  "answer": "A könyvek az asztalon vannak.",
+  "accepted": [
+   "A könyvek az asztalon vannak"
+  ],
+  "explain": "könyv → könyvek (linking vowel e, not ö). van → vannak.",
+  "tags": [
+   "plural",
+   "linking-vowel",
+   "frontRounded"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": false
+ },
+ {
+  "id": "hu-drill-034",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "plural",
+  "instruction": "Make it plural.",
+  "cue": "Ez egy sör. → plural",
+  "answer": "Ezek sörök.",
+  "accepted": [
+   "Ezek sörök"
+  ],
+  "explain": "ez → ezek; sör takes ö: sörök. No article in the plural here.",
+  "tags": [
+   "plural",
+   "linking-vowel",
+   "demonstrative"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": false
+ },
+ {
+  "id": "hu-drill-035",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "plural",
+  "instruction": "Make the subject plural; change the verb to match.",
+  "cue": "A gyerek játszik. → plural",
+  "answer": "A gyerekek játszanak.",
+  "accepted": [
+   "A gyerekek játszanak"
+  ],
+  "explain": "gyerek → gyerekek; 3PL indefinite játszanak.",
+  "tags": [
+   "plural",
+   "verb-agreement"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": false
+ },
+ {
+  "id": "hu-drill-036",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "plural",
+  "instruction": "Replace the subject with the cued noun in the plural.",
+  "cue": "Itt vannak a házak. → (az autó)",
+  "answer": "Itt vannak az autók.",
+  "accepted": [
+   "Itt vannak az autók"
+  ],
+  "explain": "Vowel-final stems take -k with no linking vowel: autók.",
+  "tags": [
+   "plural",
+   "vowel-final"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-037",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.dat",
+  "instruction": "Replace the recipient with the cued noun, same case.",
+  "cue": "Adok egy könyvet Péternek. → (a tanár)",
+  "answer": "Adok egy könyvet a tanárnak.",
+  "accepted": [
+   "Adok egy könyvet a tanárnak"
+  ],
+  "explain": "Recipient: -nak/-nek. tanár is back → -nak.",
+  "tags": [
+   "dative",
+   "nak/nek",
+   "harmony.2form"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-038",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.dat",
+  "instruction": "Replace the recipient with the cued noun, same case.",
+  "cue": "Levelet írok a barátomnak. → (a nagymamám)",
+  "answer": "Levelet írok a nagymamámnak.",
+  "accepted": [
+   "Levelet írok a nagymamámnak"
+  ],
+  "explain": "Possessed noun + dative: nagymamám + nak.",
+  "tags": [
+   "dative",
+   "nak/nek",
+   "possessive"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-039",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.dat",
+  "instruction": "Replace the person with the cued noun, same case.",
+  "cue": "Segítek az orvosnak. → (a gyerek)",
+  "answer": "Segítek a gyereknek.",
+  "accepted": [
+   "Segítek a gyereknek"
+  ],
+  "explain": "segít takes the dative. gyerek is front → -nek.",
+  "tags": [
+   "dative",
+   "nak/nek",
+   "verb-government"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-040",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.instr",
+  "instruction": "Replace the vehicle with the cued noun, same case.",
+  "cue": "Autóval megyek. → (busz)",
+  "answer": "Busszal megyek.",
+  "accepted": [
+   "Busszal megyek"
+  ],
+  "explain": "-val after a consonant assimilates: busz + val → busszal (sz → ssz).",
+  "tags": [
+   "instrumental",
+   "assimilation",
+   "digraph"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-041",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.instr",
+  "instruction": "Replace the person with the cued noun, same case.",
+  "cue": "A barátommal beszélek. → (a tanár)",
+  "answer": "A tanárral beszélek.",
+  "accepted": [
+   "A tanárral beszélek"
+  ],
+  "explain": "tanár + val → tanárral: v becomes r.",
+  "tags": [
+   "instrumental",
+   "assimilation"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-042",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.instr",
+  "instruction": "Replace the vehicle with the cued noun, same case.",
+  "cue": "Vonattal utazom. → (autó)",
+  "answer": "Autóval utazom.",
+  "accepted": [
+   "Autóval utazom"
+  ],
+  "explain": "After a vowel -val stays -val: autóval.",
+  "tags": [
+   "instrumental",
+   "vowel-final"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-043",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.instr",
+  "instruction": "Replace the ingredient with the cued noun, same case.",
+  "cue": "Kávét kérek tejjel. → (cukor)",
+  "answer": "Kávét kérek cukorral.",
+  "accepted": [
+   "Kávét kérek cukorral"
+  ],
+  "explain": "cukor + val → cukorral: back harmony, v becomes r.",
+  "tags": [
+   "instrumental",
+   "assimilation",
+   "harmony.2form"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-044",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.instr",
+  "instruction": "Replace the people with the cued noun, same case.",
+  "cue": "Péterrel megyek. → (a gyerekek)",
+  "answer": "A gyerekekkel megyek.",
+  "accepted": [
+   "A gyerekekkel megyek"
+  ],
+  "explain": "Plural + -vel: gyerekek + vel → gyerekekkel.",
+  "tags": [
+   "instrumental",
+   "assimilation",
+   "plural"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-045",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "poss.sg",
+  "instruction": "Change the possessor to the cued person.",
+  "cue": "Ez az én házam. → (te)",
+  "answer": "Ez a te házad.",
+  "accepted": [
+   "Ez a te házad"
+  ],
+  "explain": "2SG possessive -d with linking vowel: házad.",
+  "tags": [
+   "possessive",
+   "2SG",
+   "linking-vowel"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-046",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "poss.sg",
+  "instruction": "Replace the possessed noun with the cued noun.",
+  "cue": "Itt van a házam. → (kert)",
+  "answer": "Itt van a kertem.",
+  "accepted": [
+   "Itt van a kertem"
+  ],
+  "explain": "1SG -m; kert is front → linking vowel e: kertem.",
+  "tags": [
+   "possessive",
+   "1SG",
+   "harmony.2form"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-047",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "poss.sg",
+  "instruction": "Replace the possessed noun with the cued noun.",
+  "cue": "Ez a kertje. → (autó)",
+  "answer": "Ez az autója.",
+  "accepted": [
+   "Ez az autója"
+  ],
+  "explain": "Vowel-final stems take -ja/-je in 3SG: autója.",
+  "tags": [
+   "possessive",
+   "3SG",
+   "j-possessive"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-048",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "poss.sg",
+  "instruction": "Replace the possessed noun with the cued noun.",
+  "cue": "A házunk nagy. → (lakás)",
+  "answer": "A lakásunk nagy.",
+  "accepted": [
+   "A lakásunk nagy"
+  ],
+  "explain": "1PL after a consonant: -unk/-ünk by harmony: lakásunk.",
+  "tags": [
+   "possessive",
+   "1PL"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-049",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "poss.sg",
+  "instruction": "Replace the possessed noun with the cued noun.",
+  "cue": "A barátja orvos. → (apa)",
+  "answer": "Az apja orvos.",
+  "accepted": [
+   "Az apja orvos"
+  ],
+  "explain": "Irregular: apa → apja (not *apája). Same for anya → anyja.",
+  "tags": [
+   "possessive",
+   "3SG",
+   "irregular"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-050",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "poss.sg",
+  "instruction": "Change the possessor to the cued person.",
+  "cue": "A kutyám fekete. → (ő)",
+  "answer": "A kutyája fekete.",
+  "accepted": [
+   "A kutyája fekete"
+  ],
+  "explain": "3SG after a vowel: -ja; final a lengthens: kutyája.",
+  "tags": [
+   "possessive",
+   "3SG",
+   "lengthening"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-051",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "poss.sg",
+  "instruction": "Change the possessor to the cued person.",
+  "cue": "Ez a könyvem. → (ti)",
+  "answer": "Ez a könyvetek.",
+  "accepted": [
+   "Ez a könyvetek"
+  ],
+  "explain": "2PL -tok/-tek/-tök; könyv takes e, so -etek: könyvetek.",
+  "tags": [
+   "possessive",
+   "2PL",
+   "harmony.3form"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-052",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "poss.sg",
+  "instruction": "Change the possessor to the cued person.",
+  "cue": "Hol van a házad? → (ők)",
+  "answer": "Hol van a házuk?",
+  "accepted": [
+   "Hol van a házuk"
+  ],
+  "explain": "3PL -uk/-ük: házuk.",
+  "tags": [
+   "possessive",
+   "3PL"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-053",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "poss.pl",
+  "instruction": "Make the possessed thing plural.",
+  "cue": "Ez a házam. → plural",
+  "answer": "Ezek a házaim.",
+  "accepted": [
+   "Ezek a házaim"
+  ],
+  "explain": "Plural possessed uses -i-: ház-a-i-m. ez → ezek.",
+  "tags": [
+   "plural-possessed",
+   "1SG"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": false
+ },
+ {
+  "id": "hu-drill-054",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "poss.pl",
+  "instruction": "Change the possessor to the cued person.",
+  "cue": "Itt vannak a barátaim. → (mi)",
+  "answer": "Itt vannak a barátaink.",
+  "accepted": [
+   "Itt vannak a barátaink"
+  ],
+  "explain": "1PL after -i: -nk. barát has no j here: barátaink.",
+  "tags": [
+   "plural-possessed",
+   "1PL"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-055",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "poss.pl",
+  "instruction": "Change the possessor to the cued person.",
+  "cue": "A kertjeim szépek. → (te)",
+  "answer": "A kertjeid szépek.",
+  "accepted": [
+   "A kertjeid szépek"
+  ],
+  "explain": "kert keeps j in the plural possessed: kertjeid.",
+  "tags": [
+   "plural-possessed",
+   "2SG",
+   "j-possessive"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-056",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "poss.pl",
+  "instruction": "Change the possessor to the cued person.",
+  "cue": "A könyveim az asztalon vannak. → (ő)",
+  "answer": "A könyvei az asztalon vannak.",
+  "accepted": [
+   "A könyvei az asztalon vannak"
+  ],
+  "explain": "3SG possessor is unmarked after -i: könyvei.",
+  "tags": [
+   "plural-possessed",
+   "3SG"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-057",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "conj.def",
+  "instruction": "Make the object definite and change the verb ending to match.",
+  "cue": "Olvasok egy könyvet. → (a könyv)",
+  "answer": "Olvasom a könyvet.",
+  "accepted": [
+   "Olvasom a könyvet"
+  ],
+  "explain": "Definite object → definite conjugation: olvasok → olvasom.",
+  "tags": [
+   "definite",
+   "1SG",
+   "olvas"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-058",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "conj.def",
+  "instruction": "Make the object definite and change the verb ending to match.",
+  "cue": "Látok egy kutyát. → (a kutya)",
+  "answer": "Látom a kutyát.",
+  "accepted": [
+   "Látom a kutyát"
+  ],
+  "explain": "látok → látom before a definite object.",
+  "tags": [
+   "definite",
+   "1SG",
+   "lát"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-059",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "conj.def",
+  "instruction": "Make the object definite and change the verb ending to match.",
+  "cue": "Írsz egy levelet. → (a levél)",
+  "answer": "Írod a levelet.",
+  "accepted": [
+   "Írod a levelet"
+  ],
+  "explain": "2SG: írsz (indefinite) → írod (definite).",
+  "tags": [
+   "definite",
+   "2SG",
+   "ír"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-060",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "conj.def",
+  "instruction": "Make the object definite and change the verb ending to match.",
+  "cue": "Kérek egy kávét. → (a kávé)",
+  "answer": "Kérem a kávét.",
+  "accepted": [
+   "Kérem a kávét"
+  ],
+  "explain": "kérek → kérem before a definite object.",
+  "tags": [
+   "definite",
+   "1SG",
+   "kér"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-061",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "conj.def",
+  "instruction": "Make the object definite and change the verb ending to match.",
+  "cue": "Nézünk egy filmet. → (a film)",
+  "answer": "Nézzük a filmet.",
+  "accepted": [
+   "Nézzük a filmet"
+  ],
+  "explain": "1PL: nézünk → nézzük (néz + jük, j assimilates to z).",
+  "tags": [
+   "definite",
+   "1PL",
+   "néz"
+  ],
+  "difficulty": 3,
+  "speedTargetSec": 8,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-062",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "conj.indef",
+  "instruction": "Make the object indefinite and change the verb ending to match.",
+  "cue": "Látom a házat. → (egy ház)",
+  "answer": "Látok egy házat.",
+  "accepted": [
+   "Látok egy házat"
+  ],
+  "explain": "Indefinite object → indefinite conjugation: látom → látok.",
+  "tags": [
+   "indefinite",
+   "1SG",
+   "lát"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-063",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "conj.indef",
+  "instruction": "Make the object indefinite and change the verb ending to match.",
+  "cue": "Veszed a könyvet. → (egy könyv)",
+  "answer": "Veszel egy könyvet.",
+  "accepted": [
+   "Veszel egy könyvet"
+  ],
+  "explain": "2SG indefinite of vesz is veszel (-el after sz).",
+  "tags": [
+   "indefinite",
+   "2SG",
+   "vesz"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-064",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "conj.indef",
+  "instruction": "Make the object indefinite and change the verb ending to match.",
+  "cue": "Olvassa a levelet. → (egy levél)",
+  "answer": "Olvas egy levelet.",
+  "accepted": [
+   "Olvas egy levelet"
+  ],
+  "explain": "3SG indefinite has no ending: olvas. Definite: olvassa.",
+  "tags": [
+   "indefinite",
+   "3SG",
+   "olvas"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-065",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "response",
+  "family": "conj.def",
+  "instruction": "Answer yes in a short full sentence.",
+  "cue": "Látod a házat? → igen",
+  "answer": "Igen, látom.",
+  "accepted": [
+   "Igen, látom",
+   "Igen, látom a házat"
+  ],
+  "explain": "Definite object (a házat) → definite látom.",
+  "tags": [
+   "definite",
+   "1SG",
+   "short-answer"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-066",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "response",
+  "family": "conj.indef",
+  "instruction": "Answer yes in a short full sentence.",
+  "cue": "Kérsz kávét? → igen",
+  "answer": "Igen, kérek.",
+  "accepted": [
+   "Igen, kérek",
+   "Igen, kérek kávét"
+  ],
+  "explain": "kávét has no article → indefinite kérek.",
+  "tags": [
+   "indefinite",
+   "1SG",
+   "short-answer"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-067",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "response",
+  "family": "conj.def",
+  "instruction": "Answer yes in a short full sentence.",
+  "cue": "Ismered Pétert? → igen",
+  "answer": "Igen, ismerem.",
+  "accepted": [
+   "Igen, ismerem",
+   "Igen, ismerem Pétert"
+  ],
+  "explain": "A proper name is a definite object → ismerem.",
+  "tags": [
+   "definite",
+   "1SG",
+   "proper-name"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-068",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "conj.lak",
+  "instruction": "Change the object to the cued person; use one verb form.",
+  "cue": "Szeretem Pétert. → (téged)",
+  "answer": "Szeretlek.",
+  "accepted": [
+   "Szeretlek",
+   "Szeretlek téged"
+  ],
+  "explain": "1SG subject + 2SG object = -lak/-lek: szeretlek.",
+  "tags": [
+   "lak/lek",
+   "2SG-object"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-069",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "conj.lak",
+  "instruction": "Change the object to the cued person; use one verb form.",
+  "cue": "Látom Annát. → (téged)",
+  "answer": "Látlak.",
+  "accepted": [
+   "Látlak",
+   "Látlak téged"
+  ],
+  "explain": "lát + lak: I see you. Back verb → -lak.",
+  "tags": [
+   "lak/lek",
+   "2SG-object"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-070",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "conj.lak",
+  "instruction": "Change the object to the cued person; use one verb form.",
+  "cue": "Várom a buszt. → (téged)",
+  "answer": "Várlak.",
+  "accepted": [
+   "Várlak",
+   "Várlak téged"
+  ],
+  "explain": "vár + lak: I am waiting for you.",
+  "tags": [
+   "lak/lek",
+   "2SG-object"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-071",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "coverb.attached",
+  "instruction": "Add the cued coverb to the verb (neutral statement).",
+  "cue": "Írom a levelet. → + meg",
+  "answer": "Megírom a levelet.",
+  "accepted": [
+   "Megírom a levelet"
+  ],
+  "explain": "In a neutral statement the coverb is attached: megírom.",
+  "tags": [
+   "coverb",
+   "meg",
+   "neutral"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": false
+ },
+ {
+  "id": "hu-drill-072",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "coverb.attached",
+  "instruction": "Add the cued coverb to the verb (neutral statement).",
+  "cue": "Megyek a boltba. → + el",
+  "answer": "Elmegyek a boltba.",
+  "accepted": [
+   "Elmegyek a boltba"
+  ],
+  "explain": "Attached coverb: elmegyek.",
+  "tags": [
+   "coverb",
+   "el",
+   "neutral"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": false
+ },
+ {
+  "id": "hu-drill-073",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "coverb.attached",
+  "instruction": "Replace the place with the cued noun, same case.",
+  "cue": "Elmegyek a boltba. → (az iskola)",
+  "answer": "Elmegyek az iskolába.",
+  "accepted": [
+   "Elmegyek az iskolába"
+  ],
+  "explain": "Coverb stays attached; iskola → iskolába (lengthening).",
+  "tags": [
+   "coverb",
+   "el",
+   "lengthening"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-074",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "coverb.separated",
+  "instruction": "Negate the sentence.",
+  "cue": "Megírom a levelet. → nem",
+  "answer": "Nem írom meg a levelet.",
+  "accepted": [
+   "Nem írom meg a levelet"
+  ],
+  "explain": "Negation takes focus: nem + verb, coverb moves after the verb.",
+  "tags": [
+   "coverb",
+   "negation",
+   "meg"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-075",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "coverb.separated",
+  "instruction": "Negate the sentence.",
+  "cue": "Elmegyek a boltba. → nem",
+  "answer": "Nem megyek el a boltba.",
+  "accepted": [
+   "Nem megyek el a boltba"
+  ],
+  "explain": "nem megyek el: the coverb follows the verb.",
+  "tags": [
+   "coverb",
+   "negation",
+   "el"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-076",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "coverb.separated",
+  "instruction": "Put the cued word in focus (right before the verb).",
+  "cue": "Megírom a levelet. → focus: most",
+  "answer": "Most írom meg a levelet.",
+  "accepted": [
+   "Most írom meg a levelet"
+  ],
+  "explain": "A focused word pushes the coverb behind the verb: most írom meg.",
+  "tags": [
+   "coverb",
+   "focus",
+   "meg"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": false
+ },
+ {
+  "id": "hu-drill-077",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "coverb.separated",
+  "instruction": "Negate the sentence.",
+  "cue": "Megveszem a könyvet. → nem",
+  "answer": "Nem veszem meg a könyvet.",
+  "accepted": [
+   "Nem veszem meg a könyvet"
+  ],
+  "explain": "Negation: nem veszem meg.",
+  "tags": [
+   "coverb",
+   "negation",
+   "meg"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-078",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "coverb.separated",
+  "instruction": "Negate the sentence.",
+  "cue": "Felkelek hétkor. → nem",
+  "answer": "Nem kelek fel hétkor.",
+  "accepted": [
+   "Nem kelek fel hétkor"
+  ],
+  "explain": "felkel → nem kelek fel under negation.",
+  "tags": [
+   "coverb",
+   "negation",
+   "fel"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-079",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "focus.order",
+  "instruction": "Start with the focused element and put the verb right after it.",
+  "cue": "Péter Budapesten dolgozik. → focus: Budapesten",
+  "answer": "Budapesten dolgozik Péter.",
+  "accepted": [
+   "Budapesten dolgozik Péter"
+  ],
+  "explain": "Focus sits immediately before the verb; the subject can follow.",
+  "tags": [
+   "focus",
+   "place"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": false
+ },
+ {
+  "id": "hu-drill-080",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "focus.order",
+  "instruction": "Start with the focused element and put the verb right after it.",
+  "cue": "Anna a boltban vásárol. → focus: Anna",
+  "answer": "Anna vásárol a boltban.",
+  "accepted": [
+   "Anna vásárol a boltban"
+  ],
+  "explain": "Focus on the subject: Anna directly before vásárol.",
+  "tags": [
+   "focus",
+   "subject"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": false
+ },
+ {
+  "id": "hu-drill-081",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "focus.order",
+  "instruction": "Start with the focused element and put the verb right after it.",
+  "cue": "Budapestre megyek holnap. → focus: holnap",
+  "answer": "Holnap megyek Budapestre.",
+  "accepted": [
+   "Holnap megyek Budapestre"
+  ],
+  "explain": "holnap takes the preverbal focus slot; Budapestre moves after.",
+  "tags": [
+   "focus",
+   "time"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": false
+ },
+ {
+  "id": "hu-drill-082",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "focus.order",
+  "instruction": "Start with the focused element and put the verb right after it.",
+  "cue": "Péter kávét iszik. → focus: Péter",
+  "answer": "Péter iszik kávét.",
+  "accepted": [
+   "Péter iszik kávét"
+  ],
+  "explain": "With Péter in focus the bare object kávét goes after the verb.",
+  "tags": [
+   "focus",
+   "subject",
+   "bare-object"
+  ],
+  "difficulty": 3,
+  "speedTargetSec": 8,
+  "speakCue": false
+ },
+ {
+  "id": "hu-drill-083",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "stem.alternation",
+  "instruction": "Replace the object with the cued noun, same case.",
+  "cue": "Látok egy kutyát. → (kéz)",
+  "answer": "Látok egy kezet.",
+  "accepted": [
+   "Látok egy kezet"
+  ],
+  "explain": "kéz shortens before a linking-vowel suffix: kezet.",
+  "tags": [
+   "shortening",
+   "accusative"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-084",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "stem.alternation",
+  "instruction": "Replace the object with the cued noun, same case.",
+  "cue": "Látok egy kutyát. → (ló)",
+  "answer": "Látok egy lovat.",
+  "accepted": [
+   "Látok egy lovat"
+  ],
+  "explain": "v-stem: ló → lovat.",
+  "tags": [
+   "v-stem",
+   "accusative"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-085",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "stem.alternation",
+  "instruction": "Replace the object with the cued noun, same case.",
+  "cue": "Látok egy kutyát. → (madár)",
+  "answer": "Látok egy madarat.",
+  "accepted": [
+   "Látok egy madarat"
+  ],
+  "explain": "madár shortens: madarat (linking vowel a).",
+  "tags": [
+   "shortening",
+   "accusative"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-086",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "stem.alternation",
+  "instruction": "Replace the object with the cued noun, same case.",
+  "cue": "Látok egy kutyát. → (tűz)",
+  "answer": "Látok egy tüzet.",
+  "accepted": [
+   "Látok egy tüzet"
+  ],
+  "explain": "tűz shortens: tüzet.",
+  "tags": [
+   "shortening",
+   "accusative"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-087",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "stem.alternation",
+  "instruction": "Make the subject plural; change the verb to match.",
+  "cue": "Itt van a kéz. → plural",
+  "answer": "Itt vannak a kezek.",
+  "accepted": [
+   "Itt vannak a kezek"
+  ],
+  "explain": "kéz → kezek: the vowel shortens before the plural too.",
+  "tags": [
+   "shortening",
+   "plural"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": false
+ },
+ {
+  "id": "hu-drill-088",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "stem.alternation",
+  "instruction": "Replace the object with the cued noun, same case.",
+  "cue": "Kérek egy kávét. → (kenyér)",
+  "answer": "Kérek egy kenyeret.",
+  "accepted": [
+   "Kérek egy kenyeret"
+  ],
+  "explain": "kenyér shortens: kenyeret.",
+  "tags": [
+   "shortening",
+   "accusative"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-089",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "numeral.singular",
+  "instruction": "Replace the number; keep the noun singular.",
+  "cue": "Van egy könyvem. → (két)",
+  "answer": "Van két könyvem.",
+  "accepted": [
+   "Van két könyvem"
+  ],
+  "explain": "After a numeral the noun stays singular: két könyvem.",
+  "tags": [
+   "numeral",
+   "singular"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-090",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "numeral.singular",
+  "instruction": "Replace the number; keep the noun singular.",
+  "cue": "Látok egy házat. → (három)",
+  "answer": "Látok három házat.",
+  "accepted": [
+   "Látok három házat"
+  ],
+  "explain": "három házat, not *házakat: no plural after numerals.",
+  "tags": [
+   "numeral",
+   "singular",
+   "accusative"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-091",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "numeral.singular",
+  "instruction": "Replace the quantity word; keep the noun singular.",
+  "cue": "Egy gyerek van itt. → (sok)",
+  "answer": "Sok gyerek van itt.",
+  "accepted": [
+   "Sok gyerek van itt"
+  ],
+  "explain": "Quantity words (sok, kevés, néhány) also take a singular noun.",
+  "tags": [
+   "numeral",
+   "singular",
+   "quantifier"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-092",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "verb.irregular",
+  "instruction": "Change the subject to the cued person.",
+  "cue": "Én megyek a boltba. → (te)",
+  "answer": "Te mész a boltba.",
+  "accepted": [
+   "Te mész a boltba",
+   "Mész a boltba"
+  ],
+  "explain": "megy: megyek, mész, megy.",
+  "tags": [
+   "megy",
+   "2SG"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-093",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "verb.irregular",
+  "instruction": "Change the subject to the cued person.",
+  "cue": "Én jövök. → (te)",
+  "answer": "Te jössz.",
+  "accepted": [
+   "Te jössz",
+   "Jössz"
+  ],
+  "explain": "jön: jövök, jössz, jön.",
+  "tags": [
+   "jön",
+   "2SG"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-094",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "verb.irregular",
+  "instruction": "Change the subject to the cued person.",
+  "cue": "Én eszem. → (te)",
+  "answer": "Te eszel.",
+  "accepted": [
+   "Te eszel",
+   "Eszel"
+  ],
+  "explain": "eszik: eszem, eszel, eszik (standard 1SG eszem).",
+  "tags": [
+   "eszik",
+   "2SG"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-095",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "verb.irregular",
+  "instruction": "Change the subject to the cued person.",
+  "cue": "Én iszom kávét. → (te)",
+  "answer": "Te iszol kávét.",
+  "accepted": [
+   "Te iszol kávét",
+   "Iszol kávét"
+  ],
+  "explain": "iszik: iszom, iszol, iszik.",
+  "tags": [
+   "iszik",
+   "2SG"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-096",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "verb.irregular",
+  "instruction": "Change the subject to the cued noun; the verb agrees.",
+  "cue": "A gyerek itt van. → (a gyerekek)",
+  "answer": "A gyerekek itt vannak.",
+  "accepted": [
+   "A gyerekek itt vannak"
+  ],
+  "explain": "van → vannak with a plural subject.",
+  "tags": [
+   "van",
+   "3PL"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-097",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "verb.irregular",
+  "instruction": "Change the subject to the cued person.",
+  "cue": "Mi megyünk a boltba. → (ők)",
+  "answer": "Ők mennek a boltba.",
+  "accepted": [
+   "Ők mennek a boltba",
+   "Mennek a boltba"
+  ],
+  "explain": "megy 3PL is mennek (not *megynek).",
+  "tags": [
+   "megy",
+   "3PL"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "hu-drill-098",
+  "lang": "hu",
+  "module": "drill",
+  "drillType": "response",
+  "family": "verb.irregular",
+  "instruction": "Answer in a full sentence with the cued place.",
+  "cue": "Hova mész? → (a bolt)",
+  "answer": "A boltba megyek.",
+  "accepted": [
+   "A boltba megyek"
+  ],
+  "explain": "Question mész (2SG) → answer megyek (1SG); hova → -ba/-be.",
+  "tags": [
+   "megy",
+   "1SG",
+   "illative"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ }
+]

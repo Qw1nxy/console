@@ -1,0 +1,1631 @@
+[
+ {
+  "id": "de-decon-001",
+  "lang": "de",
+  "module": "decon",
+  "word": "der neue Chef",
+  "gloss": "the new boss (nominative)",
+  "tokens": [
+   {
+    "morphemes": [
+     {
+      "form": "der",
+      "role": "det",
+      "label": "definite article — nominative masculine"
+     }
+    ]
+   },
+   {
+    "morphemes": [
+     {
+      "form": "neu",
+      "role": "adj-stem",
+      "label": "new"
+     },
+     {
+      "form": "e",
+      "role": "adj-end",
+      "label": "weak ending (after der, nominative)"
+     }
+    ]
+   },
+   {
+    "morphemes": [
+     {
+      "form": "Chef",
+      "role": "noun",
+      "label": "boss — der Chef, masculine; subject"
+     }
+    ]
+   }
+  ],
+  "explain": "After der/die/das in the nominative singular the adjective takes the weak ending -e.",
+  "tags": [
+   "case.nom",
+   "adj.weak",
+   "masculine"
+  ]
+ },
+ {
+  "id": "de-decon-002",
+  "lang": "de",
+  "module": "decon",
+  "word": "den langen Vertrag",
+  "gloss": "the long contract (accusative)",
+  "tokens": [
+   {
+    "morphemes": [
+     {
+      "form": "den",
+      "role": "det",
+      "label": "definite article — accusative masculine"
+     }
+    ]
+   },
+   {
+    "morphemes": [
+     {
+      "form": "lang",
+      "role": "adj-stem",
+      "label": "long"
+     },
+     {
+      "form": "en",
+      "role": "adj-end",
+      "label": "weak ending (after den, accusative masculine)"
+     }
+    ]
+   },
+   {
+    "morphemes": [
+     {
+      "form": "Vertrag",
+      "role": "noun",
+      "label": "contract — der Vertrag, masculine; direct object"
+     }
+    ]
+   }
+  ],
+  "explain": "Only masculine changes between nominative and accusative in the singular (der → den); the adjective takes -en.",
+  "tags": [
+   "case.acc",
+   "adj.weak",
+   "masculine"
+  ]
+ },
+ {
+  "id": "de-decon-003",
+  "lang": "de",
+  "module": "decon",
+  "word": "der großen Werkstatt",
+  "gloss": "(in) the big workshop (dative)",
+  "tokens": [
+   {
+    "morphemes": [
+     {
+      "form": "der",
+      "role": "det",
+      "label": "definite article — dative feminine (die → der)"
+     }
+    ]
+   },
+   {
+    "morphemes": [
+     {
+      "form": "groß",
+      "role": "adj-stem",
+      "label": "big"
+     },
+     {
+      "form": "en",
+      "role": "adj-end",
+      "label": "weak ending (after der, dative)"
+     }
+    ]
+   },
+   {
+    "morphemes": [
+     {
+      "form": "Werkstatt",
+      "role": "noun",
+      "label": "workshop — die Werkstatt, feminine; resolves der to dative feminine"
+     }
+    ]
+   }
+  ],
+  "explain": "Feminine dative article is der. After it the adjective takes the weak ending -en: in der großen Werkstatt.",
+  "tags": [
+   "case.dat",
+   "adj.weak",
+   "feminine"
+  ]
+ },
+ {
+  "id": "de-decon-004",
+  "lang": "de",
+  "module": "decon",
+  "word": "das kleine Büro",
+  "gloss": "the small office (nominative/accusative)",
+  "tokens": [
+   {
+    "morphemes": [
+     {
+      "form": "das",
+      "role": "det",
+      "label": "definite article — nominative or accusative neuter"
+     }
+    ]
+   },
+   {
+    "morphemes": [
+     {
+      "form": "klein",
+      "role": "adj-stem",
+      "label": "small"
+     },
+     {
+      "form": "e",
+      "role": "adj-end",
+      "label": "weak ending (after das, nominative/accusative)"
+     }
+    ]
+   },
+   {
+    "morphemes": [
+     {
+      "form": "Büro",
+      "role": "noun",
+      "label": "office — das Büro, neuter"
+     }
+    ]
+   }
+  ],
+  "explain": "Neuter nominative and accusative look identical: das + adjective -e.",
+  "tags": [
+   "case.nom",
+   "case.acc",
+   "adj.weak",
+   "neuter"
+  ]
+ },
+ {
+  "id": "de-decon-005",
+  "lang": "de",
+  "module": "decon",
+  "word": "der langen Schicht",
+  "gloss": "(because of) the long shift (genitive)",
+  "tokens": [
+   {
+    "morphemes": [
+     {
+      "form": "der",
+      "role": "det",
+      "label": "definite article — genitive feminine (die → der)"
+     }
+    ]
+   },
+   {
+    "morphemes": [
+     {
+      "form": "lang",
+      "role": "adj-stem",
+      "label": "long"
+     },
+     {
+      "form": "en",
+      "role": "adj-end",
+      "label": "weak ending (after der, genitive)"
+     }
+    ]
+   },
+   {
+    "morphemes": [
+     {
+      "form": "Schicht",
+      "role": "noun",
+      "label": "shift — die Schicht, feminine; no genitive ending on feminine nouns"
+     }
+    ]
+   }
+  ],
+  "explain": "wegen der langen Schicht: feminine genitive and dative both use der; the noun gets no ending.",
+  "tags": [
+   "case.gen",
+   "adj.weak",
+   "feminine"
+  ]
+ },
+ {
+  "id": "de-decon-006",
+  "lang": "de",
+  "module": "decon",
+  "word": "die neuen Maschinen",
+  "gloss": "the new machines (plural, nominative/accusative)",
+  "tokens": [
+   {
+    "morphemes": [
+     {
+      "form": "die",
+      "role": "det",
+      "label": "definite article — plural nominative/accusative"
+     }
+    ]
+   },
+   {
+    "morphemes": [
+     {
+      "form": "neu",
+      "role": "adj-stem",
+      "label": "new"
+     },
+     {
+      "form": "en",
+      "role": "adj-end",
+      "label": "weak ending (plural, after die)"
+     }
+    ]
+   },
+   {
+    "morphemes": [
+     {
+      "form": "Maschine",
+      "role": "noun",
+      "label": "machine — die Maschine, feminine"
+     },
+     {
+      "form": "n",
+      "role": "pl-end",
+      "label": "plural -n (Maschine → Maschinen)"
+     }
+    ]
+   }
+  ],
+  "explain": "In the plural the weak adjective ending is always -en: die neuen Maschinen.",
+  "tags": [
+   "case.nom",
+   "case.acc",
+   "adj.weak",
+   "plural"
+  ]
+ },
+ {
+  "id": "de-decon-007",
+  "lang": "de",
+  "module": "decon",
+  "word": "den neuen Kollegen",
+  "gloss": "(with) the new colleagues (dative plural)",
+  "tokens": [
+   {
+    "morphemes": [
+     {
+      "form": "den",
+      "role": "det",
+      "label": "definite article — dative plural"
+     }
+    ]
+   },
+   {
+    "morphemes": [
+     {
+      "form": "neu",
+      "role": "adj-stem",
+      "label": "new"
+     },
+     {
+      "form": "en",
+      "role": "adj-end",
+      "label": "weak ending (dative plural)"
+     }
+    ]
+   },
+   {
+    "morphemes": [
+     {
+      "form": "Kollege",
+      "role": "noun",
+      "label": "colleague — der Kollege, masculine"
+     },
+     {
+      "form": "n",
+      "role": "pl-end",
+      "label": "plural -n (Kollege → Kollegen)"
+     }
+    ]
+   }
+  ],
+  "explain": "Dative plural: article den, adjective -en, and the noun ends in -n (here already part of the plural).",
+  "tags": [
+   "case.dat",
+   "adj.weak",
+   "plural"
+  ]
+ },
+ {
+  "id": "de-decon-008",
+  "lang": "de",
+  "module": "decon",
+  "word": "der neuen Kollegen",
+  "gloss": "of the new colleagues (genitive plural)",
+  "tokens": [
+   {
+    "morphemes": [
+     {
+      "form": "der",
+      "role": "det",
+      "label": "definite article — genitive plural"
+     }
+    ]
+   },
+   {
+    "morphemes": [
+     {
+      "form": "neu",
+      "role": "adj-stem",
+      "label": "new"
+     },
+     {
+      "form": "en",
+      "role": "adj-end",
+      "label": "weak ending (genitive plural)"
+     }
+    ]
+   },
+   {
+    "morphemes": [
+     {
+      "form": "Kollege",
+      "role": "noun",
+      "label": "colleague — der Kollege, masculine"
+     },
+     {
+      "form": "n",
+      "role": "pl-end",
+      "label": "plural -n (Kollege → Kollegen)"
+     }
+    ]
+   }
+  ],
+  "explain": "Genitive plural uses der for all genders; the adjective takes weak -en.",
+  "tags": [
+   "case.gen",
+   "adj.weak",
+   "plural"
+  ]
+ },
+ {
+  "id": "de-decon-009",
+  "lang": "de",
+  "module": "decon",
+  "word": "ein kleiner Betrieb",
+  "gloss": "a small company (nominative)",
+  "tokens": [
+   {
+    "morphemes": [
+     {
+      "form": "ein",
+      "role": "det",
+      "label": "indefinite article — nominative masculine (no ending, so the adjective must show the gender)"
+     }
+    ]
+   },
+   {
+    "morphemes": [
+     {
+      "form": "klein",
+      "role": "adj-stem",
+      "label": "small"
+     },
+     {
+      "form": "er",
+      "role": "adj-end",
+      "label": "mixed ending -er (masculine nominative after ein)"
+     }
+    ]
+   },
+   {
+    "morphemes": [
+     {
+      "form": "Betrieb",
+      "role": "noun",
+      "label": "company, workplace — der Betrieb, masculine"
+     }
+    ]
+   }
+  ],
+  "explain": "ein has no ending in masculine nominative, so the adjective carries the -er that der would have shown.",
+  "tags": [
+   "case.nom",
+   "adj.mixed",
+   "masculine"
+  ]
+ },
+ {
+  "id": "de-decon-010",
+  "lang": "de",
+  "module": "decon",
+  "word": "eine günstige Wohnung",
+  "gloss": "a cheap flat (accusative)",
+  "tokens": [
+   {
+    "morphemes": [
+     {
+      "form": "eine",
+      "role": "det",
+      "label": "indefinite article — nominative/accusative feminine"
+     }
+    ]
+   },
+   {
+    "morphemes": [
+     {
+      "form": "günstig",
+      "role": "adj-stem",
+      "label": "cheap, good value"
+     },
+     {
+      "form": "e",
+      "role": "adj-end",
+      "label": "mixed ending -e (feminine nominative/accusative)"
+     }
+    ]
+   },
+   {
+    "morphemes": [
+     {
+      "form": "Wohnung",
+      "role": "noun",
+      "label": "flat, apartment — die Wohnung, feminine"
+     }
+    ]
+   }
+  ],
+  "explain": "Feminine nominative and accusative after eine: adjective -e. Ich suche eine günstige Wohnung.",
+  "tags": [
+   "case.acc",
+   "adj.mixed",
+   "feminine"
+  ]
+ },
+ {
+  "id": "de-decon-011",
+  "lang": "de",
+  "module": "decon",
+  "word": "kein eigenes Werkzeug",
+  "gloss": "no tools of my own (accusative)",
+  "tokens": [
+   {
+    "morphemes": [
+     {
+      "form": "kein",
+      "role": "det",
+      "label": "negative article — nominative/accusative neuter (no ending)"
+     }
+    ]
+   },
+   {
+    "morphemes": [
+     {
+      "form": "eigen",
+      "role": "adj-stem",
+      "label": "own"
+     },
+     {
+      "form": "es",
+      "role": "adj-end",
+      "label": "mixed ending -es (neuter nominative/accusative after kein)"
+     }
+    ]
+   },
+   {
+    "morphemes": [
+     {
+      "form": "Werkzeug",
+      "role": "noun",
+      "label": "tool(s) — das Werkzeug, neuter"
+     }
+    ]
+   }
+  ],
+  "explain": "kein has no ending in neuter nominative/accusative, so the adjective shows the gender with -es.",
+  "tags": [
+   "case.acc",
+   "adj.mixed",
+   "neuter"
+  ]
+ },
+ {
+  "id": "de-decon-012",
+  "lang": "de",
+  "module": "decon",
+  "word": "meiner neuen Chefin",
+  "gloss": "(to) my new boss (female), dative",
+  "tokens": [
+   {
+    "morphemes": [
+     {
+      "form": "meiner",
+      "role": "det",
+      "label": "possessive mein- with dative feminine ending -er"
+     }
+    ]
+   },
+   {
+    "morphemes": [
+     {
+      "form": "neu",
+      "role": "adj-stem",
+      "label": "new"
+     },
+     {
+      "form": "en",
+      "role": "adj-end",
+      "label": "mixed ending -en (dative, like weak)"
+     }
+    ]
+   },
+   {
+    "morphemes": [
+     {
+      "form": "Chefin",
+      "role": "noun",
+      "label": "boss (female) — die Chefin, feminine"
+     }
+    ]
+   }
+  ],
+  "explain": "Once the determiner carries a clear ending (-er), the adjective falls back to -en: Ich helfe meiner neuen Chefin.",
+  "tags": [
+   "case.dat",
+   "adj.mixed",
+   "feminine"
+  ]
+ },
+ {
+  "id": "de-decon-013",
+  "lang": "de",
+  "module": "decon",
+  "word": "sichere Schuhe",
+  "gloss": "safe shoes (plural, no article)",
+  "tokens": [
+   {
+    "morphemes": [
+     {
+      "form": "sicher",
+      "role": "adj-stem",
+      "label": "safe"
+     },
+     {
+      "form": "e",
+      "role": "adj-end",
+      "label": "strong ending -e (plural nominative/accusative, no article)"
+     }
+    ]
+   },
+   {
+    "morphemes": [
+     {
+      "form": "Schuh",
+      "role": "noun",
+      "label": "shoe — der Schuh, masculine"
+     },
+     {
+      "form": "e",
+      "role": "pl-end",
+      "label": "plural -e (Schuh → Schuhe)"
+     }
+    ]
+   }
+  ],
+  "explain": "With no article the adjective takes the strong ending, i.e. the ending die would have had: -e in the plural.",
+  "tags": [
+   "case.acc",
+   "adj.strong",
+   "plural"
+  ]
+ },
+ {
+  "id": "de-decon-014",
+  "lang": "de",
+  "module": "decon",
+  "word": "neues Werkzeug",
+  "gloss": "new tools (neuter, no article)",
+  "tokens": [
+   {
+    "morphemes": [
+     {
+      "form": "neu",
+      "role": "adj-stem",
+      "label": "new"
+     },
+     {
+      "form": "es",
+      "role": "adj-end",
+      "label": "strong ending -es (neuter nominative/accusative, no article)"
+     }
+    ]
+   },
+   {
+    "morphemes": [
+     {
+      "form": "Werkzeug",
+      "role": "noun",
+      "label": "tool(s) — das Werkzeug, neuter"
+     }
+    ]
+   }
+  ],
+  "explain": "No article → the adjective shows the gender itself: -es stands in for das.",
+  "tags": [
+   "case.acc",
+   "adj.strong",
+   "neuter"
+  ]
+ },
+ {
+  "id": "de-decon-015",
+  "lang": "de",
+  "module": "decon",
+  "word": "netten Kollegen",
+  "gloss": "(with) nice colleagues (dative plural, no article)",
+  "tokens": [
+   {
+    "morphemes": [
+     {
+      "form": "nett",
+      "role": "adj-stem",
+      "label": "nice"
+     },
+     {
+      "form": "en",
+      "role": "adj-end",
+      "label": "strong ending -en (dative plural, no article)"
+     }
+    ]
+   },
+   {
+    "morphemes": [
+     {
+      "form": "Kollege",
+      "role": "noun",
+      "label": "colleague — der Kollege, masculine"
+     },
+     {
+      "form": "n",
+      "role": "pl-end",
+      "label": "plural -n (Kollege → Kollegen)"
+     }
+    ]
+   }
+  ],
+  "explain": "Dative plural with no article: the adjective takes -en, standing in for den. mit netten Kollegen.",
+  "tags": [
+   "case.dat",
+   "adj.strong",
+   "plural"
+  ]
+ },
+ {
+  "id": "de-decon-016",
+  "lang": "de",
+  "module": "decon",
+  "word": "dem alten Mann",
+  "gloss": "to the old man (dative)",
+  "tokens": [
+   {
+    "morphemes": [
+     {
+      "form": "dem",
+      "role": "det",
+      "label": "definite article — dative masculine/neuter"
+     }
+    ]
+   },
+   {
+    "morphemes": [
+     {
+      "form": "alt",
+      "role": "adj-stem",
+      "label": "old"
+     },
+     {
+      "form": "en",
+      "role": "adj-end",
+      "label": "weak ending (after dem, dative)"
+     }
+    ]
+   },
+   {
+    "morphemes": [
+     {
+      "form": "Mann",
+      "role": "noun",
+      "label": "man — der Mann, masculine; resolves dem to dative masculine"
+     }
+    ]
+   }
+  ],
+  "explain": "After a definite article the adjective takes -e only in nominative singular (and feminine/neuter accusative); -en everywhere else.",
+  "tags": [
+   "case.dat",
+   "adj.weak",
+   "masculine"
+  ]
+ },
+ {
+  "id": "de-decon-017",
+  "lang": "de",
+  "module": "decon",
+  "word": "Krankenversicherungskarte",
+  "gloss": "health insurance card",
+  "morphemes": [
+   {
+    "form": "Kranken",
+    "role": "part",
+    "label": "sick — adjective krank with declension -en (as in Krankenhaus)"
+   },
+   {
+    "form": "versicherung",
+    "role": "part",
+    "label": "insurance — die Versicherung"
+   },
+   {
+    "form": "s",
+    "role": "fuge",
+    "label": "linking -s after -ung"
+   },
+   {
+    "form": "karte",
+    "role": "noun",
+    "label": "card — die Karte; last part sets gender: die"
+   }
+  ],
+  "explain": "Read compounds from the right: a Karte for the Krankenversicherung. Nouns in -ung take linking -s.",
+  "tags": [
+   "compound",
+   "fuge.s",
+   "feminine"
+  ]
+ },
+ {
+  "id": "de-decon-018",
+  "lang": "de",
+  "module": "decon",
+  "word": "Arbeitsvertrag",
+  "gloss": "employment contract",
+  "morphemes": [
+   {
+    "form": "Arbeit",
+    "role": "part",
+    "label": "work — die Arbeit"
+   },
+   {
+    "form": "s",
+    "role": "fuge",
+    "label": "linking -s (Arbeitsvertrag, Arbeitsplatz, Arbeitszeit; but no -s in Arbeitgeber, Arbeitnehmer)"
+   },
+   {
+    "form": "vertrag",
+    "role": "noun",
+    "label": "contract — der Vertrag; last part sets gender: der"
+   }
+  ],
+  "explain": "The head noun Vertrag gives the gender: der Arbeitsvertrag. The -s is a linking element, not a genitive.",
+  "tags": [
+   "compound",
+   "fuge.s",
+   "masculine"
+  ]
+ },
+ {
+  "id": "de-decon-019",
+  "lang": "de",
+  "module": "decon",
+  "word": "Ausbildungsplatz",
+  "gloss": "apprenticeship position",
+  "morphemes": [
+   {
+    "form": "Ausbildung",
+    "role": "part",
+    "label": "training, apprenticeship — die Ausbildung"
+   },
+   {
+    "form": "s",
+    "role": "fuge",
+    "label": "linking -s after -ung"
+   },
+   {
+    "form": "platz",
+    "role": "noun",
+    "label": "place, position — der Platz; last part sets gender: der"
+   }
+  ],
+  "explain": "Nouns ending in -ung always take linking -s: Ausbildung-s-platz, Wohnung-s-tür.",
+  "tags": [
+   "compound",
+   "fuge.s",
+   "masculine"
+  ]
+ },
+ {
+  "id": "de-decon-020",
+  "lang": "de",
+  "module": "decon",
+  "word": "Berufsschule",
+  "gloss": "vocational school",
+  "morphemes": [
+   {
+    "form": "Beruf",
+    "role": "part",
+    "label": "profession, trade — der Beruf"
+   },
+   {
+    "form": "s",
+    "role": "fuge",
+    "label": "linking -s"
+   },
+   {
+    "form": "schule",
+    "role": "noun",
+    "label": "school — die Schule; last part sets gender: die"
+   }
+  ],
+  "explain": "Beruf takes linking -s in compounds. Gender comes from Schule: die Berufsschule.",
+  "tags": [
+   "compound",
+   "fuge.s",
+   "feminine"
+  ]
+ },
+ {
+  "id": "de-decon-021",
+  "lang": "de",
+  "module": "decon",
+  "word": "Werkzeugkasten",
+  "gloss": "toolbox",
+  "morphemes": [
+   {
+    "form": "Werkzeug",
+    "role": "part",
+    "label": "tool — das Werkzeug"
+   },
+   {
+    "form": "kasten",
+    "role": "noun",
+    "label": "box, chest — der Kasten; last part sets gender: der"
+   }
+  ],
+  "explain": "No linking element here: the two nouns simply join. Gender from Kasten: der Werkzeugkasten.",
+  "tags": [
+   "compound",
+   "no-fuge",
+   "masculine"
+  ]
+ },
+ {
+  "id": "de-decon-022",
+  "lang": "de",
+  "module": "decon",
+  "word": "Sicherheitsschuhe",
+  "gloss": "safety shoes",
+  "morphemes": [
+   {
+    "form": "Sicherheit",
+    "role": "part",
+    "label": "safety — die Sicherheit"
+   },
+   {
+    "form": "s",
+    "role": "fuge",
+    "label": "linking -s after -heit"
+   },
+   {
+    "form": "schuh",
+    "role": "noun",
+    "label": "shoe — der Schuh"
+   },
+   {
+    "form": "e",
+    "role": "pl-end",
+    "label": "plural -e (Schuh → Schuhe)"
+   }
+  ],
+  "explain": "Nouns in -heit/-keit take linking -s like -ung nouns. The plural ending belongs to the head noun.",
+  "tags": [
+   "compound",
+   "fuge.s",
+   "plural"
+  ]
+ },
+ {
+  "id": "de-decon-023",
+  "lang": "de",
+  "module": "decon",
+  "word": "Krankenhaus",
+  "gloss": "hospital",
+  "morphemes": [
+   {
+    "form": "Kranken",
+    "role": "part",
+    "label": "sick — adjective krank with declension -en"
+   },
+   {
+    "form": "haus",
+    "role": "noun",
+    "label": "house — das Haus; last part sets gender: das"
+   }
+  ],
+  "explain": "Kranken- is the old declined adjective form; it appears in Krankenhaus, Krankenkasse, Krankenwagen.",
+  "tags": [
+   "compound",
+   "adj-part",
+   "neuter"
+  ]
+ },
+ {
+  "id": "de-decon-024",
+  "lang": "de",
+  "module": "decon",
+  "word": "Führerschein",
+  "gloss": "driving licence",
+  "morphemes": [
+   {
+    "form": "Führer",
+    "role": "part",
+    "label": "driver, leader — der Führer (from führen)"
+   },
+   {
+    "form": "schein",
+    "role": "noun",
+    "label": "certificate, slip — der Schein; last part sets gender: der"
+   }
+  ],
+  "explain": "No linking element. The -er is part of the first noun (Führer), not a Fuge.",
+  "tags": [
+   "compound",
+   "no-fuge",
+   "masculine"
+  ]
+ },
+ {
+  "id": "de-decon-025",
+  "lang": "de",
+  "module": "decon",
+  "word": "Aufenthaltstitel",
+  "gloss": "residence permit",
+  "morphemes": [
+   {
+    "form": "Aufenthalt",
+    "role": "part",
+    "label": "stay, residence — der Aufenthalt"
+   },
+   {
+    "form": "s",
+    "role": "fuge",
+    "label": "linking -s"
+   },
+   {
+    "form": "titel",
+    "role": "noun",
+    "label": "title, permit — der Titel; last part sets gender: der"
+   }
+  ],
+  "explain": "The official word for a residence permit. Aufenthalt takes linking -s in compounds.",
+  "tags": [
+   "compound",
+   "fuge.s",
+   "masculine",
+   "bureaucracy"
+  ]
+ },
+ {
+  "id": "de-decon-026",
+  "lang": "de",
+  "module": "decon",
+  "word": "Krankenkasse",
+  "gloss": "health insurance fund",
+  "morphemes": [
+   {
+    "form": "Kranken",
+    "role": "part",
+    "label": "sick — adjective krank with declension -en"
+   },
+   {
+    "form": "kasse",
+    "role": "noun",
+    "label": "fund, till — die Kasse; last part sets gender: die"
+   }
+  ],
+  "explain": "The Krankenkasse is the insurer you register with; the Krankenversicherungskarte is the card it sends.",
+  "tags": [
+   "compound",
+   "adj-part",
+   "feminine",
+   "bureaucracy"
+  ]
+ },
+ {
+  "id": "de-decon-027",
+  "lang": "de",
+  "module": "decon",
+  "word": "Wohnungstür",
+  "gloss": "flat door",
+  "morphemes": [
+   {
+    "form": "Wohnung",
+    "role": "part",
+    "label": "flat — die Wohnung"
+   },
+   {
+    "form": "s",
+    "role": "fuge",
+    "label": "linking -s after -ung"
+   },
+   {
+    "form": "tür",
+    "role": "noun",
+    "label": "door — die Tür; last part sets gender: die"
+   }
+  ],
+  "explain": "Another -ung + -s compound. Gender from Tür: die Wohnungstür.",
+  "tags": [
+   "compound",
+   "fuge.s",
+   "feminine"
+  ]
+ },
+ {
+  "id": "de-decon-028",
+  "lang": "de",
+  "module": "decon",
+  "word": "Bahnhof",
+  "gloss": "railway station",
+  "morphemes": [
+   {
+    "form": "Bahn",
+    "role": "part",
+    "label": "railway — die Bahn"
+   },
+   {
+    "form": "hof",
+    "role": "noun",
+    "label": "yard, court — der Hof; last part sets gender: der"
+   }
+  ],
+  "explain": "Literally railway yard. No linking element; gender from Hof: der Bahnhof.",
+  "tags": [
+   "compound",
+   "no-fuge",
+   "masculine"
+  ]
+ },
+ {
+  "id": "de-decon-029",
+  "lang": "de",
+  "module": "decon",
+  "word": "Schichtplan",
+  "gloss": "shift schedule",
+  "morphemes": [
+   {
+    "form": "Schicht",
+    "role": "part",
+    "label": "shift — die Schicht"
+   },
+   {
+    "form": "plan",
+    "role": "noun",
+    "label": "plan, schedule — der Plan; last part sets gender: der"
+   }
+  ],
+  "explain": "No linking element. Gender from Plan: der Schichtplan.",
+  "tags": [
+   "compound",
+   "no-fuge",
+   "masculine",
+   "workplace"
+  ]
+ },
+ {
+  "id": "de-decon-030",
+  "lang": "de",
+  "module": "decon",
+  "word": "Waschmaschine",
+  "gloss": "washing machine",
+  "morphemes": [
+   {
+    "form": "Wasch",
+    "role": "part",
+    "label": "wash — verb stem of waschen"
+   },
+   {
+    "form": "maschine",
+    "role": "noun",
+    "label": "machine — die Maschine; last part sets gender: die"
+   }
+  ],
+  "explain": "Verb stems join directly with no linking element: wasch + Maschine.",
+  "tags": [
+   "compound",
+   "verb-part",
+   "feminine"
+  ]
+ },
+ {
+  "id": "de-decon-031",
+  "lang": "de",
+  "module": "decon",
+  "word": "angekommen",
+  "gloss": "arrived (participle)",
+  "morphemes": [
+   {
+    "form": "an",
+    "role": "sep-prefix",
+    "label": "separable prefix an- (stressed)"
+   },
+   {
+    "form": "ge",
+    "role": "ge",
+    "label": "participle marker — goes between prefix and stem"
+   },
+   {
+    "form": "komm",
+    "role": "verb-stem",
+    "label": "stem of kommen"
+   },
+   {
+    "form": "en",
+    "role": "part-end",
+    "label": "strong participle ending -en"
+   }
+  ],
+  "explain": "Separable verbs put ge- after the prefix. Motion → sein: Der Zug ist angekommen.",
+  "tags": [
+   "verb.separable",
+   "perfekt",
+   "sein"
+  ]
+ },
+ {
+  "id": "de-decon-032",
+  "lang": "de",
+  "module": "decon",
+  "word": "aufgestanden",
+  "gloss": "got up (participle)",
+  "morphemes": [
+   {
+    "form": "auf",
+    "role": "sep-prefix",
+    "label": "separable prefix auf-"
+   },
+   {
+    "form": "ge",
+    "role": "ge",
+    "label": "participle marker"
+   },
+   {
+    "form": "stand",
+    "role": "verb-stem",
+    "label": "participle stem of stehen (steh → stand)"
+   },
+   {
+    "form": "en",
+    "role": "part-end",
+    "label": "strong participle ending -en"
+   }
+  ],
+  "explain": "Strong verb: the stem vowel changes (steh → stand). Change of state → sein: Ich bin aufgestanden.",
+  "tags": [
+   "verb.separable",
+   "perfekt",
+   "sein",
+   "strong"
+  ]
+ },
+ {
+  "id": "de-decon-033",
+  "lang": "de",
+  "module": "decon",
+  "word": "eingeladen",
+  "gloss": "invited (participle)",
+  "morphemes": [
+   {
+    "form": "ein",
+    "role": "sep-prefix",
+    "label": "separable prefix ein-"
+   },
+   {
+    "form": "ge",
+    "role": "ge",
+    "label": "participle marker"
+   },
+   {
+    "form": "lad",
+    "role": "verb-stem",
+    "label": "stem of laden"
+   },
+   {
+    "form": "en",
+    "role": "part-end",
+    "label": "strong participle ending -en"
+   }
+  ],
+  "explain": "einladen is strong: participle ein-ge-lad-en (not -t). Ich habe die Kollegen eingeladen.",
+  "tags": [
+   "verb.separable",
+   "perfekt",
+   "haben",
+   "strong"
+  ]
+ },
+ {
+  "id": "de-decon-034",
+  "lang": "de",
+  "module": "decon",
+  "word": "angemeldet",
+  "gloss": "registered (participle)",
+  "morphemes": [
+   {
+    "form": "an",
+    "role": "sep-prefix",
+    "label": "separable prefix an-"
+   },
+   {
+    "form": "ge",
+    "role": "ge",
+    "label": "participle marker"
+   },
+   {
+    "form": "meld",
+    "role": "verb-stem",
+    "label": "stem of melden"
+   },
+   {
+    "form": "et",
+    "role": "part-end",
+    "label": "weak ending -et (after stem ending in d/t)"
+   }
+  ],
+  "explain": "Weak verb with stem in -d: the ending is -et. Ich habe mich beim Amt angemeldet.",
+  "tags": [
+   "verb.separable",
+   "perfekt",
+   "haben",
+   "weak",
+   "bureaucracy"
+  ]
+ },
+ {
+  "id": "de-decon-035",
+  "lang": "de",
+  "module": "decon",
+  "word": "ausgefüllt",
+  "gloss": "filled in (participle)",
+  "morphemes": [
+   {
+    "form": "aus",
+    "role": "sep-prefix",
+    "label": "separable prefix aus-"
+   },
+   {
+    "form": "ge",
+    "role": "ge",
+    "label": "participle marker"
+   },
+   {
+    "form": "füll",
+    "role": "verb-stem",
+    "label": "stem of füllen"
+   },
+   {
+    "form": "t",
+    "role": "part-end",
+    "label": "weak participle ending -t"
+   }
+  ],
+  "explain": "Weak verb: aus + ge + füll + t. Ich habe das Formular ausgefüllt.",
+  "tags": [
+   "verb.separable",
+   "perfekt",
+   "haben",
+   "weak"
+  ]
+ },
+ {
+  "id": "de-decon-036",
+  "lang": "de",
+  "module": "decon",
+  "word": "mitgebracht",
+  "gloss": "brought along (participle)",
+  "morphemes": [
+   {
+    "form": "mit",
+    "role": "sep-prefix",
+    "label": "separable prefix mit-"
+   },
+   {
+    "form": "ge",
+    "role": "ge",
+    "label": "participle marker"
+   },
+   {
+    "form": "brach",
+    "role": "verb-stem",
+    "label": "participle stem of bringen (bring → brach)"
+   },
+   {
+    "form": "t",
+    "role": "part-end",
+    "label": "mixed-verb ending -t"
+   }
+  ],
+  "explain": "bringen is a mixed verb: vowel change plus -t (gebracht). Prefix mit- in front.",
+  "tags": [
+   "verb.separable",
+   "perfekt",
+   "haben",
+   "mixed"
+  ]
+ },
+ {
+  "id": "de-decon-037",
+  "lang": "de",
+  "module": "decon",
+  "word": "abgeholt",
+  "gloss": "picked up, collected (participle)",
+  "morphemes": [
+   {
+    "form": "ab",
+    "role": "sep-prefix",
+    "label": "separable prefix ab-"
+   },
+   {
+    "form": "ge",
+    "role": "ge",
+    "label": "participle marker"
+   },
+   {
+    "form": "hol",
+    "role": "verb-stem",
+    "label": "stem of holen"
+   },
+   {
+    "form": "t",
+    "role": "part-end",
+    "label": "weak participle ending -t"
+   }
+  ],
+  "explain": "Weak verb: ab + ge + hol + t. Ich habe die Ersatzteile abgeholt.",
+  "tags": [
+   "verb.separable",
+   "perfekt",
+   "haben",
+   "weak"
+  ]
+ },
+ {
+  "id": "de-decon-038",
+  "lang": "de",
+  "module": "decon",
+  "word": "anrufen",
+  "gloss": "to call (by phone), infinitive",
+  "morphemes": [
+   {
+    "form": "an",
+    "role": "sep-prefix",
+    "label": "separable prefix an- (splits off in main clauses: ich rufe ... an)"
+   },
+   {
+    "form": "ruf",
+    "role": "verb-stem",
+    "label": "stem of rufen"
+   },
+   {
+    "form": "en",
+    "role": "inf-end",
+    "label": "infinitive ending"
+   }
+  ],
+  "explain": "In a main clause the prefix goes to the end: Ich rufe den Vermieter an. At the end of a clause it rejoins.",
+  "tags": [
+   "verb.separable",
+   "infinitive"
+  ]
+ },
+ {
+  "id": "de-decon-039",
+  "lang": "de",
+  "module": "decon",
+  "word": "aufstehen",
+  "gloss": "to get up, infinitive",
+  "morphemes": [
+   {
+    "form": "auf",
+    "role": "sep-prefix",
+    "label": "separable prefix auf-"
+   },
+   {
+    "form": "steh",
+    "role": "verb-stem",
+    "label": "stem of stehen"
+   },
+   {
+    "form": "en",
+    "role": "inf-end",
+    "label": "infinitive ending"
+   }
+  ],
+  "explain": "Separable: Ich stehe um fünf Uhr auf. With a modal it rejoins: Ich muss früh aufstehen.",
+  "tags": [
+   "verb.separable",
+   "infinitive"
+  ]
+ },
+ {
+  "id": "de-decon-040",
+  "lang": "de",
+  "module": "decon",
+  "word": "verstanden",
+  "gloss": "understood (participle)",
+  "morphemes": [
+   {
+    "form": "ver",
+    "role": "insep-prefix",
+    "label": "inseparable prefix ver- (unstressed, never splits, blocks ge-)"
+   },
+   {
+    "form": "stand",
+    "role": "verb-stem",
+    "label": "participle stem of stehen (steh → stand)"
+   },
+   {
+    "form": "en",
+    "role": "part-end",
+    "label": "strong participle ending -en"
+   }
+  ],
+  "explain": "Inseparable prefixes (be-, ge-, er-, ver-, zer-, ent-, emp-, miss-) take no ge-: verstanden, not *geverstanden.",
+  "tags": [
+   "verb.inseparable",
+   "perfekt",
+   "haben",
+   "strong"
+  ]
+ },
+ {
+  "id": "de-decon-041",
+  "lang": "de",
+  "module": "decon",
+  "word": "bezahlt",
+  "gloss": "paid (participle)",
+  "morphemes": [
+   {
+    "form": "be",
+    "role": "insep-prefix",
+    "label": "inseparable prefix be-"
+   },
+   {
+    "form": "zahl",
+    "role": "verb-stem",
+    "label": "stem of zahlen"
+   },
+   {
+    "form": "t",
+    "role": "part-end",
+    "label": "weak participle ending -t"
+   }
+  ],
+  "explain": "Inseparable be-: no ge-. Die Firma hat die Sicherheitsschuhe bezahlt.",
+  "tags": [
+   "verb.inseparable",
+   "perfekt",
+   "haben",
+   "weak"
+  ]
+ },
+ {
+  "id": "de-decon-042",
+  "lang": "de",
+  "module": "decon",
+  "word": "erklärt",
+  "gloss": "explained (participle)",
+  "morphemes": [
+   {
+    "form": "er",
+    "role": "insep-prefix",
+    "label": "inseparable prefix er-"
+   },
+   {
+    "form": "klär",
+    "role": "verb-stem",
+    "label": "stem of klären"
+   },
+   {
+    "form": "t",
+    "role": "part-end",
+    "label": "weak participle ending -t"
+   }
+  ],
+  "explain": "Inseparable er-: no ge-. Der Meister hat mir die Maschine erklärt.",
+  "tags": [
+   "verb.inseparable",
+   "perfekt",
+   "haben",
+   "weak"
+  ]
+ },
+ {
+  "id": "de-decon-043",
+  "lang": "de",
+  "module": "decon",
+  "word": "Männer",
+  "gloss": "men (plural)",
+  "morphemes": [
+   {
+    "form": "Männ",
+    "role": "noun",
+    "label": "man — der Mann; stem vowel takes umlaut (a → ä) in the plural"
+   },
+   {
+    "form": "er",
+    "role": "pl-end",
+    "label": "plural ending -er"
+   }
+  ],
+  "explain": "Plural pattern umlaut + -er: Mann → Männer, Haus → Häuser, Amt → Ämter.",
+  "tags": [
+   "plural",
+   "umlaut",
+   "-er"
+  ]
+ },
+ {
+  "id": "de-decon-044",
+  "lang": "de",
+  "module": "decon",
+  "word": "Bücher",
+  "gloss": "books (plural)",
+  "morphemes": [
+   {
+    "form": "Büch",
+    "role": "noun",
+    "label": "book — das Buch; stem vowel takes umlaut (u → ü) in the plural"
+   },
+   {
+    "form": "er",
+    "role": "pl-end",
+    "label": "plural ending -er"
+   }
+  ],
+  "explain": "Neuter nouns with an -er plural umlaut the stem whenever the vowel allows it: Buch → Bücher, Haus → Häuser.",
+  "tags": [
+   "plural",
+   "umlaut",
+   "-er"
+  ]
+ },
+ {
+  "id": "de-decon-045",
+  "lang": "de",
+  "module": "decon",
+  "word": "Ämter",
+  "gloss": "offices, authorities (plural)",
+  "morphemes": [
+   {
+    "form": "Ämt",
+    "role": "noun",
+    "label": "office, authority — das Amt; stem vowel takes umlaut (A → Ä) in the plural"
+   },
+   {
+    "form": "er",
+    "role": "pl-end",
+    "label": "plural ending -er"
+   }
+  ],
+  "explain": "das Amt, die Ämter: the same umlaut + -er pattern as Mann → Männer.",
+  "tags": [
+   "plural",
+   "umlaut",
+   "-er",
+   "bureaucracy"
+  ]
+ }
+]

@@ -1,0 +1,6 @@
+node_modules/
+src/app/console.html
+src/app/console_standalone.html
+src/app/shots/
+src/pwa/dist/
+__pycache__/

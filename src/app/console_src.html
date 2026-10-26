@@ -1,0 +1,2146 @@
+<title>Operative's Linguistic Console</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: desktop = fixed left rail (nav + keyboard hints) and a scrolling main column of bordered panels;
+   phone = single column with a bottom tab bar. Instrument-panel look: flat panels, hairline borders, one
+   amber signal colour for timers/attention, semantic ok/bad, no shadows, no gradients. Dark-first. */
+:root{
+  --bg:#0e1216; --panel:#151b21; --panel2:#1b232b; --line:#2a353f; --line2:#3a4855;
+  --fg:#e4e9ed; --muted:#8b99a5; --faint:#5c6a76;
+  --accent:#6fb0dc; --accent-fg:#06131c; --signal:#e2a63a; --ok:#5fb87c; --bad:#e26f6f; --bad-fg:#1b0909;
+  --focus:#9fd0f5; --sel:rgba(111,176,220,.16); --warn-bg:rgba(226,166,58,.14); --bad-bg:rgba(226,111,111,.14); --ok-bg:rgba(95,184,124,.14);
+  --font:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#f2f4f6; --panel:#ffffff; --panel2:#eef1f4; --line:#d2d9df; --line2:#b7c2cb;
+    --fg:#172029; --muted:#5a6873; --faint:#8a97a2;
+    --accent:#245f93; --accent-fg:#ffffff; --signal:#a86a0c; --ok:#247a44; --bad:#b33a3a; --bad-fg:#ffffff;
+    --focus:#245f93; --sel:rgba(36,95,147,.12); --warn-bg:rgba(168,106,12,.12); --bad-bg:rgba(179,58,58,.10); --ok-bg:rgba(36,122,68,.12);
+    color-scheme:light;
+  }
+}
+:root[data-theme="light"]{
+  --bg:#f2f4f6; --panel:#ffffff; --panel2:#eef1f4; --line:#d2d9df; --line2:#b7c2cb;
+  --fg:#172029; --muted:#5a6873; --faint:#8a97a2;
+  --accent:#245f93; --accent-fg:#ffffff; --signal:#a86a0c; --ok:#247a44; --bad:#b33a3a; --bad-fg:#ffffff;
+  --focus:#245f93; --sel:rgba(36,95,147,.12); --warn-bg:rgba(168,106,12,.12); --bad-bg:rgba(179,58,58,.10); --ok-bg:rgba(36,122,68,.12);
+  color-scheme:light;
+}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);font-size:15px;line-height:1.45;margin:0}
+[hidden]{display:none!important}
+*{box-sizing:border-box}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+h1,h2,h3,h4{margin:0;line-height:1.2;text-wrap:balance}
+h1{font-size:1.05rem;font-weight:600;letter-spacing:.01em}
+h2{font-size:1.05rem;font-weight:600}
+h3{font-size:.95rem;font-weight:600}
+p{margin:0}
+a{color:var(--accent)}
+button,input,select,textarea{font:inherit;color:inherit}
+textarea{width:100%;min-height:120px;resize:vertical}
+input[type=text],input[type=number],input[type=time],input[type=date],input[type=search],select,textarea{
+  background:var(--bg);border:1px solid var(--line2);border-radius:4px;padding:7px 9px;max-width:100%}
+input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+label{color:var(--muted);font-size:.85rem}
+.num{font-variant-numeric:tabular-nums}
+.mono{font-family:var(--mono)}
+.muted{color:var(--muted)}
+.small{font-size:.85rem}
+.sr{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+/* shell */
+.app{display:grid;grid-template-columns:1fr;min-height:100%}
+.rail{display:none}
+.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:10px;
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.hdr .spacer{flex:1}
+.main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:16px 92px;min-width:0}
+.view{display:flex;flex-direction:column;gap:14px;max-width:1080px}
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:6;display:flex;background:var(--panel);border-top:1px solid var(--line);
+  padding-bottom:env(safe-area-inset-bottom,0px);padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+.tabbar button{flex:1;min-height:48px;background:none;border:0;border-top:2px solid transparent;padding:9px 2px 8px;font-size:.72rem;color:var(--muted);min-width:0}
+.tabbar button[aria-current="page"]{color:var(--fg);border-top-color:var(--accent)}
+.tabbar .k{display:none}
+@media (min-width:880px){
+  .app{grid-template-columns:216px 1fr}
+  .rail{display:flex;flex-direction:column;gap:4px;position:sticky;top:0;height:100vh;border-right:1px solid var(--line);background:var(--panel);
+    padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:12px;padding-block:14px}
+  .rail .brand{padding:4px 8px 14px;color:var(--muted);font-size:.78rem;line-height:1.35}
+  .rail .brand strong{display:block;color:var(--fg);font-size:.95rem}
+  .rail button{display:flex;justify-content:space-between;align-items:center;gap:8px;background:none;border:0;border-radius:4px;padding:8px 10px;text-align:left;color:var(--muted)}
+  .rail button:hover{background:var(--panel2);color:var(--fg)}
+  .rail button[aria-current="page"]{background:var(--sel);color:var(--fg)}
+  .rail .k{font-family:var(--mono);font-size:.7rem;color:var(--faint);border:1px solid var(--line);border-radius:3px;padding:0 5px}
+  .rail .foot{margin-top:auto;color:var(--faint);font-size:.74rem;padding:0 8px}
+  .tabbar{display:none}
+  .hdr{padding-left:20px;padding-right:20px}
+  .main{padding-left:20px;padding-right:max(20px,env(safe-area-inset-right,0px));padding-block:18px 40px}
+}
+
+/* panels */
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:14px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.panel.sub{background:var(--panel2);border-color:var(--line)}
+.panel-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.panel-head .muted{font-size:.82rem}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.row.between{justify-content:space-between}
+.col{display:flex;flex-direction:column;gap:8px;min-width:0}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+.grid2>*,.grid3>*{min-width:0}
+#summary-stats{grid-template-columns:repeat(auto-fit,minmax(100px,1fr))}
+.field{display:flex;flex-direction:column;gap:4px;min-width:0}
+.field input,.field select,.field textarea{width:100%}
+.field.inline{flex-direction:row;align-items:center;gap:8px}
+.field.inline label{color:var(--fg)}
+.field.inline input[type="checkbox"]{width:22px;height:22px;flex:none;margin:0}
+.stat{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border:1px solid var(--line);border-radius:4px;background:var(--bg)}
+.stat b{font-size:1.5rem;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.1}
+.stat span{color:var(--muted);font-size:.8rem}
+.banner{border:1px solid var(--signal);background:var(--warn-bg);border-radius:4px;padding:8px 12px;font-size:.9rem}
+.banner.bad{border-color:var(--bad);background:var(--bad-bg)}
+.banner.ok{border-color:var(--ok);background:var(--ok-bg)}
+.note{color:var(--muted);font-size:.86rem;line-height:1.45}
+.divider{border:0;border-top:1px solid var(--line);margin:2px 0}
+
+/* buttons / chips */
+.btn{background:var(--panel2);border:1px solid var(--line2);border-radius:4px;padding:8px 12px;cursor:pointer;color:var(--fg);min-height:38px;white-space:nowrap}
+.btn:hover{border-color:var(--accent)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn.primary{background:var(--accent);color:var(--accent-fg);border-color:var(--accent);font-weight:600}
+.btn.danger{background:var(--bad);color:var(--bad-fg);border-color:var(--bad)}
+.btn.ghost{background:none;border-color:transparent;color:var(--accent);padding:6px 8px;min-height:32px}
+.btn.sm{padding:4px 9px;min-height:30px;font-size:.84rem}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line2);border-radius:999px;padding:3px 10px;font-size:.82rem;background:var(--bg);cursor:pointer;color:var(--fg);max-width:100%}
+.chip .n{color:var(--muted);font-variant-numeric:tabular-nums}
+.chip.on{background:var(--sel);border-color:var(--accent)}
+.chip.static{cursor:default}
+.tag{display:inline-block;border:1px solid var(--line);border-radius:3px;padding:0 6px;font-size:.74rem;color:var(--muted);font-family:var(--mono)}
+.badge{display:inline-block;border-radius:3px;padding:1px 7px;font-size:.78rem;border:1px solid var(--line2);color:var(--muted)}
+.badge.warn{border-color:var(--signal);color:var(--signal)}
+.badge.ok{border-color:var(--ok);color:var(--ok)}
+.badge.bad{border-color:var(--bad);color:var(--bad)}
+.lang{font-family:var(--mono);font-size:.78rem;border:1px solid var(--line2);border-radius:3px;padding:0 5px;text-transform:uppercase}
+.seg{display:inline-flex;border:1px solid var(--line2);border-radius:4px;overflow:hidden}
+.seg button{background:none;border:0;padding:7px 12px;color:var(--muted);min-height:36px}
+.seg button+button{border-left:1px solid var(--line2)}
+.seg button[aria-pressed="true"]{background:var(--sel);color:var(--fg)}
+.kbd{font-family:var(--mono);font-size:.74rem;border:1px solid var(--line2);border-bottom-width:2px;border-radius:3px;padding:0 5px;color:var(--muted)}
+
+/* tables */
+.scroll-x{overflow-x:auto;max-width:100%}
+table{border-collapse:collapse;width:100%;font-size:.88rem}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:500;font-size:.78rem;white-space:nowrap}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+tr.click{cursor:pointer}
+tr.click:hover td{background:var(--panel2)}
+tr.selected td{background:var(--sel)}
+
+/* lists */
+.list{display:flex;flex-direction:column;gap:6px}
+.item{display:flex;gap:10px;align-items:flex-start;justify-content:space-between;border:1px solid var(--line);border-radius:4px;padding:8px 10px;background:var(--bg);flex-wrap:wrap}
+.item>.col{flex:1 1 220px}
+.item .meta{color:var(--muted);font-size:.8rem}
+.empty{color:var(--faint);font-size:.9rem;padding:8px 0}
+
+/* drill */
+.drill-stage{display:flex;flex-direction:column;gap:16px}
+.cue-box{border:1px solid var(--line2);border-radius:6px;background:var(--bg);padding:18px 16px;display:flex;flex-direction:column;gap:12px}
+.cue{font-family:var(--mono);font-size:clamp(1.3rem,4.5vw,2rem);line-height:1.3;overflow-wrap:anywhere}
+.answer{font-family:var(--mono);font-size:clamp(1.1rem,4vw,1.5rem);color:var(--ok);overflow-wrap:anywhere}
+.timer{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:clamp(2.4rem,9vw,4rem);line-height:1;letter-spacing:.02em}
+.timer.over{color:var(--signal)}
+.timer-row{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.target{color:var(--muted);font-size:.9rem;font-variant-numeric:tabular-nums}
+.grade-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.grade-row .btn{min-height:56px;font-size:1rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;white-space:normal}
+.grade-row .btn small{color:var(--muted);font-weight:400;font-size:.75rem}
+.grade-row .btn.g1{border-color:var(--ok)}
+.grade-row .btn.g2{border-color:var(--signal)}
+.grade-row .btn.g3{border-color:var(--bad)}
+.typed input{font-family:var(--mono);font-size:1.15rem;padding:12px}
+.result.ok{color:var(--ok)}
+.result.late{color:var(--signal)}
+.result.bad{color:var(--bad)}
+.persona{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.persona .fillers{font-family:var(--mono);font-size:1.15rem;line-height:1.7}
+.countdown{font-family:var(--mono);font-size:2.6rem;font-variant-numeric:tabular-nums}
+.progressbar{height:4px;background:var(--line);border-radius:2px;overflow:hidden}
+.progressbar i{display:block;height:100%;background:var(--accent);width:0}
+@media (prefers-reduced-motion:no-preference){.progressbar i{transition:width .2s}}
+
+/* deconstructor */
+.morphs{display:flex;flex-wrap:wrap;gap:6px;align-items:stretch}
+.morph{display:flex;flex-direction:column;border:1px solid var(--line2);border-radius:4px;min-width:64px;max-width:100%;background:var(--bg)}
+.morph .f{font-family:var(--mono);font-size:1.35rem;padding:8px 10px 2px;overflow-wrap:anywhere}
+.morph .r{font-family:var(--mono);font-size:.7rem;color:var(--accent);padding:0 10px}
+.morph .l{font-size:.76rem;color:var(--muted);padding:4px 10px 8px;border-top:1px solid var(--line);margin-top:4px;max-width:220px}
+.morph.unknown{border-color:var(--signal)}
+.morph.unknown .r{color:var(--signal)}
+.tok{display:flex;flex-wrap:wrap;gap:6px;padding-right:12px;border-right:1px dashed var(--line2)}
+.tok:last-child{border-right:0}
+.analysis{border:1px solid var(--line);border-radius:6px;padding:12px;display:flex;flex-direction:column;gap:10px;background:var(--panel2)}
+.analysis h3{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.chips{display:flex;flex-wrap:wrap;gap:6px;max-height:140px;overflow:auto}
+.decon-input{font-family:var(--mono);font-size:1.2rem;padding:12px}
+.built{font-family:var(--mono);font-size:1.6rem;overflow-wrap:anywhere}
+
+/* histogram */
+.bars{display:flex;flex-direction:column;gap:5px}
+.bar{display:grid;grid-template-columns:72px 1fr 32px;gap:8px;align-items:center;font-size:.82rem}
+.bar .t{height:14px;background:var(--line);border-radius:2px;overflow:hidden}
+.bar .t i{display:block;height:100%;background:var(--accent)}
+.bar .n{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
+
+/* block timers */
+.block{display:grid;grid-template-columns:1fr auto;gap:8px 12px;align-items:center;border:1px solid var(--line);border-radius:4px;padding:10px 12px;background:var(--bg)}
+.block .bt{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:1.3rem}
+.block .bt.over{color:var(--signal)}
+.block.done{border-color:var(--signal)}
+.block .ctl{display:flex;gap:6px;flex-wrap:wrap;grid-column:1/-1}
+.block .logline{grid-column:1/-1;display:flex;gap:6px;flex-wrap:wrap}
+.block .logline input{flex:1 1 180px}
+@keyframes flash{0%,100%{background:var(--bg)}50%{background:var(--warn-bg)}}
+.block.flash{animation:flash 1s 3}
+@media (prefers-reduced-motion:reduce){.block.flash{animation:none;background:var(--warn-bg)}}
+
+/* content manager */
+.cm-layout{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width:1000px){.cm-layout{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.confirm{display:inline-flex;gap:6px;align-items:center;border:1px solid var(--bad);border-radius:4px;padding:4px 8px;background:var(--bad-bg);font-size:.86rem}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(72px + env(safe-area-inset-bottom,0px));z-index:20;background:var(--fg);color:var(--bg);padding:8px 14px;border-radius:4px;font-size:.9rem;max-width:calc(100% - 32px)}
+@media (min-width:880px){.toast{bottom:24px}}
+.milestones td input{width:100%;min-width:120px}
+.scn{display:flex;flex-direction:column;gap:6px;border:1px solid var(--line);border-radius:4px;padding:10px 12px;background:var(--bg)}
+.scn ol{margin:0;padding-left:20px;font-size:.9rem}
+.scn.on{border-color:var(--accent);background:var(--sel)}
+.facts .item{align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.manual-toc{display:flex;flex-direction:column;gap:4px}
+.manual-toc button{text-align:left;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:9px 11px;color:var(--fg);cursor:pointer;display:flex;justify-content:space-between;gap:10px;min-height:44px;align-items:center}
+.manual-toc button:hover,.manual-toc button:focus-visible{border-color:var(--accent)}
+.manual-toc .sec-id{font-family:var(--mono);color:var(--muted);font-size:.8rem;flex:none}
+.manual-toc .hit{color:var(--muted);font-size:.8rem;display:block;margin-top:2px}
+.manual-body{line-height:1.5;max-width:72ch}
+.manual-body h2{font-size:1.15rem;margin:0 0 6px}
+.manual-body h3{font-size:1rem;margin:14px 0 4px}
+.manual-body p{margin:0 0 10px}
+.manual-body ul,.manual-body ol{margin:0 0 10px;padding-left:22px}
+.manual-body li{margin:0 0 4px}
+.manual-body table{margin:6px 0 12px;font-size:.84rem}
+.manual-body .table-wrap{overflow-x:auto;max-width:100%}
+.manual-body mark{background:var(--signal);color:var(--bg);padding:0 2px;border-radius:2px}
+.manual-body .proto{scroll-margin-top:70px;border-left:3px solid var(--accent);padding-left:10px;margin:12px 0}
+.manual-body code{font-family:var(--mono);font-size:.9em}
+.manual-nav{position:sticky;top:0;background:var(--panel);padding-block:6px;z-index:2}
+.block .manual-link{font-size:.78rem;color:var(--accent);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;min-height:0}
+.keymap{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:.88rem;align-items:center}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation-duration:.01ms!important}}
+</style>
+<div class="app" id="app">
+  <nav class="rail" aria-label="Modules">
+    <div class="brand"><strong>Linguistic Console</strong>German and Hungarian training</div>
+    <button type="button" data-nav="mission" id="nav-mission">Mission Control <span class="k">Alt+1</span></button>
+    <button type="button" data-nav="drill" id="nav-drill">Drill Engine <span class="k">Alt+2</span></button>
+    <button type="button" data-nav="decon" id="nav-decon">Deconstructor <span class="k">Alt+3</span></button>
+    <button type="button" data-nav="wiretap" id="nav-wiretap">Wiretap <span class="k">Alt+4</span></button>
+    <button type="button" data-nav="legend" id="nav-legend">Legend <span class="k">Alt+5</span></button>
+    <button type="button" data-nav="manual" id="nav-manual">Field Manual <span class="k">Alt+M</span></button>
+    <button type="button" data-nav="content" id="nav-content">Content Manager <span class="k">Alt+C</span></button>
+    <button type="button" data-nav="settings" id="nav-settings">Settings</button>
+    <div class="foot" id="rail-foot">Offline. All data stays in this browser.</div>
+  </nav>
+
+  <div class="main-wrap" style="min-width:0">
+    <header class="hdr">
+      <h1 id="view-title">Mission Control</h1>
+      <span class="badge" id="voice-badge-hdr" hidden></span>
+      <span class="spacer"></span>
+      <span class="small muted num" id="hdr-date"></span>
+    </header>
+    <div id="storage-banner" class="banner bad" hidden style="margin:12px 16px 0">Browser storage is unavailable. Progress is kept in memory only and is lost on reload.</div>
+
+    <main class="main" id="main">
+
+      <!-- ===================== MISSION CONTROL ===================== -->
+      <section class="view" id="view-mission">
+        <div id="ratio-banner" class="banner" hidden></div>
+        <div id="burn-banner" class="banner bad" hidden></div>
+        <div id="burn-note" class="banner" hidden></div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h2>Today</h2>
+            <span class="muted num" id="today-date"></span>
+          </div>
+          <div class="row between">
+            <div class="row">
+              <span class="chip static"><span class="lang">de</span> slot <b class="num" id="slot-de">15:15</b></span>
+              <span class="chip static"><span class="lang">hu</span> slot <b class="num" id="slot-hu">19:00</b></span>
+            </div>
+            <div class="row">
+              <label for="plan-length">Plan</label>
+              <div class="seg" id="plan-seg" role="group" aria-label="Plan length">
+                <button type="button" data-plan="45" id="plan-45">45 min</button>
+                <button type="button" data-plan="90" id="plan-90">90 min</button>
+                <button type="button" data-plan="150" id="plan-150">150 min</button>
+              </div>
+              <select id="plan-length" class="sr" aria-label="Plan length (fallback)"><option value="45">45</option><option value="90">90</option><option value="150">150</option></select>
+            </div>
+          </div>
+          <div class="row">
+            <label for="today-lang">Language for the blocks</label>
+            <div class="seg" role="group" aria-label="Block language">
+              <button type="button" data-tlang="de" id="today-lang-de">German</button>
+              <button type="button" data-tlang="hu" id="today-lang-hu">Hungarian</button>
+            </div>
+            <select id="today-lang" class="sr" aria-label="Block language (fallback)"><option value="de">de</option><option value="hu">hu</option></select>
+          </div>
+          <div class="list" id="block-list"></div>
+          <div class="panel sub" id="timer-card" hidden>
+            <div class="panel-head"><h3 id="timer-card-title">Block</h3><button type="button" class="btn sm" id="timer-card-close">Close</button></div>
+            <div class="timer-row"><div class="timer num" id="timer-card-clock">00:00</div><span class="target" id="timer-card-target"></span></div>
+            <div id="timer-card-body" class="col"></div>
+          </div>
+        </div>
+
+        <div class="grid2">
+          <div class="panel">
+            <div class="panel-head"><h2>Due</h2><span class="muted">SRS due, heat set, open burn-book lines</span></div>
+            <div class="grid3" id="due-grid"></div>
+            <div class="row">
+              <button type="button" class="btn" id="due-start-de">Review German</button>
+              <button type="button" class="btn" id="due-start-hu">Review Hungarian</button>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><h2>This week</h2><span class="muted" id="week-range"></span></div>
+            <div class="grid3" id="week-grid"></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head"><h2>Burn book</h2><span class="muted" id="burn-count"></span></div>
+          <div class="row">
+            <div class="field"><label for="burn-filter-lang">Language</label>
+              <select id="burn-filter-lang"><option value="">Both</option><option value="de">German</option><option value="hu">Hungarian</option></select></div>
+            <div class="field"><label for="burn-filter-cat">Category</label><select id="burn-filter-cat"><option value="">All</option></select></div>
+            <div class="field"><label for="burn-filter-open">Status</label>
+              <select id="burn-filter-open"><option value="open">Open</option><option value="all">All</option><option value="closed">Retired</option></select></div>
+          </div>
+          <div class="list" id="burn-list"></div>
+          <details>
+            <summary class="muted small" style="cursor:pointer">Add a line</summary>
+            <form id="burn-form" class="grid3" style="margin-top:8px">
+              <div class="field"><label for="burn-lang">Language</label><select id="burn-lang"><option value="de">German</option><option value="hu">Hungarian</option></select></div>
+              <div class="field"><label for="burn-cat">Category</label><select id="burn-cat"></select></div>
+              <div class="field"><label for="burn-produced">Produced (what you said)</label><input type="text" id="burn-produced" required></div>
+              <div class="field"><label for="burn-correct">Correct form</label><input type="text" id="burn-correct" required></div>
+              <div class="field"><label for="burn-source">Source</label><input type="text" id="burn-source" placeholder="legend, chat, drill, wiretap" value="manual"></div>
+              <div class="field" style="justify-content:flex-end"><button type="submit" class="btn primary" id="burn-add">Add line</button></div>
+            </form>
+          </details>
+        </div>
+
+        <div class="grid2">
+          <div class="panel">
+            <div class="panel-head"><h2>Categories this month</h2><span class="muted" id="hist-month"></span></div>
+            <div class="bars" id="hist-bars"></div>
+          </div>
+          <div class="panel milestones">
+            <div class="panel-head"><h2>Milestones</h2><span class="muted">ILR self-rating, date passed</span></div>
+            <div class="scroll-x"><table id="milestone-table"><thead><tr><th>Level</th><th>German</th><th>Hungarian</th></tr></thead><tbody></tbody></table></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head"><h2>Session history</h2><span class="muted" id="hist-count"></span></div>
+          <div class="scroll-x"><table id="session-table"><thead><tr><th>Date</th><th>Lang</th><th>Module</th><th class="num">Cues</th><th class="num">Score</th><th class="num">In time</th><th class="num">Streak</th><th class="num">Min</th></tr></thead><tbody></tbody></table></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head"><h2>Keyboard</h2></div>
+          <div class="keymap" id="keymap"></div>
+        </div>
+      </section>
+
+      <!-- ===================== DRILL ENGINE ===================== -->
+      <section class="view" id="view-drill" hidden>
+        <div class="panel" id="drill-setup">
+          <div class="panel-head"><h2>Session setup</h2><span class="muted">Spoken by default. Typed mode grades automatically.</span></div>
+          <div class="row">
+            <div class="seg" role="group" aria-label="Language">
+              <button type="button" data-dlang="de" id="drill-lang-de">German</button>
+              <button type="button" data-dlang="hu" id="drill-lang-hu">Hungarian</button>
+            </div>
+            <select id="drill-lang" class="sr" aria-label="Drill language (fallback)"><option value="de">de</option><option value="hu">hu</option></select>
+            <div class="seg" role="group" aria-label="Source">
+              <button type="button" data-src="due" id="drill-src-due">Due + new</button>
+              <button type="button" data-src="heat" id="drill-src-heat">Heat set</button>
+              <button type="button" data-src="families" id="drill-src-families">Families</button>
+              <button type="button" data-src="all" id="drill-src-all">All</button>
+            </div>
+            <select id="drill-source" class="sr" aria-label="Drill source (fallback)"><option value="due">due</option><option value="heat">heat</option><option value="families">families</option><option value="all">all</option></select>
+            <div class="seg" role="group" aria-label="Length">
+              <button type="button" data-len="20" id="drill-len-20">20</button>
+              <button type="button" data-len="30" id="drill-len-30">30</button>
+              <button type="button" data-len="40" id="drill-len-40">40</button>
+            </div>
+            <input type="number" id="drill-length" class="sr" aria-label="Session length (fallback)" min="1" max="200" value="20">
+          </div>
+          <div id="drill-families-wrap" class="col" hidden>
+            <div class="row between"><label>Families (tap to select)</label><div class="row"><button type="button" class="btn sm" id="fam-all">All</button><button type="button" class="btn sm" id="fam-none">None</button></div></div>
+            <div class="chips" id="drill-families"></div>
+          </div>
+          <div class="row between">
+            <div class="field inline"><input type="checkbox" id="drill-typed"><label for="drill-typed">Typed mode (Enter submits, tolerant matching)</label></div>
+            <div class="row"><span class="muted small num" id="drill-pool-count"></span><button type="button" class="btn primary" id="drill-start">Start session</button></div>
+          </div>
+          <div id="drill-setup-msg" class="banner" hidden></div>
+        </div>
+
+        <div class="panel" id="drill-guard" hidden>
+          <h2>Interference guard</h2>
+          <p id="guard-text"></p>
+          <p class="note">Switching languages inside the gap mixes the two systems. Wait, or override and the override goes into the burn book.</p>
+          <div class="row"><button type="button" class="btn" id="guard-back">Back</button><button type="button" class="btn danger" id="guard-override">Override (logged)</button></div>
+        </div>
+
+        <div class="panel" id="drill-persona" hidden>
+          <div class="persona">
+            <h2 id="persona-title">Persona switch</h2>
+            <p class="note">Say the fillers aloud until they feel like yours. The language should already be running before the first cue.</p>
+            <div class="fillers mono" id="persona-fillers"></div>
+            <div class="countdown num" id="persona-countdown">60</div>
+            <p class="note" id="persona-note"></p>
+            <div class="row"><button type="button" class="btn primary" id="persona-begin" disabled>Begin</button><button type="button" class="btn" id="persona-cancel">Cancel</button></div>
+          </div>
+        </div>
+
+        <div class="panel drill-stage" id="drill-stage" hidden>
+          <div class="row between">
+            <div class="row"><span class="lang" id="stage-lang">de</span><span class="chip static" id="stage-family"></span><span class="badge" id="stage-mode">spoken</span></div>
+            <div class="row"><span class="muted num small" id="stage-pos"></span><span class="muted num small">streak <b id="stage-streak">0</b></span><button type="button" class="btn sm" id="stage-end">End (Esc)</button></div>
+          </div>
+          <div class="progressbar"><i id="stage-progress"></i></div>
+          <div class="cue-box">
+            <p class="muted" id="stage-instruction"></p>
+            <div class="cue" id="stage-cue"></div>
+            <div class="row"><span class="badge warn" id="stage-novoice" hidden></span><button type="button" class="btn sm" id="stage-replay">Replay (Space)</button></div>
+            <div class="timer-row"><div class="timer num" id="stage-timer">00:00.0</div><span class="target" id="stage-target"></span></div>
+          </div>
+          <div class="typed col" id="stage-typed" hidden>
+            <label for="stage-input">Your answer</label>
+            <input type="text" id="stage-input" autocomplete="off" autocapitalize="off" spellcheck="false" lang="de">
+            <div class="row"><button type="button" class="btn primary" id="stage-submit">Submit (Enter)</button></div>
+          </div>
+          <div class="row" id="stage-reveal-row"><button type="button" class="btn primary" id="stage-reveal">Reveal answer (Enter)</button></div>
+          <div class="col" id="stage-answer-box" hidden>
+            <div class="answer" id="stage-answer"></div>
+            <p class="note" id="stage-explain"></p>
+            <p class="result" id="stage-result"></p>
+          </div>
+          <div class="grade-row" id="stage-grades" hidden>
+            <button type="button" class="btn g1" id="grade-1">Correct<small>1</small></button>
+            <button type="button" class="btn g2" id="grade-2">Hesitated<small>2</small></button>
+            <button type="button" class="btn g3" id="grade-3">Missed<small>3</small></button>
+          </div>
+          <div class="row" id="stage-next-row" hidden><button type="button" class="btn primary" id="stage-next">Next (Enter)</button></div>
+        </div>
+
+        <div class="panel" id="drill-summary" hidden>
+          <div class="panel-head"><h2>Session summary</h2><span class="muted" id="summary-meta"></span></div>
+          <div class="grid3" id="summary-stats"></div>
+          <div class="scroll-x"><table id="summary-families"><thead><tr><th>Family</th><th class="num">Cues</th><th class="num">Correct</th><th class="num">Score</th><th></th></tr></thead><tbody></tbody></table></div>
+          <div class="col" id="summary-misses-wrap"><h3>Misses</h3><div class="list" id="summary-misses"></div></div>
+          <div class="panel sub" id="summary-bridge">
+            <h3>Bridge</h3>
+            <p class="note">Say each one in a real sentence now. Out loud, about your own day.</p>
+            <div class="col mono" id="summary-bridge-list"></div>
+          </div>
+          <div class="row"><button type="button" class="btn primary" id="summary-back">Back to Mission Control</button><button type="button" class="btn" id="summary-again">New session</button></div>
+        </div>
+      </section>
+
+      <!-- ===================== DECONSTRUCTOR ===================== -->
+      <section class="view" id="view-decon" hidden>
+        <div class="panel">
+          <div class="panel-head"><h2>Deconstructor</h2><span class="muted">Enter parses. Ctrl+Enter builds.</span></div>
+          <div class="row">
+            <input type="text" id="decon-input" class="decon-input" style="flex:1 1 220px;min-width:0" placeholder="házaimban, dem alten Mann, aufzustehen" autocomplete="off" autocapitalize="off" spellcheck="false">
+            <div class="seg" role="group" aria-label="Language override">
+              <button type="button" data-xlang="auto" id="decon-lang-auto">Auto</button>
+              <button type="button" data-xlang="de" id="decon-lang-de">DE</button>
+              <button type="button" data-xlang="hu" id="decon-lang-hu">HU</button>
+            </div>
+            <select id="decon-lang" class="sr" aria-label="Deconstructor language (fallback)"><option value="auto">auto</option><option value="de">de</option><option value="hu">hu</option></select>
+          </div>
+          <div class="row">
+            <button type="button" class="btn primary" id="decon-parse">Parse</button>
+            <button type="button" class="btn" id="decon-random">Random example</button>
+            <button type="button" class="btn" id="decon-build-toggle">Build</button>
+            <span class="muted small" id="decon-detected"></span>
+          </div>
+          <div class="col">
+            <div class="row between"><label for="decon-filter">Preloaded examples</label><input type="search" id="decon-filter" placeholder="filter" style="width:160px"></div>
+            <div class="chips" id="decon-examples"></div>
+          </div>
+        </div>
+        <div id="decon-results" class="col"></div>
+
+        <div class="panel" id="decon-build" hidden>
+          <div class="panel-head"><h2>Build</h2><span class="muted" id="decon-build-lang"></span></div>
+          <div id="build-hu" class="col" hidden>
+            <div class="grid3">
+              <div class="field"><label for="hu-stem-search">Stem</label><input type="search" id="hu-stem-search" placeholder="search stems"><select id="hu-stem" size="1"></select></div>
+              <div class="field"><label for="hu-poss">Possessor</label><select id="hu-poss"><option value="">none</option><option value="1sg">1sg (my)</option><option value="2sg">2sg (your)</option><option value="3sg">3sg (his/her)</option><option value="1pl">1pl (our)</option><option value="2pl">2pl (your pl)</option><option value="3pl">3pl (their)</option></select></div>
+              <div class="field"><label for="hu-case">Case</label><select id="hu-case">
+                <option value="">none</option><option value="ban">-ban/-ben (in)</option><option value="ba">-ba/-be (into)</option><option value="ból">-ból/-ből (out of)</option>
+                <option value="on">-on/-en/-ön (on)</option><option value="ra">-ra/-re (onto)</option><option value="ról">-ról/-ről (off)</option>
+                <option value="nál">-nál/-nél (at)</option><option value="hoz">-hoz/-hez/-höz (to)</option><option value="tól">-tól/-től (from)</option>
+                <option value="t">-t (accusative)</option><option value="nak">-nak/-nek (dative)</option><option value="val">-val/-vel (with)</option>
+                <option value="ig">-ig (until)</option><option value="ért">-ért (for)</option><option value="ként">-ként (as)</option></select></div>
+            </div>
+            <div class="row">
+              <div class="field inline"><input type="checkbox" id="hu-plural"><label for="hu-plural">Plural</label></div>
+              <div class="field inline"><input type="checkbox" id="hu-plpos" disabled><label for="hu-plpos">Plural possessed (needs a possessor)</label></div>
+              <button type="button" class="btn primary" id="hu-build-go">Build word</button>
+            </div>
+          </div>
+          <div id="build-de" class="col" hidden>
+            <div class="grid3">
+              <div class="field"><label for="de-noun-search">Noun</label><input type="search" id="de-noun-search" placeholder="search nouns"><select id="de-noun"></select></div>
+              <div class="field"><label for="de-det">Determiner</label><select id="de-det"><option value="definite">definite (der/die/das)</option><option value="ein">ein-word</option><option value="none">none</option></select></div>
+              <div class="field"><label for="de-case">Case</label><select id="de-case"><option value="nom">nominative</option><option value="acc">accusative</option><option value="dat">dative</option><option value="gen">genitive</option></select></div>
+              <div class="field"><label for="de-number">Number</label><select id="de-number"><option value="sg">singular</option><option value="pl">plural</option></select></div>
+              <div class="field"><label for="de-adj">Adjective</label><select id="de-adj"><option value="">none</option></select></div>
+            </div>
+            <div class="row"><button type="button" class="btn primary" id="de-build-go">Build phrase</button></div>
+          </div>
+          <div id="build-out" class="col" hidden></div>
+        </div>
+      </section>
+
+      <!-- ===================== WIRETAP ===================== -->
+      <section class="view" id="view-wiretap" hidden>
+        <div class="panel">
+          <div class="panel-head"><h2>Wiretap</h2><span class="badge">stub</span></div>
+          <p class="note">Wiretap trains gisting: you hear or read a short intercept once at natural speed and report who, what, where, when and intent before the detail fades. Each intercept climbs rungs from a clean read to a noisy, half-heard one.</p>
+          <div class="panel sub">
+            <h3>Data model</h3>
+            <pre class="mono small" style="margin:0;white-space:pre-wrap">{ id, lang, module: "wiretap", title, text, rung: 1,
+  key: { who: [], what: [], where: [], when: [], intent: [] } }</pre>
+          </div>
+          <form id="wiretap-form" class="col">
+            <div class="row">
+              <div class="field"><label for="wiretap-lang">Language</label><select id="wiretap-lang"><option value="de">German</option><option value="hu">Hungarian</option></select></div>
+              <div class="field" style="flex:1 1 200px"><label for="wiretap-title">Title</label><input type="text" id="wiretap-title" placeholder="Tram announcement, Berlin"></div>
+            </div>
+            <div class="field"><label for="wiretap-text">Paste text to create an intercept item</label><textarea id="wiretap-text" placeholder="Paste the intercept text here"></textarea></div>
+            <div class="row"><button type="submit" class="btn primary" id="wiretap-save">Save intercept</button></div>
+          </form>
+          <div class="list" id="wiretap-list"></div>
+          <p class="note">Timed reveal, scoring and audio arrive in the next build.</p>
+        </div>
+      </section>
+
+      <!-- ===================== LEGEND ===================== -->
+      <section class="view" id="view-legend" hidden>
+        <div class="panel">
+          <div class="panel-head"><h2>Legend</h2><span class="badge">stub</span></div>
+          <p class="note">A legend is the cover biography you defend under questioning. Keep every fact anchored to something you can describe in detail, in the target language, without hesitation.</p>
+          <div class="row">
+            <div class="seg" role="group" aria-label="Legend language">
+              <button type="button" data-llang="de" id="legend-lang-de">German</button>
+              <button type="button" data-llang="hu" id="legend-lang-hu">Hungarian</button>
+            </div>
+            <select id="legend-lang" class="sr" aria-label="Legend language (fallback)"><option value="de">de</option><option value="hu">hu</option></select>
+          </div>
+          <div class="grid3">
+            <div class="field"><label for="legend-name">Name</label><input type="text" id="legend-name"></div>
+            <div class="field"><label for="legend-age">Age</label><input type="text" id="legend-age"></div>
+            <div class="field"><label for="legend-town">Town</label><input type="text" id="legend-town"></div>
+            <div class="field"><label for="legend-job">Job</label><input type="text" id="legend-job"></div>
+          </div>
+          <div class="col facts">
+            <div class="row between"><h3>Facts</h3><button type="button" class="btn sm" id="legend-add-fact">Add fact</button></div>
+            <div class="list" id="legend-facts"></div>
+          </div>
+          <div class="row"><button type="button" class="btn primary" id="legend-save">Save legend</button><span class="muted small" id="legend-saved"></span></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>Scenarios</h2><span class="muted">Pick one, then export the interrogation prompt for a chat session.</span></div>
+          <div class="grid2" id="scenario-list"></div>
+          <div class="row"><button type="button" class="btn primary" id="legend-export">Export for chat</button><span class="muted small" id="legend-export-msg"></span></div>
+          <textarea id="legend-export-text" readonly hidden aria-label="Exported prompt"></textarea>
+          <p class="note">Timer, fault counter and shadowing recorder arrive in the next build.</p>
+        </div>
+      </section>
+
+      <!-- ===================== CONTENT MANAGER ===================== -->
+      <section class="view" id="view-content" hidden>
+        <div class="cm-layout">
+          <div class="panel">
+            <div class="panel-head"><h2>Content</h2><span class="muted num" id="cm-count"></span></div>
+            <div class="row">
+              <div class="field"><label for="cm-lang">Language</label><select id="cm-lang"><option value="">Both</option><option value="de">German</option><option value="hu">Hungarian</option></select></div>
+              <div class="field"><label for="cm-module">Module</label><select id="cm-module"><option value="">All</option><option value="drill">Drills</option><option value="decon">Decon examples</option><option value="lexicon">Lexicon</option></select></div>
+              <div class="field" style="flex:1 1 160px"><label for="cm-search">Search</label><input type="search" id="cm-search" placeholder="id, cue, word, family"></div>
+            </div>
+            <div class="row">
+              <label for="cm-add-kind">Add new</label>
+              <select id="cm-add-kind"><option value="drill">Drill</option><option value="decon">Decon example</option><option value="lexicon:hu">HU lexicon entry</option><option value="lexicon:noun">DE noun</option><option value="lexicon:adjective">DE adjective</option><option value="lexicon:verb">DE verb</option><option value="lexicon:part">DE compound part</option></select>
+              <button type="button" class="btn" id="cm-add">Add</button>
+              <button type="button" class="btn" id="cm-goto-settings">Import / Export</button>
+            </div>
+            <div class="scroll-x" style="max-height:60vh;overflow-y:auto"><table id="cm-table"><thead><tr><th>Id</th><th>Lang</th><th>Module</th><th>Summary</th></tr></thead><tbody></tbody></table></div>
+          </div>
+          <div class="panel" id="cm-editor" hidden>
+            <div class="panel-head"><h2 id="cm-editor-title">Edit item</h2><span class="muted mono small" id="cm-editor-id"></span></div>
+            <div class="col" id="cm-fields"></div>
+            <div id="cm-msg" class="banner" hidden></div>
+            <div class="row between">
+              <div class="row"><button type="button" class="btn primary" id="cm-save">Save</button><button type="button" class="btn" id="cm-duplicate">Duplicate</button><button type="button" class="btn" id="cm-cancel">Close</button></div>
+              <div class="row"><button type="button" class="btn danger" id="cm-delete">Delete</button><span class="confirm" id="cm-confirm" hidden>Delete this item? <button type="button" class="btn sm danger" id="cm-delete-yes">Yes</button><button type="button" class="btn sm" id="cm-delete-no">No</button></span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== SETTINGS ===================== -->
+      <section class="view" id="view-manual" hidden>
+        <div class="panel">
+          <div class="panel-head"><h2>Field Manual</h2><span class="muted">The doctrine this console runs. Search a word or a protocol number (P-7).</span></div>
+          <div class="row"><input type="search" id="manual-search" placeholder="Search the manual" aria-label="Search the manual" autocomplete="off"><span class="muted small" id="manual-count"></span></div>
+          <div class="chips" id="manual-protocols" aria-label="Protocols"></div>
+          <div class="manual-toc" id="manual-toc"></div>
+        </div>
+        <article class="panel manual-body" id="manual-article" hidden>
+          <div class="row manual-nav"><button type="button" class="btn sm" id="manual-back">All sections</button><button type="button" class="btn sm" id="manual-prev">Previous</button><button type="button" class="btn sm" id="manual-next">Next</button></div>
+          <div id="manual-content"></div>
+        </article>
+      </section>
+      <section class="view" id="view-settings" hidden>
+        <div class="panel">
+          <div class="panel-head"><h2>Settings</h2><span class="muted">Saved as you change them.</span></div>
+          <div class="grid3">
+            <div class="field"><label for="set-slot-de">German slot</label><input type="time" id="set-slot-de"></div>
+            <div class="field"><label for="set-slot-hu">Hungarian slot</label><input type="time" id="set-slot-hu"></div>
+            <div class="field"><label for="set-plan">Plan length</label><select id="set-plan"><option value="45">45 min</option><option value="90">90 min</option><option value="150">150 min</option></select></div>
+            <div class="field"><label for="set-gap">Interference gap (60 to 180 min)</label><input type="number" id="set-gap" min="60" max="180" step="5"></div>
+            <div class="field"><label for="set-exam-de">German exam date</label><input type="date" id="set-exam-de"></div>
+            <div class="field"><label for="set-exam-hu">Hungarian exam date</label><input type="date" id="set-exam-hu"></div>
+          </div>
+          <div class="row">
+            <div class="field inline"><input type="checkbox" id="set-tts-de"><label for="set-tts-de">Speak German cues</label><span class="badge" id="voice-badge-de">none</span></div>
+            <div class="field inline"><input type="checkbox" id="set-tts-hu"><label for="set-tts-hu">Speak Hungarian cues</label><span class="badge" id="voice-badge-hu">none</span></div>
+          </div>
+          <div class="row">
+            <div class="field inline"><input type="checkbox" id="set-persona-de"><label for="set-persona-de">Persona card skippable (German)</label></div>
+            <div class="field inline"><input type="checkbox" id="set-persona-hu"><label for="set-persona-hu">Persona card skippable (Hungarian)</label></div>
+          </div>
+          <p class="note" id="persona-lock-note"></p>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>Export</h2><span class="muted">Everything: content, progress, sessions, burn book, legends, settings.</span></div>
+          <div class="row"><button type="button" class="btn primary" id="export-render">Render export</button><button type="button" class="btn" id="export-copy">Copy</button><button type="button" class="btn" id="export-download">Download JSON</button><span class="muted small" id="export-msg"></span></div>
+          <p class="note">If download does nothing here, use Copy.</p>
+          <textarea id="export-text" readonly aria-label="Export JSON" placeholder="Export appears here"></textarea>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>Import</h2><span class="muted">Paste a full export or a bare array of content items.</span></div>
+          <textarea id="import-text" aria-label="Import JSON" placeholder="Paste JSON here"></textarea>
+          <div class="row">
+            <div class="field"><label for="import-file">or choose a file</label><input type="file" id="import-file" accept=".json,application/json"></div>
+          </div>
+          <div class="row">
+            <div class="field inline"><input type="radio" name="import-mode" id="import-merge" value="merge" checked><label for="import-merge">Merge content by id</label></div>
+            <div class="field inline"><input type="radio" name="import-mode" id="import-replace" value="replace"><label for="import-replace">Replace all</label></div>
+            <div class="field inline"><input type="checkbox" id="import-progress"><label for="import-progress">Import progress</label></div>
+          </div>
+          <div class="row"><button type="button" class="btn primary" id="import-go">Import</button><span id="import-msg" class="small"></span></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>Reset</h2><span class="muted">Re-seed built-in content. Progress, sessions and burn book are kept.</span></div>
+          <div class="row"><button type="button" class="btn danger" id="reset-content">Reset content to built-in</button><span class="confirm" id="reset-confirm" hidden>Replace all content with the built-in seed? <button type="button" class="btn sm danger" id="reset-yes">Yes</button><button type="button" class="btn sm" id="reset-no">No</button></span><span class="muted small" id="reset-msg"></span></div>
+        </div>
+        <p class="note" id="about-line"></p>
+      </section>
+    </main>
+  </div>
+
+  <nav class="tabbar" aria-label="Modules">
+    <button type="button" data-nav="mission" id="tab-mission">Mission</button>
+    <button type="button" data-nav="drill" id="tab-drill">Drill</button>
+    <button type="button" data-nav="decon" id="tab-decon">Decon</button>
+    <button type="button" data-nav="wiretap" id="tab-wiretap">Wiretap</button>
+    <button type="button" data-nav="legend" id="tab-legend">Legend</button>
+    <button type="button" data-nav="manual" id="tab-manual">Manual</button>
+    <button type="button" data-nav="content" id="tab-content">Content</button>
+    <button type="button" data-nav="settings" id="tab-settings">Settings</button>
+  </nav>
+  <div class="toast" id="toast" hidden role="status"></div>
+</div>
+
+<!-- ===== SEED CONTENT (generated by build.js from /home/claude/content/*.json and SEED_SCENARIOS.json) ===== -->
+<script id="seed-content" type="application/json">__SEED__</script>
+<!-- ===== END SEED CONTENT ===== -->
+<script>
+/* ===== ENGINES (engines.js is inlined here by build.js) ===== */
+/*__ENGINES__*/
+/* ===== END ENGINES ===== */
+
+(function () {
+"use strict";
+
+/* ============================================================
+   STATE
+   ============================================================ */
+const APP_VERSION = 1;
+const NS = "olc.";
+const DAY = 86400000;
+const LANG_NAME = { de: "German", hu: "Hungarian" };
+const OTHER = { de: "hu", hu: "de" };
+const FILLERS = { de: ["also", "na ja", "genau", "halt", "eben", "tja", "ähm"], hu: ["hát", "szóval", "na", "ugye", "tehát", "izé", "ööö"] };
+const CATEGORIES = ["mouth", "ear", "case", "gender", "adj", "order", "conj", "coverb", "prefix", "harmony", "stem", "lex", "xfer", "legend", "spell"];
+const PLAN_BLOCKS = {
+  45: [["Phonology", 5], ["Drills", 12], ["Input", 10], ["Gisting", 8], ["Shadowing / Legend", 7], ["Review", 3]],
+  90: [["Phonology", 8], ["Drills", 20], ["Input", 20], ["Gisting", 15], ["Shadowing / Legend", 15], ["Review", 12]],
+  150: [["Phonology", 10], ["Drills", 30], ["Input", 35], ["Gisting", 20], ["Shadowing / Legend", 30], ["Review", 15], ["Writing", 10]]
+};
+const P11 = ["Jaw and lips loose; hum on one pitch for 20 s.", "Target vowel set, long and short, five times each.", "Minimal pairs at half speed, then full speed.", "One sentence from yesterday, shadowed three times.", "Record ten seconds, listen once, note one fault in the burn book."];
+const DEFAULT_SETTINGS = {
+  slots: { de: "15:15", hu: "19:00" }, planLength: 45, gapMinutes: 90, tts: { de: true, hu: true },
+  examDates: { de: "", hu: "" }, startDate: "", lastSessionEnd: { de: 0, hu: 0 }, personaSkippable: { de: false, hu: false },
+  firstSessionDate: { de: "", hu: "" }, milestones: {}, todayLang: "de", deconLang: "hu"
+};
+
+const S = {
+  content: [], progress: {}, sessions: [], errors: [], legends: [], scenarios: [], wiretap: [], settings: null,
+  storageOk: true, voices: { de: null, hu: null }, view: "mission", seed: null,
+  drill: null, blockTimers: {}, engines: null
+};
+
+const E = window.OLC_ENGINES || null;
+
+/* ============================================================
+   STORAGE
+   ============================================================ */
+function lsGet(key) {
+  try { const v = localStorage.getItem(NS + key); return v === null ? undefined : JSON.parse(v); }
+  catch (e) { S.storageOk = false; return undefined; }
+}
+function lsSet(key, val) {
+  try { localStorage.setItem(NS + key, JSON.stringify(val)); return true; }
+  catch (e) { S.storageOk = false; return false; }
+}
+function saveAll() {
+  lsSet("version", APP_VERSION); lsSet("content", S.content); lsSet("progress", S.progress); lsSet("sessions", S.sessions);
+  lsSet("errors", S.errors); lsSet("legends", S.legends); lsSet("scenarios", S.scenarios); lsSet("wiretap", S.wiretap); lsSet("settings", S.settings);
+  updateStorageBanner();
+}
+const save = {
+  content() { lsSet("content", S.content); updateStorageBanner(); },
+  progress() { lsSet("progress", S.progress); updateStorageBanner(); },
+  sessions() { lsSet("sessions", S.sessions); updateStorageBanner(); },
+  errors() { lsSet("errors", S.errors); updateStorageBanner(); },
+  legends() { lsSet("legends", S.legends); updateStorageBanner(); },
+  scenarios() { lsSet("scenarios", S.scenarios); updateStorageBanner(); },
+  wiretap() { lsSet("wiretap", S.wiretap); updateStorageBanner(); },
+  settings() { lsSet("settings", S.settings); updateStorageBanner(); }
+};
+function updateStorageBanner() { $("storage-banner").hidden = S.storageOk; }
+
+function readSeed() {
+  try {
+    const el = document.getElementById("seed-content");
+    const raw = el ? el.textContent.trim() : "";
+    if (!raw || raw === "__SEED__") return { drills: [], decon: [], lexicon: { hu: [], de: { nouns: [], parts: [], adjectives: [], verbs: [] } }, scenarios: [] };
+    const seed = JSON.parse(raw);
+    seed.drills = seed.drills || []; seed.decon = seed.decon || []; seed.scenarios = seed.scenarios || []; seed.manual = seed.manual || [];
+    seed.lexicon = seed.lexicon || {}; seed.lexicon.hu = seed.lexicon.hu || [];
+    seed.lexicon.de = Object.assign({ nouns: [], parts: [], adjectives: [], verbs: [] }, seed.lexicon.de || {});
+    return seed;
+  } catch (e) { console.warn("seed parse failed", e); return { drills: [], decon: [], lexicon: { hu: [], de: { nouns: [], parts: [], adjectives: [], verbs: [] } }, scenarios: [] }; }
+}
+function seedToContent(seed) {
+  const out = [];
+  seed.drills.forEach(d => out.push(Object.assign({ module: "drill" }, d)));
+  seed.decon.forEach(d => out.push(Object.assign({ module: "decon" }, d)));
+  seed.lexicon.hu.forEach((e, i) => out.push(Object.assign({ id: "hu-lex-" + pad(i + 1), lang: "hu", module: "lexicon", kind: "noun" }, e)));
+  const de = seed.lexicon.de;
+  de.nouns.forEach((e, i) => out.push(Object.assign({ id: "de-lexn-" + pad(i + 1), lang: "de", module: "lexicon", kind: "noun" }, e)));
+  de.parts.forEach((e, i) => out.push(Object.assign({ id: "de-lexp-" + pad(i + 1), lang: "de", module: "lexicon", kind: "part" }, e)));
+  de.adjectives.forEach((e, i) => out.push(Object.assign({ id: "de-lexa-" + pad(i + 1), lang: "de", module: "lexicon", kind: "adjective" }, e)));
+  de.verbs.forEach((e, i) => out.push(Object.assign({ id: "de-lexv-" + pad(i + 1), lang: "de", module: "lexicon", kind: "verb" }, e)));
+  return out;
+}
+function pad(n) { return String(n).padStart(3, "0"); }
+
+function migrate(fromVersion) {
+  /* Migration hook. Add per-version steps here as the schema grows. Never wipe progress or content. */
+  void fromVersion;
+}
+
+function loadState() {
+  S.seed = readSeed();
+  const storedVersion = lsGet("version");
+  const content = lsGet("content");
+  if (!Array.isArray(content)) { S.content = seedToContent(S.seed); lsSet("content", S.content); }
+  else S.content = content;
+  S.progress = lsGet("progress") || {};
+  S.sessions = lsGet("sessions") || [];
+  S.errors = lsGet("errors") || [];
+  S.legends = lsGet("legends") || [];
+  const sc = lsGet("scenarios");
+  S.scenarios = Array.isArray(sc) && sc.length ? sc : S.seed.scenarios.map(x => Object.assign({}, x));
+  if (!Array.isArray(sc) || !sc.length) lsSet("scenarios", S.scenarios);
+  S.wiretap = lsGet("wiretap") || [];
+  S.settings = deepMerge(JSON.parse(JSON.stringify(DEFAULT_SETTINGS)), lsGet("settings") || {});
+  if (!S.settings.startDate) S.settings.startDate = todayISO();
+  S.settings.gapMinutes = clamp(Number(S.settings.gapMinutes) || 90, 60, 180);
+  if (typeof storedVersion === "number" && storedVersion < APP_VERSION) migrate(storedVersion);
+  lsSet("version", APP_VERSION);
+  lsSet("settings", S.settings);
+  updateStorageBanner();
+}
+function deepMerge(base, over) {
+  if (!over || typeof over !== "object") return base;
+  Object.keys(over).forEach(k => {
+    if (over[k] && typeof over[k] === "object" && !Array.isArray(over[k]) && base[k] && typeof base[k] === "object") deepMerge(base[k], over[k]);
+    else base[k] = over[k];
+  });
+  return base;
+}
+
+/* ============================================================
+   UI helpers
+   ============================================================ */
+function $(id) { return document.getElementById(id); }
+function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
+function clamp(n, a, b) { return Math.min(b, Math.max(a, n)); }
+function todayISO(d) { const x = d ? new Date(d) : new Date(); return x.getFullYear() + "-" + String(x.getMonth() + 1).padStart(2, "0") + "-" + String(x.getDate()).padStart(2, "0"); }
+function fmtDate(ts) { const d = new Date(ts); return todayISO(d); }
+function fmtClock(ms, tenths) {
+  const t = Math.max(0, ms); const m = Math.floor(t / 60000); const s = Math.floor((t % 60000) / 1000);
+  const base = String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0");
+  return tenths ? base + "." + Math.floor((t % 1000) / 100) : base;
+}
+function uid(prefix) { return (prefix || "id") + "-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 7); }
+function pct(a, b) { return b ? Math.round(100 * a / b) : 0; }
+function shuffle(arr) { const a = arr.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+let toastTimer = null;
+function toast(msg) {
+  const t = $("toast"); t.textContent = msg; t.hidden = false;
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => { t.hidden = true; }, 2600);
+}
+function copyText(text, textareaEl) {
+  const done = () => toast("Copied");
+  const fallback = () => {
+    if (textareaEl) { textareaEl.hidden = false; textareaEl.focus(); textareaEl.select(); toast("Select the text and copy it"); }
+    else toast("Copy failed. Select the text manually.");
+  };
+  try {
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, fallback);
+    else fallback();
+  } catch (e) { fallback(); }
+}
+function setSeg(groupSelector, attr, value) {
+  document.querySelectorAll(groupSelector + " button[" + attr + "]").forEach(b => b.setAttribute("aria-pressed", String(b.getAttribute(attr) === String(value))));
+}
+function on(id, evt, fn) { const el = $(id); if (el) el.addEventListener(evt, fn); }
+function listify(v) { return Array.isArray(v) ? v : (v == null || v === "" ? [] : [v]); }
+function normalizeAnswer(s) {
+  return String(s || "").toLowerCase().replace(/ß/g, "ss").replace(/[.,!?;:"'„“”‚‘’()–—-]/g, "").replace(/\s+/g, " ").trim();
+}
+function familyToCategory(family, lang) {
+  const f = String(family || "");
+  if (f === "verb.separable" || f === "verb.inseparable") return "prefix";
+  if (f === "tekamolo" || f === "konj2") return f === "tekamolo" ? "order" : "conj";
+  if (f === "plural") return lang === "hu" ? "stem" : "gender";
+  const p = f.split(".")[0];
+  const map = { case: "case", order: "order", coverb: "coverb", conj: "conj", adj: "adj", harmony: "harmony", stem: "stem", verb: "conj", gender: "gender", prep: "case", focus: "order", numeral: "lex" };
+  return map[p] || "lex";
+}
+function categoryToFamily(cat, lang) {
+  const de = { case: "case.acc", gender: "gender.chunk", adj: "adj.weak", order: "order.v2", conj: "konj2", prefix: "verb.separable", stem: "plural", lex: "gender.chunk", spell: "gender.chunk", mouth: "gender.chunk", ear: "gender.chunk", xfer: "order.v2", legend: "order.v2", coverb: "verb.separable", harmony: "gender.chunk" };
+  const hu = { case: "case.interior", gender: "harmony.2form", adj: "harmony.2form", order: "focus.order", conj: "conj.indef", prefix: "coverb.attached", coverb: "coverb.attached", harmony: "harmony.2form", stem: "stem.alternation", lex: "harmony.2form", spell: "harmony.2form", mouth: "harmony.2form", ear: "harmony.2form", xfer: "focus.order", legend: "focus.order" };
+  return (lang === "hu" ? hu : de)[cat] || (lang === "hu" ? "harmony.2form" : "gender.chunk");
+}
+
+/* content accessors */
+function drills(lang) { return S.content.filter(i => i.module === "drill" && (!lang || i.lang === lang)); }
+function deconExamples(lang) { return S.content.filter(i => i.module === "decon" && (!lang || i.lang === lang)); }
+function huLexicon() { return S.content.filter(i => i.module === "lexicon" && i.lang === "hu"); }
+function deLexicon() {
+  const L = S.content.filter(i => i.module === "lexicon" && i.lang === "de");
+  return { nouns: L.filter(i => i.kind === "noun"), parts: L.filter(i => i.kind === "part"), adjectives: L.filter(i => i.kind === "adjective"), verbs: L.filter(i => i.kind === "verb") };
+}
+function byId(id) { return S.content.find(i => i.id === id); }
+
+/* ============================================================
+   FSRS (v4 default weights; grades 1/2/3 mapped to Good|Easy / Hard / Again)
+   ============================================================ */
+const FSRS_W = [0.4, 0.6, 2.4, 5.8, 4.93, 0.94, 0.86, 0.01, 1.49, 0.14, 0.94, 2.18, 0.05, 0.34, 1.26, 0.29, 2.61];
+function gradeToRating(grade, elapsedSec, targetSec) {
+  if (grade === 3) return 1;
+  if (grade === 2) return 2;
+  return (targetSec && elapsedSec <= targetSec / 2) ? 4 : 3;
+}
+function fsrsUpdate(p, grade, elapsedSec, targetSec, now) {
+  const w = FSRS_W; const r = gradeToRating(grade, elapsedSec, targetSec);
+  p = Object.assign({ reps: 0, lapses: 0, state: "new", grades: [] }, p || {});
+  let S_, D_;
+  if (!p.reps || p.stability == null) {
+    S_ = w[r - 1];
+    D_ = clamp(w[4] - (r - 3) * w[5], 1, 10);
+  } else {
+    const elapsedDays = Math.max(0, (now - (p.lastSeen || now)) / DAY);
+    const S0 = Math.max(0.1, p.stability); const D0 = clamp(p.difficulty || w[4], 1, 10);
+    const R = Math.pow(1 + elapsedDays / (9 * S0), -1);
+    let D1 = D0 - w[6] * (r - 3); D1 = w[7] * w[4] + (1 - w[7]) * D1; D_ = clamp(D1, 1, 10);
+    if (r === 1) {
+      S_ = w[11] * Math.pow(D_, -w[12]) * (Math.pow(S0 + 1, w[13]) - 1) * Math.exp(w[14] * (1 - R));
+      p.lapses = (p.lapses || 0) + 1;
+    } else {
+      const hardPenalty = r === 2 ? w[15] : 1; const easyBonus = r === 4 ? w[16] : 1;
+      S_ = S0 * (1 + Math.exp(w[8]) * (11 - D_) * Math.pow(S0, -w[9]) * (Math.exp(w[10] * (1 - R)) - 1) * hardPenalty * easyBonus);
+    }
+  }
+  S_ = Math.max(0.1, S_);
+  const interval = r === 1 ? 1 : Math.max(1, Math.round(S_));
+  p.stability = S_; p.difficulty = D_; p.reps = (p.reps || 0) + 1; p.lastGrade = grade; p.lastSeen = now;
+  p.due = now + interval * DAY;
+  p.grades = (p.grades || []).concat([grade]).slice(-6);
+  if (p.state !== "retired") p.state = S_ >= 1 ? "review" : "learning";
+  // retire: reps ≥ 2, last two grades 1, stability ≥ 7
+  const g = p.grades;
+  if (p.reps >= 2 && g.length >= 2 && g[g.length - 1] === 1 && g[g.length - 2] === 1 && S_ >= 7) p.state = "retired";
+  // heat
+  if (grade === 1 && g.length >= 2 && g[g.length - 2] === 1) p.heat = false;
+  return p;
+}
+
+/* ============================================================
+   TTS
+   ============================================================ */
+function collectVoices() {
+  S.voices = { de: null, hu: null };
+  try {
+    const synth = window.speechSynthesis;
+    if (!synth || !synth.getVoices) { renderVoiceBadges(); return; }
+    const vs = synth.getVoices() || [];
+    const pick = (full, short) => vs.find(v => (v.lang || "").replace("_", "-").toLowerCase() === full) || vs.find(v => (v.lang || "").toLowerCase().startsWith(short)) || null;
+    S.voices.de = pick("de-de", "de"); S.voices.hu = pick("hu-hu", "hu");
+  } catch (e) { /* never throw */ }
+  renderVoiceBadges();
+}
+function renderVoiceBadges() {
+  ["de", "hu"].forEach(l => {
+    const b = $("voice-badge-" + l); if (!b) return;
+    b.textContent = S.voices[l] ? S.voices[l].name : "none";
+    b.className = "badge " + (S.voices[l] ? "ok" : "warn");
+  });
+  const h = $("voice-badge-hdr");
+  const missing = ["de", "hu"].filter(l => !S.voices[l]);
+  if (missing.length) { h.hidden = false; h.className = "badge warn"; h.textContent = "text mode: no " + missing.map(l => LANG_NAME[l]).join(" or ") + " voice"; }
+  else h.hidden = true;
+}
+function speak(text, lang) {
+  try {
+    const synth = window.speechSynthesis;
+    if (!synth || !S.voices[lang] || !S.settings.tts[lang]) return false;
+    synth.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.voice = S.voices[lang]; u.lang = S.voices[lang].lang || (lang === "de" ? "de-DE" : "hu-HU"); u.rate = 0.95;
+    synth.speak(u); return true;
+  } catch (e) { return false; }
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+const VIEW_TITLES = { mission: "Mission Control", drill: "Drill Engine", decon: "Deconstructor", wiretap: "Wiretap", legend: "Legend", manual: "Field Manual", content: "Content Manager", settings: "Settings" };
+function show(view) {
+  if (S.drill && S.drill.phase === "stage" && view !== "drill") { /* leaving a live drill ends it */ endSession(); }
+  S.view = view;
+  Object.keys(VIEW_TITLES).forEach(v => { const el = $("view-" + v); if (el) el.hidden = v !== view; });
+  document.querySelectorAll("[data-nav]").forEach(b => { if (b.getAttribute("data-nav") === view) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current"); });
+  $("view-title").textContent = VIEW_TITLES[view];
+  if (view === "mission") renderMission();
+  if (view === "drill") renderDrillSetup();
+  if (view === "decon") renderDeconExamples();
+  if (view === "wiretap") renderWiretap();
+  if (view === "legend") renderLegend();
+  if (view === "content") renderContentList();
+  if (view === "manual") renderManual();
+  if (view === "settings") renderSettings();
+  try { if (typeof window.scrollTo === "function" && !window.__olcNoScroll) window.scrollTo({ top: 0, left: 0 }); } catch (e) { /* ignore */ }
+}
+
+/* ============================================================
+   DRILL
+   ============================================================ */
+const DS = { lang: "de", source: "due", length: 20, typed: false, families: new Set(), preset: null };
+
+function familyCounts(lang) {
+  const m = {};
+  drills(lang).forEach(d => { m[d.family || "other"] = (m[d.family || "other"] || 0) + 1; });
+  return m;
+}
+function renderDrillSetup() {
+  setSeg("#drill-setup", "data-dlang", DS.lang); setSeg("#drill-setup", "data-src", DS.source); setSeg("#drill-setup", "data-len", DS.length);
+  $("drill-lang").value = DS.lang; $("drill-source").value = DS.source; $("drill-length").value = DS.length; $("drill-typed").checked = DS.typed;
+  $("drill-families-wrap").hidden = DS.source !== "families";
+  const counts = familyCounts(DS.lang);
+  const fams = Object.keys(counts).sort();
+  fams.forEach(f => { if (DS.families.size === 0) DS.families.add(f); });
+  [...DS.families].forEach(f => { if (!counts[f]) DS.families.delete(f); });
+  $("drill-families").innerHTML = fams.map(f => '<button type="button" class="chip' + (DS.families.has(f) ? " on" : "") + '" data-fam="' + esc(f) + '">' + esc(f) + ' <span class="n">' + counts[f] + "</span></button>").join("") || '<span class="empty">No drills for this language yet.</span>';
+  $("drill-families").querySelectorAll("[data-fam]").forEach(b => b.addEventListener("click", () => { const f = b.getAttribute("data-fam"); if (DS.families.has(f)) DS.families.delete(f); else DS.families.add(f); renderDrillSetup(); }));
+  const pool = buildPool(DS.lang, DS.source, DS.families);
+  $("drill-pool-count").textContent = pool.length + " item" + (pool.length === 1 ? "" : "s") + " available";
+  $("drill-start").disabled = pool.length === 0;
+  $("drill-setup-msg").hidden = true;
+  ["drill-setup", "drill-guard", "drill-persona", "drill-stage", "drill-summary"].forEach(id => { $(id).hidden = id !== "drill-setup"; });
+}
+function progressOf(id) { return S.progress[id] || { state: "new", reps: 0, lapses: 0, due: 0 }; }
+function buildPool(lang, source, families) {
+  const now = Date.now();
+  const all = drills(lang);
+  const notRetired = all.filter(d => progressOf(d.id).state !== "retired");
+  const due = notRetired.filter(d => { const p = progressOf(d.id); return p.reps > 0 && p.due <= now; });
+  const heat = notRetired.filter(d => progressOf(d.id).heat === true);
+  if (source === "due") return uniq(due.concat(heat, notRetired.filter(d => !progressOf(d.id).reps))); // doctrine queue: due → heat → fresh
+  if (source === "heat") return heat;
+  if (source === "all") return all;
+  if (source === "families") return notRetired.filter(d => families.has(d.family || "other"));
+  return notRetired;
+}
+function uniq(arr) { const seen = new Set(); return arr.filter(x => { if (seen.has(x.id)) return false; seen.add(x.id); return true; }); }
+
+function buildQueue(lang, source, families, length) {
+  const now = Date.now();
+  const pool = buildPool(lang, source, families);
+  const P = id => progressOf(id);
+  const due = pool.filter(d => P(d.id).reps > 0 && P(d.id).due <= now && !P(d.id).heat);
+  const heat = pool.filter(d => P(d.id).heat === true);
+  const fresh = pool.filter(d => !P(d.id).reps).sort((a, b) => (a.difficulty || 1) - (b.difficulty || 1));
+  const rest = pool.filter(d => P(d.id).reps > 0 && !(P(d.id).due <= now) && !P(d.id).heat);
+  let ordered = uniq(shuffle(due).concat(shuffle(heat), fresh, shuffle(rest)));
+  ordered = interleave(ordered, families && families.size ? [...families] : Object.keys(familyCounts(lang)));
+  return ordered.slice(0, length);
+}
+function interleave(items, selectedFamilies) {
+  // pass 1: no family > 3 consecutive
+  const out = []; let pool = items.slice();
+  while (pool.length) {
+    let idx = 0;
+    const lastFam = f => out.length >= 3 && out.slice(-3).every(x => (x.family || "other") === f);
+    if (lastFam(pool[0].family || "other")) { const alt = pool.findIndex(x => !lastFam(x.family || "other")); if (alt > 0) idx = alt; }
+    out.push(pool.splice(idx, 1)[0]);
+  }
+  // pass 2: every selected family present in first 10 when possible
+  const first10 = new Set(out.slice(0, 10).map(x => x.family || "other"));
+  let slot = Math.min(9, out.length - 1);
+  selectedFamilies.forEach(f => {
+    if (first10.has(f)) return;
+    const j = out.findIndex((x, i) => i >= 10 && (x.family || "other") === f);
+    if (j < 0 || slot < 0) return;
+    // swap into a slot whose family already appears twice in the first 10
+    let target = -1;
+    for (let i = slot; i >= 0; i--) { const fam = out[i].family || "other"; if (out.slice(0, 10).filter(x => (x.family || "other") === fam).length > 1) { target = i; break; } }
+    if (target < 0) return;
+    [out[target], out[j]] = [out[j], out[target]]; first10.add(f);
+  });
+  return out;
+}
+
+function startDrill(opts) {
+  const lang = opts.lang; const now = Date.now();
+  // interference guard
+  const otherEnd = (S.settings.lastSessionEnd || {})[OTHER[lang]] || 0;
+  const gapMs = S.settings.gapMinutes * 60000;
+  if (otherEnd && now - otherEnd < gapMs && !opts.overrode) {
+    const remaining = Math.ceil((gapMs - (now - otherEnd)) / 60000);
+    S.drill = { phase: "guard", opts: opts };
+    $("guard-text").textContent = "Your last " + LANG_NAME[OTHER[lang]] + " session ended " + Math.floor((now - otherEnd) / 60000) + " min ago. " + remaining + " min of the " + S.settings.gapMinutes + "-minute gap remain.";
+    ["drill-setup", "drill-guard", "drill-persona", "drill-stage", "drill-summary"].forEach(id => { $(id).hidden = id !== "drill-guard"; });
+    return;
+  }
+  const queue = buildQueue(lang, opts.source, opts.families, opts.length);
+  if (!queue.length) { $("drill-setup-msg").hidden = false; $("drill-setup-msg").textContent = "Nothing to drill with these settings. Pick another source or add items."; renderDrillSetup(); $("drill-setup-msg").hidden = false; return; }
+  if (!S.settings.firstSessionDate[lang]) { S.settings.firstSessionDate[lang] = todayISO(); save.settings(); }
+  S.drill = {
+    phase: "persona", lang: lang, typed: !!opts.typed, queue: queue, idx: 0, results: [], requeue: [], streak: 0, maxStreak: 0,
+    startedAt: now, byFamily: {}, timer: null, cueStart: 0, elapsedMs: 0, revealed: false, graded: false, personaTimer: null, personaSkip: !!opts.skipPersona
+  };
+  renderPersona();
+}
+function personaLocked(lang) {
+  const first = S.settings.firstSessionDate[lang];
+  if (!first) return true;
+  return (Date.now() - new Date(first + "T00:00:00").getTime()) < 14 * DAY;
+}
+function renderPersona() {
+  const d = S.drill; const lang = d.lang;
+  ["drill-setup", "drill-guard", "drill-persona", "drill-stage", "drill-summary"].forEach(id => { $(id).hidden = id !== "drill-persona"; });
+  $("persona-title").textContent = "Persona switch: " + LANG_NAME[lang];
+  $("persona-fillers").textContent = FILLERS[lang].join("   ");
+  const locked = personaLocked(lang);
+  const skippable = !locked && S.settings.personaSkippable[lang];
+  let left = 60;
+  $("persona-countdown").textContent = left;
+  $("persona-begin").disabled = !skippable;
+  $("persona-note").textContent = locked ? "First 14 days of " + LANG_NAME[lang] + ": the full 60 seconds are required." : (skippable ? "Skippable (Settings). Use the minute anyway when you can." : "Begin unlocks when the countdown ends.");
+  clearInterval(d.personaTimer);
+  d.personaTimer = setInterval(() => {
+    left -= 1; $("persona-countdown").textContent = Math.max(0, left);
+    if (left <= 0) { clearInterval(d.personaTimer); $("persona-begin").disabled = false; }
+  }, 1000);
+  if (d.personaSkip && skippable) { clearInterval(d.personaTimer); beginCues(); }
+}
+function beginCues() {
+  const d = S.drill; clearInterval(d.personaTimer);
+  d.phase = "stage";
+  ["drill-setup", "drill-guard", "drill-persona", "drill-stage", "drill-summary"].forEach(id => { $(id).hidden = id !== "drill-stage"; });
+  $("stage-lang").textContent = d.lang; $("stage-mode").textContent = d.typed ? "typed" : "spoken";
+  $("stage-typed").hidden = !d.typed; $("stage-reveal-row").hidden = d.typed;
+  $("stage-input").setAttribute("lang", d.lang === "de" ? "de" : "hu");
+  showCue();
+}
+function currentItem() { const d = S.drill; return d.queue[d.idx]; }
+function showCue() {
+  const d = S.drill; const item = currentItem();
+  if (!item) { endSession(); return; }
+  d.revealed = false; d.graded = false; d.cueStart = Date.now(); d.elapsedMs = 0;
+  $("stage-pos").textContent = (d.idx + 1) + " / " + d.queue.length;
+  $("stage-progress").style.width = Math.round(100 * d.idx / d.queue.length) + "%";
+  $("stage-family").textContent = item.family || "other";
+  $("stage-instruction").textContent = item.instruction || "";
+  $("stage-cue").textContent = item.cue || "";
+  $("stage-target").textContent = "target " + (item.speedTargetSec || 5) + " s";
+  $("stage-streak").textContent = d.streak;
+  $("stage-answer-box").hidden = true; $("stage-grades").hidden = true; $("stage-next-row").hidden = true;
+  $("stage-reveal-row").hidden = d.typed; $("stage-typed").hidden = !d.typed;
+  $("stage-result").textContent = ""; $("stage-result").className = "result";
+  const t = $("stage-timer"); t.textContent = "00:00.0"; t.classList.remove("over");
+  const spoke = item.speakCue && S.settings.tts[d.lang] && S.voices[d.lang] ? speak(item.cue, d.lang) : false;
+  const badge = $("stage-novoice");
+  if (item.speakCue && !spoke) { badge.hidden = false; badge.textContent = "no " + LANG_NAME[d.lang] + " voice on this device — read the cue"; } else badge.hidden = true;
+  $("stage-replay").disabled = !S.voices[d.lang];
+  clearInterval(d.timer);
+  d.timer = setInterval(tickTimer, 100);
+  if (d.typed) { const inp = $("stage-input"); inp.value = ""; inp.disabled = false; try { inp.focus(); } catch (e) { /* ignore */ } }
+}
+function tickTimer() {
+  const d = S.drill; if (!d || d.phase !== "stage" || d.revealed) return;
+  const item = currentItem(); if (!item) return;
+  d.elapsedMs = Date.now() - d.cueStart;
+  const t = $("stage-timer"); t.textContent = fmtClock(d.elapsedMs, true);
+  t.classList.toggle("over", d.elapsedMs > (item.speedTargetSec || 5) * 1000);
+}
+function stopTimer() { const d = S.drill; d.elapsedMs = Date.now() - d.cueStart; clearInterval(d.timer); $("stage-timer").textContent = fmtClock(d.elapsedMs, true); }
+function reveal() {
+  const d = S.drill; if (d.revealed) return;
+  stopTimer(); d.revealed = true;
+  const item = currentItem();
+  $("stage-answer").textContent = item.answer || ""; $("stage-explain").textContent = item.explain || "";
+  $("stage-answer-box").hidden = false; $("stage-reveal-row").hidden = true;
+  if (!d.typed) $("stage-grades").hidden = false;
+}
+function submitTyped() {
+  const d = S.drill; if (d.revealed) return;
+  const item = currentItem(); const typed = $("stage-input").value;
+  stopTimer(); d.revealed = true; $("stage-input").disabled = true;
+  const target = normalizeAnswer(typed);
+  const ok = [item.answer].concat(listify(item.accepted)).some(a => normalizeAnswer(a) === target);
+  $("stage-answer").textContent = item.answer || ""; $("stage-explain").textContent = item.explain || "";
+  $("stage-answer-box").hidden = false;
+  grade(ok ? 1 : 3, typed);
+}
+function grade(g, produced) {
+  const d = S.drill; if (d.graded) return;
+  if (!d.revealed) reveal();
+  d.graded = true;
+  const item = currentItem(); const now = Date.now();
+  const elapsedSec = d.elapsedMs / 1000; const targetSec = item.speedTargetSec || 5;
+  const inTime = elapsedSec <= targetSec;
+  const prev = S.progress[item.id] || {};
+  const prevGrade = prev.lastGrade;
+  const p = fsrsUpdate(Object.assign({}, prev), g, elapsedSec, targetSec, now);
+  let wroteError = false;
+  if (g === 3 || (g === 2 && prevGrade === 2)) {
+    p.heat = true; wroteError = true;
+    S.errors.push({ id: uid("err"), date: now, lang: d.lang, produced: g === 3 ? (produced && produced.trim() ? produced.trim() : "(miss)") : "(hesitation x2)", correct: item.answer, category: familyToCategory(item.family, d.lang), source: "drill", itemId: item.id, open: true, passes: [] });
+    save.errors();
+  }
+  S.progress[item.id] = p; save.progress();
+  if (g === 1) { d.streak += 1; d.maxStreak = Math.max(d.maxStreak, d.streak); } else d.streak = 0;
+  const fam = item.family || "other"; d.byFamily[fam] = d.byFamily[fam] || { n: 0, ok: 0 }; d.byFamily[fam].n += 1; if (g === 1) d.byFamily[fam].ok += 1;
+  d.results.push({ itemId: item.id, grade: g, elapsedSec: elapsedSec, inTime: inTime, family: fam, answer: item.answer, cue: item.cue, requeued: !!d.queue[d.idx]._requeued });
+  if (g === 3 && !item._requeued) { const again = Object.assign({}, item, { _requeued: true }); d.queue.push(again); }
+  $("stage-streak").textContent = d.streak;
+  const r = $("stage-result");
+  if (g === 1) { r.textContent = inTime ? "Correct, in time (" + elapsedSec.toFixed(1) + " s)." : "Correct, but late (" + elapsedSec.toFixed(1) + " s, target " + targetSec + " s)."; r.className = "result " + (inTime ? "ok" : "late"); }
+  else if (g === 2) { r.textContent = "Hesitated." + (wroteError ? " Second hesitation in a row: logged to the burn book." : ""); r.className = "result late"; }
+  else { r.textContent = "Missed. Logged to the burn book; it comes back at the end of this session."; r.className = "result bad"; }
+  $("stage-grades").hidden = true; $("stage-next-row").hidden = false;
+  try { $("stage-next").focus(); } catch (e) { /* ignore */ }
+}
+function nextCue() {
+  const d = S.drill; if (!d.graded) return;
+  d.idx += 1;
+  if (d.idx >= d.queue.length) endSession(); else showCue();
+}
+function endSession() {
+  const d = S.drill; if (!d || d.phase === "summary") return;
+  clearInterval(d.timer); clearInterval(d.personaTimer);
+  const now = Date.now();
+  const n = d.results.length;
+  d.phase = "summary";
+  if (n === 0) { S.drill = null; renderDrillSetup(); return; }
+  const g1 = d.results.filter(r => r.grade === 1);
+  const rec = {
+    id: uid("ses"), date: now, lang: d.lang, module: "drill", cues: n,
+    correctInTime: g1.filter(r => r.inTime).length, correctLate: g1.filter(r => !r.inTime).length,
+    wrong: d.results.filter(r => r.grade === 3).length, hesitated: d.results.filter(r => r.grade === 2).length,
+    maxStreak: d.maxStreak, durationSec: Math.round((now - d.startedAt) / 1000), byFamily: d.byFamily
+  };
+  S.sessions.push(rec); save.sessions();
+  S.settings.lastSessionEnd[d.lang] = now; save.settings();
+  renderSummary(rec);
+}
+function renderSummary(rec) {
+  const d = S.drill;
+  ["drill-setup", "drill-guard", "drill-persona", "drill-stage", "drill-summary"].forEach(id => { $(id).hidden = id !== "drill-summary"; });
+  const n = rec.cues; const score = pct(rec.correctInTime + rec.correctLate, n); const inTime = pct(rec.correctInTime, n);
+  $("summary-meta").textContent = LANG_NAME[rec.lang] + ", " + fmtDate(rec.date) + ", " + (d.typed ? "typed" : "spoken");
+  $("summary-stats").innerHTML = [["Score", score + "%"], ["In time", inTime + "%"], ["Correct, late", rec.correctLate], ["Wrong", rec.wrong], ["Longest streak", rec.maxStreak], ["Duration", fmtClock(rec.durationSec * 1000)]]
+    .map(x => '<div class="stat"><b>' + esc(x[1]) + "</b><span>" + esc(x[0]) + "</span></div>").join("");
+  const tb = $("summary-families").querySelector("tbody");
+  tb.innerHTML = Object.keys(rec.byFamily).sort().map(f => {
+    const x = rec.byFamily[f]; const s = pct(x.ok, x.n);
+    const link = s < 70 ? '<button type="button" class="btn ghost sm" data-decon-fam="' + esc(f) + '">Open the deconstructor explanation for this family</button>' : "";
+    return "<tr><td>" + esc(f) + '</td><td class="num">' + x.n + '</td><td class="num">' + x.ok + '</td><td class="num">' + s + "%</td><td>" + link + "</td></tr>";
+  }).join("");
+  tb.querySelectorAll("[data-decon-fam]").forEach(b => b.addEventListener("click", () => openDeconForFamily(rec.lang, b.getAttribute("data-decon-fam"))));
+  const misses = d.results.filter(r => r.grade === 3 && !r.requeued);
+  $("summary-misses-wrap").hidden = misses.length === 0;
+  $("summary-misses").innerHTML = misses.map(r => '<div class="item"><div class="col"><span class="mono">' + esc(r.cue) + '</span><span class="meta">' + esc(r.answer) + '</span></div><div class="field inline"><input type="checkbox" id="heat-' + esc(r.itemId) + '" data-heat="' + esc(r.itemId) + '" checked><label for="heat-' + esc(r.itemId) + '">keep in heat set</label></div></div>').join("");
+  $("summary-misses").querySelectorAll("[data-heat]").forEach(cb => cb.addEventListener("change", () => { const p = S.progress[cb.getAttribute("data-heat")]; if (p) { p.heat = cb.checked; save.progress(); } }));
+  const answers = shuffle(uniq(d.results.map(r => ({ id: r.itemId, a: r.answer })))).slice(0, 3);
+  $("summary-bridge-list").innerHTML = answers.map(x => "<div>" + esc(x.a) + "</div>").join("") || '<span class="empty">No cues this session.</span>';
+}
+function openDeconForFamily(lang, family) {
+  const prefix = String(family).split(".")[0];
+  const ex = deconExamples(lang);
+  const match = ex.find(e => listify(e.tags).includes(family)) || ex.find(e => listify(e.tags).some(t => String(t).split(".")[0] === prefix)) || ex[0];
+  S.drill = null;
+  show("decon");
+  if (match) { DX.lang = lang; setDeconLang(lang); $("decon-input").value = match.word; parseDecon(match.word, lang); }
+}
+
+/* ============================================================
+   DECON
+   ============================================================ */
+const DX = { lang: "hu", override: "auto", buildLang: null };
+function detectLang(text) {
+  const t = String(text || "").trim();
+  if (!t) return null;
+  if (/[őű]/.test(t) || /(gy|ty|ny|sz|zs|cs)/i.test(t)) return "hu";
+  if (/[ßäöü]/i.test(t) && /(^|\s)[A-ZÄÖÜ]/.test(t)) return "de";
+  if (/\b(der|die|das|dem|den|des|ein|eine|einen|einem|einer|eines|kein|keine|keinen|keinem|keiner)\b/i.test(t)) return "de";
+  if (E && typeof E.detectLang === "function") { try { const r = E.detectLang(t); if (r === "de" || r === "hu") return r; } catch (e) { /* ignore */ } }
+  if (/[ß]/.test(t)) return "de";
+  if (/[áéíóúöüÁÉÍÓÚÖÜ]/.test(t) && !/[ß]/.test(t) && /^[a-záéíóöőúüű]+$/i.test(t) && !/^[A-Z]/.test(t)) return "hu";
+  return null;
+}
+function resolveLang(text) {
+  if (DX.override !== "auto") return DX.override;
+  const d = detectLang(text);
+  return d || S.settings.deconLang || DX.lang;
+}
+function setDeconLang(l) { DX.override = l === "auto" ? "auto" : l; setSeg("#view-decon", "data-xlang", DX.override); $("decon-lang").value = DX.override; }
+function renderDeconExamples() {
+  const q = ($("decon-filter").value || "").toLowerCase();
+  const ex = deconExamples().filter(e => !q || (e.word + " " + (e.gloss || "") + " " + listify(e.tags).join(" ")).toLowerCase().includes(q));
+  $("decon-examples").innerHTML = ex.map(e => '<button type="button" class="chip" data-ex="' + esc(e.id) + '"><span class="lang">' + esc(e.lang) + "</span>" + esc(e.word) + "</button>").join("") || '<span class="empty">No examples match.</span>';
+  $("decon-examples").querySelectorAll("[data-ex]").forEach(b => b.addEventListener("click", () => { const e = byId(b.getAttribute("data-ex")); if (!e) return; $("decon-input").value = e.word; setDeconLang(e.lang); parseDecon(e.word, e.lang); }));
+  setSeg("#view-decon", "data-xlang", DX.override);
+}
+function engineParse(word, lang) {
+  if (!E) return { analyses: [], engineMissing: true };
+  try {
+    const res = lang === "hu" ? E.hu.parse(word, huLexicon()) : E.de.parse(word, deLexicon());
+    return { analyses: Array.isArray(res) ? res : [] };
+  } catch (e) { console.warn("engine parse error", e); return { analyses: [], error: String(e && e.message || e) }; }
+}
+function engineGuess(word, lang) {
+  if (!E) return null;
+  try { return lang === "hu" ? E.hu.guessUnknown(word, huLexicon()) : E.de.guessUnknown(word, deLexicon()); }
+  catch (e) { console.warn("engine guess error", e); return null; }
+}
+function parseDecon(raw, forcedLang) {
+  const word = String(raw || "").trim().replace(/\s+/g, " ");
+  const out = $("decon-results");
+  if (!word) { out.innerHTML = ""; return; }
+  const lang = forcedLang || resolveLang(word);
+  DX.lang = lang; S.settings.deconLang = lang; save.settings();
+  $("decon-detected").textContent = (DX.override === "auto" ? "detected " : "") + LANG_NAME[lang];
+  const example = deconExamples(lang).find(e => e.word.toLowerCase() === word.toLowerCase());
+  const r = engineParse(word, lang);
+  let html = "";
+  if (r.analyses.length) {
+    html += r.analyses.map((a, i) => renderAnalysis(a, i + 1, r.analyses.length, word, lang)).join("");
+  } else if (example) {
+    const a = { lang: lang, word: example.word, kind: example.tokens ? "np" : "noun", morphemes: example.morphemes, tokens: example.tokens, explain: example.explain, confidence: 1 };
+    html += renderAnalysis(a, 1, 1, word, lang, "from the preloaded example" + (E ? " (engine returned no analysis)" : ""));
+  } else {
+    html += renderUnknown(word, lang, r);
+  }
+  out.innerHTML = html;
+  wireAnalysisButtons(out, word, lang);
+}
+function renderMorphs(ms, unknown) {
+  return '<div class="morphs">' + (ms || []).map(m => '<div class="morph' + (unknown && /unknown/i.test(m.label || m.role) ? " unknown" : "") + '"><span class="f">' + esc(m.form) + '</span><span class="r">' + esc(m.role) + '</span><span class="l">' + esc(m.label) + "</span></div>").join("") + "</div>";
+}
+function renderAnalysis(a, i, total, word, lang, note) {
+  let body = "";
+  if (a.tokens) body = '<div class="morphs">' + a.tokens.map(t => '<div class="tok">' + (t.morphemes || []).map(m => '<div class="morph"><span class="f">' + esc(m.form) + '</span><span class="r">' + esc(m.role) + '</span><span class="l">' + esc(m.label) + "</span></div>").join("") + "</div>").join("") + "</div>";
+  else body = renderMorphs(a.morphemes, a.unknown);
+  const conf = a.confidence != null && a.confidence < 1 ? '<span class="badge warn">heuristic</span>' : "";
+  return '<div class="analysis"><h3>' + (total > 1 ? "Analysis " + i + " of " + total : "Analysis") + ' <span class="tag">' + esc(a.kind || "") + "</span>" + conf + (note ? '<span class="muted small">' + esc(note) + "</span>" : "") + "</h3>" + body +
+    '<p class="note">' + esc(a.explain || "") + "</p>" +
+    '<div class="row"><button type="button" class="btn sm" data-todrill="' + i + '">Turn into drill</button></div></div>';
+}
+function renderUnknown(word, lang, r) {
+  const g = engineGuess(word, lang);
+  let html = '<div class="analysis"><h3>Not in lexicon <span class="tag">' + esc(lang) + "</span></h3>";
+  if (r.engineMissing) html += '<p class="note">The analysis engine is not loaded in this build; parsing uses the preloaded examples only.</p>';
+  if (r.error) html += '<p class="note">Engine error: ' + esc(r.error) + "</p>";
+  if (g && (g.morphemes || g.tokens)) {
+    html += g.tokens ? '<div class="morphs">' + g.tokens.map(t => '<div class="tok">' + renderMorphs(t.morphemes, true) + "</div>").join("") + "</div>" : renderMorphs(g.morphemes, true);
+    html += '<p class="note">' + esc(g.explain || "") + "</p>";
+  } else {
+    html += '<p class="note">No suffix could be peeled. Add the stem below so the word parses.</p>';
+  }
+  const stemGuess = g && g.morphemes ? (g.morphemes.find(m => /stem|noun|unknown/i.test(m.role + " " + m.label)) || g.morphemes[0]).form : word.split(" ").pop();
+  html += '<details open><summary class="muted small" style="cursor:pointer">Add the stem to the lexicon</summary>' + lexiconForm(lang, stemGuess) + "</details>";
+  html += '<div class="row"><button type="button" class="btn sm" data-todrill="unknown">Turn into drill</button></div></div>';
+  return html;
+}
+function lexiconForm(lang, stem) {
+  if (lang === "hu") {
+    return '<form id="lex-add-form" class="grid3" data-lang="hu" style="margin-top:8px">' +
+      fld("base", "Base", stem) + fld("gloss", "Gloss") + sel("harmony", "Harmony", ["back", "front", "frontRounded"]) + fld("obl", "Oblique stem", stem) + sel("lv", "Linking vowel", ["a", "e", "o", "ö", ""]) +
+      fld("acc", "Accusative") + fld("pl", "Plural") + fld("sup", "Superessive") + chk("j3", "3SG possessive takes j") + chk("ji", "Plural-possessed takes j") +
+      '<div class="field" style="justify-content:flex-end"><button type="submit" class="btn primary">Save and re-parse</button></div></form>';
+  }
+  return '<form id="lex-add-form" class="col" data-lang="de" style="margin-top:8px">' +
+    '<div class="seg" role="group" aria-label="Entry type"><button type="button" data-lexkind="noun" aria-pressed="true">Noun</button><button type="button" data-lexkind="verb" aria-pressed="false">Verb</button></div>' +
+    '<div class="grid3" id="lex-de-noun">' + fld("base", "Base (with capital)", stem) + sel("gender", "Gender", ["m", "f", "n"]) + fld("pl", "Plural") + fld("gloss", "Gloss") + fld("parts", "Compound parts (comma-separated)", stem.toLowerCase()) + "</div>" +
+    '<div class="grid3" id="lex-de-verb" hidden>' + fld("inf", "Infinitive", stem) + fld("prefix", "Prefix") + chk("separable", "Separable") + fld("stem", "Stem") + fld("part2", "Participle II") + fld("part2stem", "Participle stem") + fld("part2end", "Participle ending") + fld("vgloss", "Gloss") + "</div>" +
+    '<div class="row"><button type="submit" class="btn primary">Save and re-parse</button></div></form>';
+}
+function fld(name, label, value) { return '<div class="field"><label for="lx-' + name + '">' + esc(label) + '</label><input type="text" id="lx-' + name + '" name="' + name + '" value="' + esc(value || "") + '"></div>'; }
+function sel(name, label, opts) { return '<div class="field"><label for="lx-' + name + '">' + esc(label) + '</label><select id="lx-' + name + '" name="' + name + '">' + opts.map(o => '<option value="' + esc(o) + '">' + esc(o === "" ? "(none)" : o) + "</option>").join("") + "</select></div>"; }
+function chk(name, label) { return '<div class="field inline"><input type="checkbox" id="lx-' + name + '" name="' + name + '"><label for="lx-' + name + '">' + esc(label) + "</label></div>"; }
+function wireAnalysisButtons(root, word, lang) {
+  root.querySelectorAll("[data-todrill]").forEach(b => b.addEventListener("click", () => turnIntoDrill(word, lang)));
+  const form = root.querySelector("#lex-add-form");
+  if (!form) return;
+  let kind = "noun";
+  form.querySelectorAll("[data-lexkind]").forEach(b => b.addEventListener("click", () => {
+    kind = b.getAttribute("data-lexkind");
+    form.querySelectorAll("[data-lexkind]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    const n = form.querySelector("#lex-de-noun"), v = form.querySelector("#lex-de-verb"); if (n) n.hidden = kind !== "noun"; if (v) v.hidden = kind !== "verb";
+  }));
+  form.addEventListener("submit", ev => {
+    ev.preventDefault();
+    const f = new FormData(form); const g = k => String(f.get(k) || "").trim();
+    let entry;
+    if (lang === "hu") {
+      if (!g("base")) { toast("Base is required"); return; }
+      entry = { id: uid("hu-lex"), lang: "hu", module: "lexicon", kind: "noun", base: g("base"), gloss: g("gloss"), harmony: g("harmony"), obl: g("obl") || g("base"), lv: g("lv"), acc: g("acc"), pl: g("pl"), sup: g("sup"), j3: f.get("j3") === "on", ji: f.get("ji") === "on" };
+    } else if (kind === "noun") {
+      if (!g("base")) { toast("Base is required"); return; }
+      entry = { id: uid("de-lexn"), lang: "de", module: "lexicon", kind: "noun", base: g("base"), gender: g("gender"), pl: g("pl"), gloss: g("gloss"), parts: g("parts").split(",").map(s => s.trim()).filter(Boolean) };
+    } else {
+      if (!g("inf")) { toast("Infinitive is required"); return; }
+      entry = { id: uid("de-lexv"), lang: "de", module: "lexicon", kind: "verb", inf: g("inf"), prefix: g("prefix"), separable: f.get("separable") === "on", stem: g("stem"), part2: g("part2"), part2stem: g("part2stem"), part2end: g("part2end"), gloss: g("vgloss") };
+    }
+    S.content.push(entry); save.content();
+    toast("Added to lexicon");
+    parseDecon(word, lang);
+  });
+}
+function turnIntoDrill(word, lang) {
+  const ex = deconExamples(lang).find(e => e.word.toLowerCase() === word.toLowerCase());
+  const item = {
+    id: uid(lang + "-drill"), lang: lang, module: "drill", drillType: "transformation", family: ex && listify(ex.tags)[0] ? listify(ex.tags)[0] : (lang === "hu" ? "case.interior" : "case.acc"),
+    instruction: "Produce the form.", cue: (ex && ex.gloss) ? ex.gloss + " → ?" : "Build: " + word, answer: word, accepted: [word],
+    explain: ex ? ex.explain : "From the deconstructor.", tags: ex ? listify(ex.tags) : [], difficulty: 2, speedTargetSec: 5, speakCue: false
+  };
+  S.content.push(item); save.content();
+  S.progress[item.id] = { state: "new", reps: 0, lapses: 0, due: Date.now(), heat: true }; save.progress();
+  toast("Drill created: " + item.id);
+}
+function randomExample() {
+  const ex = deconExamples(DX.override === "auto" ? null : DX.override);
+  if (!ex.length) { toast("No examples loaded"); return; }
+  const e = ex[Math.floor(Math.random() * ex.length)];
+  $("decon-input").value = e.word; parseDecon(e.word, e.lang);
+}
+
+/* build */
+function renderBuild() {
+  const lang = DX.buildLang || (DX.override !== "auto" ? DX.override : DX.lang);
+  DX.buildLang = lang;
+  $("decon-build").hidden = false;
+  $("decon-build-lang").textContent = LANG_NAME[lang];
+  $("build-hu").hidden = lang !== "hu"; $("build-de").hidden = lang !== "de";
+  if (lang === "hu") fillHuStems(); else fillDeNouns();
+  $("build-out").hidden = true;
+}
+function fillHuStems() {
+  const q = ($("hu-stem-search").value || "").toLowerCase();
+  const sel = $("hu-stem"); const cur = sel.value;
+  const L = huLexicon().filter(e => !q || (e.base + " " + (e.gloss || "")).toLowerCase().includes(q)).sort((a, b) => a.base.localeCompare(b.base));
+  sel.innerHTML = L.map(e => '<option value="' + esc(e.id) + '">' + esc(e.base) + " — " + esc(e.gloss || "") + "</option>").join("");
+  if (cur && L.some(e => e.id === cur)) sel.value = cur;
+}
+function fillDeNouns() {
+  const q = ($("de-noun-search").value || "").toLowerCase();
+  const sel = $("de-noun"); const cur = sel.value; const L = deLexicon();
+  const nouns = L.nouns.filter(e => !q || (e.base + " " + (e.gloss || "")).toLowerCase().includes(q)).sort((a, b) => a.base.localeCompare(b.base));
+  sel.innerHTML = nouns.map(e => '<option value="' + esc(e.id) + '">' + esc(e.base) + " (" + esc(e.gender) + ") — " + esc(e.gloss || "") + "</option>").join("");
+  if (cur && nouns.some(e => e.id === cur)) sel.value = cur;
+  const adj = $("de-adj"); const curA = adj.value;
+  adj.innerHTML = '<option value="">none</option>' + L.adjectives.slice().sort((a, b) => a.base.localeCompare(b.base)).map(e => '<option value="' + esc(e.id) + '">' + esc(e.base) + " — " + esc(e.gloss || "") + "</option>").join("");
+  if (curA) adj.value = curA;
+}
+function doBuildHu() {
+  const entry = byId($("hu-stem").value); const out = $("build-out"); out.hidden = false;
+  if (!entry) { out.innerHTML = '<p class="note">Pick a stem first.</p>'; return; }
+  const opts = {};
+  if ($("hu-plural").checked) opts.plural = true;
+  if ($("hu-poss").value) opts.possessor = $("hu-poss").value;
+  if ($("hu-plpos").checked && opts.possessor) opts.pluralPossessed = true;
+  if ($("hu-case").value) opts.case = $("hu-case").value;
+  if (opts.plural && opts.pluralPossessed) { out.innerHTML = '<div class="banner bad">Plural and plural-possessed are exclusive. Pick one.</div>'; return; }
+  if (!E) { out.innerHTML = '<div class="banner">The generator is not loaded in this build.</div>'; return; }
+  let r; try { r = E.hu.build(entry, opts); } catch (e) { r = { error: String(e && e.message || e) }; }
+  if (!r || r.error) { out.innerHTML = '<div class="banner bad">' + esc(r ? r.error : "Build failed") + "</div>"; return; }
+  out.innerHTML = '<div class="built">' + esc(r.word) + "</div>" + renderMorphs(r.morphemes) + '<p class="note">' + esc(r.explain || "") + '</p><div class="row"><button type="button" class="btn sm" id="built-parse">Parse this</button></div>';
+  on("built-parse", "click", () => { $("decon-input").value = r.word; setDeconLang("hu"); parseDecon(r.word, "hu"); });
+}
+function doBuildDe() {
+  const noun = byId($("de-noun").value); const out = $("build-out"); out.hidden = false;
+  if (!noun) { out.innerHTML = '<p class="note">Pick a noun first.</p>'; return; }
+  const adj = $("de-adj").value ? byId($("de-adj").value) : null;
+  if (!E) { out.innerHTML = '<div class="banner">The generator is not loaded in this build.</div>'; return; }
+  let r; try { r = E.de.build({ noun: noun, det: $("de-det").value, case: $("de-case").value, number: $("de-number").value, adjective: adj || undefined }); } catch (e) { r = { error: String(e && e.message || e) }; }
+  if (!r || r.error) { out.innerHTML = '<div class="banner bad">' + esc(r ? r.error : "Build failed") + "</div>"; return; }
+  out.innerHTML = '<div class="built">' + esc(r.word) + '</div><div class="morphs">' + (r.tokens || []).map(t => '<div class="tok">' + (t.morphemes || []).map(m => '<div class="morph"><span class="f">' + esc(m.form) + '</span><span class="r">' + esc(m.role) + '</span><span class="l">' + esc(m.label) + "</span></div>").join("") + "</div>").join("") + '</div><p class="note">' + esc(r.explain || "") + '</p><div class="row"><button type="button" class="btn sm" id="built-parse">Parse this</button></div>';
+  on("built-parse", "click", () => { $("decon-input").value = r.word; setDeconLang("de"); parseDecon(r.word, "de"); });
+}
+
+/* ============================================================
+   WIRETAP (stub)
+   ============================================================ */
+function renderWiretap() {
+  const list = $("wiretap-list");
+  list.innerHTML = S.wiretap.length ? S.wiretap.slice().reverse().map(w => '<div class="item"><div class="col"><span><span class="lang">' + esc(w.lang) + "</span> " + esc(w.title || "(untitled)") + ' <span class="tag">rung ' + esc(w.rung) + '</span></span><span class="meta">' + esc(String(w.text || "").slice(0, 160)) + (String(w.text || "").length > 160 ? "…" : "") + '</span></div><button type="button" class="btn sm" data-wt-del="' + esc(w.id) + '">Delete</button></div>').join("") : '<p class="empty">No intercepts yet. Paste a text above.</p>';
+  list.querySelectorAll("[data-wt-del]").forEach(b => b.addEventListener("click", () => {
+    const id = b.getAttribute("data-wt-del");
+    if (b.getAttribute("data-armed")) { S.wiretap = S.wiretap.filter(w => w.id !== id); save.wiretap(); renderWiretap(); }
+    else { b.setAttribute("data-armed", "1"); b.textContent = "Confirm delete"; b.classList.add("danger"); }
+  }));
+}
+function saveWiretap(ev) {
+  ev.preventDefault();
+  const text = $("wiretap-text").value.trim();
+  if (!text) { toast("Paste a text first"); return; }
+  S.wiretap.push({ id: uid("wt"), lang: $("wiretap-lang").value, module: "wiretap", title: $("wiretap-title").value.trim() || text.split(/\s+/).slice(0, 5).join(" "), text: text, rung: 1, key: { who: [], what: [], where: [], when: [], intent: [] }, created: Date.now() });
+  save.wiretap(); $("wiretap-text").value = ""; $("wiretap-title").value = ""; renderWiretap(); toast("Intercept saved");
+}
+
+/* ============================================================
+   LEGEND (stub)
+   ============================================================ */
+const LG = { lang: "de", scenario: null };
+function legendFor(lang) {
+  let l = S.legends.find(x => x.lang === lang);
+  if (!l) { l = { id: "legend-" + lang, lang: lang, name: "", age: "", town: "", job: "", facts: [] }; S.legends.push(l); }
+  return l;
+}
+function renderLegend() {
+  setSeg("#view-legend", "data-llang", LG.lang); $("legend-lang").value = LG.lang;
+  const l = legendFor(LG.lang);
+  $("legend-name").value = l.name || ""; $("legend-age").value = l.age || ""; $("legend-town").value = l.town || ""; $("legend-job").value = l.job || "";
+  renderFacts(l);
+  const scns = S.scenarios.filter(s => s.lang === LG.lang);
+  $("scenario-list").innerHTML = scns.map(s => {
+    const qs = listify(s.seedQuestions);
+    return '<div class="scn' + (LG.scenario === s.id ? " on" : "") + '"><div class="row between"><strong>' + esc(s.title) + '</strong><span class="muted small">' + esc(s.city) + ", " + esc(s.register) + ", level " + esc(s.difficulty) + "</span></div>" +
+      (qs.length ? "<ol>" + qs.map(q => "<li>" + esc(q) + "</li>").join("") + "</ol>" : '<p class="note">Questions to be written.</p>') +
+      '<div class="row"><button type="button" class="btn sm" data-scn="' + esc(s.id) + '">' + (LG.scenario === s.id ? "Selected" : "Select") + "</button></div></div>";
+  }).join("") || '<p class="empty">No scenarios for this language.</p>';
+  $("scenario-list").querScenarios = null;
+  $("scenario-list").querySelectorAll("[data-scn]").forEach(b => b.addEventListener("click", () => { LG.scenario = b.getAttribute("data-scn"); renderLegend(); }));
+  $("legend-saved").textContent = "";
+}
+function renderFacts(l) {
+  const box = $("legend-facts");
+  box.innerHTML = (l.facts || []).map((f, i) => '<div class="item"><input type="text" aria-label="Fact" placeholder="fact" value="' + esc(f.text) + '" data-fact="' + i + '" data-k="text" style="flex:2 1 160px"><input type="text" aria-label="Anchor" placeholder="anchor (what makes it real)" value="' + esc(f.anchor) + '" data-fact="' + i + '" data-k="anchor" style="flex:2 1 160px"><input type="text" aria-label="Sentence in the target language" placeholder="sentence in ' + LANG_NAME[l.lang] + '" value="' + esc(f.sentence) + '" data-fact="' + i + '" data-k="sentence" style="flex:3 1 200px"><button type="button" class="btn sm" data-fact-del="' + i + '">Remove</button></div>').join("") || '<p class="empty">No facts yet. Add the ones an interrogator would probe first.</p>';
+  box.querySelectorAll("[data-fact-del]").forEach(b => b.addEventListener("click", () => { readLegendForm(); l.facts.splice(Number(b.getAttribute("data-fact-del")), 1); save.legends(); renderFacts(l); }));
+}
+function readLegendForm() {
+  const l = legendFor(LG.lang);
+  l.name = $("legend-name").value.trim(); l.age = $("legend-age").value.trim(); l.town = $("legend-town").value.trim(); l.job = $("legend-job").value.trim();
+  $("legend-facts").querySelectorAll("[data-fact]").forEach(inp => { const f = l.facts[Number(inp.getAttribute("data-fact"))]; if (f) f[inp.getAttribute("data-k")] = inp.value; });
+  return l;
+}
+function saveLegend() { readLegendForm(); save.legends(); $("legend-saved").textContent = "Saved."; toast("Legend saved"); }
+function exportForChat() {
+  const l = readLegendForm(); save.legends();
+  const s = S.scenarios.find(x => x.id === LG.scenario && x.lang === LG.lang);
+  if (!s) { $("legend-export-msg").textContent = "Select a scenario first."; return; }
+  const facts = (l.facts || []).filter(f => f.text).map(f => "- " + f.text + (f.anchor ? " (anchor: " + f.anchor + ")" : "") + (f.sentence ? " — " + f.sentence : "")).join("\n") || "- (no facts recorded yet)";
+  const qs = listify(s.seedQuestions).map(q => "- " + q).join("\n");
+  const text = [
+    "You are an interrogator in a " + LANG_NAME[LG.lang] + " role-play. Scenario: " + s.title + " in " + s.city + ". Register: " + s.register + ".",
+    "", "My legend (cover biography):", "Name: " + (l.name || "?") + "; age: " + (l.age || "?") + "; town: " + (l.town || "?") + "; job: " + (l.job || "?") + ".", "Facts:", facts,
+    "", "Seed questions (expand on these):", qs || "- (write 5 questions for this scenario)",
+    "", "Rules:", "1. Ask 15 questions in random order, one at a time, and wait for my answer.", "2. Natural speed, native phrasing; no simplification unless I ask.", "3. Probe with follow-ups when an answer is thin or inconsistent with the legend.", "4. Include exactly one deliberate misunderstanding of something I said; see whether I correct it.", "5. " + LANG_NAME[LG.lang] + " only. If I switch language, repeat the question in " + LANG_NAME[LG.lang] + ".",
+    "6. At the end, report my faults as a list: what I said, the correct form, and a category (mouth, ear, case, gender, adj, order, conj, coverb, prefix, harmony, stem, lex, xfer, legend, spell).",
+    "Recovery moves I may use: " + listify(s.recoveryMoves).join(" / ")
+  ].join("\n");
+  const ta = $("legend-export-text"); ta.value = text;
+  copyText(text, ta); $("legend-export-msg").textContent = "Prompt copied. Paste it into the chat.";
+}
+
+/* ============================================================
+   CONTENT manager
+   ============================================================ */
+const CM = { editing: null, isNew: false, kind: null };
+function itemSummary(i) {
+  if (i.module === "drill") return (i.family || "") + " · " + (i.cue || "");
+  if (i.module === "decon") return (i.word || "") + " — " + (i.gloss || "");
+  if (i.module === "lexicon") return (i.kind || "") + ": " + (i.base || i.inf || i.form || "") + (i.gloss ? " — " + i.gloss : "");
+  return "";
+}
+function renderContentList() {
+  const lang = $("cm-lang").value, mod = $("cm-module").value, q = ($("cm-search").value || "").toLowerCase();
+  const rows = S.content.filter(i => (!lang || i.lang === lang) && (!mod || i.module === mod) && (!q || (i.id + " " + itemSummary(i) + " " + listify(i.tags).join(" ")).toLowerCase().includes(q)));
+  $("cm-count").textContent = rows.length + " of " + S.content.length;
+  const tb = $("cm-table").querySelector("tbody");
+  tb.innerHTML = rows.slice(0, 400).map(i => '<tr class="click' + (CM.editing === i.id ? " selected" : "") + '" data-cm="' + esc(i.id) + '"><td class="mono small">' + esc(i.id) + '</td><td><span class="lang">' + esc(i.lang) + "</span></td><td>" + esc(i.module) + '</td><td style="min-width:200px">' + esc(itemSummary(i)) + "</td></tr>").join("") + (rows.length > 400 ? '<tr><td colspan="4" class="muted">Showing 400 of ' + rows.length + ". Narrow the filter.</td></tr>" : "");
+  tb.querySelectorAll("[data-cm]").forEach(tr => tr.addEventListener("click", () => openEditor(tr.getAttribute("data-cm"))));
+}
+const FIELD_DEFS = {
+  drill: [["id", "Id", "text"], ["lang", "Language", "lang"], ["drillType", "Drill type", "select:substitution,transformation,response,expansion"], ["family", "Family", "text"], ["instruction", "Instruction", "text"], ["cue", "Cue", "text"], ["answer", "Answer", "text"], ["accepted", "Accepted (one per line)", "lines"], ["explain", "Explain", "text"], ["tags", "Tags (comma-separated)", "csv"], ["difficulty", "Difficulty 1-3", "number"], ["speedTargetSec", "Speed target (s)", "number"], ["speakCue", "Speak cue", "bool"]],
+  decon: [["id", "Id", "text"], ["lang", "Language", "lang"], ["word", "Word or phrase", "text"], ["gloss", "Gloss", "text"], ["morphemes", "Morphemes (one per line: form | role | label)", "morphs"], ["tokens", "Tokens for phrases (one token per line, morphemes separated by ' + ': form|role|label + form|role|label)", "tokens"], ["explain", "Explain", "text"], ["tags", "Tags (comma-separated)", "csv"]],
+  "lexicon:hu": [["id", "Id", "text"], ["base", "Base", "text"], ["gloss", "Gloss", "text"], ["harmony", "Harmony", "select:back,front,frontRounded"], ["obl", "Oblique stem", "text"], ["lv", "Linking vowel", "select:a,e,o,ö,"], ["acc", "Accusative", "text"], ["pl", "Plural", "text"], ["sup", "Superessive", "text"], ["j3", "3SG possessive takes j", "bool"], ["ji", "Plural-possessed takes j", "bool"], ["notes", "Notes", "text"]],
+  "lexicon:noun": [["id", "Id", "text"], ["base", "Base", "text"], ["gender", "Gender", "select:m,f,n"], ["pl", "Plural", "text"], ["gen", "Genitive (optional)", "text"], ["gloss", "Gloss", "text"], ["parts", "Compound parts (comma-separated)", "csv"]],
+  "lexicon:part": [["id", "Id", "text"], ["form", "Form", "text"], ["gloss", "Gloss", "text"], ["type", "Type", "text"]],
+  "lexicon:adjective": [["id", "Id", "text"], ["base", "Base", "text"], ["gloss", "Gloss", "text"]],
+  "lexicon:verb": [["id", "Id", "text"], ["inf", "Infinitive", "text"], ["prefix", "Prefix", "text"], ["separable", "Separable", "bool"], ["stem", "Stem", "text"], ["part2", "Participle II", "text"], ["part2stem", "Participle stem", "text"], ["part2end", "Participle ending", "text"], ["gloss", "Gloss", "text"]]
+};
+function kindOf(item) { return item.module === "lexicon" ? (item.lang === "hu" ? "lexicon:hu" : "lexicon:" + item.kind) : item.module; }
+function morphsToText(ms) { return (ms || []).map(m => [m.form, m.role, m.label].join(" | ")).join("\n"); }
+function textToMorphs(t) { return String(t || "").split("\n").map(l => l.trim()).filter(Boolean).map(l => { const p = l.split("|").map(s => s.trim()); return { form: p[0] || "", role: p[1] || "", label: p[2] || "" }; }); }
+function openEditor(id, isNew, kind) {
+  const item = isNew ? null : byId(id);
+  if (!isNew && !item) return;
+  CM.editing = isNew ? null : id; CM.isNew = !!isNew; CM.kind = isNew ? kind : kindOf(item);
+  const defs = FIELD_DEFS[CM.kind] || FIELD_DEFS.drill;
+  $("cm-editor").hidden = false; $("cm-editor-title").textContent = isNew ? "New " + CM.kind.replace("lexicon:", "lexicon ") : "Edit item";
+  $("cm-editor-id").textContent = isNew ? "" : id; $("cm-msg").hidden = true; $("cm-confirm").hidden = true;
+  $("cm-delete").hidden = !!isNew; $("cm-duplicate").hidden = !!isNew;
+  const src = item || defaultItem(CM.kind);
+  $("cm-fields").innerHTML = defs.map(d => {
+    const [k, label, type] = d; const v = src[k]; const fid = "cmf-" + k;
+    let ctl;
+    if (type === "bool") ctl = '<div class="field inline"><input type="checkbox" id="' + fid + '" data-k="' + k + '" data-t="bool"' + (v ? " checked" : "") + '><label for="' + fid + '">' + esc(label) + "</label></div>";
+    else if (type === "lang") ctl = '<div class="field"><label for="' + fid + '">' + esc(label) + '</label><select id="' + fid + '" data-k="' + k + '" data-t="text"><option value="de"' + (v === "de" ? " selected" : "") + '>de</option><option value="hu"' + (v === "hu" ? " selected" : "") + ">hu</option></select></div>";
+    else if (type.startsWith("select:")) ctl = '<div class="field"><label for="' + fid + '">' + esc(label) + '</label><select id="' + fid + '" data-k="' + k + '" data-t="text">' + type.slice(7).split(",").map(o => '<option value="' + esc(o) + '"' + (String(v == null ? "" : v) === o ? " selected" : "") + ">" + esc(o || "(none)") + "</option>").join("") + "</select></div>";
+    else if (type === "lines" || type === "morphs" || type === "tokens") {
+      let text = ""; if (type === "lines") text = listify(v).join("\n"); if (type === "morphs") text = morphsToText(v); if (type === "tokens") text = (v || []).map(t => morphsToText(t.morphemes).split("\n").join(" + ")).join("\n");
+      ctl = '<div class="field"><label for="' + fid + '">' + esc(label) + '</label><textarea id="' + fid + '" data-k="' + k + '" data-t="' + type + '" style="min-height:72px">' + esc(text) + "</textarea></div>";
+    }
+    else ctl = '<div class="field"><label for="' + fid + '">' + esc(label) + '</label><input type="' + (type === "number" ? "number" : "text") + '" id="' + fid + '" data-k="' + k + '" data-t="' + type + '" value="' + esc(type === "csv" ? listify(v).join(", ") : (v == null ? "" : v)) + '"></div>';
+    return ctl;
+  }).join("");
+  renderContentList();
+}
+function defaultItem(kind) {
+  const lang = kind === "lexicon:hu" ? "hu" : ($("cm-lang").value || "de");
+  const n = S.content.filter(i => kindOf(i) === kind && i.lang === lang).length + 1;
+  if (kind === "drill") return { id: lang + "-drill-" + pad(n), lang: lang, module: "drill", drillType: "substitution", family: lang === "hu" ? "case.interior" : "case.acc", difficulty: 1, speedTargetSec: 4, speakCue: true, accepted: [], tags: [] };
+  if (kind === "decon") return { id: lang + "-decon-" + pad(n), lang: lang, module: "decon", morphemes: [], tags: [] };
+  if (kind === "lexicon:hu") return { id: "hu-lex-" + pad(n), lang: "hu", module: "lexicon", kind: "noun", harmony: "back", lv: "a", j3: false, ji: false };
+  if (kind === "lexicon:noun") return { id: "de-lexn-" + pad(n), lang: "de", module: "lexicon", kind: "noun", gender: "m", parts: [] };
+  if (kind === "lexicon:part") return { id: "de-lexp-" + pad(n), lang: "de", module: "lexicon", kind: "part", type: "noun-part" };
+  if (kind === "lexicon:adjective") return { id: "de-lexa-" + pad(n), lang: "de", module: "lexicon", kind: "adjective" };
+  return { id: "de-lexv-" + pad(n), lang: "de", module: "lexicon", kind: "verb", prefix: "", separable: false };
+}
+function readEditor() {
+  const base = CM.isNew ? defaultItem(CM.kind) : Object.assign({}, byId(CM.editing));
+  $("cm-fields").querySelectorAll("[data-k]").forEach(el => {
+    const k = el.getAttribute("data-k"), t = el.getAttribute("data-t");
+    if (t === "bool") base[k] = el.checked;
+    else if (t === "number") base[k] = el.value === "" ? undefined : Number(el.value);
+    else if (t === "csv") base[k] = el.value.split(",").map(s => s.trim()).filter(Boolean);
+    else if (t === "lines") base[k] = el.value.split("\n").map(s => s.trim()).filter(Boolean);
+    else if (t === "morphs") { const m = textToMorphs(el.value); if (m.length) base[k] = m; else delete base[k]; }
+    else if (t === "tokens") { const toks = el.value.split("\n").map(s => s.trim()).filter(Boolean).map(l => ({ morphemes: textToMorphs(l.split(" + ").join("\n")) })); if (toks.length) base[k] = toks; else delete base[k]; }
+    else base[k] = el.value.trim();
+  });
+  if (CM.kind === "lexicon:hu") { base.lang = "hu"; base.module = "lexicon"; base.kind = "noun"; }
+  if (CM.kind.startsWith("lexicon:") && CM.kind !== "lexicon:hu") { base.lang = "de"; base.module = "lexicon"; base.kind = CM.kind.slice(8); }
+  return base;
+}
+function validateItem(it) {
+  const errs = [];
+  if (!it.id) errs.push("Id is required.");
+  const dup = S.content.find(x => x.id === it.id && x.id !== CM.editing); if (dup) errs.push("Id already exists: " + it.id);
+  if (it.module === "drill") ["lang", "family", "cue", "answer"].forEach(k => { if (!it[k]) errs.push(k + " is required."); });
+  if (it.module === "decon") { if (!it.word) errs.push("Word is required."); if (!it.morphemes && !it.tokens) errs.push("Morphemes or tokens are required."); if (it.morphemes && it.tokens) errs.push("Use morphemes or tokens, not both."); if (it.morphemes && it.morphemes.map(m => m.form).join("") !== it.word) errs.push("Morpheme forms do not concatenate to the word."); if (it.tokens && it.tokens.map(t => t.morphemes.map(m => m.form).join("")).join(" ") !== it.word) errs.push("Token forms do not concatenate to the phrase."); }
+  if (it.module === "lexicon") { if (it.kind === "verb" ? !it.inf : it.kind === "part" ? !it.form : !it.base) errs.push("Base form is required."); if (it.lang === "hu" && !it.harmony) errs.push("Harmony is required."); }
+  return errs;
+}
+function huGeneratorWarnings(it) {
+  if (it.lang !== "hu" || !E || !E.hu || typeof E.hu.generateForms !== "function") return [];
+  if (it.obl && it.obl !== it.base) return []; // irregular stem: no warning
+  try {
+    const probe = Object.assign({}, it, { acc: "", pl: "", sup: "" });
+    const forms = E.hu.generateForms(probe); const warn = [];
+    const has = f => f && forms && typeof forms.has === "function" && forms.has(f);
+    if (forms && forms.size) ["acc", "pl", "sup"].forEach(k => { if (it[k] && !has(it[k])) warn.push(k + " \"" + it[k] + "\" differs from what the base rules would produce."); });
+    return warn;
+  } catch (e) { return []; }
+}
+function saveEditor() {
+  const it = readEditor(); const errs = validateItem(it); const msg = $("cm-msg");
+  if (errs.length) { msg.hidden = false; msg.className = "banner bad"; msg.textContent = errs.join(" "); return; }
+  const warns = huGeneratorWarnings(it);
+  if (CM.isNew) S.content.push(it); else { const i = S.content.findIndex(x => x.id === CM.editing); if (i >= 0) S.content[i] = it; else S.content.push(it); }
+  save.content(); CM.editing = it.id; CM.isNew = false; $("cm-editor-id").textContent = it.id; $("cm-delete").hidden = false; $("cm-duplicate").hidden = false;
+  msg.hidden = false; msg.className = "banner " + (warns.length ? "" : "ok"); msg.textContent = warns.length ? "Saved. " + warns.join(" ") : "Saved.";
+  renderContentList();
+}
+function duplicateEditor() {
+  const it = readEditor(); it.id = it.id + "-copy"; let n = 2; while (byId(it.id)) { it.id = it.id.replace(/(-copy\d*)?$/, "-copy" + n); n++; }
+  S.content.push(it); save.content(); openEditor(it.id); toast("Duplicated as " + it.id);
+}
+function deleteEditor() {
+  const id = CM.editing; if (!id) return;
+  S.content = S.content.filter(x => x.id !== id); delete S.progress[id]; save.content(); save.progress();
+  CM.editing = null; $("cm-editor").hidden = true; renderContentList(); toast("Deleted " + id);
+}
+
+/* ============================================================
+   MISSION control
+   ============================================================ */
+function renderMission() {
+  const now = new Date();
+  $("today-date").textContent = now.toLocaleDateString(undefined, { weekday: "long", year: "numeric", month: "short", day: "numeric" });
+  $("hdr-date").textContent = todayISO(now);
+  $("slot-de").textContent = S.settings.slots.de; $("slot-hu").textContent = S.settings.slots.hu;
+  setSeg("#plan-seg", "data-plan", S.settings.planLength); $("plan-length").value = S.settings.planLength;
+  setSeg("#view-mission", "data-tlang", S.settings.todayLang); $("today-lang").value = S.settings.todayLang;
+  renderBanners(); renderBlocks(); renderDue(); renderWeek(); renderBurn(); renderHistogram(); renderMilestones(); renderHistory(); renderKeymap();
+}
+function daysUntil(iso) { if (!iso) return null; const d = new Date(iso + "T00:00:00").getTime(); return Math.ceil((d - Date.now()) / DAY); }
+function renderBanners() {
+  const de = daysUntil(S.settings.examDates.de), hu = daysUntil(S.settings.examDates.hu);
+  const msgs = [];
+  if (de != null && de >= 0 && de <= 56) msgs.push("Ratio shift: 70/30 German (exam in " + de + " days)");
+  if (hu != null && hu >= 0 && hu <= 42) msgs.push("Ratio shift: 70/30 Hungarian (exam in " + hu + " days)");
+  $("ratio-banner").hidden = !msgs.length; $("ratio-banner").textContent = msgs.join(" · ");
+  const open = S.errors.filter(e => e.open);
+  const heavy = ["de", "hu"].filter(l => open.filter(e => e.lang === l).length > 40);
+  $("burn-banner").hidden = !heavy.length;
+  $("burn-banner").textContent = heavy.map(l => LANG_NAME[l] + ": " + open.filter(e => e.lang === l).length + " open lines. Intake is outrunning consolidation: halve vocabulary intake (P-4) for two weeks.").join(" ");
+  const stale = open.filter(e => Date.now() - e.date > 30 * DAY).length;
+  $("burn-note").hidden = !stale; $("burn-note").textContent = stale + " open burn-book line" + (stale === 1 ? " is" : "s are") + " older than 30 days. Drill or retire them.";
+}
+
+/* blocks and timers */
+function blockTimerKey(i) { return S.settings.planLength + ":" + i; }
+function renderBlocks() {
+  const blocks = PLAN_BLOCKS[S.settings.planLength] || PLAN_BLOCKS[45];
+  const list = $("block-list");
+  list.innerHTML = blocks.map((b, i) => {
+    const t = S.blockTimers[blockTimerKey(i)];
+    const left = t ? Math.max(0, t.endAt - Date.now()) : b[1] * 60000;
+    return '<div class="block' + (t && t.done ? " done" : "") + '" id="block-' + i + '"><div class="col"><strong>' + esc(b[0]) + '</strong><span class="muted small">' + b[1] + " min · " + blockHint(b[0]) + ' · <button type="button" class="manual-link" data-block-manual="' + i + '">Manual</button></span></div><div class="bt num' + (t && t.done ? " over" : "") + '" id="block-clock-' + i + '">' + fmtClock(left) + "</div>" +
+      '<div class="ctl"><button type="button" class="btn sm primary" data-block-start="' + i + '">Start</button>' + (t ? '<button type="button" class="btn sm" data-block-stop="' + i + '">' + (t.running ? "Pause" : "Resume") + '</button><button type="button" class="btn sm" data-block-reset="' + i + '">Reset</button>' : "") + "</div>" +
+      (t && t.done ? '<div class="logline"><input type="text" id="block-log-' + i + '" placeholder="Log line: what did you do? One sentence." aria-label="Log line"><button type="button" class="btn sm" data-block-log="' + i + '">Log</button></div>' : "") + "</div>";
+  }).join("");
+  list.querySelectorAll("[data-block-start]").forEach(b => b.addEventListener("click", () => startBlock(Number(b.getAttribute("data-block-start")))));
+  list.querySelectorAll("[data-block-manual]").forEach(b => b.addEventListener("click", () => { const blk = blocks[Number(b.getAttribute("data-block-manual"))]; const ref = BLOCK_MANUAL[blk[0]] || ["d1", null]; openManual(ref[0], ref[1], ""); }));
+  list.querySelectorAll("[data-block-stop]").forEach(b => b.addEventListener("click", () => toggleBlockTimer(Number(b.getAttribute("data-block-stop")))));
+  list.querySelectorAll("[data-block-reset]").forEach(b => b.addEventListener("click", () => { delete S.blockTimers[blockTimerKey(Number(b.getAttribute("data-block-reset")))]; renderBlocks(); }));
+  list.querySelectorAll("[data-block-log]").forEach(b => b.addEventListener("click", () => {
+    const i = Number(b.getAttribute("data-block-log")); const txt = $("block-log-" + i).value.trim(); const blk = blocks[i];
+    S.sessions.push({ id: uid("ses"), date: Date.now(), lang: S.settings.todayLang, module: blk[0].toLowerCase().split(" ")[0], cues: 0, correctInTime: 0, correctLate: 0, wrong: 0, maxStreak: 0, durationSec: blk[1] * 60, byFamily: {}, note: txt });
+    save.sessions(); delete S.blockTimers[blockTimerKey(i)]; renderMission(); toast("Logged");
+  }));
+}
+function blockHint(name) {
+  return { "Phonology": "P-11 mouth work", "Drills": "Drill Engine, families", "Input": "listen or read, log new chunks", "Gisting": "Wiretap", "Shadowing / Legend": "Legend work", "Review": "Due + heat", "Writing": "one paragraph, then correct it" }[name] || "";
+}
+function startBlock(i) {
+  const blocks = PLAN_BLOCKS[S.settings.planLength]; const b = blocks[i]; const lang = S.settings.todayLang;
+  const key = blockTimerKey(i);
+  if (!S.blockTimers[key]) S.blockTimers[key] = { endAt: Date.now() + b[1] * 60000, running: true, done: false, remainingAtPause: 0 };
+  ensureBlockTicker();
+  const name = b[0];
+  if (name === "Drills") { DS.lang = lang; DS.source = "families"; show("drill"); return; }
+  if (name === "Review") { DS.lang = lang; DS.source = "due"; show("drill"); return; }
+  if (name === "Phonology") {
+    const phon = drills(lang).filter(d => listify(d.tags).includes("phonology"));
+    if (phon.length) { DS.lang = lang; DS.source = "families"; DS.families = new Set(phon.map(d => d.family)); show("drill"); return; }
+    openTimerCard(i, "Phonology — P-11", "<ol style='margin:0;padding-left:20px'>" + P11.map(s => "<li>" + esc(s) + "</li>").join("") + "</ol>");
+    return;
+  }
+  if (name === "Input") {
+    openTimerCard(i, "Input — P-4 log", '<p class="note">Open your input source (podcast, series, article). When the timer ends, log it.</p><div class="grid3"><div class="field"><label for="input-source">Source</label><input type="text" id="input-source"></div><div class="field"><label for="input-minutes">Minutes</label><input type="number" id="input-minutes" value="' + b[1] + '" min="1"></div><div class="field"><label for="input-chunks">New chunks</label><input type="number" id="input-chunks" value="0" min="0"></div></div><div class="row"><button type="button" class="btn primary" id="input-log">Save input log</button></div>');
+    on("input-log", "click", () => {
+      S.sessions.push({ id: uid("ses"), date: Date.now(), lang: lang, module: "input", cues: Number($("input-chunks").value) || 0, correctInTime: 0, correctLate: 0, wrong: 0, maxStreak: 0, durationSec: (Number($("input-minutes").value) || 0) * 60, byFamily: {}, source: $("input-source").value.trim(), newChunks: Number($("input-chunks").value) || 0 });
+      save.sessions(); delete S.blockTimers[key]; $("timer-card").hidden = true; renderMission(); toast("Input logged");
+    });
+    return;
+  }
+  if (name === "Gisting") { show("wiretap"); openTimerCard(i, "Gisting — Wiretap", '<p class="note">Work the intercepts in Wiretap. The timer runs here in Mission Control.</p>'); show("wiretap"); return; }
+  if (name === "Shadowing / Legend") { openTimerCard(i, "Shadowing / Legend", '<p class="note">Shadow one recording for the first half, then drill your legend against a scenario.</p><div class="row"><button type="button" class="btn" id="goto-legend">Open Legend</button></div>'); on("goto-legend", "click", () => show("legend")); return; }
+  if (name === "Writing") { openTimerCard(i, "Writing", '<p class="note">Write one paragraph in ' + LANG_NAME[lang] + ' about today. Then correct it with the Deconstructor and the burn book.</p><textarea id="writing-text" aria-label="Writing" placeholder="Write here"></textarea>'); return; }
+  renderBlocks();
+}
+function openTimerCard(i, title, bodyHtml) {
+  const card = $("timer-card"); card.hidden = false; card.setAttribute("data-block", String(i));
+  $("timer-card-title").textContent = title; $("timer-card-body").innerHTML = bodyHtml;
+  const b = PLAN_BLOCKS[S.settings.planLength][i]; $("timer-card-target").textContent = b[1] + " min block";
+  tickBlocks(); renderBlocks();
+  try { card.scrollIntoView({ block: "nearest" }); } catch (e) { /* ignore */ }
+}
+function toggleBlockTimer(i) {
+  const t = S.blockTimers[blockTimerKey(i)]; if (!t) return;
+  if (t.running) { t.remainingAtPause = Math.max(0, t.endAt - Date.now()); t.running = false; }
+  else { t.endAt = Date.now() + t.remainingAtPause; t.running = true; }
+  renderBlocks();
+}
+let blockTicker = null;
+function ensureBlockTicker() { if (!blockTicker) blockTicker = setInterval(tickBlocks, 500); }
+function tickBlocks() {
+  const blocks = PLAN_BLOCKS[S.settings.planLength] || [];
+  blocks.forEach((b, i) => {
+    const t = S.blockTimers[blockTimerKey(i)]; if (!t) return;
+    const left = t.running ? Math.max(0, t.endAt - Date.now()) : t.remainingAtPause;
+    const el = $("block-clock-" + i); if (el) el.textContent = fmtClock(left);
+    if (t.running && left <= 0 && !t.done) { t.done = true; t.running = false; t.remainingAtPause = 0; renderBlocks(); const bl = $("block-" + i); if (bl) bl.classList.add("flash"); toast(b[0] + " block finished. Write the log line."); }
+    const card = $("timer-card"); if (!card.hidden && card.getAttribute("data-block") === String(i)) { $("timer-card-clock").textContent = fmtClock(left); $("timer-card-clock").classList.toggle("over", left <= 0); }
+  });
+}
+
+/* due / week */
+function dueCounts(lang) {
+  const now = Date.now(); const ds = drills(lang);
+  const due = ds.filter(d => { const p = progressOf(d.id); return p.state !== "retired" && p.reps > 0 && p.due <= now; }).length;
+  const heat = ds.filter(d => progressOf(d.id).heat === true).length;
+  const fresh = ds.filter(d => !progressOf(d.id).reps).length;
+  const open = S.errors.filter(e => e.open && e.lang === lang).length;
+  return { due, heat, fresh, open };
+}
+function renderDue() {
+  $("due-grid").innerHTML = ["de", "hu"].map(l => { const c = dueCounts(l); return '<div class="stat"><b>' + c.due + "</b><span>" + LANG_NAME[l] + " due</span></div><div class=\"stat\"><b>" + c.heat + "</b><span>" + LANG_NAME[l] + " heat</span></div><div class=\"stat\"><b>" + c.open + "</b><span>" + LANG_NAME[l] + " open lines</span></div>"; }).join("");
+}
+function weekStart() { const d = new Date(); const day = (d.getDay() + 6) % 7; d.setHours(0, 0, 0, 0); d.setDate(d.getDate() - day); return d.getTime(); }
+function renderWeek() {
+  const ws = weekStart(); const ses = S.sessions.filter(s => s.date >= ws);
+  const minutes = Math.round(ses.reduce((a, s) => a + (s.durationSec || 0), 0) / 60);
+  const drillSes = ses.filter(s => s.module === "drill");
+  const cues = drillSes.reduce((a, s) => a + (s.cues || 0), 0);
+  const correct = drillSes.reduce((a, s) => a + (s.correctInTime || 0) + (s.correctLate || 0), 0);
+  const inTime = drillSes.reduce((a, s) => a + (s.correctInTime || 0), 0);
+  $("week-range").textContent = "from " + fmtDate(ws);
+  $("week-grid").innerHTML = [[minutes, "minutes"], [cues, "cues"], [pct(correct, cues) + "%", "score"], [pct(inTime, cues) + "%", "in time"], [ses.length, "sessions"]].map(x => '<div class="stat"><b>' + x[0] + "</b><span>" + x[1] + "</span></div>").join("");
+}
+
+/* burn book */
+function renderBurn() {
+  const catSel = $("burn-filter-cat"); if (catSel.options.length <= 1) catSel.innerHTML = '<option value="">All</option>' + CATEGORIES.map(c => '<option value="' + c + '">' + c + "</option>").join("");
+  const bc = $("burn-cat"); if (!bc.options.length) bc.innerHTML = CATEGORIES.map(c => '<option value="' + c + '">' + c + "</option>").join("");
+  const lang = $("burn-filter-lang").value, cat = catSel.value, st = $("burn-filter-open").value;
+  const rows = S.errors.filter(e => (!lang || e.lang === lang) && (!cat || e.category === cat) && (st === "all" || (st === "open" ? e.open : !e.open))).slice().reverse();
+  $("burn-count").textContent = S.errors.filter(e => e.open).length + " open · " + S.errors.length + " total";
+  $("burn-list").innerHTML = rows.slice(0, 60).map(e => '<div class="item"><div class="col"><span><span class="lang">' + esc(e.lang) + '</span> <span class="tag">' + esc(e.category) + '</span> <span class="mono">' + esc(e.produced) + '</span> <span class="muted">→</span> <span class="mono">' + esc(e.correct) + '</span></span><span class="meta">' + fmtDate(e.date) + " · " + esc(e.source) + (e.itemId ? " · " + esc(e.itemId) : "") + (e.open ? "" : " · retired") + '</span></div><div class="row">' + (e.open ? '<button type="button" class="btn sm" data-burn-drill="' + esc(e.id) + '">Add to drills</button><button type="button" class="btn sm" data-burn-retire="' + esc(e.id) + '">Retire</button>' : '<button type="button" class="btn sm" data-burn-reopen="' + esc(e.id) + '">Reopen</button>') + "</div></div>").join("") || '<p class="empty">No lines match. The burn book fills from drill misses and your own entries.</p>';
+  $("burn-list").querySelectorAll("[data-burn-drill]").forEach(b => b.addEventListener("click", () => burnToDrill(b.getAttribute("data-burn-drill"))));
+  $("burn-list").querySelectorAll("[data-burn-retire]").forEach(b => b.addEventListener("click", () => { const e = S.errors.find(x => x.id === b.getAttribute("data-burn-retire")); if (e) { e.open = false; e.retired = Date.now(); save.errors(); renderMission(); } }));
+  $("burn-list").querySelectorAll("[data-burn-reopen]").forEach(b => b.addEventListener("click", () => { const e = S.errors.find(x => x.id === b.getAttribute("data-burn-reopen")); if (e) { e.open = true; save.errors(); renderMission(); } }));
+}
+function addBurnLine(ev) {
+  ev.preventDefault();
+  const produced = $("burn-produced").value.trim(), correct = $("burn-correct").value.trim();
+  if (!produced || !correct) { toast("Produced and correct are required"); return; }
+  S.errors.push({ id: uid("err"), date: Date.now(), lang: $("burn-lang").value, produced, correct, category: $("burn-cat").value, source: $("burn-source").value.trim() || "manual", itemId: null, open: true, passes: [] });
+  save.errors(); $("burn-produced").value = ""; $("burn-correct").value = ""; renderMission(); toast("Line added");
+}
+function burnToDrill(errId) {
+  const e = S.errors.find(x => x.id === errId); if (!e) return;
+  const n = drills(e.lang).length + 1;
+  let id = e.lang + "-drill-b" + pad(n); while (byId(id)) id += "x";
+  const item = { id, lang: e.lang, module: "drill", drillType: "substitution", family: categoryToFamily(e.category, e.lang), instruction: "Produce the correct form.", cue: e.produced + " → (correct it)", answer: e.correct, accepted: [e.correct], explain: "Burn book: " + e.category + ", from " + e.source + ".", tags: ["burn", e.category], difficulty: 1, speedTargetSec: 4, speakCue: false, fromError: e.id };
+  S.content.push(item); save.content();
+  S.progress[id] = { state: "new", reps: 0, lapses: 0, due: Date.now(), heat: true }; save.progress();
+  e.drillId = id; save.errors();
+  toast("Drill " + id + " created (in heat set)"); renderMission();
+}
+function renderHistogram() {
+  const d = new Date(); const ms = new Date(d.getFullYear(), d.getMonth(), 1).getTime();
+  $("hist-month").textContent = d.toLocaleDateString(undefined, { month: "long", year: "numeric" });
+  const counts = {}; S.errors.filter(e => e.date >= ms).forEach(e => { counts[e.category] = (counts[e.category] || 0) + 1; });
+  const max = Math.max(1, ...Object.values(counts));
+  const cats = CATEGORIES.filter(c => counts[c]).sort((a, b) => counts[b] - counts[a]);
+  $("hist-bars").innerHTML = cats.map(c => '<div class="bar"><span>' + c + '</span><div class="t"><i style="width:' + Math.round(100 * counts[c] / max) + '%"></i></div><span class="n">' + counts[c] + "</span></div>").join("") || '<p class="empty">No lines this month.</p>';
+}
+function renderMilestones() {
+  const tb = $("milestone-table").querySelector("tbody"); const m = S.settings.milestones || {};
+  tb.innerHTML = ["0+", "1", "1+", "2"].map(lv => "<tr><td>ILR " + lv + "</td>" + ["de", "hu"].map(l => '<td><input type="date" aria-label="ILR ' + lv + " " + LANG_NAME[l] + ' passed on" id="ms-' + l + "-" + lv.replace("+", "p") + '" data-ms="' + l + "|" + lv + '" value="' + esc(m[l + "|" + lv] || "") + '"></td>').join("") + "</tr>").join("");
+  tb.querySelectorAll("[data-ms]").forEach(inp => inp.addEventListener("change", () => { S.settings.milestones = S.settings.milestones || {}; S.settings.milestones[inp.getAttribute("data-ms")] = inp.value; save.settings(); }));
+}
+function renderHistory() {
+  const tb = $("session-table").querySelector("tbody"); const rows = S.sessions.slice().reverse().slice(0, 30);
+  $("hist-count").textContent = S.sessions.length + " sessions";
+  tb.innerHTML = rows.map(s => { const n = s.cues || 0; const ok = (s.correctInTime || 0) + (s.correctLate || 0); return "<tr><td class=\"num\">" + fmtDate(s.date) + '</td><td><span class="lang">' + esc(s.lang) + "</span></td><td>" + esc(s.module) + '</td><td class="num">' + n + '</td><td class="num">' + (s.module === "drill" ? pct(ok, n) + "%" : "") + '</td><td class="num">' + (s.module === "drill" ? pct(s.correctInTime || 0, n) + "%" : "") + '</td><td class="num">' + (s.maxStreak || "") + '</td><td class="num">' + Math.round((s.durationSec || 0) / 60) + "</td></tr>"; }).join("") || '<tr><td colspan="8" class="empty">No sessions yet.</td></tr>';
+}
+function renderKeymap() {
+  const rows = [["Alt+1 … Alt+5", "Mission Control, Drill Engine, Deconstructor, Wiretap, Legend"], ["Alt+C", "Content Manager"], ["Enter", "Drill: reveal, then next. Deconstructor: parse"], ["1 / 2 / 3", "Drill: grade correct / hesitated / missed"], ["Space", "Drill: replay the cue"], ["T", "Drill: toggle typed mode (setup)"], ["Esc", "Drill: end session"], ["Ctrl+Enter", "Deconstructor: build"]];
+  $("keymap").innerHTML = rows.map(r => '<span class="kbd">' + esc(r[0]) + "</span><span>" + esc(r[1]) + "</span>").join("");
+}
+
+
+/* ============================================================
+   FIELD MANUAL — the doctrine, searchable, with protocol anchors
+   ============================================================ */
+const MS = { query: "", open: null };
+function manualSections() { return (S.seed && S.seed.manual) || []; }
+// Minimal markdown → HTML: headings, paragraphs, bullet/numbered lists, pipe tables, bold/italic/code, P-n anchors.
+function mdInline(t) {
+  let h = esc(t);
+  h = h.replace(/`([^`]+)`/g, "<code>$1</code>");
+  h = h.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+  h = h.replace(/(^|[^*\w])\*([^*\n]+)\*(?!\w)/g, "$1<em>$2</em>");
+  h = h.replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+  h = h.replace(/\bP-(\d{1,2})\b/g, (m, n) => '<a href="#" class="plink" data-proto="' + n + '">P-' + n + "</a>");
+  return h;
+}
+function mdToHtml(md) {
+  const lines = md.split("\n"); const out = []; let i = 0;
+  const flushPara = buf => { if (buf.length) { const txt = buf.join(" "); const pm = /^\*\*Protocol P-(\d+)\b/.exec(txt); out.push('<p' + (pm ? ' class="proto" id="proto-' + pm[1] + '"' : "") + ">" + mdInline(txt) + "</p>"); buf.length = 0; } };
+  let para = [];
+  while (i < lines.length) {
+    const ln = lines[i];
+    if (/^\s*$/.test(ln)) { flushPara(para); i++; continue; }
+    let m;
+    if ((m = /^(#{1,6})\s+(.*)$/.exec(ln))) { flushPara(para); const lvl = Math.min(6, m[1].length + 1); out.push("<h" + lvl + ">" + mdInline(m[2]) + "</h" + lvl + ">"); i++; continue; }
+    if (/^\|/.test(ln)) {
+      flushPara(para); const rows = [];
+      while (i < lines.length && /^\|/.test(lines[i])) { rows.push(lines[i]); i++; }
+      const cells = r => r.replace(/^\|/, "").replace(/\|\s*$/, "").split("|").map(c => c.trim());
+      const head = cells(rows[0]); const body = rows.slice(1).filter(r => !/^\|\s*-{2,}/.test(r)).map(cells);
+      out.push('<div class="table-wrap"><table><thead><tr>' + head.map(c => "<th>" + mdInline(c) + "</th>").join("") + "</tr></thead><tbody>" + body.map(r => "<tr>" + r.map(c => "<td>" + mdInline(c) + "</td>").join("") + "</tr>").join("") + "</tbody></table></div>");
+      continue;
+    }
+    if ((m = /^(\s*)([-*]|\d+\.)\s+(.*)$/.exec(ln))) {
+      flushPara(para); const ordered = /\d/.test(m[2]); const items = [];
+      while (i < lines.length && (m = /^(\s*)([-*]|\d+\.)\s+(.*)$/.exec(lines[i]))) {
+        let txt = m[3]; i++;
+        while (i < lines.length && /^\s{2,}\S/.test(lines[i]) && !/^\s*([-*]|\d+\.)\s/.test(lines[i])) { txt += " " + lines[i].trim(); i++; }
+        items.push("<li>" + mdInline(txt) + "</li>");
+      }
+      out.push((ordered ? "<ol>" : "<ul>") + items.join("") + (ordered ? "</ol>" : "</ul>"));
+      continue;
+    }
+    para.push(ln.trim()); i++;
+  }
+  flushPara(para);
+  return out.join("");
+}
+function highlight(html, q) {
+  if (!q || q.length < 2) return html;
+  const re = new RegExp("(" + q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")(?![^<]*>)", "ig");
+  return html.replace(re, "<mark>$1</mark>");
+}
+function protoOwner(n) { return manualSections().find(sec => (sec.protocols || []).includes(String(n))); }
+function openManual(secId, protoNo, query) {
+  MS.open = secId; MS.query = query || MS.query;
+  show("manual");
+  renderManual();
+  if (protoNo) { try { const el = $("proto-" + protoNo); if (el) el.scrollIntoView({ block: "start" }); } catch (e) { /* ignore */ } }
+}
+function renderManual() {
+  const secs = manualSections(); const q = (MS.query || "").trim(); const ql = q.toLowerCase();
+  const protoHit = /^p-?(\d{1,2})$/i.exec(q);
+  const matches = secs.map((sec, idx) => {
+    if (!ql) return { sec, idx, hit: "" };
+    if (protoHit) { return (sec.protocols || []).includes(protoHit[1]) ? { sec, idx, hit: "Protocol P-" + protoHit[1] } : null; }
+    const text = (sec.title + "\n" + sec.md); const pos = text.toLowerCase().indexOf(ql);
+    if (pos < 0) return null;
+    const snip = text.slice(Math.max(0, pos - 50), pos + 70).replace(/\s+/g, " ");
+    return { sec, idx, hit: "…" + snip + "…" };
+  }).filter(Boolean);
+  $("manual-search").value = q;
+  $("manual-count").textContent = secs.length ? (ql ? matches.length + " of " + secs.length + " sections" : secs.length + " sections") : "Manual not loaded.";
+  const protos = []; secs.forEach(sec => (sec.protocols || []).forEach(p => { if (!protos.includes(p)) protos.push(p); })); protos.sort((a, b) => a - b);
+  $("manual-protocols").innerHTML = protos.map(p => '<button type="button" class="chip" data-proto-chip="' + p + '">P-' + p + "</button>").join("");
+  $("manual-protocols").querySelectorAll("[data-proto-chip]").forEach(b => b.addEventListener("click", () => { const n = b.getAttribute("data-proto-chip"); const o = protoOwner(n); if (o) openManual(o.id, n, ""); }));
+  $("manual-toc").innerHTML = matches.map(m => '<button type="button" data-sec="' + esc(m.sec.id) + '"><span><span>' + esc(m.sec.title) + "</span>" + (m.hit ? '<span class="hit">' + esc(m.hit) + "</span>" : "") + '</span><span class="sec-id">' + esc(m.sec.id.toUpperCase()) + "</span></button>").join("") || '<span class="empty">No section matches.</span>';
+  $("manual-toc").querySelectorAll("[data-sec]").forEach(b => b.addEventListener("click", () => { MS.open = b.getAttribute("data-sec"); renderManual(); try { $("manual-article").scrollIntoView({ block: "start" }); } catch (e) { /* ignore */ } }));
+  const art = $("manual-article"); const openIdx = secs.findIndex(sx => sx.id === MS.open);
+  if (openIdx < 0) { art.hidden = true; return; }
+  const sec = secs[openIdx];
+  art.hidden = false;
+  $("manual-content").innerHTML = highlight("<h2>" + mdInline(sec.title) + "</h2>" + mdToHtml(sec.md), protoHit ? "" : q);
+  $("manual-content").querySelectorAll(".plink").forEach(a => a.addEventListener("click", ev => { ev.preventDefault(); const n = a.getAttribute("data-proto"); const o = protoOwner(n); if (o) openManual(o.id, n, ""); }));
+  $("manual-prev").disabled = openIdx === 0; $("manual-next").disabled = openIdx === secs.length - 1;
+  $("manual-prev").onclick = () => { MS.open = secs[openIdx - 1].id; renderManual(); art.scrollIntoView({ block: "start" }); };
+  $("manual-next").onclick = () => { MS.open = secs[openIdx + 1].id; renderManual(); art.scrollIntoView({ block: "start" }); };
+  $("manual-back").onclick = () => { MS.open = null; renderManual(); };
+}
+// Which manual section / protocol each Mission Control block belongs to.
+const BLOCK_MANUAL = { "Phonology": ["a4", "11"], "Drills": ["a1", "1"], "Input": ["a2", "4"], "Gisting": ["a2", "2"], "Shadowing / Legend": ["a3", "8"], "Review": ["d9", null], "Writing": ["d6", "12"] };
+
+/* ============================================================
+   SETTINGS, EXPORT, IMPORT
+   ============================================================ */
+function renderSettings() {
+  const s = S.settings;
+  $("set-slot-de").value = s.slots.de; $("set-slot-hu").value = s.slots.hu; $("set-plan").value = String(s.planLength); $("set-gap").value = s.gapMinutes;
+  $("set-exam-de").value = s.examDates.de || ""; $("set-exam-hu").value = s.examDates.hu || "";
+  $("set-tts-de").checked = !!s.tts.de; $("set-tts-hu").checked = !!s.tts.hu;
+  $("set-persona-de").checked = !!s.personaSkippable.de; $("set-persona-hu").checked = !!s.personaSkippable.hu;
+  const locks = ["de", "hu"].filter(l => personaLocked(l));
+  $("persona-lock-note").textContent = locks.length ? "Persona card stays mandatory for the first 14 days of each language (" + locks.map(l => LANG_NAME[l] + (s.firstSessionDate[l] ? " since " + s.firstSessionDate[l] : ": not started")).join("; ") + ")." : "Both languages are past day 14; the skippable toggles apply.";
+  renderVoiceBadges();
+  $("about-line").textContent = "Operative's Linguistic Console v" + APP_VERSION + " · engines " + (E ? E.version : "none") + " · " + S.content.length + " content items · started " + s.startDate;
+}
+function readSettings() {
+  const s = S.settings;
+  s.slots.de = $("set-slot-de").value || s.slots.de; s.slots.hu = $("set-slot-hu").value || s.slots.hu;
+  s.planLength = Number($("set-plan").value) || 45; s.gapMinutes = clamp(Number($("set-gap").value) || 90, 60, 180); $("set-gap").value = s.gapMinutes;
+  s.examDates.de = $("set-exam-de").value; s.examDates.hu = $("set-exam-hu").value;
+  s.tts.de = $("set-tts-de").checked; s.tts.hu = $("set-tts-hu").checked;
+  s.personaSkippable.de = $("set-persona-de").checked; s.personaSkippable.hu = $("set-persona-hu").checked;
+  save.settings();
+}
+function exportObject() {
+  return { version: APP_VERSION, exportedAt: new Date().toISOString(), content: S.content, progress: S.progress, sessions: S.sessions, errors: S.errors, legends: S.legends, scenarios: S.scenarios, wiretap: S.wiretap, settings: S.settings };
+}
+function renderExport() { const txt = JSON.stringify(exportObject(), null, 1); $("export-text").value = txt; $("export-msg").textContent = Math.round(txt.length / 1024) + " KB"; return txt; }
+async function downloadExport() {
+  const txt = $("export-text").value || renderExport();
+  const filename = "olc-export-" + todayISO() + ".json";
+  // Inside the claude.ai viewer, saves go through the downloads capability (viewer confirms);
+  // standalone / home-screen copies fall back to a plain blob link.
+  let dl = null;
+  try { if (window.claude && typeof window.claude.use === "function") dl = await window.claude.use("downloads"); } catch (e) { dl = null; }
+  if (dl) {
+    try { await dl.save({ filename, data: txt }); toast("Export saved."); }
+    catch (e) { const c = e && e.code; toast(c === "declined" ? "Save cancelled." : c === "rate_limited" ? "A save prompt is already open." : "Download unavailable here. Use Copy."); }
+    return;
+  }
+  try {
+    const blob = new Blob([txt], { type: "application/json" }); const url = URL.createObjectURL(blob);
+    const a = document.createElement("a"); a.href = url; a.download = filename; document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(() => { try { URL.revokeObjectURL(url); } catch (e) { /* ignore */ } }, 2000);
+  } catch (e) { toast("Download unavailable here. Use Copy."); }
+}
+function freshProgress() { return { state: "new", reps: 0, lapses: 0, due: Date.now() }; }
+function importJSON(text) {
+  let data; try { data = JSON.parse(text); } catch (e) { return { ok: false, msg: "Not valid JSON: " + e.message }; }
+  const mode = $("import-replace").checked ? "replace" : "merge"; const withProgress = $("import-progress").checked;
+  let items = null, full = null;
+  if (Array.isArray(data)) items = data;
+  else if (data && typeof data === "object") { full = data; items = Array.isArray(data.content) ? data.content : (Array.isArray(data.items) ? data.items : null); }
+  if (!items && !full) return { ok: false, msg: "Expected an export object or an array of content items." };
+  items = (items || []).filter(i => i && typeof i === "object" && i.id);
+  // lexicon written as bare entries without module
+  items.forEach(i => { if (!i.module) i.module = i.word ? "decon" : (i.cue ? "drill" : "lexicon"); if (!i.lang) i.lang = /^hu-/.test(i.id) ? "hu" : "de"; if (i.module === "lexicon" && !i.kind) i.kind = i.inf ? "verb" : (i.form ? "part" : (i.gender ? "noun" : (i.lang === "hu" ? "noun" : "adjective"))); });
+  let added = 0, updated = 0;
+  if (mode === "replace" && full) {
+    S.content = items; S.sessions = full.sessions || []; S.errors = full.errors || []; S.legends = full.legends || []; S.scenarios = full.scenarios && full.scenarios.length ? full.scenarios : S.scenarios; S.wiretap = full.wiretap || [];
+    if (full.settings) S.settings = deepMerge(JSON.parse(JSON.stringify(DEFAULT_SETTINGS)), full.settings);
+    S.progress = withProgress && full.progress ? full.progress : {};
+    added = items.length;
+  } else if (mode === "replace") {
+    S.content = items; added = items.length; if (!withProgress) S.progress = {};
+  } else {
+    items.forEach(it => { const i = S.content.findIndex(x => x.id === it.id); if (i >= 0) { S.content[i] = it; updated++; } else { S.content.push(it); added++; } if (it.srs && typeof it.srs === "object") { S.progress[it.id] = Object.assign(freshProgress(), it.srs); } else if (!S.progress[it.id]) S.progress[it.id] = freshProgress(); });
+    if (full && withProgress && full.progress) Object.assign(S.progress, full.progress);
+    if (full) { ["sessions", "errors", "wiretap", "legends"].forEach(k => { if (Array.isArray(full[k])) { const have = new Set(S[k].map(x => x.id)); full[k].forEach(x => { if (x && !have.has(x.id)) S[k].push(x); }); } }); }
+  }
+  // strip srs blobs from content items so they stay pure content
+  S.content.forEach(it => { if (it.srs) delete it.srs; });
+  saveAll();
+  return { ok: true, msg: mode === "replace" ? "Replaced: " + added + " items." : "Merged: " + added + " added, " + updated + " updated." + (full ? " Records merged by id." : "") };
+}
+function runImport(text) {
+  const r = importJSON(text); const m = $("import-msg");
+  m.textContent = r.msg; m.className = "small " + (r.ok ? "" : "muted"); m.style.color = r.ok ? "var(--ok)" : "var(--bad)";
+  if (r.ok) { $("import-text").value = ""; toast("Imported"); }
+}
+function resetContent() {
+  S.content = seedToContent(S.seed); save.content(); $("reset-msg").textContent = "Content reset to the built-in seed (" + S.content.length + " items)."; $("reset-confirm").hidden = true; toast("Content reset");
+}
+
+/* ============================================================
+   EVENTS and KEYBOARD
+   ============================================================ */
+function wire() {
+  document.querySelectorAll("[data-nav]").forEach(b => b.addEventListener("click", () => show(b.getAttribute("data-nav"))));
+
+  /* mission */
+  document.querySelectorAll("#plan-seg [data-plan]").forEach(b => b.addEventListener("click", () => { S.settings.planLength = Number(b.getAttribute("data-plan")); save.settings(); renderMission(); }));
+  on("plan-length", "change", () => { S.settings.planLength = Number($("plan-length").value); save.settings(); renderMission(); });
+  document.querySelectorAll("#view-mission [data-tlang]").forEach(b => b.addEventListener("click", () => { S.settings.todayLang = b.getAttribute("data-tlang"); save.settings(); renderMission(); }));
+  on("today-lang", "change", () => { S.settings.todayLang = $("today-lang").value; save.settings(); renderMission(); });
+  on("timer-card-close", "click", () => { $("timer-card").hidden = true; });
+  on("due-start-de", "click", () => { DS.lang = "de"; DS.source = "due"; show("drill"); });
+  on("due-start-hu", "click", () => { DS.lang = "hu"; DS.source = "due"; show("drill"); });
+  ["burn-filter-lang", "burn-filter-cat", "burn-filter-open"].forEach(id => on(id, "change", renderBurn));
+  on("burn-form", "submit", addBurnLine);
+
+  /* drill setup */
+  document.querySelectorAll("#drill-setup [data-dlang]").forEach(b => b.addEventListener("click", () => { DS.lang = b.getAttribute("data-dlang"); DS.families = new Set(); renderDrillSetup(); }));
+  on("drill-lang", "change", () => { DS.lang = $("drill-lang").value; DS.families = new Set(); renderDrillSetup(); });
+  document.querySelectorAll("#drill-setup [data-src]").forEach(b => b.addEventListener("click", () => { DS.source = b.getAttribute("data-src"); renderDrillSetup(); }));
+  on("drill-source", "change", () => { DS.source = $("drill-source").value; renderDrillSetup(); });
+  document.querySelectorAll("#drill-setup [data-len]").forEach(b => b.addEventListener("click", () => { DS.length = Number(b.getAttribute("data-len")); renderDrillSetup(); }));
+  on("drill-length", "change", () => { DS.length = clamp(Number($("drill-length").value) || 20, 1, 200); renderDrillSetup(); });
+  on("drill-typed", "change", () => { DS.typed = $("drill-typed").checked; });
+  on("fam-all", "click", () => { DS.families = new Set(Object.keys(familyCounts(DS.lang))); renderDrillSetup(); });
+  on("fam-none", "click", () => { DS.families = new Set(); renderDrillSetup(); $("drill-pool-count").textContent = "0 items available"; $("drill-start").disabled = true; });
+  on("drill-start", "click", () => startDrill({ lang: DS.lang, source: DS.source, families: DS.families, length: DS.length, typed: DS.typed }));
+  on("guard-back", "click", () => { S.drill = null; renderDrillSetup(); });
+  on("guard-override", "click", () => {
+    const o = S.drill.opts;
+    S.errors.push({ id: uid("err"), date: Date.now(), lang: o.lang, produced: "override", correct: "wait", category: "xfer", source: "guard", itemId: null, open: true, passes: [] }); save.errors();
+    startDrill(Object.assign({}, o, { overrode: true }));
+  });
+  on("persona-begin", "click", beginCues);
+  on("persona-cancel", "click", () => { clearInterval(S.drill.personaTimer); S.drill = null; renderDrillSetup(); });
+  on("stage-end", "click", endSession);
+  on("stage-replay", "click", () => { const it = currentItem(); if (it) speak(it.cue, S.drill.lang); });
+  on("stage-reveal", "click", reveal);
+  on("stage-submit", "click", submitTyped);
+  on("stage-input", "keydown", ev => { if (ev.key === "Enter") { ev.preventDefault(); ev.stopPropagation(); if (!S.drill.revealed) submitTyped(); else if (S.drill.graded) nextCue(); } });
+  on("grade-1", "click", () => grade(1)); on("grade-2", "click", () => grade(2)); on("grade-3", "click", () => grade(3));
+  on("stage-next", "click", nextCue);
+  on("summary-back", "click", () => { S.drill = null; show("mission"); });
+  on("summary-again", "click", () => { S.drill = null; renderDrillSetup(); });
+
+  /* decon */
+  document.querySelectorAll("#view-decon [data-xlang]").forEach(b => b.addEventListener("click", () => { setDeconLang(b.getAttribute("data-xlang")); const w = $("decon-input").value.trim(); if (w) parseDecon(w); }));
+  on("decon-lang", "change", () => setDeconLang($("decon-lang").value));
+  on("decon-parse", "click", () => parseDecon($("decon-input").value));
+  on("decon-random", "click", randomExample);
+  on("decon-build-toggle", "click", () => { const b = $("decon-build"); if (!b.hidden) { b.hidden = true; return; } DX.buildLang = DX.override !== "auto" ? DX.override : DX.lang; renderBuild(); });
+  on("decon-input", "keydown", ev => { if (ev.key === "Enter") { ev.preventDefault(); if (ev.ctrlKey) { DX.buildLang = resolveLang($("decon-input").value); renderBuild(); } else parseDecon($("decon-input").value); } });
+  on("decon-filter", "input", renderDeconExamples);
+  on("hu-stem-search", "input", fillHuStems); on("de-noun-search", "input", fillDeNouns);
+  on("hu-poss", "change", () => { const has = !!$("hu-poss").value; $("hu-plpos").disabled = !has; if (!has) $("hu-plpos").checked = false; });
+  on("hu-plural", "change", () => { if ($("hu-plural").checked) $("hu-plpos").checked = false; });
+  on("hu-plpos", "change", () => { if ($("hu-plpos").checked) $("hu-plural").checked = false; });
+  on("hu-build-go", "click", doBuildHu); on("de-build-go", "click", doBuildDe);
+
+  /* wiretap, legend */
+  on("wiretap-form", "submit", saveWiretap);
+  document.querySelectorAll("#view-legend [data-llang]").forEach(b => b.addEventListener("click", () => { readLegendForm(); save.legends(); LG.lang = b.getAttribute("data-llang"); LG.scenario = null; renderLegend(); }));
+  on("legend-lang", "change", () => { LG.lang = $("legend-lang").value; renderLegend(); });
+  on("legend-add-fact", "click", () => { const l = readLegendForm(); l.facts.push({ text: "", anchor: "", sentence: "" }); save.legends(); renderFacts(l); });
+  on("legend-save", "click", saveLegend);
+  on("legend-export", "click", exportForChat);
+
+  /* content manager */
+  ["cm-lang", "cm-module"].forEach(id => on(id, "change", renderContentList)); on("cm-search", "input", renderContentList);
+  on("cm-add", "click", () => openEditor(null, true, $("cm-add-kind").value));
+  on("cm-goto-settings", "click", () => show("settings"));
+  on("cm-save", "click", saveEditor); on("cm-duplicate", "click", duplicateEditor);
+  on("cm-cancel", "click", () => { CM.editing = null; $("cm-editor").hidden = true; renderContentList(); });
+  on("cm-delete", "click", () => { $("cm-confirm").hidden = false; });
+  on("cm-delete-no", "click", () => { $("cm-confirm").hidden = true; });
+  on("cm-delete-yes", "click", deleteEditor);
+
+  /* settings */
+  ["set-slot-de", "set-slot-hu", "set-plan", "set-gap", "set-exam-de", "set-exam-hu", "set-tts-de", "set-tts-hu", "set-persona-de", "set-persona-hu"].forEach(id => on(id, "change", () => { readSettings(); renderSettings(); }));
+  on("export-render", "click", renderExport);
+  on("export-copy", "click", () => { const txt = $("export-text").value || renderExport(); copyText(txt, $("export-text")); });
+  on("export-download", "click", downloadExport);
+  on("manual-search", "input", () => { MS.query = $("manual-search").value; MS.open = null; renderManual(); });
+  on("import-go", "click", () => { const t = $("import-text").value.trim(); if (!t) { $("import-msg").textContent = "Paste JSON or choose a file first."; return; } runImport(t); });
+  on("import-file", "change", () => {
+    const f = $("import-file").files && $("import-file").files[0]; if (!f) return;
+    try { const r = new FileReader(); r.onload = () => runImport(String(r.result || "")); r.onerror = () => { $("import-msg").textContent = "Could not read the file."; }; r.readAsText(f); } catch (e) { $("import-msg").textContent = "Could not read the file."; }
+  });
+  on("reset-content", "click", () => { $("reset-confirm").hidden = false; });
+  on("reset-no", "click", () => { $("reset-confirm").hidden = true; });
+  on("reset-yes", "click", resetContent);
+
+  document.addEventListener("keydown", onKey);
+  try { if (window.speechSynthesis && window.speechSynthesis.addEventListener) window.speechSynthesis.addEventListener("voiceschanged", collectVoices); else if (window.speechSynthesis) window.speechSynthesis.onvoiceschanged = collectVoices; } catch (e) { /* ignore */ }
+}
+function onKey(ev) {
+  const tag = (ev.target && ev.target.tagName || "").toLowerCase();
+  const typing = tag === "input" || tag === "textarea" || tag === "select";
+  if (ev.altKey && !ev.ctrlKey && !ev.metaKey) {
+    const map = { "1": "mission", "2": "drill", "3": "decon", "4": "wiretap", "5": "legend", "m": "manual", "M": "manual", "c": "content", "C": "content" };
+    if (map[ev.key]) { ev.preventDefault(); show(map[ev.key]); return; }
+  }
+  if (S.view === "drill") {
+    const d = S.drill;
+    if (d && d.phase === "stage") {
+      if (ev.key === "Escape") { ev.preventDefault(); endSession(); return; }
+      if (typing && ev.target.id === "stage-input") return;
+      if (ev.key === "Enter") { ev.preventDefault(); if (!d.revealed) reveal(); else if (d.graded) nextCue(); return; }
+      if (ev.key === " ") { ev.preventDefault(); const it = currentItem(); if (it) speak(it.cue, d.lang); return; }
+      if (!d.typed && d.revealed && !d.graded && ["1", "2", "3"].includes(ev.key)) { ev.preventDefault(); grade(Number(ev.key)); return; }
+    } else if ((!d || d.phase === "summary") && !typing && (ev.key === "t" || ev.key === "T")) { DS.typed = !DS.typed; $("drill-typed").checked = DS.typed; }
+    else if (d && d.phase === "persona" && ev.key === "Escape") { clearInterval(d.personaTimer); S.drill = null; renderDrillSetup(); }
+  }
+}
+
+/* ============================================================
+   BOOT
+   ============================================================ */
+function boot() {
+  loadState();
+  DS.lang = S.settings.todayLang || "de"; DX.lang = S.settings.deconLang || "hu";
+  wire();
+  collectVoices();
+  renderBurn();
+  show("mission");
+  ensureBlockTicker();
+}
+
+/* Test and automation hook: read-only access to state plus the drill primitives. */
+window.OLC = {
+  version: APP_VERSION,
+  state: S,
+  show, startDrill, beginCues, submitTyped, grade, reveal, nextCue, endSession, buildQueue, fsrsUpdate, normalizeAnswer, familyToCategory,
+  parseDecon, importJSON, exportObject, renderExport, detectLang,
+  drills, deconExamples, huLexicon, deLexicon, byId,
+  engines: E
+};
+
+boot();
+})();
+</script>

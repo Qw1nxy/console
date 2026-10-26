@@ -1,0 +1,1576 @@
+[
+ {
+  "id": "de-drill-001",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.nom",
+  "instruction": "Replace the subject with the cued noun and say the whole sentence.",
+  "cue": "Der Chef ist heute nicht da. → (die Chefin)",
+  "answer": "Die Chefin ist heute nicht da.",
+  "accepted": [
+   "Die Chefin ist heute nicht da"
+  ],
+  "explain": "Subject → nominative. Feminine nominative article = die.",
+  "tags": [
+   "nominative",
+   "feminine",
+   "sein"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-002",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.nom",
+  "instruction": "Replace the subject with the cued noun and say the whole sentence.",
+  "cue": "Das Werkzeug liegt auf dem Tisch. → (der Schlüssel)",
+  "answer": "Der Schlüssel liegt auf dem Tisch.",
+  "accepted": [
+   "Der Schlüssel liegt auf dem Tisch"
+  ],
+  "explain": "Subject → nominative. Masculine nominative article = der.",
+  "tags": [
+   "nominative",
+   "masculine",
+   "liegen"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-003",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "response",
+  "family": "case.nom",
+  "instruction": "Answer the question with the cued noun as a full sentence.",
+  "cue": "Was ist das? → (der Mietvertrag)",
+  "answer": "Das ist der Mietvertrag.",
+  "accepted": [
+   "Das ist der Mietvertrag"
+  ],
+  "explain": "After sein the noun stays nominative: der Mietvertrag.",
+  "tags": [
+   "nominative",
+   "masculine",
+   "sein",
+   "response"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-004",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.acc",
+  "instruction": "Replace the direct object with the cued noun and say the whole sentence.",
+  "cue": "Ich brauche den Führerschein. → (die Bescheinigung)",
+  "answer": "Ich brauche die Bescheinigung.",
+  "accepted": [
+   "Ich brauche die Bescheinigung"
+  ],
+  "explain": "Direct object → accusative. Feminine accusative = die (no change).",
+  "tags": [
+   "accusative",
+   "feminine",
+   "brauchen"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-005",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.acc",
+  "instruction": "Replace the direct object with the cued noun; keep the separable prefix at the end.",
+  "cue": "Ich fülle das Formular aus. → (der Antrag)",
+  "answer": "Ich fülle den Antrag aus.",
+  "accepted": [
+   "Ich fülle den Antrag aus"
+  ],
+  "explain": "Direct object → accusative. Masculine accusative der → den.",
+  "tags": [
+   "accusative",
+   "masculine",
+   "ausfüllen",
+   "separable"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-006",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.acc",
+  "instruction": "Replace the noun after für with the cued noun and say the whole sentence.",
+  "cue": "Das Paket ist für den Chef. → (der Kollege)",
+  "answer": "Das Paket ist für den Kollegen.",
+  "accepted": [
+   "Das Paket ist für den Kollegen"
+  ],
+  "explain": "für + accusative. Kollege is an n-noun: den Kollegen.",
+  "tags": [
+   "accusative",
+   "masculine",
+   "für",
+   "n-noun"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-007",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.acc",
+  "instruction": "Replace the direct object with the cued noun and say the whole sentence.",
+  "cue": "Wir kaufen den Schrank. → (das Werkzeug)",
+  "answer": "Wir kaufen das Werkzeug.",
+  "accepted": [
+   "Wir kaufen das Werkzeug"
+  ],
+  "explain": "Direct object → accusative. Neuter accusative = das (no change).",
+  "tags": [
+   "accusative",
+   "neuter",
+   "kaufen"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-008",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "response",
+  "family": "case.acc",
+  "instruction": "Answer the question with the cued noun as a full sentence starting with Ich.",
+  "cue": "Was unterschreibst du? → (der Vertrag)",
+  "answer": "Ich unterschreibe den Vertrag.",
+  "accepted": [
+   "Ich unterschreibe den Vertrag"
+  ],
+  "explain": "Direct object → accusative. Masculine der → den.",
+  "tags": [
+   "accusative",
+   "masculine",
+   "unterschreiben",
+   "response"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-009",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.dat",
+  "instruction": "Replace the object of helfen with the cued noun and say the whole sentence.",
+  "cue": "Ich helfe dem Kollegen. → (die Chefin)",
+  "answer": "Ich helfe der Chefin.",
+  "accepted": [
+   "Ich helfe der Chefin"
+  ],
+  "explain": "helfen takes the dative. Feminine dative die → der.",
+  "tags": [
+   "dative",
+   "feminine",
+   "helfen",
+   "verb-government"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-010",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.dat",
+  "instruction": "Replace the noun after mit with the cued noun and say the whole sentence.",
+  "cue": "Ich fahre mit dem Bus zur Arbeit. → (die Bahn)",
+  "answer": "Ich fahre mit der Bahn zur Arbeit.",
+  "accepted": [
+   "Ich fahre mit der Bahn zur Arbeit"
+  ],
+  "explain": "mit + dative. Feminine dative die → der.",
+  "tags": [
+   "dative",
+   "feminine",
+   "mit",
+   "prep-government"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-011",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.dat",
+  "instruction": "Replace the person receiving the explanation with the cued noun.",
+  "cue": "Der Meister erklärt dem Azubi die Maschine. → (die Kollegin)",
+  "answer": "Der Meister erklärt der Kollegin die Maschine.",
+  "accepted": [
+   "Der Meister erklärt der Kollegin die Maschine"
+  ],
+  "explain": "Indirect object (the person) → dative. Feminine dative = der.",
+  "tags": [
+   "dative",
+   "feminine",
+   "erklären",
+   "indirect-object"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-012",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.dat",
+  "instruction": "Replace the noun after nach with the cued noun and say the whole sentence.",
+  "cue": "Wir treffen uns nach der Schicht. → (das Mittagessen)",
+  "answer": "Wir treffen uns nach dem Mittagessen.",
+  "accepted": [
+   "Wir treffen uns nach dem Mittagessen"
+  ],
+  "explain": "nach + dative. Neuter dative das → dem.",
+  "tags": [
+   "dative",
+   "neuter",
+   "nach",
+   "prep-government"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-013",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "response",
+  "family": "case.dat",
+  "instruction": "Answer the question with the cued noun as a full sentence starting with Ich.",
+  "cue": "Wem hilfst du? → (der Meister)",
+  "answer": "Ich helfe dem Meister.",
+  "accepted": [
+   "Ich helfe dem Meister"
+  ],
+  "explain": "Wem asks for the dative. Masculine dative der → dem.",
+  "tags": [
+   "dative",
+   "masculine",
+   "helfen",
+   "response"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-014",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.gen",
+  "instruction": "Replace the noun after wegen with the cued noun and say the whole sentence.",
+  "cue": "Wegen des Termins komme ich später. → (die Schicht)",
+  "answer": "Wegen der Schicht komme ich später.",
+  "accepted": [
+   "Wegen der Schicht komme ich später"
+  ],
+  "explain": "wegen + genitive. Feminine genitive die → der.",
+  "tags": [
+   "genitive",
+   "feminine",
+   "wegen",
+   "prep-government"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-015",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.gen",
+  "instruction": "Replace the noun after trotz with the cued noun; add the genitive ending to the noun.",
+  "cue": "Trotz des Regens arbeiten wir draußen. → (das Wetter)",
+  "answer": "Trotz des Wetters arbeiten wir draußen.",
+  "accepted": [
+   "Trotz des Wetters arbeiten wir draußen"
+  ],
+  "explain": "trotz + genitive. Neuter genitive = des + noun with -s.",
+  "tags": [
+   "genitive",
+   "neuter",
+   "trotz",
+   "prep-government"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-016",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "case.gen",
+  "instruction": "Replace the owner with the cued noun and say the whole sentence.",
+  "cue": "Das ist das Büro des Chefs. → (die Chefin)",
+  "answer": "Das ist das Büro der Chefin.",
+  "accepted": [
+   "Das ist das Büro der Chefin"
+  ],
+  "explain": "Possession → genitive. Feminine genitive = der, no ending on the noun.",
+  "tags": [
+   "genitive",
+   "feminine",
+   "possession"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-017",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "prep.twoway",
+  "instruction": "Fill the gap with the preposition and the correct article, then say the whole sentence.",
+  "cue": "Ich lege das Werkzeug ___ Tisch. (auf, der Tisch)",
+  "answer": "Ich lege das Werkzeug auf den Tisch.",
+  "accepted": [
+   "Ich lege das Werkzeug auf den Tisch"
+  ],
+  "explain": "legen = movement (wohin?) → accusative: auf den Tisch.",
+  "tags": [
+   "two-way",
+   "wohin",
+   "accusative",
+   "auf",
+   "legen"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": false
+ },
+ {
+  "id": "de-drill-018",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "prep.twoway",
+  "instruction": "Fill the gap with the preposition and the correct article, then say the whole sentence.",
+  "cue": "Das Werkzeug liegt ___ Tisch. (auf, der Tisch)",
+  "answer": "Das Werkzeug liegt auf dem Tisch.",
+  "accepted": [
+   "Das Werkzeug liegt auf dem Tisch"
+  ],
+  "explain": "liegen = location (wo?) → dative: auf dem Tisch.",
+  "tags": [
+   "two-way",
+   "wo",
+   "dative",
+   "auf",
+   "liegen"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": false
+ },
+ {
+  "id": "de-drill-019",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "prep.twoway",
+  "instruction": "Fill the gap with the preposition and the correct article, then say the whole sentence.",
+  "cue": "Ich hänge den Schichtplan ___ Wand. (an, die Wand)",
+  "answer": "Ich hänge den Schichtplan an die Wand.",
+  "accepted": [
+   "Ich hänge den Schichtplan an die Wand"
+  ],
+  "explain": "hängen with an object = movement (wohin?) → accusative: an die Wand.",
+  "tags": [
+   "two-way",
+   "wohin",
+   "accusative",
+   "an",
+   "hängen"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": false
+ },
+ {
+  "id": "de-drill-020",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "prep.twoway",
+  "instruction": "Fill the gap with the preposition and the correct article, then say the whole sentence.",
+  "cue": "Der Schichtplan hängt ___ Wand. (an, die Wand)",
+  "answer": "Der Schichtplan hängt an der Wand.",
+  "accepted": [
+   "Der Schichtplan hängt an der Wand"
+  ],
+  "explain": "hängt (no object) = location (wo?) → dative: an der Wand.",
+  "tags": [
+   "two-way",
+   "wo",
+   "dative",
+   "an",
+   "hängen"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": false
+ },
+ {
+  "id": "de-drill-021",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "prep.twoway",
+  "instruction": "Fill the gap with the preposition and the correct article, then say the whole sentence.",
+  "cue": "Ich stelle die Kiste ___ Lager. (in, das Lager)",
+  "answer": "Ich stelle die Kiste in das Lager.",
+  "accepted": [
+   "Ich stelle die Kiste in das Lager",
+   "Ich stelle die Kiste ins Lager"
+  ],
+  "explain": "stellen = movement (wohin?) → accusative: in das Lager (ins Lager).",
+  "tags": [
+   "two-way",
+   "wohin",
+   "accusative",
+   "in",
+   "stellen"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": false
+ },
+ {
+  "id": "de-drill-022",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "prep.twoway",
+  "instruction": "Fill the gap with the preposition and the correct article, then say the whole sentence.",
+  "cue": "Die Kiste steht ___ Lager. (in, das Lager)",
+  "answer": "Die Kiste steht im Lager.",
+  "accepted": [
+   "Die Kiste steht im Lager",
+   "Die Kiste steht in dem Lager"
+  ],
+  "explain": "stehen = location (wo?) → dative: in dem Lager, usually shortened to im.",
+  "tags": [
+   "two-way",
+   "wo",
+   "dative",
+   "in",
+   "stehen"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": false
+ },
+ {
+  "id": "de-drill-023",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "adj.strong",
+  "instruction": "Put the cued adjective in front of the noun (no article) with the correct ending.",
+  "cue": "Ich trage Schuhe. → (sicher)",
+  "answer": "Ich trage sichere Schuhe.",
+  "accepted": [
+   "Ich trage sichere Schuhe"
+  ],
+  "explain": "No article → strong ending. Plural accusative = -e.",
+  "tags": [
+   "adjective",
+   "strong",
+   "plural",
+   "accusative"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-024",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "adj.strong",
+  "instruction": "Put the cued adjective in front of the noun (no article) with the correct ending.",
+  "cue": "Wir brauchen Werkzeug. → (neu)",
+  "answer": "Wir brauchen neues Werkzeug.",
+  "accepted": [
+   "Wir brauchen neues Werkzeug"
+  ],
+  "explain": "No article → strong ending. Neuter accusative = -es.",
+  "tags": [
+   "adjective",
+   "strong",
+   "neuter",
+   "accusative"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-025",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "adj.strong",
+  "instruction": "Put the cued adjective in front of the noun (no article) with the correct ending.",
+  "cue": "Ich arbeite gern mit Kollegen. → (nett)",
+  "answer": "Ich arbeite gern mit netten Kollegen.",
+  "accepted": [
+   "Ich arbeite gern mit netten Kollegen"
+  ],
+  "explain": "No article → strong ending. Plural dative = -en.",
+  "tags": [
+   "adjective",
+   "strong",
+   "plural",
+   "dative",
+   "mit"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-026",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "adj.weak",
+  "instruction": "Put the cued adjective between the article and the noun with the correct ending.",
+  "cue": "Der Chef kommt heute. → (neu)",
+  "answer": "Der neue Chef kommt heute.",
+  "accepted": [
+   "Der neue Chef kommt heute"
+  ],
+  "explain": "After der (nominative) → weak ending -e.",
+  "tags": [
+   "adjective",
+   "weak",
+   "masculine",
+   "nominative"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-027",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "adj.weak",
+  "instruction": "Put the cued adjective between the article and the noun with the correct ending.",
+  "cue": "Ich lese den Vertrag. → (lang)",
+  "answer": "Ich lese den langen Vertrag.",
+  "accepted": [
+   "Ich lese den langen Vertrag"
+  ],
+  "explain": "After den (masculine accusative) → weak ending -en.",
+  "tags": [
+   "adjective",
+   "weak",
+   "masculine",
+   "accusative"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-028",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "adj.weak",
+  "instruction": "Put the cued adjective between the article and the noun with the correct ending.",
+  "cue": "Ich arbeite in der Werkstatt. → (groß)",
+  "answer": "Ich arbeite in der großen Werkstatt.",
+  "accepted": [
+   "Ich arbeite in der großen Werkstatt"
+  ],
+  "explain": "After der (feminine dative) → weak ending -en.",
+  "tags": [
+   "adjective",
+   "weak",
+   "feminine",
+   "dative"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-029",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "adj.mixed",
+  "instruction": "Put the cued adjective after ein/kein/mein with the correct ending.",
+  "cue": "Das ist ein Betrieb. → (klein)",
+  "answer": "Das ist ein kleiner Betrieb.",
+  "accepted": [
+   "Das ist ein kleiner Betrieb"
+  ],
+  "explain": "After ein (masculine nominative) → mixed ending -er shows the gender.",
+  "tags": [
+   "adjective",
+   "mixed",
+   "masculine",
+   "nominative",
+   "ein"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-030",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "adj.mixed",
+  "instruction": "Put the cued adjective after ein/kein/mein with the correct ending.",
+  "cue": "Ich suche eine Wohnung. → (günstig)",
+  "answer": "Ich suche eine günstige Wohnung.",
+  "accepted": [
+   "Ich suche eine günstige Wohnung"
+  ],
+  "explain": "After eine (feminine accusative) → mixed ending -e.",
+  "tags": [
+   "adjective",
+   "mixed",
+   "feminine",
+   "accusative",
+   "ein"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-031",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "substitution",
+  "family": "adj.mixed",
+  "instruction": "Put the cued adjective after ein/kein/mein with the correct ending.",
+  "cue": "Ich habe kein Werkzeug. → (eigen)",
+  "answer": "Ich habe kein eigenes Werkzeug.",
+  "accepted": [
+   "Ich habe kein eigenes Werkzeug"
+  ],
+  "explain": "After kein (neuter accusative) → mixed ending -es shows the gender.",
+  "tags": [
+   "adjective",
+   "mixed",
+   "neuter",
+   "accusative",
+   "kein"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-032",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "verb.separable",
+  "instruction": "Make a present-tense sentence from the parts; split the separable verb correctly.",
+  "cue": "ich / anrufen / den Vermieter / heute",
+  "answer": "Ich rufe heute den Vermieter an.",
+  "accepted": [
+   "Ich rufe heute den Vermieter an",
+   "Ich rufe den Vermieter heute an",
+   "Heute rufe ich den Vermieter an"
+  ],
+  "explain": "Separable verb: conjugated stem in position 2, prefix an at the very end.",
+  "tags": [
+   "separable",
+   "present",
+   "anrufen"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": false
+ },
+ {
+  "id": "de-drill-033",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "verb.separable",
+  "instruction": "Make a present-tense sentence from the parts; split the separable verb correctly.",
+  "cue": "die Schicht / anfangen / um sechs Uhr",
+  "answer": "Die Schicht fängt um sechs Uhr an.",
+  "accepted": [
+   "Die Schicht fängt um sechs Uhr an",
+   "Um sechs Uhr fängt die Schicht an"
+  ],
+  "explain": "anfangen is separable and irregular: fängt ... an.",
+  "tags": [
+   "separable",
+   "present",
+   "anfangen",
+   "vowel-change"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": false
+ },
+ {
+  "id": "de-drill-034",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "verb.separable",
+  "instruction": "Put the sentence into the Perfekt (haben/sein + participle).",
+  "cue": "Ich fülle das Formular aus. → Perfekt",
+  "answer": "Ich habe das Formular ausgefüllt.",
+  "accepted": [
+   "Ich habe das Formular ausgefüllt"
+  ],
+  "explain": "Separable participle: prefix + ge + stem + t → ausgefüllt, at the end.",
+  "tags": [
+   "separable",
+   "perfekt",
+   "ausfüllen"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-035",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "verb.separable",
+  "instruction": "Put the sentence into the Perfekt (haben/sein + participle).",
+  "cue": "Der Zug kommt um acht Uhr an. → Perfekt",
+  "answer": "Der Zug ist um acht Uhr angekommen.",
+  "accepted": [
+   "Der Zug ist um acht Uhr angekommen"
+  ],
+  "explain": "Motion verb → sein. Participle angekommen (an + ge + kommen).",
+  "tags": [
+   "separable",
+   "perfekt",
+   "ankommen",
+   "sein"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-036",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "verb.separable",
+  "instruction": "Join the two sentences with weil; the separable verb comes back together at the end.",
+  "cue": "Ich bin müde. Ich stehe um fünf Uhr auf. → weil",
+  "answer": "Ich bin müde, weil ich um fünf Uhr aufstehe.",
+  "accepted": [
+   "Ich bin müde, weil ich um fünf Uhr aufstehe",
+   "Weil ich um fünf Uhr aufstehe, bin ich müde"
+  ],
+  "explain": "In a weil-clause the verb goes last, so the prefix rejoins: aufstehe.",
+  "tags": [
+   "separable",
+   "subordinate",
+   "weil",
+   "aufstehen"
+  ],
+  "difficulty": 3,
+  "speedTargetSec": 8,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-037",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "verb.separable",
+  "instruction": "Join the two sentences with dass; the separable verb comes back together at the end.",
+  "cue": "Ich weiß. Der Kollege holt die Ersatzteile ab. → dass",
+  "answer": "Ich weiß, dass der Kollege die Ersatzteile abholt.",
+  "accepted": [
+   "Ich weiß, dass der Kollege die Ersatzteile abholt"
+  ],
+  "explain": "In a dass-clause the verb goes last, so the prefix rejoins: abholt.",
+  "tags": [
+   "separable",
+   "subordinate",
+   "dass",
+   "abholen"
+  ],
+  "difficulty": 3,
+  "speedTargetSec": 8,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-038",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "verb.inseparable",
+  "instruction": "Put the sentence into the Perfekt (haben + participle).",
+  "cue": "Ich verstehe die Anleitung. → Perfekt",
+  "answer": "Ich habe die Anleitung verstanden.",
+  "accepted": [
+   "Ich habe die Anleitung verstanden"
+  ],
+  "explain": "Inseparable prefix ver-: no ge-, participle verstanden.",
+  "tags": [
+   "inseparable",
+   "perfekt",
+   "verstehen"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-039",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "verb.inseparable",
+  "instruction": "Put the sentence into the Perfekt (haben + participle).",
+  "cue": "Die Firma bezahlt die Sicherheitsschuhe. → Perfekt",
+  "answer": "Die Firma hat die Sicherheitsschuhe bezahlt.",
+  "accepted": [
+   "Die Firma hat die Sicherheitsschuhe bezahlt"
+  ],
+  "explain": "Inseparable prefix be-: no ge-, participle bezahlt.",
+  "tags": [
+   "inseparable",
+   "perfekt",
+   "bezahlen"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-040",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "order.subordinate",
+  "instruction": "Join the two sentences with the cued word; send the verb of the second clause to the end.",
+  "cue": "Ich bleibe zu Hause. Ich bin krank. → weil",
+  "answer": "Ich bleibe zu Hause, weil ich krank bin.",
+  "accepted": [
+   "Ich bleibe zu Hause, weil ich krank bin",
+   "Ich bleibe zuhause, weil ich krank bin",
+   "Weil ich krank bin, bleibe ich zu Hause",
+   "Weil ich krank bin, bleibe ich zuhause"
+  ],
+  "explain": "weil starts a subordinate clause: the verb goes to the end.",
+  "tags": [
+   "subordinate",
+   "weil"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-041",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "order.subordinate",
+  "instruction": "Join the two sentences with the cued word; send the verb of the second clause to the end.",
+  "cue": "Ich glaube. Der Termin ist am Montag. → dass",
+  "answer": "Ich glaube, dass der Termin am Montag ist.",
+  "accepted": [
+   "Ich glaube, dass der Termin am Montag ist"
+  ],
+  "explain": "dass starts a subordinate clause: the verb goes to the end.",
+  "tags": [
+   "subordinate",
+   "dass"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-042",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "order.subordinate",
+  "instruction": "Join the two sentences with the cued word; send the verb of the second clause to the end.",
+  "cue": "Ich weiß nicht. Das Amt ist heute offen. → ob",
+  "answer": "Ich weiß nicht, ob das Amt heute offen ist.",
+  "accepted": [
+   "Ich weiß nicht, ob das Amt heute offen ist"
+  ],
+  "explain": "ob (whether) starts a subordinate clause: the verb goes to the end.",
+  "tags": [
+   "subordinate",
+   "ob"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-043",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "order.subordinate",
+  "instruction": "Join the two sentences with the cued word; send the verb of the second clause to the end.",
+  "cue": "Ich rufe dich an. Ich habe Zeit. → wenn",
+  "answer": "Ich rufe dich an, wenn ich Zeit habe.",
+  "accepted": [
+   "Ich rufe dich an, wenn ich Zeit habe",
+   "Wenn ich Zeit habe, rufe ich dich an"
+  ],
+  "explain": "wenn starts a subordinate clause: the verb goes to the end.",
+  "tags": [
+   "subordinate",
+   "wenn"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-044",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "order.subordinate",
+  "instruction": "Join the two sentences with the cued word; the auxiliary goes to the very end.",
+  "cue": "Ich bin zu spät. Der Bus ist nicht gekommen. → weil",
+  "answer": "Ich bin zu spät, weil der Bus nicht gekommen ist.",
+  "accepted": [
+   "Ich bin zu spät, weil der Bus nicht gekommen ist",
+   "Weil der Bus nicht gekommen ist, bin ich zu spät"
+  ],
+  "explain": "In a subordinate clause with Perfekt: participle, then the auxiliary last.",
+  "tags": [
+   "subordinate",
+   "weil",
+   "perfekt"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-045",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "order.subordinate",
+  "instruction": "Join the two sentences with the cued word; the modal verb goes to the very end.",
+  "cue": "Der Chef sagt. Ich muss morgen früher kommen. → dass",
+  "answer": "Der Chef sagt, dass ich morgen früher kommen muss.",
+  "accepted": [
+   "Der Chef sagt, dass ich morgen früher kommen muss"
+  ],
+  "explain": "In a subordinate clause: infinitive, then the modal verb last.",
+  "tags": [
+   "subordinate",
+   "dass",
+   "modal"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-046",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "order.modal",
+  "instruction": "Add the cued modal verb; the main verb becomes an infinitive at the end.",
+  "cue": "Ich melde mich beim Amt an. → müssen",
+  "answer": "Ich muss mich beim Amt anmelden.",
+  "accepted": [
+   "Ich muss mich beim Amt anmelden"
+  ],
+  "explain": "Modal in position 2, infinitive at the end; the separable verb rejoins.",
+  "tags": [
+   "modal",
+   "müssen",
+   "anmelden",
+   "separable"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-047",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "order.modal",
+  "instruction": "Add the cued modal verb; the main verb becomes an infinitive at the end.",
+  "cue": "Du trägst in der Werkstatt Sicherheitsschuhe. → müssen",
+  "answer": "Du musst in der Werkstatt Sicherheitsschuhe tragen.",
+  "accepted": [
+   "Du musst in der Werkstatt Sicherheitsschuhe tragen"
+  ],
+  "explain": "Modal in position 2 (du musst), infinitive tragen at the end.",
+  "tags": [
+   "modal",
+   "müssen",
+   "tragen"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-048",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "order.modal",
+  "instruction": "Add the cued modal verb; the main verb becomes an infinitive at the end.",
+  "cue": "Ich gehe heute früher nach Hause. → dürfen",
+  "answer": "Ich darf heute früher nach Hause gehen.",
+  "accepted": [
+   "Ich darf heute früher nach Hause gehen",
+   "Ich darf heute früher nachhause gehen"
+  ],
+  "explain": "Modal in position 2 (ich darf), infinitive gehen at the end.",
+  "tags": [
+   "modal",
+   "dürfen",
+   "gehen"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-049",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "order.perfekt",
+  "instruction": "Put the sentence into the Perfekt (haben/sein + participle at the end).",
+  "cue": "Ich arbeite acht Stunden in der Werkstatt. → Perfekt",
+  "answer": "Ich habe acht Stunden in der Werkstatt gearbeitet.",
+  "accepted": [
+   "Ich habe acht Stunden in der Werkstatt gearbeitet"
+  ],
+  "explain": "haben in position 2, participle gearbeitet at the very end.",
+  "tags": [
+   "perfekt",
+   "haben",
+   "arbeiten"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-050",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "order.perfekt",
+  "instruction": "Put the sentence into the Perfekt (haben/sein + participle at the end).",
+  "cue": "Wir fahren mit dem Zug nach Zürich. → Perfekt",
+  "answer": "Wir sind mit dem Zug nach Zürich gefahren.",
+  "accepted": [
+   "Wir sind mit dem Zug nach Zürich gefahren"
+  ],
+  "explain": "Motion verb → sein. Participle gefahren at the very end.",
+  "tags": [
+   "perfekt",
+   "sein",
+   "fahren"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-051",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "order.perfekt",
+  "instruction": "Put the sentence into the Perfekt (haben/sein + participle at the end).",
+  "cue": "Ich bringe die Unterlagen zum Amt mit. → Perfekt",
+  "answer": "Ich habe die Unterlagen zum Amt mitgebracht.",
+  "accepted": [
+   "Ich habe die Unterlagen zum Amt mitgebracht"
+  ],
+  "explain": "haben in position 2; separable participle mitgebracht at the end.",
+  "tags": [
+   "perfekt",
+   "haben",
+   "mitbringen",
+   "separable"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-052",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "expansion",
+  "family": "tekamolo",
+  "instruction": "Add the cued time phrase in the right slot (time before manner and place).",
+  "cue": "Ich fahre mit dem Bus zur Arbeit. + (morgen)",
+  "answer": "Ich fahre morgen mit dem Bus zur Arbeit.",
+  "accepted": [
+   "Ich fahre morgen mit dem Bus zur Arbeit",
+   "Morgen fahre ich mit dem Bus zur Arbeit"
+  ],
+  "explain": "TeKaMoLo: time (morgen) comes before manner (mit dem Bus) and place.",
+  "tags": [
+   "tekamolo",
+   "time",
+   "expansion"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-053",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "expansion",
+  "family": "tekamolo",
+  "instruction": "Add the cued manner phrase in the right slot (after time, before place).",
+  "cue": "Ich fahre heute zum Bahnhof. + (mit dem Fahrrad)",
+  "answer": "Ich fahre heute mit dem Fahrrad zum Bahnhof.",
+  "accepted": [
+   "Ich fahre heute mit dem Fahrrad zum Bahnhof"
+  ],
+  "explain": "TeKaMoLo: manner (mit dem Fahrrad) goes after time and before place.",
+  "tags": [
+   "tekamolo",
+   "manner",
+   "expansion"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-054",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "tekamolo",
+  "instruction": "Build one sentence from the parts in TeKaMoLo order (time, cause, manner, place).",
+  "cue": "ich / gehen / wegen des Termins / um neun Uhr / zum Amt",
+  "answer": "Ich gehe um neun Uhr wegen des Termins zum Amt.",
+  "accepted": [
+   "Ich gehe um neun Uhr wegen des Termins zum Amt",
+   "Um neun Uhr gehe ich wegen des Termins zum Amt"
+  ],
+  "explain": "Order: time (um neun Uhr), cause (wegen des Termins), place (zum Amt).",
+  "tags": [
+   "tekamolo",
+   "time",
+   "cause",
+   "place"
+  ],
+  "difficulty": 3,
+  "speedTargetSec": 8,
+  "speakCue": false
+ },
+ {
+  "id": "de-drill-055",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "konj2",
+  "instruction": "Make the wish polite with hätte gern (Konjunktiv II of haben).",
+  "cue": "Ich will einen Termin. → höflich",
+  "answer": "Ich hätte gern einen Termin.",
+  "accepted": [
+   "Ich hätte gern einen Termin",
+   "Ich hätte gerne einen Termin",
+   "Ich möchte gern einen Termin",
+   "Ich möchte gerne einen Termin",
+   "Ich möchte einen Termin"
+  ],
+  "explain": "Polite wish: hätte gern (Konjunktiv II of haben) instead of will.",
+  "tags": [
+   "konjunktiv2",
+   "hätte",
+   "politeness"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-056",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "konj2",
+  "instruction": "Make the request polite with Konjunktiv II (Sie form).",
+  "cue": "Helfen Sie mir! → höflich",
+  "answer": "Könnten Sie mir helfen?",
+  "accepted": [
+   "Könnten Sie mir helfen",
+   "Könnten Sie mir bitte helfen",
+   "Würden Sie mir bitte helfen",
+   "Würden Sie mir helfen"
+  ],
+  "explain": "Polite request: Könnten Sie ... ? (Konjunktiv II of können).",
+  "tags": [
+   "konjunktiv2",
+   "könnten",
+   "politeness",
+   "Sie"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-057",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "konj2",
+  "instruction": "Make the request polite with Konjunktiv II (Sie form).",
+  "cue": "Schicken Sie mir den Vertrag! → höflich",
+  "answer": "Könnten Sie mir bitte den Vertrag schicken?",
+  "accepted": [
+   "Könnten Sie mir bitte den Vertrag schicken",
+   "Könnten Sie mir den Vertrag schicken",
+   "Könnten Sie mir den Vertrag bitte schicken",
+   "Würden Sie mir bitte den Vertrag schicken",
+   "Würden Sie mir den Vertrag schicken",
+   "Würden Sie mir den Vertrag bitte schicken"
+  ],
+  "explain": "Polite request: Könnten/Würden Sie ... + infinitive at the end.",
+  "tags": [
+   "konjunktiv2",
+   "könnten",
+   "würden",
+   "politeness"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-058",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "transformation",
+  "instruction": "Change the informal du sentence into the formal Sie form.",
+  "cue": "Kannst du mir das Formular geben? → Sie",
+  "answer": "Können Sie mir das Formular geben?",
+  "accepted": [
+   "Können Sie mir das Formular geben"
+  ],
+  "explain": "du → Sie: kannst → können, pronoun Sie always capitalised.",
+  "tags": [
+   "register",
+   "du",
+   "Sie",
+   "können"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-059",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "transformation",
+  "instruction": "Change the informal du sentence into the formal Sie form (also the possessive).",
+  "cue": "Hast du deinen Führerschein dabei? → Sie",
+  "answer": "Haben Sie Ihren Führerschein dabei?",
+  "accepted": [
+   "Haben Sie Ihren Führerschein dabei"
+  ],
+  "explain": "du → Sie: hast → haben, deinen → Ihren (capital I).",
+  "tags": [
+   "register",
+   "du",
+   "Sie",
+   "possessive"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-060",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "plural",
+  "instruction": "Say the plural form with the plural article.",
+  "cue": "der Termin → Plural",
+  "answer": "die Termine",
+  "accepted": [
+   "die Termine"
+  ],
+  "explain": "Many masculine nouns take -e in the plural: die Termine.",
+  "tags": [
+   "plural",
+   "-e",
+   "masculine"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-061",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "plural",
+  "instruction": "Say the plural form with the plural article.",
+  "cue": "die Wohnung → Plural",
+  "answer": "die Wohnungen",
+  "accepted": [
+   "die Wohnungen"
+  ],
+  "explain": "Nouns ending in -ung are feminine and take -en in the plural.",
+  "tags": [
+   "plural",
+   "-en",
+   "feminine",
+   "-ung"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-062",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "plural",
+  "instruction": "Say the plural form with the plural article.",
+  "cue": "das Formular → Plural",
+  "answer": "die Formulare",
+  "accepted": [
+   "die Formulare"
+  ],
+  "explain": "Formular takes -e in the plural: die Formulare.",
+  "tags": [
+   "plural",
+   "-e",
+   "neuter"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-063",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "response",
+  "family": "gender.chunk",
+  "instruction": "Say the noun with its article and then its plural with die.",
+  "cue": "Tisch",
+  "answer": "der Tisch, die Tische",
+  "accepted": [
+   "der Tisch, die Tische"
+  ],
+  "explain": "Learn nouns as chunks: der Tisch, die Tische.",
+  "tags": [
+   "gender",
+   "masculine",
+   "plural",
+   "chunk"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-064",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "response",
+  "family": "gender.chunk",
+  "instruction": "Say the noun with its article and then its plural with die.",
+  "cue": "Werkstatt",
+  "answer": "die Werkstatt, die Werkstätten",
+  "accepted": [
+   "die Werkstatt, die Werkstätten"
+  ],
+  "explain": "Feminine; plural adds umlaut and -en: die Werkstätten.",
+  "tags": [
+   "gender",
+   "feminine",
+   "plural",
+   "umlaut",
+   "chunk"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-065",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "response",
+  "family": "gender.chunk",
+  "instruction": "Say the noun with its article and then its plural with die.",
+  "cue": "Amt",
+  "answer": "das Amt, die Ämter",
+  "accepted": [
+   "das Amt, die Ämter"
+  ],
+  "explain": "Neuter; plural adds umlaut and -er: die Ämter.",
+  "tags": [
+   "gender",
+   "neuter",
+   "plural",
+   "umlaut",
+   "chunk"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-066",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "response",
+  "family": "verb.government",
+  "instruction": "Answer the question with a full sentence using the cued noun.",
+  "cue": "Wem dankst du? → (die Chefin)",
+  "answer": "Ich danke der Chefin.",
+  "accepted": [
+   "Ich danke der Chefin"
+  ],
+  "explain": "danken takes the dative: der Chefin.",
+  "tags": [
+   "dative",
+   "danken",
+   "verb-government",
+   "response"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-067",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "transformation",
+  "family": "order.v2",
+  "instruction": "Start the sentence with the cued phrase; keep the verb in second position.",
+  "cue": "Ich fange am Montag mit der Ausbildung an. → Am Montag ...",
+  "answer": "Am Montag fange ich mit der Ausbildung an.",
+  "accepted": [
+   "Am Montag fange ich mit der Ausbildung an"
+  ],
+  "explain": "Fronting a phrase: verb stays in position 2, subject moves after it.",
+  "tags": [
+   "v2",
+   "inversion",
+   "anfangen",
+   "separable"
+  ],
+  "difficulty": 2,
+  "speedTargetSec": 6,
+  "speakCue": true
+ },
+ {
+  "id": "de-drill-068",
+  "lang": "de",
+  "module": "drill",
+  "drillType": "response",
+  "family": "prep.government",
+  "instruction": "Answer the question with a full sentence using the cued noun.",
+  "cue": "Worauf wartest du? → (der Bus)",
+  "answer": "Ich warte auf den Bus.",
+  "accepted": [
+   "Ich warte auf den Bus"
+  ],
+  "explain": "warten auf takes the accusative: auf den Bus.",
+  "tags": [
+   "accusative",
+   "warten auf",
+   "prep-government",
+   "response"
+  ],
+  "difficulty": 1,
+  "speedTargetSec": 4,
+  "speakCue": true
+ }
+]
