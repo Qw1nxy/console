@@ -35,7 +35,8 @@
       "gloss": "colleague",
       "parts": [
         "kollegen"
-      ]
+      ],
+      "weak": true
     },
     {
       "base": "Kollegin",
@@ -958,7 +959,8 @@
       "gloss": "customer",
       "parts": [
         "kunden"
-      ]
+      ],
+      "weak": true
     },
     {
       "base": "Rechnung",
@@ -1212,6 +1214,105 @@
       "parts": [
         "brot"
       ]
+    },
+    {
+      "base": "Mensch",
+      "gender": "m",
+      "pl": "Menschen",
+      "gloss": "human being, person",
+      "parts": [
+        "mensch",
+        "menschen"
+      ],
+      "weak": true
+    },
+    {
+      "base": "Junge",
+      "gender": "m",
+      "pl": "Jungen",
+      "gloss": "boy",
+      "parts": [
+        "junge",
+        "jungen"
+      ],
+      "weak": true
+    },
+    {
+      "base": "Student",
+      "gender": "m",
+      "pl": "Studenten",
+      "gloss": "student (university)",
+      "parts": [
+        "student",
+        "studenten"
+      ],
+      "weak": true
+    },
+    {
+      "base": "Nachbar",
+      "gender": "m",
+      "pl": "Nachbarn",
+      "gloss": "neighbour",
+      "parts": [
+        "nachbar",
+        "nachbarn"
+      ],
+      "weak": true
+    },
+    {
+      "base": "Praktikant",
+      "gender": "m",
+      "pl": "Praktikanten",
+      "gloss": "intern",
+      "parts": [
+        "praktikant",
+        "praktikanten"
+      ],
+      "weak": true
+    },
+    {
+      "base": "Patient",
+      "gender": "m",
+      "pl": "Patienten",
+      "gloss": "patient",
+      "parts": [
+        "patient",
+        "patienten"
+      ],
+      "weak": true
+    },
+    {
+      "base": "Polizist",
+      "gender": "m",
+      "pl": "Polizisten",
+      "gloss": "police officer",
+      "parts": [
+        "polizist",
+        "polizisten"
+      ],
+      "weak": true
+    },
+    {
+      "base": "Experte",
+      "gender": "m",
+      "pl": "Experten",
+      "gloss": "expert",
+      "parts": [
+        "experte",
+        "experten"
+      ],
+      "weak": true
+    },
+    {
+      "base": "Lieferant",
+      "gender": "m",
+      "pl": "Lieferanten",
+      "gloss": "supplier",
+      "parts": [
+        "lieferant",
+        "lieferanten"
+      ],
+      "weak": true
     }
   ],
   "parts": [

@@ -58,6 +58,10 @@ label{color:var(--muted);font-size:.85rem}
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:10px;
   display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .hdr .spacer{flex:1}
+.hdr{flex-wrap:nowrap;min-height:52px;max-height:52px;box-sizing:border-box}
+.hdr h1{font-size:1.05rem;margin:0}
+.hdr h1{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+@media (max-width:719px){#voice-badge-hdr{display:none!important}#hdr-date{display:none}}
 .main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:16px 92px;min-width:0}
 .view{display:flex;flex-direction:column;gap:14px;max-width:1080px}
 .tabbar{position:fixed;left:0;right:0;bottom:0;z-index:6;display:flex;background:var(--panel);border-top:1px solid var(--line);
@@ -115,6 +119,7 @@ label{color:var(--muted);font-size:.85rem}
 .btn.danger{background:var(--bad);color:var(--bad-fg);border-color:var(--bad)}
 .btn.ghost{background:none;border-color:transparent;color:var(--accent);padding:6px 8px;min-height:32px}
 .btn.sm{padding:4px 9px;min-height:30px;font-size:.84rem}
+@media (max-width:719px), (pointer:coarse){.btn,.btn.sm,.btn.ghost,.seg button,.chip,.manual-link,select,input[type=text],input[type=number],input[type=time],input[type=date],input[type=search]{min-height:44px}.chip{padding:6px 12px}.manual-link{display:inline-flex;align-items:center;padding:0 4px}.seg button{padding-block:0;display:inline-flex;align-items:center}}
 .chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line2);border-radius:999px;padding:3px 10px;font-size:.82rem;background:var(--bg);cursor:pointer;color:var(--fg);max-width:100%}
 .chip .n{color:var(--muted);font-variant-numeric:tabular-nums}
 .chip.on{background:var(--sel);border-color:var(--accent)}
@@ -126,7 +131,10 @@ label{color:var(--muted);font-size:.85rem}
 .badge.bad{border-color:var(--bad);color:var(--bad)}
 .lang{font-family:var(--mono);font-size:.78rem;border:1px solid var(--line2);border-radius:3px;padding:0 5px;text-transform:uppercase}
 .seg{display:inline-flex;border:1px solid var(--line2);border-radius:4px;overflow:hidden}
+#cm-table td{white-space:normal;vertical-align:top}#cm-table td:nth-child(4){min-width:180px}
+#cm-table td:first-child{font-family:var(--mono);font-size:.8rem;white-space:nowrap}
 .seg button{background:none;border:0;padding:7px 12px;color:var(--muted);min-height:36px}
+@media (max-width:719px), (pointer:coarse){.seg button{min-height:44px}}
 .seg button+button{border-left:1px solid var(--line2)}
 .seg button[aria-pressed="true"]{background:var(--sel);color:var(--fg)}
 .kbd{font-family:var(--mono);font-size:.74rem;border:1px solid var(--line2);border-bottom-width:2px;border-radius:3px;padding:0 5px;color:var(--muted)}
@@ -235,9 +243,9 @@ tr.selected td{background:var(--sel)}
 .manual-body table{margin:6px 0 12px;font-size:.84rem}
 .manual-body .table-wrap{overflow-x:auto;max-width:100%}
 .manual-body mark{background:var(--signal);color:var(--bg);padding:0 2px;border-radius:2px}
-.manual-body .proto{scroll-margin-top:70px;border-left:3px solid var(--accent);padding-left:10px;margin:12px 0}
+.manual-body .proto{scroll-margin-top:calc(110px + env(safe-area-inset-top,0px));border-left:3px solid var(--accent);padding-left:10px;margin:12px 0}
 .manual-body code{font-family:var(--mono);font-size:.9em}
-.manual-nav{position:sticky;top:0;background:var(--panel);padding-block:6px;z-index:2}
+.manual-nav{position:sticky;top:calc(53px + env(safe-area-inset-top,0px));background:var(--panel);padding-block:6px;z-index:4}
 .block .manual-link{font-size:.78rem;color:var(--accent);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;min-height:0}
 .keymap{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:.88rem;align-items:center}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation-duration:.01ms!important}}
@@ -259,7 +267,7 @@ tr.selected td{background:var(--sel)}
   <div class="main-wrap" style="min-width:0">
     <header class="hdr">
       <h1 id="view-title">Mission Control</h1>
-      <span class="badge" id="voice-badge-hdr" hidden></span>
+      <span class="badge hdr-badge" id="voice-badge-hdr" hidden></span>
       <span class="spacer"></span>
       <span class="small muted num" id="hdr-date"></span>
     </header>
@@ -290,7 +298,7 @@ tr.selected td{background:var(--sel)}
                 <button type="button" data-plan="90" id="plan-90">90 min</button>
                 <button type="button" data-plan="150" id="plan-150">150 min</button>
               </div>
-              <select id="plan-length" class="sr" aria-label="Plan length (fallback)"><option value="45">45</option><option value="90">90</option><option value="150">150</option></select>
+              <select id="plan-length" class="sr" tabindex="-1" aria-hidden="true" aria-label="Plan length (fallback)"><option value="45">45</option><option value="90">90</option><option value="150">150</option></select>
             </div>
           </div>
           <div class="row">
@@ -299,7 +307,7 @@ tr.selected td{background:var(--sel)}
               <button type="button" data-tlang="de" id="today-lang-de">German</button>
               <button type="button" data-tlang="hu" id="today-lang-hu">Hungarian</button>
             </div>
-            <select id="today-lang" class="sr" aria-label="Block language (fallback)"><option value="de">de</option><option value="hu">hu</option></select>
+            <select id="today-lang" class="sr" tabindex="-1" aria-hidden="true" aria-label="Block language (fallback)"><option value="de">de</option><option value="hu">hu</option></select>
           </div>
           <div class="list" id="block-list"></div>
           <div class="panel sub" id="timer-card" hidden>
@@ -378,20 +386,20 @@ tr.selected td{background:var(--sel)}
               <button type="button" data-dlang="de" id="drill-lang-de">German</button>
               <button type="button" data-dlang="hu" id="drill-lang-hu">Hungarian</button>
             </div>
-            <select id="drill-lang" class="sr" aria-label="Drill language (fallback)"><option value="de">de</option><option value="hu">hu</option></select>
+            <select id="drill-lang" class="sr" tabindex="-1" aria-hidden="true" aria-label="Drill language (fallback)"><option value="de">de</option><option value="hu">hu</option></select>
             <div class="seg" role="group" aria-label="Source">
               <button type="button" data-src="due" id="drill-src-due">Due + new</button>
               <button type="button" data-src="heat" id="drill-src-heat">Heat set</button>
               <button type="button" data-src="families" id="drill-src-families">Families</button>
               <button type="button" data-src="all" id="drill-src-all">All</button>
             </div>
-            <select id="drill-source" class="sr" aria-label="Drill source (fallback)"><option value="due">due</option><option value="heat">heat</option><option value="families">families</option><option value="all">all</option></select>
+            <select id="drill-source" class="sr" tabindex="-1" aria-hidden="true" aria-label="Drill source (fallback)"><option value="due">due</option><option value="heat">heat</option><option value="families">families</option><option value="all">all</option></select>
             <div class="seg" role="group" aria-label="Length">
               <button type="button" data-len="20" id="drill-len-20">20</button>
               <button type="button" data-len="30" id="drill-len-30">30</button>
               <button type="button" data-len="40" id="drill-len-40">40</button>
             </div>
-            <input type="number" id="drill-length" class="sr" aria-label="Session length (fallback)" min="1" max="200" value="20">
+            <input type="number" id="drill-length" class="sr" tabindex="-1" aria-hidden="true" aria-label="Session length (fallback)" min="1" max="200" value="20">
           </div>
           <div id="drill-families-wrap" class="col" hidden>
             <div class="row between"><label>Families (tap to select)</label><div class="row"><button type="button" class="btn sm" id="fam-all">All</button><button type="button" class="btn sm" id="fam-none">None</button></div></div>
@@ -456,7 +464,7 @@ tr.selected td{background:var(--sel)}
         <div class="panel" id="drill-summary" hidden>
           <div class="panel-head"><h2>Session summary</h2><span class="muted" id="summary-meta"></span></div>
           <div class="grid3" id="summary-stats"></div>
-          <div class="scroll-x"><table id="summary-families"><thead><tr><th>Family</th><th class="num">Cues</th><th class="num">Correct</th><th class="num">Score</th><th></th></tr></thead><tbody></tbody></table></div>
+          <div class="scroll-x"><table id="summary-families"><thead><tr><th>Family</th><th class="num">Cues</th><th class="num">Correct</th><th class="num">Score</th><th>Under 70%</th></tr></thead><tbody></tbody></table></div><p class="note" id="summary-families-note" hidden>"Explain" opens the deconstructor on that family (P-1 step 5: below 70%, halve the set and read the explanation first).</p>
           <div class="col" id="summary-misses-wrap"><h3>Misses</h3><div class="list" id="summary-misses"></div></div>
           <div class="panel sub" id="summary-bridge">
             <h3>Bridge</h3>
@@ -472,13 +480,13 @@ tr.selected td{background:var(--sel)}
         <div class="panel">
           <div class="panel-head"><h2>Deconstructor</h2><span class="muted">Enter parses. Ctrl+Enter builds.</span></div>
           <div class="row">
-            <input type="text" id="decon-input" class="decon-input" style="flex:1 1 220px;min-width:0" placeholder="házaimban, dem alten Mann, aufzustehen" autocomplete="off" autocapitalize="off" spellcheck="false">
+            <input type="text" id="decon-input" aria-label="Word or phrase to deconstruct" class="decon-input" style="flex:1 1 220px;min-width:0" placeholder="házaimban, dem alten Mann, aufzustehen" autocomplete="off" autocapitalize="off" spellcheck="false">
             <div class="seg" role="group" aria-label="Language override">
               <button type="button" data-xlang="auto" id="decon-lang-auto">Auto</button>
               <button type="button" data-xlang="de" id="decon-lang-de">DE</button>
               <button type="button" data-xlang="hu" id="decon-lang-hu">HU</button>
             </div>
-            <select id="decon-lang" class="sr" aria-label="Deconstructor language (fallback)"><option value="auto">auto</option><option value="de">de</option><option value="hu">hu</option></select>
+            <select id="decon-lang" class="sr" tabindex="-1" aria-hidden="true" aria-label="Deconstructor language (fallback)"><option value="auto">auto</option><option value="de">de</option><option value="hu">hu</option></select>
           </div>
           <div class="row">
             <button type="button" class="btn primary" id="decon-parse">Parse</button>
@@ -497,7 +505,7 @@ tr.selected td{background:var(--sel)}
           <div class="panel-head"><h2>Build</h2><span class="muted" id="decon-build-lang"></span></div>
           <div id="build-hu" class="col" hidden>
             <div class="grid3">
-              <div class="field"><label for="hu-stem-search">Stem</label><input type="search" id="hu-stem-search" placeholder="search stems"><select id="hu-stem" size="1"></select></div>
+              <div class="field"><label for="hu-stem-search">Stem</label><input type="search" id="hu-stem-search" placeholder="search stems"><select id="hu-stem" aria-label="Hungarian stem" size="1"></select></div>
               <div class="field"><label for="hu-poss">Possessor</label><select id="hu-poss"><option value="">none</option><option value="1sg">1sg (my)</option><option value="2sg">2sg (your)</option><option value="3sg">3sg (his/her)</option><option value="1pl">1pl (our)</option><option value="2pl">2pl (your pl)</option><option value="3pl">3pl (their)</option></select></div>
               <div class="field"><label for="hu-case">Case</label><select id="hu-case">
                 <option value="">none</option><option value="ban">-ban/-ben (in)</option><option value="ba">-ba/-be (into)</option><option value="ból">-ból/-ből (out of)</option>
@@ -514,7 +522,7 @@ tr.selected td{background:var(--sel)}
           </div>
           <div id="build-de" class="col" hidden>
             <div class="grid3">
-              <div class="field"><label for="de-noun-search">Noun</label><input type="search" id="de-noun-search" placeholder="search nouns"><select id="de-noun"></select></div>
+              <div class="field"><label for="de-noun-search">Noun</label><input type="search" id="de-noun-search" placeholder="search nouns"><select id="de-noun" aria-label="German noun"></select></div>
               <div class="field"><label for="de-det">Determiner</label><select id="de-det"><option value="definite">definite (der/die/das)</option><option value="ein">ein-word</option><option value="none">none</option></select></div>
               <div class="field"><label for="de-case">Case</label><select id="de-case"><option value="nom">nominative</option><option value="acc">accusative</option><option value="dat">dative</option><option value="gen">genitive</option></select></div>
               <div class="field"><label for="de-number">Number</label><select id="de-number"><option value="sg">singular</option><option value="pl">plural</option></select></div>
@@ -559,7 +567,7 @@ tr.selected td{background:var(--sel)}
               <button type="button" data-llang="de" id="legend-lang-de">German</button>
               <button type="button" data-llang="hu" id="legend-lang-hu">Hungarian</button>
             </div>
-            <select id="legend-lang" class="sr" aria-label="Legend language (fallback)"><option value="de">de</option><option value="hu">hu</option></select>
+            <select id="legend-lang" class="sr" tabindex="-1" aria-hidden="true" aria-label="Legend language (fallback)"><option value="de">de</option><option value="hu">hu</option></select>
           </div>
           <div class="grid3">
             <div class="field"><label for="legend-name">Name</label><input type="text" id="legend-name"></div>
@@ -839,11 +847,12 @@ function toast(msg) {
   const t = $("toast"); t.textContent = msg; t.hidden = false;
   clearTimeout(toastTimer); toastTimer = setTimeout(() => { t.hidden = true; }, 2600);
 }
-function copyText(text, textareaEl) {
-  const done = () => toast("Copied");
+function copyText(text, textareaEl, onResult) {
+  const done = () => { toast("Copied"); if (onResult) onResult(true); };
   const fallback = () => {
     if (textareaEl) { textareaEl.hidden = false; textareaEl.focus(); textareaEl.select(); toast("Select the text and copy it"); }
     else toast("Copy failed. Select the text manually.");
+    if (onResult) onResult(false);
   };
   try {
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, fallback);
@@ -864,7 +873,7 @@ function familyToCategory(family, lang) {
   if (f === "tekamolo" || f === "konj2") return f === "tekamolo" ? "order" : "conj";
   if (f === "plural") return lang === "hu" ? "stem" : "gender";
   const p = f.split(".")[0];
-  const map = { case: "case", order: "order", coverb: "coverb", conj: "conj", adj: "adj", harmony: "harmony", stem: "stem", verb: "conj", gender: "gender", prep: "case", focus: "order", numeral: "lex" };
+  const map = { case: "case", order: "order", coverb: "coverb", conj: "conj", adj: "adj", harmony: "harmony", stem: "stem", verb: "conj", gender: "gender", prep: "case", focus: "order", numeral: "lex", register: "conj" };
   return map[p] || "lex";
 }
 function categoryToFamily(cat, lang) {
@@ -967,7 +976,7 @@ function speak(text, lang) {
    ============================================================ */
 const VIEW_TITLES = { mission: "Mission Control", drill: "Drill Engine", decon: "Deconstructor", wiretap: "Wiretap", legend: "Legend", manual: "Field Manual", content: "Content Manager", settings: "Settings" };
 function show(view) {
-  if (S.drill && S.drill.phase === "stage" && view !== "drill") { /* leaving a live drill ends it */ endSession(); }
+  if (S.drill && S.drill.phase === "stage" && view !== "drill") toast("Drill still running — Esc in Drill Engine ends it");
   S.view = view;
   Object.keys(VIEW_TITLES).forEach(v => { const el = $("view-" + v); if (el) el.hidden = v !== view; });
   document.querySelectorAll("[data-nav]").forEach(b => { if (b.getAttribute("data-nav") === view) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current"); });
@@ -986,7 +995,7 @@ function show(view) {
 /* ============================================================
    DRILL
    ============================================================ */
-const DS = { lang: "de", source: "due", length: 20, typed: false, families: new Set(), preset: null };
+const DS = { lang: "de", source: "due", length: 20, typed: false, families: new Set(), familiesTouched: false, preset: null };
 
 function familyCounts(lang) {
   const m = {};
@@ -999,10 +1008,10 @@ function renderDrillSetup() {
   $("drill-families-wrap").hidden = DS.source !== "families";
   const counts = familyCounts(DS.lang);
   const fams = Object.keys(counts).sort();
-  fams.forEach(f => { if (DS.families.size === 0) DS.families.add(f); });
+  if (!DS.familiesTouched) { DS.families = new Set(fams); }
   [...DS.families].forEach(f => { if (!counts[f]) DS.families.delete(f); });
   $("drill-families").innerHTML = fams.map(f => '<button type="button" class="chip' + (DS.families.has(f) ? " on" : "") + '" data-fam="' + esc(f) + '">' + esc(f) + ' <span class="n">' + counts[f] + "</span></button>").join("") || '<span class="empty">No drills for this language yet.</span>';
-  $("drill-families").querySelectorAll("[data-fam]").forEach(b => b.addEventListener("click", () => { const f = b.getAttribute("data-fam"); if (DS.families.has(f)) DS.families.delete(f); else DS.families.add(f); renderDrillSetup(); }));
+  $("drill-families").querySelectorAll("[data-fam]").forEach(b => b.addEventListener("click", () => { const f = b.getAttribute("data-fam"); DS.familiesTouched = true; if (DS.families.has(f)) DS.families.delete(f); else DS.families.add(f); renderDrillSetup(); }));
   const pool = buildPool(DS.lang, DS.source, DS.families);
   $("drill-pool-count").textContent = pool.length + " item" + (pool.length === 1 ? "" : "s") + " available";
   $("drill-start").disabled = pool.length === 0;
@@ -1030,7 +1039,7 @@ function buildQueue(lang, source, families, length) {
   const P = id => progressOf(id);
   const due = pool.filter(d => P(d.id).reps > 0 && P(d.id).due <= now && !P(d.id).heat);
   const heat = pool.filter(d => P(d.id).heat === true);
-  const fresh = pool.filter(d => !P(d.id).reps).sort((a, b) => (a.difficulty || 1) - (b.difficulty || 1));
+  const fresh = shuffle(pool.filter(d => !P(d.id).reps)).sort((a, b) => (a.difficulty || 1) - (b.difficulty || 1));
   const rest = pool.filter(d => P(d.id).reps > 0 && !(P(d.id).due <= now) && !P(d.id).heat);
   let ordered = uniq(shuffle(due).concat(shuffle(heat), fresh, shuffle(rest)));
   ordered = interleave(ordered, families && families.size ? [...families] : Object.keys(familyCounts(lang)));
@@ -1226,10 +1235,11 @@ function renderSummary(rec) {
   const tb = $("summary-families").querySelector("tbody");
   tb.innerHTML = Object.keys(rec.byFamily).sort().map(f => {
     const x = rec.byFamily[f]; const s = pct(x.ok, x.n);
-    const link = s < 70 ? '<button type="button" class="btn ghost sm" data-decon-fam="' + esc(f) + '">Open the deconstructor explanation for this family</button>' : "";
+    const link = s < 70 ? '<button type="button" class="btn ghost sm" data-decon-fam="' + esc(f) + '" style="white-space:normal;text-align:left">Explain</button>' : "";
     return "<tr><td>" + esc(f) + '</td><td class="num">' + x.n + '</td><td class="num">' + x.ok + '</td><td class="num">' + s + "%</td><td>" + link + "</td></tr>";
   }).join("");
   tb.querySelectorAll("[data-decon-fam]").forEach(b => b.addEventListener("click", () => openDeconForFamily(rec.lang, b.getAttribute("data-decon-fam"))));
+  const sfn = $("summary-families-note"); if (sfn) sfn.hidden = !tb.querySelector("[data-decon-fam]");
   const misses = d.results.filter(r => r.grade === 3 && !r.requeued);
   $("summary-misses-wrap").hidden = misses.length === 0;
   $("summary-misses").innerHTML = misses.map(r => '<div class="item"><div class="col"><span class="mono">' + esc(r.cue) + '</span><span class="meta">' + esc(r.answer) + '</span></div><div class="field inline"><input type="checkbox" id="heat-' + esc(r.itemId) + '" data-heat="' + esc(r.itemId) + '" checked><label for="heat-' + esc(r.itemId) + '">keep in heat set</label></div></div>').join("");
@@ -1253,12 +1263,16 @@ const DX = { lang: "hu", override: "auto", buildLang: null };
 function detectLang(text) {
   const t = String(text || "").trim();
   if (!t) return null;
-  if (/[őű]/.test(t) || /(gy|ty|ny|sz|zs|cs)/i.test(t)) return "hu";
-  if (/[ßäöü]/i.test(t) && /(^|\s)[A-ZÄÖÜ]/.test(t)) return "de";
-  if (/\b(der|die|das|dem|den|des|ein|eine|einen|einem|einer|eines|kein|keine|keinen|keinem|keiner)\b/i.test(t)) return "de";
+  if (/[őűŐŰ]/.test(t) || /[áíóúÁÍÓÚ]/.test(t)) return "hu";               // letters only Hungarian uses
+  if (/[ßẞ]/.test(t)) return "de";                                             // letter only German uses
+  if (/\b(der|die|das|dem|den|des|ein|eine|einen|einem|einer|eines|kein|keine|keinen|keinem|keiner|mein|dein|sein|ihr|unser|euer|dieser|diese|dieses|jeder|jede|jedes|zu)\b/i.test(t)) return "de";
+  if (/^(ge|ver|be|er|ent|emp|zer|miss|an|auf|aus|ab|ein|mit|nach|vor|zu|zurück|weg|los|fest)[a-zäöü]+(t|en|st|et)$/i.test(t) && !/(gy|ty|ny|sz|zs|cs|ly)/i.test(t)) return "de"; // German verb shapes: gearbeitet, aufgestanden, verstanden
+  if (/(sch|ck|tz|pf|ung|heit|keit|chen|lich|zeug|ier)/i.test(t)) return "de";
+  if (/^[A-ZÄÖÜ][a-zäöü]+$/.test(t) && !/(gy|ty|ny|sz|zs|cs)/i.test(t)) return "de"; // capitalised single word: German noun
+  if (/(gy|ty|ny|sz|zs|cs|ly)/i.test(t)) return "hu";
   if (E && typeof E.detectLang === "function") { try { const r = E.detectLang(t); if (r === "de" || r === "hu") return r; } catch (e) { /* ignore */ } }
-  if (/[ß]/.test(t)) return "de";
-  if (/[áéíóúöüÁÉÍÓÚÖÜ]/.test(t) && !/[ß]/.test(t) && /^[a-záéíóöőúüű]+$/i.test(t) && !/^[A-Z]/.test(t)) return "hu";
+  if (/[äöü]/i.test(t) && !/[éöő]/.test(t)) return "de";
+  if (/[áéíóúöüÁÉÍÓÚÖÜ]/.test(t) && /^[a-záéíóöőúüű]+$/i.test(t)) return "hu";
   return null;
 }
 function resolveLang(text) {
@@ -1290,7 +1304,11 @@ function parseDecon(raw, forcedLang) {
   const word = String(raw || "").trim().replace(/\s+/g, " ");
   const out = $("decon-results");
   if (!word) { out.innerHTML = ""; return; }
-  const lang = forcedLang || resolveLang(word);
+  let lang = forcedLang || resolveLang(word);
+  if (!forcedLang && DX.override === "auto") {
+    const other = lang === "de" ? "hu" : "de";
+    try { if (!engineParse(word, lang).analyses.length && engineParse(word, other).analyses.length) lang = other; } catch (e) { /* keep detected */ }
+  }
   DX.lang = lang; S.settings.deconLang = lang; save.settings();
   $("decon-detected").textContent = (DX.override === "auto" ? "detected " : "") + LANG_NAME[lang];
   const example = deconExamples(lang).find(e => e.word.toLowerCase() === word.toLowerCase());
@@ -1523,7 +1541,7 @@ function exportForChat() {
     "Recovery moves I may use: " + listify(s.recoveryMoves).join(" / ")
   ].join("\n");
   const ta = $("legend-export-text"); ta.value = text;
-  copyText(text, ta); $("legend-export-msg").textContent = "Prompt copied. Paste it into the chat.";
+  copyText(text, ta, ok => { $("legend-export-msg").textContent = ok ? "Prompt copied. Paste it into the chat." : "Copy was blocked here: select the text below and copy it yourself."; });
 }
 
 /* ============================================================
@@ -1538,7 +1556,7 @@ function itemSummary(i) {
 }
 function renderContentList() {
   const lang = $("cm-lang").value, mod = $("cm-module").value, q = ($("cm-search").value || "").toLowerCase();
-  const rows = S.content.filter(i => (!lang || i.lang === lang) && (!mod || i.module === mod) && (!q || (i.id + " " + itemSummary(i) + " " + listify(i.tags).join(" ")).toLowerCase().includes(q)));
+  const rows = S.content.filter(i => (!lang || i.lang === lang) && (!mod || i.module === mod) && (!q || (i.id + " " + itemSummary(i) + " " + (i.answer || "") + " " + (i.gloss || "") + " " + (i.word || "") + " " + listify(i.tags).join(" ")).toLowerCase().includes(q)));
   $("cm-count").textContent = rows.length + " of " + S.content.length;
   const tb = $("cm-table").querySelector("tbody");
   tb.innerHTML = rows.slice(0, 400).map(i => '<tr class="click' + (CM.editing === i.id ? " selected" : "") + '" data-cm="' + esc(i.id) + '"><td class="mono small">' + esc(i.id) + '</td><td><span class="lang">' + esc(i.lang) + "</span></td><td>" + esc(i.module) + '</td><td style="min-width:200px">' + esc(itemSummary(i)) + "</td></tr>").join("") + (rows.length > 400 ? '<tr><td colspan="4" class="muted">Showing 400 of ' + rows.length + ". Narrow the filter.</td></tr>" : "");
@@ -1560,6 +1578,7 @@ function openEditor(id, isNew, kind) {
   const item = isNew ? null : byId(id);
   if (!isNew && !item) return;
   CM.editing = isNew ? null : id; CM.isNew = !!isNew; CM.kind = isNew ? kind : kindOf(item);
+  setTimeout(() => { try { const ed = $("cm-editor"); if (ed && !ed.hidden) ed.scrollIntoView({ block: "start", behavior: "smooth" }); } catch (e) { /* ignore */ } }, 0);
   const defs = FIELD_DEFS[CM.kind] || FIELD_DEFS.drill;
   $("cm-editor").hidden = false; $("cm-editor-title").textContent = isNew ? "New " + CM.kind.replace("lexicon:", "lexicon ") : "Edit item";
   $("cm-editor-id").textContent = isNew ? "" : id; $("cm-msg").hidden = true; $("cm-confirm").hidden = true;
@@ -1637,7 +1656,7 @@ function saveEditor() {
   renderContentList();
 }
 function duplicateEditor() {
-  const it = readEditor(); it.id = it.id + "-copy"; let n = 2; while (byId(it.id)) { it.id = it.id.replace(/(-copy\d*)?$/, "-copy" + n); n++; }
+  const it = readEditor(); const baseId = it.id.replace(/-copy\d*$/, ""); it.id = baseId + "-copy"; let n = 2; while (byId(it.id)) { it.id = baseId + "-copy" + n; n++; }
   S.content.push(it); save.content(); openEditor(it.id); toast("Duplicated as " + it.id);
 }
 function deleteEditor() {
@@ -1840,7 +1859,7 @@ function mdInline(t) {
   h = h.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
   h = h.replace(/(^|[^*\w])\*([^*\n]+)\*(?!\w)/g, "$1<em>$2</em>");
   h = h.replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
-  h = h.replace(/\bP-(\d{1,2})\b/g, (m, n) => '<a href="#" class="plink" data-proto="' + n + '">P-' + n + "</a>");
+  h = h.replace(/\bP-(\d{1,2})\b/g, (m, n, off, str) => /^\s*<strong>Protocol\s*$/.test(str.slice(Math.max(0, off - 20), off)) ? m : '<a href="#" class="plink" data-proto="' + n + '">P-' + n + "</a>");
   return h;
 }
 function mdToHtml(md) {
@@ -1970,7 +1989,7 @@ function importJSON(text) {
   const mode = $("import-replace").checked ? "replace" : "merge"; const withProgress = $("import-progress").checked;
   let items = null, full = null;
   if (Array.isArray(data)) items = data;
-  else if (data && typeof data === "object") { full = data; items = Array.isArray(data.content) ? data.content : (Array.isArray(data.items) ? data.items : null); }
+  else if (data && typeof data === "object") { full = data; items = Array.isArray(data.content) ? data.content : (Array.isArray(data.items) ? data.items : null); if (!items && !data.progress && !data.settings) return { ok: false, msg: "This JSON has no content items (expected an array, or an export with a content list)." }; }
   if (!items && !full) return { ok: false, msg: "Expected an export object or an array of content items." };
   items = (items || []).filter(i => i && typeof i === "object" && i.id);
   // lexicon written as bare entries without module
@@ -1984,7 +2003,7 @@ function importJSON(text) {
   } else if (mode === "replace") {
     S.content = items; added = items.length; if (!withProgress) S.progress = {};
   } else {
-    items.forEach(it => { const i = S.content.findIndex(x => x.id === it.id); if (i >= 0) { S.content[i] = it; updated++; } else { S.content.push(it); added++; } if (it.srs && typeof it.srs === "object") { S.progress[it.id] = Object.assign(freshProgress(), it.srs); } else if (!S.progress[it.id]) S.progress[it.id] = freshProgress(); });
+    items.forEach(it => { const i = S.content.findIndex(x => x.id === it.id); if (i >= 0) { S.content[i] = it; updated++; } else { S.content.push(it); added++; } if (it.srs && typeof it.srs === "object") { S.progress[it.id] = Object.assign(freshProgress(), it.srs); } else if (it.module === "drill" && !S.progress[it.id]) S.progress[it.id] = freshProgress(); });
     if (full && withProgress && full.progress) Object.assign(S.progress, full.progress);
     if (full) { ["sessions", "errors", "wiretap", "legends"].forEach(k => { if (Array.isArray(full[k])) { const have = new Set(S[k].map(x => x.id)); full[k].forEach(x => { if (x && !have.has(x.id)) S[k].push(x); }); } }); }
   }
@@ -2027,8 +2046,9 @@ function wire() {
   document.querySelectorAll("#drill-setup [data-len]").forEach(b => b.addEventListener("click", () => { DS.length = Number(b.getAttribute("data-len")); renderDrillSetup(); }));
   on("drill-length", "change", () => { DS.length = clamp(Number($("drill-length").value) || 20, 1, 200); renderDrillSetup(); });
   on("drill-typed", "change", () => { DS.typed = $("drill-typed").checked; });
-  on("fam-all", "click", () => { DS.families = new Set(Object.keys(familyCounts(DS.lang))); renderDrillSetup(); });
-  on("fam-none", "click", () => { DS.families = new Set(); renderDrillSetup(); $("drill-pool-count").textContent = "0 items available"; $("drill-start").disabled = true; });
+  document.querySelectorAll("#drill-setup [data-dlang]").forEach(b => b.addEventListener("click", () => { DS.familiesTouched = false; }));
+  on("fam-all", "click", () => { DS.familiesTouched = false; renderDrillSetup(); });
+  on("fam-none", "click", () => { DS.familiesTouched = true; DS.families = new Set(); renderDrillSetup(); });
   on("drill-start", "click", () => startDrill({ lang: DS.lang, source: DS.source, families: DS.families, length: DS.length, typed: DS.typed }));
   on("guard-back", "click", () => { S.drill = null; renderDrillSetup(); });
   on("guard-override", "click", () => {

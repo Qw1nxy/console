@@ -29,7 +29,7 @@ for d in drills:
         if k not in d: err(f"{d.get('id')}: missing {k}")
     if d["lang"] != "de" or d["module"] != "drill": err(f"{d['id']}: lang/module")
     if d["drillType"] not in DRILLTYPES: err(f"{d['id']}: drillType {d['drillType']}")
-    if d["family"] not in FAMILIES and not (d["family"] == "transformation"):
+    if d["family"] not in FAMILIES and not d["family"].startswith("register."):
         err(f"{d['id']}: family {d['family']}")
     if d["difficulty"] not in (1,2,3): err(f"{d['id']}: difficulty")
     if len(d["explain"].split()) > 22: err(f"{d['id']}: explain too long ({len(d['explain'].split())} words)")
@@ -41,7 +41,7 @@ for d in drills:
 
 MIN = {"case.nom":3,"case.acc":5,"case.dat":5,"case.gen":3,"prep.twoway":6,"adj.strong":3,"adj.weak":3,"adj.mixed":3,
        "verb.separable":6,"verb.inseparable":2,"order.subordinate":6,"order.modal":3,"order.perfekt":3,"tekamolo":3,
-       "konj2":3,"transformation":2,"plural":3,"gender.chunk":3}
+       "konj2":3,"register.sie":2,"plural":3,"gender.chunk":3}
 for f, n in MIN.items():
     if fam[f] < n: err(f"family {f}: {fam[f]} < {n}")
 if len(drills) < 48: err(f"only {len(drills)} drills")

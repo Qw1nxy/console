@@ -281,7 +281,7 @@ const OLC_ENGINES = (function () {
   // Plural-possessed: obl + (ji ? j+a/e : (lv ? a/e : "")) + i + {m, d, "", nk, tok/tek, k}.
   function huPossPl(entry, person) {
     var obl = entry.obl, lv = entry.lv, h = entry.harmony, ji = !!entry.ji;
-    // optional `oblpl`: stem before plural-possessed -i when it differs (idő → idei, ajtó → ajtai)
+    // optional `oblpl`: stem before plural-possessed -i when it differs (szülő → szülei, szüleim; idő keeps időim)
     var lobl = entry.oblpl || (ji ? huOblj(entry) : huLengthen(obl));
     var ms = [huStem(entry, lobl)];
     var v = ["a", "e"][two(h)];
@@ -509,6 +509,14 @@ const OLC_ENGINES = (function () {
     var assumed = [];
     var i;
     function endsWith(s, suf) { return s.length > suf.length && s.slice(-suf.length) === suf; }
+    // 1a. assimilated instrumental: házzal, kerttel, elefántokkal — a doubled consonant + al/el
+    var mIns = /([bcdfghjklmnpqrstvwxyz])\1(al|el)$/i.exec(rest);
+    if (mIns && rest.length > 4) {
+      var cons = mIns[1], v = mIns[2] === "al" ? "val" : "vel";
+      tail.push(M(cons + mIns[2], "case", "instrumental -" + v + ": the v assimilates to the final consonant (" + cons + " + " + v + " → " + cons + cons + mIns[2] + ") (assumed)"));
+      rest = rest.slice(0, -(mIns[2].length + 1));
+      assumed.push("-" + cons + mIns[2] + " as the assimilated instrumental -" + v);
+    } else
     // 1. a case suffix at the very end
     for (i = 0; i < HU_GUESS_CASES.length; i++) {
       var suf = HU_GUESS_CASES[i][0], key = HU_GUESS_CASES[i][1];
@@ -539,6 +547,9 @@ const OLC_ENGINES = (function () {
       var ps = POSS[i][0], who = POSS[i][1], plPoss = POSS[i][2];
       if (!endsWith(rest, ps) || rest.length - ps.length < 2) continue;
       if (ps.length === 1 && !tail.length) continue; // a bare final m/d/a/e is too weak a signal alone
+      // -tok/-tek/-tök (2PL) vs plural -k after a linking vowel + t-final stem: prefer the plural reading when a case suffix
+      // was peeled (elefántokkal = elefánt + o + k + kal), since 2PL possessives are rare in the input this app sees.
+      if (/^t[oeö]k$/.test(ps) && tail.length) continue;
       if (plPoss) {
         var after = ps.slice(2); // ending after the a/e + i
         if (after) tail.push(M(after, "poss", who + " possessor — " + HU_PERSON_GLOSS[who] + " (assumed)"));
@@ -728,11 +739,22 @@ const OLC_ENGINES = (function () {
   function deNounDesc(noun) {
     return noun.gloss + " — " + DE_ARTICLE[noun.gender] + " " + noun.base + ", " + DE_GENDER_NAME[noun.gender];
   }
+  // n-declension (weak masculine nouns): Kollege → den/dem/des Kollegen; Mensch → den Menschen. Flagged `weak: true` in the lexicon.
+  function deWeakEnding(noun) {
+    if (!noun.weak) return "";
+    if (typeof noun.weak === "string") return noun.weak;                 // explicit: Nachbar → "n", Herr → "n" (sg) …
+    return /(e|ar|er)$/i.test(noun.base) ? "n" : "en";                     // Kollege → Kollegen, Nachbar → Nachbarn, Mensch → Menschen
+  }
   // Noun morphemes for a surface token (keeps the token's spelling) in a given number/case.
-  //   kind: "base" | "gen" | "pl" | "datpl" | "zeropl"
+  //   kind: "base" | "gen" | "pl" | "datpl" | "zeropl" | "weak"
   function deNounMorphemes(noun, token, kind, cas) {
     var use = cas ? "; " + DE_CASE_USE[cas] : "";
     if (kind === "base") return [M(token, "noun", deNounDesc(noun) + use)];
+    if (kind === "weak") {
+      var we = deWeakEnding(noun);
+      return [M(token.slice(0, token.length - we.length), "noun", deNounDesc(noun) + "; n-declension (weak masculine noun)"),
+        M(token.slice(token.length - we.length), "pl-end", "-" + we + " on every singular case except the nominative (" + noun.base + " → den/dem/des " + noun.base + we + ")" + use)];
+    }
     if (kind === "gen") {
       var ge = token.slice(noun.base.length);
       return [M(token, "noun", deNounDesc(noun) + "; genitive singular adds -" + ge + " (" + noun.base + " → " + noun.base + ge + ")" + (ge === "ses" ? " — the s doubles as in the plural " + noun.pl : ""))];
@@ -756,8 +778,11 @@ const OLC_ENGINES = (function () {
   function deNounForms(noun) {
     var out = [];
     var base = lc(noun.base);
-    out.push({ form: base, number: "sg", cases: noun.gender === "f" ? ["nom", "acc", "dat", "gen"] : ["nom", "acc", "dat"], kind: "base" });
-    if (noun.gender !== "f") {
+    if (noun.weak) {
+      out.push({ form: base, number: "sg", cases: ["nom"], kind: "base" });
+      out.push({ form: base + deWeakEnding(noun), number: "sg", cases: ["acc", "dat", "gen"], kind: "weak" });
+    } else out.push({ form: base, number: "sg", cases: noun.gender === "f" ? ["nom", "acc", "dat", "gen"] : ["nom", "acc", "dat"], kind: "base" });
+    if (noun.gender !== "f" && !noun.weak) {
       var ge = deGenEnding(noun);
       out.push({ form: base + ge, number: "sg", cases: ["gen"], kind: "gen" });
       if (ge === "s") out.push({ form: base + "es", number: "sg", cases: ["gen"], kind: "gen" }); // des Vertrages is equally correct
@@ -934,6 +959,7 @@ const OLC_ENGINES = (function () {
     if (f.kind === "pl" || f.kind === "zeropl") nounNote += ", plural " + noun.pl;
     if (f.kind === "datpl") nounNote += "; the dative plural adds -n to " + noun.pl;
     if (f.kind === "gen") nounNote += "; masculine/neuter genitive singular adds -" + deGenEnding(noun);
+    if (f.kind === "weak") nounNote += "; a weak (n-declension) noun: -" + deWeakEnding(noun) + " in every singular case but the nominative";
     if (rd.cas === "gen" && noun.gender === "f" && f.kind === "base") nounNote += "; feminine nouns take no genitive ending";
     s.push(nounNote + ", which is what pins the reading down.");
     return s.join(" ");
@@ -1222,7 +1248,11 @@ const OLC_ENGINES = (function () {
     // noun form
     var nounTok, nounMs;
     if (num === "sg") {
-      if (cas === "gen" && noun.gender !== "f") {
+      if (noun.weak && cas !== "nom") {
+        nounTok = noun.base + deWeakEnding(noun);
+        nounMs = deNounMorphemes(noun, nounTok, "weak", cas);
+        explain.push(noun.base + " is a weak masculine noun (n-declension): it takes -" + deWeakEnding(noun) + " in the accusative, dative and genitive singular → " + nounTok + ".");
+      } else if (cas === "gen" && noun.gender !== "f") {
         var ge = deGenEnding(noun);
         nounTok = noun.base + ge;
         nounMs = [M(nounTok, "noun", deNounDesc(noun) + "; genitive singular -" + ge + (ge === "es" ? (/(s|ß|x|z|sch)$/i.test(noun.base) ? " (after s/ß/x/z/tz/sch)" : " (one-syllable noun)") : ""))];
