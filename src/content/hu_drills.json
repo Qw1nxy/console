@@ -225,7 +225,7 @@
   "module": "drill",
   "drillType": "substitution",
   "family": "case.surface",
-  "instruction": "Replace the place with the cued noun, same case.",
+  "instruction": "Swap in the cued place and keep the “in/on” ending (-on/-en/-ön).",
   "cue": "Budapesten lakom. → (Magyarország)",
   "answer": "Magyarországon lakom.",
   "accepted": [
@@ -238,8 +238,9 @@
    "place-names"
   ],
   "difficulty": 1,
-  "speedTargetSec": 4,
-  "speakCue": true
+  "speedTargetSec": 6,
+  "speakCue": true,
+  "gloss": "I live in Hungary."
  },
  {
   "id": "hu-drill-012",
@@ -319,15 +320,16 @@
   "accepted": [
    "Budapesten vagyok"
   ],
-  "explain": "Budapest is an exception: front suffixes despite its back vowels.",
+  "explain": "Budapest takes -en because its last part, Pest, is a front-vowel word (Pesten).",
   "tags": [
    "harmony.3form",
    "superessive",
    "exception"
   ],
   "difficulty": 1,
-  "speedTargetSec": 4,
-  "speakCue": true
+  "speedTargetSec": 6,
+  "speakCue": true,
+  "gloss": "I am in Budapest."
  },
  {
   "id": "hu-drill-016",
@@ -511,11 +513,12 @@
   "module": "drill",
   "drillType": "substitution",
   "family": "case.acc",
-  "instruction": "Replace the object with the cued noun, same case.",
+  "instruction": "Swap in the cued noun and keep the object ending -t.",
   "cue": "Látok egy házat. → (asztal)",
   "answer": "Látok egy asztalt.",
   "accepted": [
-   "Látok egy asztalt"
+   "Látok egy asztalt",
+   "Egy asztalt látok"
   ],
   "explain": "After l the accusative -t attaches directly: asztalt.",
   "tags": [
@@ -523,8 +526,9 @@
    "direct-t"
   ],
   "difficulty": 1,
-  "speedTargetSec": 4,
-  "speakCue": true
+  "speedTargetSec": 6,
+  "speakCue": true,
+  "gloss": "I see a table."
  },
  {
   "id": "hu-drill-025",
@@ -532,11 +536,12 @@
   "module": "drill",
   "drillType": "substitution",
   "family": "case.acc",
-  "instruction": "Replace the object with the cued noun, same case.",
+  "instruction": "Swap in the cued noun and keep the object ending -t.",
   "cue": "Látok egy házat. → (kutya)",
   "answer": "Látok egy kutyát.",
   "accepted": [
-   "Látok egy kutyát"
+   "Látok egy kutyát",
+   "Egy kutyát látok"
   ],
   "explain": "Vowel-final: -t directly, final a lengthens: kutyát.",
   "tags": [
@@ -544,8 +549,9 @@
    "lengthening"
   ],
   "difficulty": 1,
-  "speedTargetSec": 4,
-  "speakCue": true
+  "speedTargetSec": 6,
+  "speakCue": true,
+  "gloss": "I see a dog."
  },
  {
   "id": "hu-drill-026",
@@ -553,11 +559,12 @@
   "module": "drill",
   "drillType": "substitution",
   "family": "case.acc",
-  "instruction": "Replace the object with the cued noun, same case.",
+  "instruction": "Swap in the cued noun and keep the object ending -t.",
   "cue": "Veszek egy széket. → (könyv)",
   "answer": "Veszek egy könyvet.",
   "accepted": [
-   "Veszek egy könyvet"
+   "Veszek egy könyvet",
+   "Egy könyvet veszek"
   ],
   "explain": "After v a linking vowel is needed; front stem → -et.",
   "tags": [
@@ -566,8 +573,9 @@
    "frontRounded"
   ],
   "difficulty": 1,
-  "speedTargetSec": 4,
-  "speakCue": true
+  "speedTargetSec": 6,
+  "speakCue": true,
+  "gloss": "I am buying a book."
  },
  {
   "id": "hu-drill-027",
@@ -575,11 +583,12 @@
   "module": "drill",
   "drillType": "substitution",
   "family": "case.acc",
-  "instruction": "Replace the object with the cued noun, same case.",
+  "instruction": "Swap in the cued noun and keep the object ending -t.",
   "cue": "Kérek egy kávét. → (sör)",
   "answer": "Kérek egy sört.",
   "accepted": [
-   "Kérek egy sört"
+   "Kérek egy sört",
+   "Egy sört kérek"
   ],
   "explain": "sör takes -t directly: sört (but plural sörök).",
   "tags": [
@@ -587,8 +596,9 @@
    "direct-t"
   ],
   "difficulty": 1,
-  "speedTargetSec": 4,
-  "speakCue": true
+  "speedTargetSec": 6,
+  "speakCue": true,
+  "gloss": "I’d like a beer."
  },
  {
   "id": "hu-drill-028",
@@ -639,11 +649,12 @@
   "module": "drill",
   "drillType": "substitution",
   "family": "case.acc",
-  "instruction": "Replace the object with the cued noun, same case.",
+  "instruction": "Swap in the cued noun and keep the object ending -t.",
   "cue": "Kérek egy almát. → (gyümölcs)",
   "answer": "Kérek egy gyümölcsöt.",
   "accepted": [
-   "Kérek egy gyümölcsöt"
+   "Kérek egy gyümölcsöt",
+   "Egy gyümölcsöt kérek"
   ],
   "explain": "gyümölcs takes the rounded linking vowel: gyümölcsöt.",
   "tags": [
@@ -652,8 +663,9 @@
    "frontRounded"
   ],
   "difficulty": 1,
-  "speedTargetSec": 4,
-  "speakCue": true
+  "speedTargetSec": 6,
+  "speakCue": true,
+  "gloss": "I’d like a piece of fruit."
  },
  {
   "id": "hu-drill-031",
@@ -667,7 +679,7 @@
   "accepted": [
    "Itt vannak a házak"
   ],
-  "explain": "ház is a low stem: házak (a, not o). van → vannak.",
+  "explain": "ház takes the linking vowel a: házak, not házok. van → vannak.",
   "tags": [
    "plural",
    "linking-vowel",
@@ -675,7 +687,8 @@
   ],
   "difficulty": 2,
   "speedTargetSec": 6,
-  "speakCue": false
+  "speakCue": false,
+  "gloss": "The houses are here."
  },
  {
   "id": "hu-drill-032",
@@ -689,14 +702,15 @@
   "accepted": [
    "A kertek szépek"
   ],
-  "explain": "Predicate adjectives take the plural too: kertek szépek.",
+  "explain": "A describing word after the noun takes -k too: a kertek szépek.",
   "tags": [
    "plural",
    "adjective-agreement"
   ],
   "difficulty": 2,
   "speedTargetSec": 6,
-  "speakCue": false
+  "speakCue": false,
+  "gloss": "The gardens are beautiful."
  },
  {
   "id": "hu-drill-033",
@@ -740,7 +754,8 @@
   ],
   "difficulty": 2,
   "speedTargetSec": 6,
-  "speakCue": false
+  "speakCue": false,
+  "gloss": "These are beers."
  },
  {
   "id": "hu-drill-035",
@@ -781,8 +796,9 @@
    "vowel-final"
   ],
   "difficulty": 1,
-  "speedTargetSec": 4,
-  "speakCue": true
+  "speedTargetSec": 6,
+  "speakCue": true,
+  "gloss": "The cars are here."
  },
  {
   "id": "hu-drill-037",
@@ -1954,7 +1970,8 @@
   "cue": "Látok egy házat. → (három)",
   "answer": "Látok három házat.",
   "accepted": [
-   "Látok három házat"
+   "Látok három házat",
+   "Három házat látok"
   ],
   "explain": "három házat, not *házakat: no plural after numerals.",
   "tags": [
@@ -1963,8 +1980,9 @@
    "accusative"
   ],
   "difficulty": 1,
-  "speedTargetSec": 4,
-  "speakCue": true
+  "speedTargetSec": 6,
+  "speakCue": true,
+  "gloss": "I see three houses."
  },
  {
   "id": "hu-drill-091",
@@ -1985,8 +2003,9 @@
    "quantifier"
   ],
   "difficulty": 1,
-  "speedTargetSec": 4,
-  "speakCue": true
+  "speedTargetSec": 6,
+  "speakCue": true,
+  "gloss": "There are many children here."
  },
  {
   "id": "hu-drill-092",
@@ -2094,8 +2113,9 @@
    "3PL"
   ],
   "difficulty": 1,
-  "speedTargetSec": 4,
-  "speakCue": true
+  "speedTargetSec": 6,
+  "speakCue": true,
+  "gloss": "The children are here."
  },
  {
   "id": "hu-drill-097",

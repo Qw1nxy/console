@@ -1,1980 +1,2052 @@
 {
-  "nouns": [
-    {
-      "base": "Mann",
-      "gender": "m",
-      "pl": "Männer",
-      "gloss": "man",
-      "parts": [
-        "mann",
-        "männer"
-      ]
-    },
-    {
-      "base": "Chef",
-      "gender": "m",
-      "pl": "Chefs",
-      "gloss": "boss",
-      "parts": [
-        "chef"
-      ]
-    },
-    {
-      "base": "Chefin",
-      "gender": "f",
-      "pl": "Chefinnen",
-      "gloss": "boss (female)",
-      "parts": [
-        "chefinnen"
-      ]
-    },
-    {
-      "base": "Kollege",
-      "gender": "m",
-      "pl": "Kollegen",
-      "gloss": "colleague",
-      "parts": [
-        "kollegen"
-      ],
-      "weak": true
-    },
-    {
-      "base": "Kollegin",
-      "gender": "f",
-      "pl": "Kolleginnen",
-      "gloss": "colleague (female)",
-      "parts": [
-        "kolleginnen"
-      ]
-    },
-    {
-      "base": "Vertrag",
-      "gender": "m",
-      "pl": "Verträge",
-      "gloss": "contract",
-      "parts": [
-        "vertrag",
-        "verträge"
-      ]
-    },
-    {
-      "base": "Werkstatt",
-      "gender": "f",
-      "pl": "Werkstätten",
-      "gloss": "workshop",
-      "parts": [
-        "werkstatt"
-      ]
-    },
-    {
-      "base": "Büro",
-      "gender": "n",
-      "pl": "Büros",
-      "gloss": "office",
-      "parts": [
-        "büro"
-      ]
-    },
-    {
-      "base": "Schicht",
-      "gender": "f",
-      "pl": "Schichten",
-      "gloss": "shift",
-      "parts": [
-        "schicht"
-      ]
-    },
-    {
-      "base": "Maschine",
-      "gender": "f",
-      "pl": "Maschinen",
-      "gloss": "machine",
-      "parts": [
-        "maschinen"
-      ]
-    },
-    {
-      "base": "Betrieb",
-      "gender": "m",
-      "pl": "Betriebe",
-      "gloss": "company, workplace",
-      "parts": [
-        "betrieb"
-      ]
-    },
-    {
-      "base": "Wohnung",
-      "gender": "f",
-      "pl": "Wohnungen",
-      "gloss": "flat, apartment",
-      "parts": [
-        "wohnung"
-      ]
-    },
-    {
-      "base": "Werkzeug",
-      "gender": "n",
-      "pl": "Werkzeuge",
-      "gloss": "tool",
-      "parts": [
-        "werkzeug"
-      ]
-    },
-    {
-      "base": "Schuh",
-      "gender": "m",
-      "pl": "Schuhe",
-      "gloss": "shoe",
-      "parts": [
-        "schuh"
-      ]
-    },
-    {
-      "base": "Versicherung",
-      "gender": "f",
-      "pl": "Versicherungen",
-      "gloss": "insurance",
-      "parts": [
-        "versicherung"
-      ]
-    },
-    {
-      "base": "Karte",
-      "gender": "f",
-      "pl": "Karten",
-      "gloss": "card",
-      "parts": [
-        "karten"
-      ]
-    },
-    {
-      "base": "Arbeit",
-      "gender": "f",
-      "pl": "Arbeiten",
-      "gloss": "work",
-      "parts": [
-        "arbeit"
-      ]
-    },
-    {
-      "base": "Ausbildung",
-      "gender": "f",
-      "pl": "Ausbildungen",
-      "gloss": "training, apprenticeship",
-      "parts": [
-        "ausbildung"
-      ]
-    },
-    {
-      "base": "Platz",
-      "gender": "m",
-      "pl": "Plätze",
-      "gloss": "place, position",
-      "parts": [
-        "platz"
-      ]
-    },
-    {
-      "base": "Beruf",
-      "gender": "m",
-      "pl": "Berufe",
-      "gloss": "profession, trade",
-      "parts": [
-        "beruf"
-      ]
-    },
-    {
-      "base": "Schule",
-      "gender": "f",
-      "pl": "Schulen",
-      "gloss": "school",
-      "parts": [
-        "schul"
-      ]
-    },
-    {
-      "base": "Kasten",
-      "gender": "m",
-      "pl": "Kästen",
-      "gloss": "box, chest",
-      "parts": [
-        "kasten"
-      ]
-    },
-    {
-      "base": "Sicherheit",
-      "gender": "f",
-      "pl": "Sicherheiten",
-      "gloss": "safety, security",
-      "parts": [
-        "sicherheit"
-      ]
-    },
-    {
-      "base": "Haus",
-      "gender": "n",
-      "pl": "Häuser",
-      "gloss": "house",
-      "parts": [
-        "haus",
-        "häuser"
-      ]
-    },
-    {
-      "base": "Führer",
-      "gender": "m",
-      "pl": "Führer",
-      "gloss": "driver, leader, guide",
-      "parts": [
-        "führer"
-      ]
-    },
-    {
-      "base": "Schein",
-      "gender": "m",
-      "pl": "Scheine",
-      "gloss": "certificate, slip, note",
-      "parts": [
-        "schein"
-      ]
-    },
-    {
-      "base": "Aufenthalt",
-      "gender": "m",
-      "pl": "Aufenthalte",
-      "gloss": "stay, residence",
-      "parts": [
-        "aufenthalt"
-      ]
-    },
-    {
-      "base": "Titel",
-      "gender": "m",
-      "pl": "Titel",
-      "gloss": "title, permit",
-      "parts": [
-        "titel"
-      ]
-    },
-    {
-      "base": "Kasse",
-      "gender": "f",
-      "pl": "Kassen",
-      "gloss": "till, fund",
-      "parts": [
-        "kassen"
-      ]
-    },
-    {
-      "base": "Tür",
-      "gender": "f",
-      "pl": "Türen",
-      "gloss": "door",
-      "parts": [
-        "tür"
-      ]
-    },
-    {
-      "base": "Bahn",
-      "gender": "f",
-      "pl": "Bahnen",
-      "gloss": "railway, train",
-      "parts": [
-        "bahn"
-      ]
-    },
-    {
-      "base": "Hof",
-      "gender": "m",
-      "pl": "Höfe",
-      "gloss": "yard, court",
-      "parts": [
-        "hof"
-      ]
-    },
-    {
-      "base": "Plan",
-      "gender": "m",
-      "pl": "Pläne",
-      "gloss": "plan, schedule",
-      "parts": [
-        "plan"
-      ]
-    },
-    {
-      "base": "Buch",
-      "gender": "n",
-      "pl": "Bücher",
-      "gloss": "book",
-      "parts": [
-        "buch",
-        "bücher"
-      ]
-    },
-    {
-      "base": "Amt",
-      "gender": "n",
-      "pl": "Ämter",
-      "gloss": "office, public authority",
-      "parts": [
-        "amt"
-      ]
-    },
-    {
-      "base": "Termin",
-      "gender": "m",
-      "pl": "Termine",
-      "gloss": "appointment",
-      "parts": [
-        "termin"
-      ]
-    },
-    {
-      "base": "Anmeldung",
-      "gender": "f",
-      "pl": "Anmeldungen",
-      "gloss": "registration",
-      "parts": [
-        "anmeldung"
-      ]
-    },
-    {
-      "base": "Formular",
-      "gender": "n",
-      "pl": "Formulare",
-      "gloss": "form",
-      "parts": [
-        "formular"
-      ]
-    },
-    {
-      "base": "Antrag",
-      "gender": "m",
-      "pl": "Anträge",
-      "gloss": "application",
-      "parts": [
-        "antrag"
-      ]
-    },
-    {
-      "base": "Vermieter",
-      "gender": "m",
-      "pl": "Vermieter",
-      "gloss": "landlord",
-      "parts": [
-        "vermieter"
-      ]
-    },
-    {
-      "base": "Miete",
-      "gender": "f",
-      "pl": "Mieten",
-      "gloss": "rent",
-      "parts": [
-        "miet"
-      ]
-    },
-    {
-      "base": "Mietvertrag",
-      "gender": "m",
-      "pl": "Mietverträge",
-      "gloss": "rental contract",
-      "parts": [
-        "mietvertrag"
-      ]
-    },
-    {
-      "base": "Bescheinigung",
-      "gender": "f",
-      "pl": "Bescheinigungen",
-      "gloss": "certificate, written confirmation",
-      "parts": [
-        "bescheinigung"
-      ]
-    },
-    {
-      "base": "Führerschein",
-      "gender": "m",
-      "pl": "Führerscheine",
-      "gloss": "driving licence",
-      "parts": [
-        "führerschein"
-      ]
-    },
-    {
-      "base": "Bahnhof",
-      "gender": "m",
-      "pl": "Bahnhöfe",
-      "gloss": "railway station",
-      "parts": [
-        "bahnhof"
-      ]
-    },
-    {
-      "base": "Firma",
-      "gender": "f",
-      "pl": "Firmen",
-      "gloss": "company",
-      "parts": [
-        "firmen"
-      ]
-    },
-    {
-      "base": "Meister",
-      "gender": "m",
-      "pl": "Meister",
-      "gloss": "master craftsman, foreman",
-      "parts": [
-        "meister"
-      ]
-    },
-    {
-      "base": "Azubi",
-      "gender": "m",
-      "pl": "Azubis",
-      "gloss": "apprentice (colloquial)",
-      "parts": [
-        "azubi"
-      ]
-    },
-    {
-      "base": "Lager",
-      "gender": "n",
-      "pl": "Lager",
-      "gloss": "warehouse, storeroom",
-      "parts": [
-        "lager"
-      ]
-    },
-    {
-      "base": "Kiste",
-      "gender": "f",
-      "pl": "Kisten",
-      "gloss": "crate, box",
-      "parts": [
-        "kisten"
-      ]
-    },
-    {
-      "base": "Wand",
-      "gender": "f",
-      "pl": "Wände",
-      "gloss": "wall",
-      "parts": [
-        "wand"
-      ]
-    },
-    {
-      "base": "Tisch",
-      "gender": "m",
-      "pl": "Tische",
-      "gloss": "table",
-      "parts": [
-        "tisch"
-      ]
-    },
-    {
-      "base": "Schlüssel",
-      "gender": "m",
-      "pl": "Schlüssel",
-      "gloss": "key",
-      "parts": [
-        "schlüssel"
-      ]
-    },
-    {
-      "base": "Schrank",
-      "gender": "m",
-      "pl": "Schränke",
-      "gloss": "cupboard, locker",
-      "parts": [
-        "schrank"
-      ]
-    },
-    {
-      "base": "Zug",
-      "gender": "m",
-      "pl": "Züge",
-      "gloss": "train",
-      "parts": [
-        "zug"
-      ]
-    },
-    {
-      "base": "Bus",
-      "gender": "m",
-      "pl": "Busse",
-      "gloss": "bus",
-      "parts": [
-        "bus"
-      ]
-    },
-    {
-      "base": "Fahrrad",
-      "gender": "n",
-      "pl": "Fahrräder",
-      "gloss": "bicycle",
-      "parts": [
-        "fahrrad"
-      ]
-    },
-    {
-      "base": "Stunde",
-      "gender": "f",
-      "pl": "Stunden",
-      "gloss": "hour",
-      "parts": [
-        "stunden"
-      ]
-    },
-    {
-      "base": "Zeit",
-      "gender": "f",
-      "pl": "Zeiten",
-      "gloss": "time",
-      "parts": [
-        "zeit"
-      ]
-    },
-    {
-      "base": "Anleitung",
-      "gender": "f",
-      "pl": "Anleitungen",
-      "gloss": "instructions, manual",
-      "parts": [
-        "anleitung"
-      ]
-    },
-    {
-      "base": "Ersatzteil",
-      "gender": "n",
-      "pl": "Ersatzteile",
-      "gloss": "spare part",
-      "parts": [
-        "ersatzteil"
-      ]
-    },
-    {
-      "base": "Unterlage",
-      "gender": "f",
-      "pl": "Unterlagen",
-      "gloss": "document (usually plural: Unterlagen)",
-      "parts": [
-        "unterlagen"
-      ]
-    },
-    {
-      "base": "Frage",
-      "gender": "f",
-      "pl": "Fragen",
-      "gloss": "question",
-      "parts": [
-        "frage"
-      ]
-    },
-    {
-      "base": "Mittagessen",
-      "gender": "n",
-      "pl": "Mittagessen",
-      "gloss": "lunch",
-      "parts": [
-        "mittagessen"
-      ]
-    },
-    {
-      "base": "Regen",
-      "gender": "m",
-      "pl": "Regen",
-      "gloss": "rain",
-      "parts": [
-        "regen"
-      ]
-    },
-    {
-      "base": "Wetter",
-      "gender": "n",
-      "pl": "Wetter",
-      "gloss": "weather",
-      "parts": [
-        "wetter"
-      ]
-    },
-    {
-      "base": "Werk",
-      "gender": "n",
-      "pl": "Werke",
-      "gloss": "work, factory, works",
-      "parts": [
-        "werk"
-      ]
-    },
-    {
-      "base": "Wagen",
-      "gender": "m",
-      "pl": "Wagen",
-      "gloss": "car, wagon",
-      "parts": [
-        "wagen"
-      ]
-    },
-    {
-      "base": "Zimmer",
-      "gender": "n",
-      "pl": "Zimmer",
-      "gloss": "room",
-      "parts": [
-        "zimmer"
-      ]
-    },
-    {
-      "base": "Stadt",
-      "gender": "f",
-      "pl": "Städte",
-      "gloss": "city, town",
-      "parts": [
-        "stadt"
-      ]
-    },
-    {
-      "base": "Straße",
-      "gender": "f",
-      "pl": "Straßen",
-      "gloss": "street",
-      "parts": [
-        "straße",
-        "straßen"
-      ]
-    },
-    {
-      "base": "Nummer",
-      "gender": "f",
-      "pl": "Nummern",
-      "gloss": "number",
-      "parts": [
-        "nummer"
-      ]
-    },
-    {
-      "base": "Ausweis",
-      "gender": "m",
-      "pl": "Ausweise",
-      "gloss": "ID card",
-      "parts": [
-        "ausweis"
-      ]
-    },
-    {
-      "base": "Pass",
-      "gender": "m",
-      "pl": "Pässe",
-      "gloss": "passport",
-      "parts": [
-        "pass"
-      ]
-    },
-    {
-      "base": "Konto",
-      "gender": "n",
-      "pl": "Konten",
-      "gloss": "bank account",
-      "parts": [
-        "konto",
-        "konten"
-      ]
-    },
-    {
-      "base": "Bank",
-      "gender": "f",
-      "pl": "Banken",
-      "gloss": "bank",
-      "parts": [
-        "bank"
-      ]
-    },
-    {
-      "base": "Geld",
-      "gender": "n",
-      "pl": "Gelder",
-      "gloss": "money",
-      "parts": [
-        "geld"
-      ]
-    },
-    {
-      "base": "Lohn",
-      "gender": "m",
-      "pl": "Löhne",
-      "gloss": "wage",
-      "parts": [
-        "lohn"
-      ]
-    },
-    {
-      "base": "Gehalt",
-      "gender": "n",
-      "pl": "Gehälter",
-      "gloss": "salary",
-      "parts": [
-        "gehalt"
-      ]
-    },
-    {
-      "base": "Steuer",
-      "gender": "f",
-      "pl": "Steuern",
-      "gloss": "tax",
-      "parts": [
-        "steuer"
-      ]
-    },
-    {
-      "base": "Urlaub",
-      "gender": "m",
-      "pl": "Urlaube",
-      "gloss": "holiday, leave",
-      "parts": [
-        "urlaub"
-      ]
-    },
-    {
-      "base": "Pause",
-      "gender": "f",
-      "pl": "Pausen",
-      "gloss": "break",
-      "parts": [
-        "pausen"
-      ]
-    },
-    {
-      "base": "Woche",
-      "gender": "f",
-      "pl": "Wochen",
-      "gloss": "week",
-      "parts": [
-        "wochen"
-      ]
-    },
-    {
-      "base": "Tag",
-      "gender": "m",
-      "pl": "Tage",
-      "gloss": "day",
-      "parts": [
-        "tag"
-      ]
-    },
-    {
-      "base": "Monat",
-      "gender": "m",
-      "pl": "Monate",
-      "gloss": "month",
-      "parts": [
-        "monat"
-      ]
-    },
-    {
-      "base": "Jahr",
-      "gender": "n",
-      "pl": "Jahre",
-      "gloss": "year",
-      "parts": [
-        "jahr"
-      ]
-    },
-    {
-      "base": "Prüfung",
-      "gender": "f",
-      "pl": "Prüfungen",
-      "gloss": "exam",
-      "parts": [
-        "prüfung"
-      ]
-    },
-    {
-      "base": "Zeugnis",
-      "gender": "n",
-      "pl": "Zeugnisse",
-      "gloss": "certificate, school report",
-      "parts": [
-        "zeugnis"
-      ]
-    },
-    {
-      "base": "Bewerbung",
-      "gender": "f",
-      "pl": "Bewerbungen",
-      "gloss": "job application",
-      "parts": [
-        "bewerbung"
-      ]
-    },
-    {
-      "base": "Lebenslauf",
-      "gender": "m",
-      "pl": "Lebensläufe",
-      "gloss": "CV, résumé",
-      "parts": [
-        "lebenslauf"
-      ]
-    },
-    {
-      "base": "Leben",
-      "gender": "n",
-      "pl": "Leben",
-      "gloss": "life",
-      "parts": [
-        "leben"
-      ]
-    },
-    {
-      "base": "Lauf",
-      "gender": "m",
-      "pl": "Läufe",
-      "gloss": "run, course",
-      "parts": [
-        "lauf"
-      ]
-    },
-    {
-      "base": "Arzt",
-      "gender": "m",
-      "pl": "Ärzte",
-      "gloss": "doctor",
-      "parts": [
-        "arzt"
-      ]
-    },
-    {
-      "base": "Apotheke",
-      "gender": "f",
-      "pl": "Apotheken",
-      "gloss": "pharmacy",
-      "parts": [
-        "apotheken"
-      ]
-    },
-    {
-      "base": "Helm",
-      "gender": "m",
-      "pl": "Helme",
-      "gloss": "helmet",
-      "parts": [
-        "helm"
-      ]
-    },
-    {
-      "base": "Handschuh",
-      "gender": "m",
-      "pl": "Handschuhe",
-      "gloss": "glove",
-      "parts": [
-        "handschuh"
-      ]
-    },
-    {
-      "base": "Hand",
-      "gender": "f",
-      "pl": "Hände",
-      "gloss": "hand",
-      "parts": [
-        "hand"
-      ]
-    },
-    {
-      "base": "Brille",
-      "gender": "f",
-      "pl": "Brillen",
-      "gloss": "glasses",
-      "parts": [
-        "brillen"
-      ]
-    },
-    {
-      "base": "Halle",
-      "gender": "f",
-      "pl": "Hallen",
-      "gloss": "hall",
-      "parts": [
-        "hallen"
-      ]
-    },
-    {
-      "base": "Material",
-      "gender": "n",
-      "pl": "Materialien",
-      "gloss": "material",
-      "parts": [
-        "material"
-      ]
-    },
-    {
-      "base": "Metall",
-      "gender": "n",
-      "pl": "Metalle",
-      "gloss": "metal",
-      "parts": [
-        "metall"
-      ]
-    },
-    {
-      "base": "Stahl",
-      "gender": "m",
-      "pl": "Stähle",
-      "gloss": "steel",
-      "parts": [
-        "stahl"
-      ]
-    },
-    {
-      "base": "Teil",
-      "gender": "n",
-      "pl": "Teile",
-      "gloss": "component, piece (der Teil = part, portion)",
-      "parts": [
-        "teil"
-      ]
-    },
-    {
-      "base": "Ersatz",
-      "gender": "m",
-      "pl": "",
-      "gloss": "replacement (no plural)",
-      "parts": [
-        "ersatz"
-      ]
-    },
-    {
-      "base": "Lieferung",
-      "gender": "f",
-      "pl": "Lieferungen",
-      "gloss": "delivery",
-      "parts": [
-        "lieferung"
-      ]
-    },
-    {
-      "base": "Kunde",
-      "gender": "m",
-      "pl": "Kunden",
-      "gloss": "customer",
-      "parts": [
-        "kunden"
-      ],
-      "weak": true
-    },
-    {
-      "base": "Rechnung",
-      "gender": "f",
-      "pl": "Rechnungen",
-      "gloss": "invoice, bill",
-      "parts": [
-        "rechnung"
-      ]
-    },
-    {
-      "base": "Auto",
-      "gender": "n",
-      "pl": "Autos",
-      "gloss": "car",
-      "parts": [
-        "auto"
-      ]
-    },
-    {
-      "base": "Rad",
-      "gender": "n",
-      "pl": "Räder",
-      "gloss": "wheel, bike",
-      "parts": [
-        "rad",
-        "räder"
-      ]
-    },
-    {
-      "base": "Mittag",
-      "gender": "m",
-      "pl": "Mittage",
-      "gloss": "midday",
-      "parts": [
-        "mittag"
-      ]
-    },
-    {
-      "base": "Essen",
-      "gender": "n",
-      "pl": "Essen",
-      "gloss": "food, meal",
-      "parts": [
-        "essen"
-      ]
-    },
-    {
-      "base": "Küche",
-      "gender": "f",
-      "pl": "Küchen",
-      "gloss": "kitchen",
-      "parts": [
-        "küchen"
-      ]
-    },
-    {
-      "base": "Zahn",
-      "gender": "m",
-      "pl": "Zähne",
-      "gloss": "tooth",
-      "parts": [
-        "zahn"
-      ]
-    },
-    {
-      "base": "Arbeiter",
-      "gender": "m",
-      "pl": "Arbeiter",
-      "gloss": "worker",
-      "parts": [
-        "arbeiter"
-      ]
-    },
-    {
-      "base": "Geber",
-      "gender": "m",
-      "pl": "Geber",
-      "gloss": "giver (in Arbeitgeber: employer)",
-      "parts": [
-        "geber"
-      ]
-    },
-    {
-      "base": "Nehmer",
-      "gender": "m",
-      "pl": "Nehmer",
-      "gloss": "taker (in Arbeitnehmer: employee)",
-      "parts": [
-        "nehmer"
-      ]
-    },
-    {
-      "base": "Erlaubnis",
-      "gender": "f",
-      "pl": "Erlaubnisse",
-      "gloss": "permission, permit",
-      "parts": [
-        "erlaubnis"
-      ]
-    },
-    {
-      "base": "Genehmigung",
-      "gender": "f",
-      "pl": "Genehmigungen",
-      "gloss": "approval, permit",
-      "parts": [
-        "genehmigung"
-      ]
-    },
-    {
-      "base": "Gemeinde",
-      "gender": "f",
-      "pl": "Gemeinden",
-      "gloss": "municipality",
-      "parts": [
-        "gemeinde"
-      ]
-    },
-    {
-      "base": "Einwohner",
-      "gender": "m",
-      "pl": "Einwohner",
-      "gloss": "resident, inhabitant",
-      "parts": [
-        "einwohner"
-      ]
-    },
-    {
-      "base": "Kraft",
-      "gender": "f",
-      "pl": "Kräfte",
-      "gloss": "strength, worker (Fachkraft)",
-      "parts": [
-        "kraft"
-      ]
-    },
-    {
-      "base": "Fach",
-      "gender": "n",
-      "pl": "Fächer",
-      "gloss": "subject, specialism, compartment",
-      "parts": [
-        "fach"
-      ]
-    },
-    {
-      "base": "Kraftfahrzeug",
-      "gender": "n",
-      "pl": "Kraftfahrzeuge",
-      "gloss": "motor vehicle",
-      "parts": [
-        "kraftfahrzeug"
-      ]
-    },
-    {
-      "base": "Zeug",
-      "gender": "n",
-      "pl": "Zeuge",
-      "gloss": "stuff, gear (Werkzeug, Fahrzeug; plural Zeuge exists but is rare)",
-      "parts": [
-        "zeug"
-      ]
-    },
-    {
-      "base": "Probe",
-      "gender": "f",
-      "pl": "Proben",
-      "gloss": "test, trial",
-      "parts": [
-        "probe"
-      ]
-    },
-    {
-      "base": "Kündigung",
-      "gender": "f",
-      "pl": "Kündigungen",
-      "gloss": "notice of termination",
-      "parts": [
-        "kündigung"
-      ]
-    },
-    {
-      "base": "Frist",
-      "gender": "f",
-      "pl": "Fristen",
-      "gloss": "deadline",
-      "parts": [
-        "frist"
-      ]
-    },
-    {
-      "base": "Ort",
-      "gender": "m",
-      "pl": "Orte",
-      "gloss": "place, town",
-      "parts": [
-        "ort"
-      ]
-    },
-    {
-      "base": "Raum",
-      "gender": "m",
-      "pl": "Räume",
-      "gloss": "room, space",
-      "parts": [
-        "raum"
-      ]
-    },
-    {
-      "base": "Wein",
-      "gender": "m",
-      "pl": "Weine",
-      "gloss": "wine",
-      "parts": [
-        "wein"
-      ]
-    },
-    {
-      "base": "Bier",
-      "gender": "n",
-      "pl": "Biere",
-      "gloss": "beer",
-      "parts": [
-        "bier"
-      ]
-    },
-    {
-      "base": "Wasser",
-      "gender": "n",
-      "pl": "Wasser",
-      "gloss": "water",
-      "parts": [
-        "wasser"
-      ]
-    },
-    {
-      "base": "Kaffee",
-      "gender": "m",
-      "pl": "Kaffees",
-      "gloss": "coffee",
-      "parts": [
-        "kaffee"
-      ]
-    },
-    {
-      "base": "Brot",
-      "gender": "n",
-      "pl": "Brote",
-      "gloss": "bread",
-      "parts": [
-        "brot"
-      ]
-    },
-    {
-      "base": "Mensch",
-      "gender": "m",
-      "pl": "Menschen",
-      "gloss": "human being, person",
-      "parts": [
-        "mensch",
-        "menschen"
-      ],
-      "weak": true
-    },
-    {
-      "base": "Junge",
-      "gender": "m",
-      "pl": "Jungen",
-      "gloss": "boy",
-      "parts": [
-        "junge",
-        "jungen"
-      ],
-      "weak": true
-    },
-    {
-      "base": "Student",
-      "gender": "m",
-      "pl": "Studenten",
-      "gloss": "student (university)",
-      "parts": [
-        "student",
-        "studenten"
-      ],
-      "weak": true
-    },
-    {
-      "base": "Nachbar",
-      "gender": "m",
-      "pl": "Nachbarn",
-      "gloss": "neighbour",
-      "parts": [
-        "nachbar",
-        "nachbarn"
-      ],
-      "weak": true
-    },
-    {
-      "base": "Praktikant",
-      "gender": "m",
-      "pl": "Praktikanten",
-      "gloss": "intern",
-      "parts": [
-        "praktikant",
-        "praktikanten"
-      ],
-      "weak": true
-    },
-    {
-      "base": "Patient",
-      "gender": "m",
-      "pl": "Patienten",
-      "gloss": "patient",
-      "parts": [
-        "patient",
-        "patienten"
-      ],
-      "weak": true
-    },
-    {
-      "base": "Polizist",
-      "gender": "m",
-      "pl": "Polizisten",
-      "gloss": "police officer",
-      "parts": [
-        "polizist",
-        "polizisten"
-      ],
-      "weak": true
-    },
-    {
-      "base": "Experte",
-      "gender": "m",
-      "pl": "Experten",
-      "gloss": "expert",
-      "parts": [
-        "experte",
-        "experten"
-      ],
-      "weak": true
-    },
-    {
-      "base": "Lieferant",
-      "gender": "m",
-      "pl": "Lieferanten",
-      "gloss": "supplier",
-      "parts": [
-        "lieferant",
-        "lieferanten"
-      ],
-      "weak": true
-    }
-  ],
-  "parts": [
-    {
-      "form": "kranken",
-      "gloss": "sick — adjective krank with declension -en, as in Krankenhaus, Krankenkasse",
-      "type": "adj-part"
-    },
-    {
-      "form": "wasch",
-      "gloss": "wash — verb stem of waschen (Waschmaschine)",
-      "type": "verb-part"
-    },
-    {
-      "form": "schlaf",
-      "gloss": "sleep — verb stem of schlafen (Schlafzimmer)",
-      "type": "verb-part"
-    },
-    {
-      "form": "fahr",
-      "gloss": "drive, ride — verb stem of fahren (Fahrrad, Fahrzeug, Fahrkarte)",
-      "type": "verb-part"
-    },
-    {
-      "form": "wohn",
-      "gloss": "live, dwell — verb stem of wohnen (Wohnzimmer, Wohnort)",
-      "type": "verb-part"
-    },
-    {
-      "form": "schreib",
-      "gloss": "write — verb stem of schreiben (Schreibtisch)",
-      "type": "verb-part"
-    },
-    {
-      "form": "spiel",
-      "gloss": "play — verb stem of spielen (Spielplatz)",
-      "type": "verb-part"
-    },
-    {
-      "form": "lern",
-      "gloss": "learn — verb stem of lernen (Lernzeit)",
-      "type": "verb-part"
-    },
-    {
-      "form": "bade",
-      "gloss": "bathe — verb stem of baden with -e (Badezimmer)",
-      "type": "verb-part"
-    },
-    {
-      "form": "koch",
-      "gloss": "cook — verb stem of kochen (Kochbuch)",
-      "type": "verb-part"
-    },
-    {
-      "form": "rauch",
-      "gloss": "smoke — verb stem of rauchen (Rauchpause)",
-      "type": "verb-part"
-    },
-    {
-      "form": "schwimm",
-      "gloss": "swim — verb stem of schwimmen (Schwimmhalle)",
-      "type": "verb-part"
-    },
-    {
-      "form": "trink",
-      "gloss": "drink — verb stem of trinken (Trinkwasser)",
-      "type": "verb-part"
-    },
-    {
-      "form": "ess",
-      "gloss": "eat — verb stem of essen (Esszimmer)",
-      "type": "verb-part"
-    },
-    {
-      "form": "park",
-      "gloss": "park — verb stem of parken (Parkplatz)",
-      "type": "verb-part"
-    },
-    {
-      "form": "melde",
-      "gloss": "report, register — verb stem of melden with -e (Meldeamt, Meldebescheinigung)",
-      "type": "verb-part"
-    },
-    {
-      "form": "warte",
-      "gloss": "wait — verb stem of warten with -e (Wartezimmer)",
-      "type": "verb-part"
-    },
-    {
-      "form": "sitz",
-      "gloss": "sit — verb stem of sitzen (Sitzplatz)",
-      "type": "verb-part"
-    },
-    {
-      "form": "lade",
-      "gloss": "load — verb stem of laden with -e (Ladezeit)",
-      "type": "verb-part"
-    },
-    {
-      "form": "mess",
-      "gloss": "measure — verb stem of messen (Messgerät)",
-      "type": "verb-part"
-    },
-    {
-      "form": "bohr",
-      "gloss": "drill — verb stem of bohren (Bohrmaschine)",
-      "type": "verb-part"
-    },
-    {
-      "form": "schweiß",
-      "gloss": "weld — verb stem of schweißen (Schweißgerät)",
-      "type": "verb-part"
-    },
-    {
-      "form": "dreh",
-      "gloss": "turn — verb stem of drehen (Drehbank)",
-      "type": "verb-part"
-    },
-    {
-      "form": "fräs",
-      "gloss": "mill — verb stem of fräsen (Fräsmaschine)",
-      "type": "verb-part"
-    },
-    {
-      "form": "groß",
-      "gloss": "big — adjective as compound part (Großstadt)",
-      "type": "adj-part"
-    },
-    {
-      "form": "hoch",
-      "gloss": "high — adjective as compound part (Hochhaus)",
-      "type": "adj-part"
-    },
-    {
-      "form": "neu",
-      "gloss": "new — adjective as compound part (Neubau)",
-      "type": "adj-part"
-    }
-  ],
-  "adjectives": [
-    {
-      "base": "alt",
-      "gloss": "old"
-    },
-    {
-      "base": "neu",
-      "gloss": "new"
-    },
-    {
-      "base": "groß",
-      "gloss": "big"
-    },
-    {
-      "base": "klein",
-      "gloss": "small"
-    },
-    {
-      "base": "lang",
-      "gloss": "long"
-    },
-    {
-      "base": "kurz",
-      "gloss": "short"
-    },
-    {
-      "base": "sicher",
-      "gloss": "safe, sure"
-    },
-    {
-      "base": "nett",
-      "gloss": "nice"
-    },
-    {
-      "base": "günstig",
-      "gloss": "cheap, good value"
-    },
-    {
-      "base": "teuer",
-      "gloss": "expensive"
-    },
-    {
-      "base": "eigen",
-      "gloss": "own"
-    },
-    {
-      "base": "schwer",
-      "gloss": "heavy, difficult"
-    },
-    {
-      "base": "leicht",
-      "gloss": "light, easy"
-    },
-    {
-      "base": "wichtig",
-      "gloss": "important"
-    },
-    {
-      "base": "krank",
-      "gloss": "sick"
-    },
-    {
-      "base": "gesund",
-      "gloss": "healthy"
-    },
-    {
-      "base": "müde",
-      "gloss": "tired"
-    },
-    {
-      "base": "pünktlich",
-      "gloss": "punctual"
-    },
-    {
-      "base": "fertig",
-      "gloss": "finished, ready"
-    },
-    {
-      "base": "frei",
-      "gloss": "free"
-    },
-    {
-      "base": "voll",
-      "gloss": "full"
-    },
-    {
-      "base": "schnell",
-      "gloss": "fast"
-    },
-    {
-      "base": "langsam",
-      "gloss": "slow"
-    },
-    {
-      "base": "sauber",
-      "gloss": "clean"
-    },
-    {
-      "base": "schmutzig",
-      "gloss": "dirty"
-    },
-    {
-      "base": "kaputt",
-      "gloss": "broken"
-    },
-    {
-      "base": "gültig",
-      "gloss": "valid"
-    },
-    {
-      "base": "offen",
-      "gloss": "open"
-    },
-    {
-      "base": "geschlossen",
-      "gloss": "closed"
-    },
-    {
-      "base": "schwierig",
-      "gloss": "difficult"
-    },
-    {
-      "base": "gut",
-      "gloss": "good"
-    },
-    {
-      "base": "kalt",
-      "gloss": "cold"
-    },
-    {
-      "base": "warm",
-      "gloss": "warm"
-    },
-    {
-      "base": "frisch",
-      "gloss": "fresh"
-    }
-  ],
-  "verbs": [
-    {
-      "inf": "ankommen",
-      "prefix": "an",
-      "separable": true,
-      "stem": "komm",
-      "part2": "angekommen",
-      "part2stem": "komm",
-      "part2end": "en",
-      "aux": "sein",
-      "gloss": "arrive"
-    },
-    {
-      "inf": "aufstehen",
-      "prefix": "auf",
-      "separable": true,
-      "stem": "steh",
-      "part2": "aufgestanden",
-      "part2stem": "stand",
-      "part2end": "en",
-      "aux": "sein",
-      "gloss": "get up"
-    },
-    {
-      "inf": "einladen",
-      "prefix": "ein",
-      "separable": true,
-      "stem": "lad",
-      "part2": "eingeladen",
-      "part2stem": "lad",
-      "part2end": "en",
-      "aux": "haben",
-      "gloss": "invite"
-    },
-    {
-      "inf": "anmelden",
-      "prefix": "an",
-      "separable": true,
-      "stem": "meld",
-      "part2": "angemeldet",
-      "part2stem": "meld",
-      "part2end": "et",
-      "aux": "haben",
-      "gloss": "register"
-    },
-    {
-      "inf": "ausfüllen",
-      "prefix": "aus",
-      "separable": true,
-      "stem": "füll",
-      "part2": "ausgefüllt",
-      "part2stem": "füll",
-      "part2end": "t",
-      "aux": "haben",
-      "gloss": "fill in"
-    },
-    {
-      "inf": "mitbringen",
-      "prefix": "mit",
-      "separable": true,
-      "stem": "bring",
-      "part2": "mitgebracht",
-      "part2stem": "brach",
-      "part2end": "t",
-      "aux": "haben",
-      "gloss": "bring along"
-    },
-    {
-      "inf": "abholen",
-      "prefix": "ab",
-      "separable": true,
-      "stem": "hol",
-      "part2": "abgeholt",
-      "part2stem": "hol",
-      "part2end": "t",
-      "aux": "haben",
-      "gloss": "pick up, collect"
-    },
-    {
-      "inf": "anrufen",
-      "prefix": "an",
-      "separable": true,
-      "stem": "ruf",
-      "part2": "angerufen",
-      "part2stem": "ruf",
-      "part2end": "en",
-      "aux": "haben",
-      "gloss": "call (phone)"
-    },
-    {
-      "inf": "anfangen",
-      "prefix": "an",
-      "separable": true,
-      "stem": "fang",
-      "part2": "angefangen",
-      "part2stem": "fang",
-      "part2end": "en",
-      "aux": "haben",
-      "gloss": "begin"
-    },
-    {
-      "inf": "aufhören",
-      "prefix": "auf",
-      "separable": true,
-      "stem": "hör",
-      "part2": "aufgehört",
-      "part2stem": "hör",
-      "part2end": "t",
-      "aux": "haben",
-      "gloss": "stop"
-    },
-    {
-      "inf": "einkaufen",
-      "prefix": "ein",
-      "separable": true,
-      "stem": "kauf",
-      "part2": "eingekauft",
-      "part2stem": "kauf",
-      "part2end": "t",
-      "aux": "haben",
-      "gloss": "shop"
-    },
-    {
-      "inf": "aufmachen",
-      "prefix": "auf",
-      "separable": true,
-      "stem": "mach",
-      "part2": "aufgemacht",
-      "part2stem": "mach",
-      "part2end": "t",
-      "aux": "haben",
-      "gloss": "open"
-    },
-    {
-      "inf": "zumachen",
-      "prefix": "zu",
-      "separable": true,
-      "stem": "mach",
-      "part2": "zugemacht",
-      "part2stem": "mach",
-      "part2end": "t",
-      "aux": "haben",
-      "gloss": "close"
-    },
-    {
-      "inf": "abgeben",
-      "prefix": "ab",
-      "separable": true,
-      "stem": "geb",
-      "part2": "abgegeben",
-      "part2stem": "geb",
-      "part2end": "en",
-      "aux": "haben",
-      "gloss": "hand in"
-    },
-    {
-      "inf": "umziehen",
-      "prefix": "um",
-      "separable": true,
-      "stem": "zieh",
-      "part2": "umgezogen",
-      "part2stem": "zog",
-      "part2end": "en",
-      "aux": "sein",
-      "gloss": "move house"
-    },
-    {
-      "inf": "verstehen",
-      "prefix": "ver",
-      "separable": false,
-      "stem": "steh",
-      "part2": "verstanden",
-      "part2stem": "stand",
-      "part2end": "en",
-      "aux": "haben",
-      "gloss": "understand"
-    },
-    {
-      "inf": "bezahlen",
-      "prefix": "be",
-      "separable": false,
-      "stem": "zahl",
-      "part2": "bezahlt",
-      "part2stem": "zahl",
-      "part2end": "t",
-      "aux": "haben",
-      "gloss": "pay"
-    },
-    {
-      "inf": "erklären",
-      "prefix": "er",
-      "separable": false,
-      "stem": "klär",
-      "part2": "erklärt",
-      "part2stem": "klär",
-      "part2end": "t",
-      "aux": "haben",
-      "gloss": "explain"
-    },
-    {
-      "inf": "bekommen",
-      "prefix": "be",
-      "separable": false,
-      "stem": "komm",
-      "part2": "bekommen",
-      "part2stem": "komm",
-      "part2end": "en",
-      "aux": "haben",
-      "gloss": "receive"
-    },
-    {
-      "inf": "beantragen",
-      "prefix": "be",
-      "separable": false,
-      "stem": "antrag",
-      "part2": "beantragt",
-      "part2stem": "antrag",
-      "part2end": "t",
-      "aux": "haben",
-      "gloss": "apply for"
-    },
-    {
-      "inf": "unterschreiben",
-      "prefix": "unter",
-      "separable": false,
-      "stem": "schreib",
-      "part2": "unterschrieben",
-      "part2stem": "schrieb",
-      "part2end": "en",
-      "aux": "haben",
-      "gloss": "sign"
-    },
-    {
-      "inf": "vergessen",
-      "prefix": "ver",
-      "separable": false,
-      "stem": "gess",
-      "part2": "vergessen",
-      "part2stem": "gess",
-      "part2end": "en",
-      "aux": "haben",
-      "gloss": "forget"
-    },
-    {
-      "inf": "erhalten",
-      "prefix": "er",
-      "separable": false,
-      "stem": "halt",
-      "part2": "erhalten",
-      "part2stem": "halt",
-      "part2end": "en",
-      "aux": "haben",
-      "gloss": "receive (formal)"
-    },
-    {
-      "inf": "besuchen",
-      "prefix": "be",
-      "separable": false,
-      "stem": "such",
-      "part2": "besucht",
-      "part2stem": "such",
-      "part2end": "t",
-      "aux": "haben",
-      "gloss": "visit"
-    },
-    {
-      "inf": "machen",
-      "prefix": "",
-      "separable": false,
-      "stem": "mach",
-      "part2": "gemacht",
-      "part2stem": "mach",
-      "part2end": "t",
-      "aux": "haben",
-      "gloss": "make, do"
-    },
-    {
-      "inf": "arbeiten",
-      "prefix": "",
-      "separable": false,
-      "stem": "arbeit",
-      "part2": "gearbeitet",
-      "part2stem": "arbeit",
-      "part2end": "et",
-      "aux": "haben",
-      "gloss": "work"
-    },
-    {
-      "inf": "fahren",
-      "prefix": "",
-      "separable": false,
-      "stem": "fahr",
-      "part2": "gefahren",
-      "part2stem": "fahr",
-      "part2end": "en",
-      "aux": "sein",
-      "gloss": "drive, go"
-    },
-    {
-      "inf": "kommen",
-      "prefix": "",
-      "separable": false,
-      "stem": "komm",
-      "part2": "gekommen",
-      "part2stem": "komm",
-      "part2end": "en",
-      "aux": "sein",
-      "gloss": "come"
-    },
-    {
-      "inf": "gehen",
-      "prefix": "",
-      "separable": false,
-      "stem": "geh",
-      "part2": "gegangen",
-      "part2stem": "gang",
-      "part2end": "en",
-      "aux": "sein",
-      "gloss": "go"
-    },
-    {
-      "inf": "helfen",
-      "prefix": "",
-      "separable": false,
-      "stem": "helf",
-      "part2": "geholfen",
-      "part2stem": "holf",
-      "part2end": "en",
-      "aux": "haben",
-      "gloss": "help (+ dative)"
-    },
-    {
-      "inf": "warten",
-      "prefix": "",
-      "separable": false,
-      "stem": "wart",
-      "part2": "gewartet",
-      "part2stem": "wart",
-      "part2end": "et",
-      "aux": "haben",
-      "gloss": "wait"
-    },
-    {
-      "inf": "tragen",
-      "prefix": "",
-      "separable": false,
-      "stem": "trag",
-      "part2": "getragen",
-      "part2stem": "trag",
-      "part2end": "en",
-      "aux": "haben",
-      "gloss": "carry, wear"
-    },
-    {
-      "inf": "legen",
-      "prefix": "",
-      "separable": false,
-      "stem": "leg",
-      "part2": "gelegt",
-      "part2stem": "leg",
-      "part2end": "t",
-      "aux": "haben",
-      "gloss": "lay, put (flat)"
-    },
-    {
-      "inf": "stellen",
-      "prefix": "",
-      "separable": false,
-      "stem": "stell",
-      "part2": "gestellt",
-      "part2stem": "stell",
-      "part2end": "t",
-      "aux": "haben",
-      "gloss": "put (upright)"
-    },
-    {
-      "inf": "schicken",
-      "prefix": "",
-      "separable": false,
-      "stem": "schick",
-      "part2": "geschickt",
-      "part2stem": "schick",
-      "part2end": "t",
-      "aux": "haben",
-      "gloss": "send"
-    }
-  ]
+ "nouns": [
+  {
+   "base": "Mann",
+   "gender": "m",
+   "pl": "Männer",
+   "gloss": "man",
+   "parts": [
+    "mann",
+    "männer"
+   ]
+  },
+  {
+   "base": "Chef",
+   "gender": "m",
+   "pl": "Chefs",
+   "gloss": "boss",
+   "parts": [
+    "chef"
+   ]
+  },
+  {
+   "base": "Chefin",
+   "gender": "f",
+   "pl": "Chefinnen",
+   "gloss": "boss (female)",
+   "parts": [
+    "chefinnen"
+   ]
+  },
+  {
+   "base": "Kollege",
+   "gender": "m",
+   "pl": "Kollegen",
+   "gloss": "colleague",
+   "parts": [
+    "kollegen"
+   ],
+   "weak": true
+  },
+  {
+   "base": "Kollegin",
+   "gender": "f",
+   "pl": "Kolleginnen",
+   "gloss": "colleague (female)",
+   "parts": [
+    "kolleginnen"
+   ]
+  },
+  {
+   "base": "Vertrag",
+   "gender": "m",
+   "pl": "Verträge",
+   "gloss": "contract",
+   "parts": [
+    "vertrag",
+    "verträge"
+   ]
+  },
+  {
+   "base": "Werkstatt",
+   "gender": "f",
+   "pl": "Werkstätten",
+   "gloss": "workshop",
+   "parts": [
+    "werkstatt"
+   ]
+  },
+  {
+   "base": "Büro",
+   "gender": "n",
+   "pl": "Büros",
+   "gloss": "office",
+   "parts": [
+    "büro"
+   ]
+  },
+  {
+   "base": "Schicht",
+   "gender": "f",
+   "pl": "Schichten",
+   "gloss": "shift",
+   "parts": [
+    "schicht"
+   ]
+  },
+  {
+   "base": "Maschine",
+   "gender": "f",
+   "pl": "Maschinen",
+   "gloss": "machine",
+   "parts": [
+    "maschinen"
+   ]
+  },
+  {
+   "base": "Betrieb",
+   "gender": "m",
+   "pl": "Betriebe",
+   "gloss": "company, workplace",
+   "parts": [
+    "betrieb"
+   ]
+  },
+  {
+   "base": "Wohnung",
+   "gender": "f",
+   "pl": "Wohnungen",
+   "gloss": "flat, apartment",
+   "parts": [
+    "wohnung"
+   ]
+  },
+  {
+   "base": "Werkzeug",
+   "gender": "n",
+   "pl": "Werkzeuge",
+   "gloss": "tool",
+   "parts": [
+    "werkzeug"
+   ]
+  },
+  {
+   "base": "Schuh",
+   "gender": "m",
+   "pl": "Schuhe",
+   "gloss": "shoe",
+   "parts": [
+    "schuh"
+   ]
+  },
+  {
+   "base": "Versicherung",
+   "gender": "f",
+   "pl": "Versicherungen",
+   "gloss": "insurance",
+   "parts": [
+    "versicherung"
+   ]
+  },
+  {
+   "base": "Karte",
+   "gender": "f",
+   "pl": "Karten",
+   "gloss": "card",
+   "parts": [
+    "karten"
+   ]
+  },
+  {
+   "base": "Arbeit",
+   "gender": "f",
+   "pl": "Arbeiten",
+   "gloss": "work",
+   "parts": [
+    "arbeit"
+   ]
+  },
+  {
+   "base": "Ausbildung",
+   "gender": "f",
+   "pl": "Ausbildungen",
+   "gloss": "training, apprenticeship",
+   "parts": [
+    "ausbildung"
+   ]
+  },
+  {
+   "base": "Platz",
+   "gender": "m",
+   "pl": "Plätze",
+   "gloss": "place, position",
+   "parts": [
+    "platz"
+   ]
+  },
+  {
+   "base": "Beruf",
+   "gender": "m",
+   "pl": "Berufe",
+   "gloss": "profession, trade",
+   "parts": [
+    "beruf"
+   ]
+  },
+  {
+   "base": "Schule",
+   "gender": "f",
+   "pl": "Schulen",
+   "gloss": "school",
+   "parts": [
+    "schul"
+   ]
+  },
+  {
+   "base": "Kasten",
+   "gender": "m",
+   "pl": "Kästen",
+   "gloss": "box, chest",
+   "parts": [
+    "kasten"
+   ]
+  },
+  {
+   "base": "Sicherheit",
+   "gender": "f",
+   "pl": "Sicherheiten",
+   "gloss": "safety, security",
+   "parts": [
+    "sicherheit"
+   ]
+  },
+  {
+   "base": "Haus",
+   "gender": "n",
+   "pl": "Häuser",
+   "gloss": "house",
+   "parts": [
+    "haus",
+    "häuser"
+   ]
+  },
+  {
+   "base": "Führer",
+   "gender": "m",
+   "pl": "Führer",
+   "gloss": "driver, leader, guide",
+   "parts": [
+    "führer"
+   ]
+  },
+  {
+   "base": "Schein",
+   "gender": "m",
+   "pl": "Scheine",
+   "gloss": "certificate, slip, note",
+   "parts": [
+    "schein"
+   ]
+  },
+  {
+   "base": "Aufenthalt",
+   "gender": "m",
+   "pl": "Aufenthalte",
+   "gloss": "stay, residence",
+   "parts": [
+    "aufenthalt"
+   ]
+  },
+  {
+   "base": "Titel",
+   "gender": "m",
+   "pl": "Titel",
+   "gloss": "title, permit",
+   "parts": [
+    "titel"
+   ]
+  },
+  {
+   "base": "Kasse",
+   "gender": "f",
+   "pl": "Kassen",
+   "gloss": "till, fund",
+   "parts": [
+    "kassen"
+   ]
+  },
+  {
+   "base": "Tür",
+   "gender": "f",
+   "pl": "Türen",
+   "gloss": "door",
+   "parts": [
+    "tür"
+   ]
+  },
+  {
+   "base": "Bahn",
+   "gender": "f",
+   "pl": "Bahnen",
+   "gloss": "railway, train",
+   "parts": [
+    "bahn"
+   ]
+  },
+  {
+   "base": "Hof",
+   "gender": "m",
+   "pl": "Höfe",
+   "gloss": "yard, court",
+   "parts": [
+    "hof"
+   ]
+  },
+  {
+   "base": "Plan",
+   "gender": "m",
+   "pl": "Pläne",
+   "gloss": "plan, schedule",
+   "parts": [
+    "plan"
+   ]
+  },
+  {
+   "base": "Buch",
+   "gender": "n",
+   "pl": "Bücher",
+   "gloss": "book",
+   "parts": [
+    "buch",
+    "bücher"
+   ]
+  },
+  {
+   "base": "Amt",
+   "gender": "n",
+   "pl": "Ämter",
+   "gloss": "office, public authority",
+   "parts": [
+    "amt"
+   ]
+  },
+  {
+   "base": "Termin",
+   "gender": "m",
+   "pl": "Termine",
+   "gloss": "appointment",
+   "parts": [
+    "termin"
+   ]
+  },
+  {
+   "base": "Anmeldung",
+   "gender": "f",
+   "pl": "Anmeldungen",
+   "gloss": "registration",
+   "parts": [
+    "anmeldung"
+   ]
+  },
+  {
+   "base": "Formular",
+   "gender": "n",
+   "pl": "Formulare",
+   "gloss": "form",
+   "parts": [
+    "formular"
+   ]
+  },
+  {
+   "base": "Antrag",
+   "gender": "m",
+   "pl": "Anträge",
+   "gloss": "application",
+   "parts": [
+    "antrag"
+   ]
+  },
+  {
+   "base": "Vermieter",
+   "gender": "m",
+   "pl": "Vermieter",
+   "gloss": "landlord",
+   "parts": [
+    "vermieter"
+   ]
+  },
+  {
+   "base": "Miete",
+   "gender": "f",
+   "pl": "Mieten",
+   "gloss": "rent",
+   "parts": [
+    "miet"
+   ]
+  },
+  {
+   "base": "Mietvertrag",
+   "gender": "m",
+   "pl": "Mietverträge",
+   "gloss": "rental contract",
+   "parts": [
+    "mietvertrag"
+   ]
+  },
+  {
+   "base": "Bescheinigung",
+   "gender": "f",
+   "pl": "Bescheinigungen",
+   "gloss": "certificate, written confirmation",
+   "parts": [
+    "bescheinigung"
+   ]
+  },
+  {
+   "base": "Führerschein",
+   "gender": "m",
+   "pl": "Führerscheine",
+   "gloss": "driving licence",
+   "parts": [
+    "führerschein"
+   ]
+  },
+  {
+   "base": "Bahnhof",
+   "gender": "m",
+   "pl": "Bahnhöfe",
+   "gloss": "railway station",
+   "parts": [
+    "bahnhof"
+   ]
+  },
+  {
+   "base": "Firma",
+   "gender": "f",
+   "pl": "Firmen",
+   "gloss": "company",
+   "parts": [
+    "firmen"
+   ]
+  },
+  {
+   "base": "Meister",
+   "gender": "m",
+   "pl": "Meister",
+   "gloss": "master craftsman, foreman",
+   "parts": [
+    "meister"
+   ]
+  },
+  {
+   "base": "Azubi",
+   "gender": "m",
+   "pl": "Azubis",
+   "gloss": "apprentice (colloquial)",
+   "parts": [
+    "azubi"
+   ]
+  },
+  {
+   "base": "Lager",
+   "gender": "n",
+   "pl": "Lager",
+   "gloss": "warehouse, storeroom",
+   "parts": [
+    "lager"
+   ]
+  },
+  {
+   "base": "Kiste",
+   "gender": "f",
+   "pl": "Kisten",
+   "gloss": "crate, box",
+   "parts": [
+    "kisten"
+   ]
+  },
+  {
+   "base": "Wand",
+   "gender": "f",
+   "pl": "Wände",
+   "gloss": "wall",
+   "parts": [
+    "wand"
+   ]
+  },
+  {
+   "base": "Tisch",
+   "gender": "m",
+   "pl": "Tische",
+   "gloss": "table",
+   "parts": [
+    "tisch"
+   ]
+  },
+  {
+   "base": "Schlüssel",
+   "gender": "m",
+   "pl": "Schlüssel",
+   "gloss": "key",
+   "parts": [
+    "schlüssel"
+   ]
+  },
+  {
+   "base": "Schrank",
+   "gender": "m",
+   "pl": "Schränke",
+   "gloss": "cupboard, locker",
+   "parts": [
+    "schrank"
+   ]
+  },
+  {
+   "base": "Zug",
+   "gender": "m",
+   "pl": "Züge",
+   "gloss": "train",
+   "parts": [
+    "zug"
+   ]
+  },
+  {
+   "base": "Bus",
+   "gender": "m",
+   "pl": "Busse",
+   "gloss": "bus",
+   "parts": [
+    "bus"
+   ]
+  },
+  {
+   "base": "Fahrrad",
+   "gender": "n",
+   "pl": "Fahrräder",
+   "gloss": "bicycle",
+   "parts": [
+    "fahrrad"
+   ]
+  },
+  {
+   "base": "Stunde",
+   "gender": "f",
+   "pl": "Stunden",
+   "gloss": "hour",
+   "parts": [
+    "stunden"
+   ]
+  },
+  {
+   "base": "Zeit",
+   "gender": "f",
+   "pl": "Zeiten",
+   "gloss": "time",
+   "parts": [
+    "zeit"
+   ]
+  },
+  {
+   "base": "Anleitung",
+   "gender": "f",
+   "pl": "Anleitungen",
+   "gloss": "instructions, manual",
+   "parts": [
+    "anleitung"
+   ]
+  },
+  {
+   "base": "Ersatzteil",
+   "gender": "n",
+   "pl": "Ersatzteile",
+   "gloss": "spare part",
+   "parts": [
+    "ersatzteil"
+   ]
+  },
+  {
+   "base": "Unterlage",
+   "gender": "f",
+   "pl": "Unterlagen",
+   "gloss": "document (usually plural: Unterlagen)",
+   "parts": [
+    "unterlagen"
+   ]
+  },
+  {
+   "base": "Frage",
+   "gender": "f",
+   "pl": "Fragen",
+   "gloss": "question",
+   "parts": [
+    "frage"
+   ]
+  },
+  {
+   "base": "Mittagessen",
+   "gender": "n",
+   "pl": "Mittagessen",
+   "gloss": "lunch",
+   "parts": [
+    "mittagessen"
+   ]
+  },
+  {
+   "base": "Regen",
+   "gender": "m",
+   "pl": "Regen",
+   "gloss": "rain",
+   "parts": [
+    "regen"
+   ]
+  },
+  {
+   "base": "Wetter",
+   "gender": "n",
+   "pl": "Wetter",
+   "gloss": "weather",
+   "parts": [
+    "wetter"
+   ]
+  },
+  {
+   "base": "Werk",
+   "gender": "n",
+   "pl": "Werke",
+   "gloss": "work, factory, works",
+   "parts": [
+    "werk"
+   ]
+  },
+  {
+   "base": "Wagen",
+   "gender": "m",
+   "pl": "Wagen",
+   "gloss": "car, wagon",
+   "parts": [
+    "wagen"
+   ]
+  },
+  {
+   "base": "Zimmer",
+   "gender": "n",
+   "pl": "Zimmer",
+   "gloss": "room",
+   "parts": [
+    "zimmer"
+   ]
+  },
+  {
+   "base": "Stadt",
+   "gender": "f",
+   "pl": "Städte",
+   "gloss": "city, town",
+   "parts": [
+    "stadt"
+   ]
+  },
+  {
+   "base": "Straße",
+   "gender": "f",
+   "pl": "Straßen",
+   "gloss": "street",
+   "parts": [
+    "straße",
+    "straßen"
+   ]
+  },
+  {
+   "base": "Nummer",
+   "gender": "f",
+   "pl": "Nummern",
+   "gloss": "number",
+   "parts": [
+    "nummer"
+   ]
+  },
+  {
+   "base": "Ausweis",
+   "gender": "m",
+   "pl": "Ausweise",
+   "gloss": "ID card",
+   "parts": [
+    "ausweis"
+   ]
+  },
+  {
+   "base": "Pass",
+   "gender": "m",
+   "pl": "Pässe",
+   "gloss": "passport",
+   "parts": [
+    "pass"
+   ]
+  },
+  {
+   "base": "Konto",
+   "gender": "n",
+   "pl": "Konten",
+   "gloss": "bank account",
+   "parts": [
+    "konto",
+    "konten"
+   ]
+  },
+  {
+   "base": "Bank",
+   "gender": "f",
+   "pl": "Banken",
+   "gloss": "bank",
+   "parts": [
+    "bank"
+   ]
+  },
+  {
+   "base": "Geld",
+   "gender": "n",
+   "pl": "Gelder",
+   "gloss": "money",
+   "parts": [
+    "geld"
+   ]
+  },
+  {
+   "base": "Lohn",
+   "gender": "m",
+   "pl": "Löhne",
+   "gloss": "wage",
+   "parts": [
+    "lohn"
+   ]
+  },
+  {
+   "base": "Gehalt",
+   "gender": "n",
+   "pl": "Gehälter",
+   "gloss": "salary",
+   "parts": [
+    "gehalt"
+   ]
+  },
+  {
+   "base": "Steuer",
+   "gender": "f",
+   "pl": "Steuern",
+   "gloss": "tax",
+   "parts": [
+    "steuer"
+   ]
+  },
+  {
+   "base": "Urlaub",
+   "gender": "m",
+   "pl": "Urlaube",
+   "gloss": "holiday, leave",
+   "parts": [
+    "urlaub"
+   ]
+  },
+  {
+   "base": "Pause",
+   "gender": "f",
+   "pl": "Pausen",
+   "gloss": "break",
+   "parts": [
+    "pausen"
+   ]
+  },
+  {
+   "base": "Woche",
+   "gender": "f",
+   "pl": "Wochen",
+   "gloss": "week",
+   "parts": [
+    "wochen"
+   ]
+  },
+  {
+   "base": "Tag",
+   "gender": "m",
+   "pl": "Tage",
+   "gloss": "day",
+   "parts": [
+    "tag"
+   ]
+  },
+  {
+   "base": "Monat",
+   "gender": "m",
+   "pl": "Monate",
+   "gloss": "month",
+   "parts": [
+    "monat"
+   ]
+  },
+  {
+   "base": "Jahr",
+   "gender": "n",
+   "pl": "Jahre",
+   "gloss": "year",
+   "parts": [
+    "jahr"
+   ]
+  },
+  {
+   "base": "Prüfung",
+   "gender": "f",
+   "pl": "Prüfungen",
+   "gloss": "exam",
+   "parts": [
+    "prüfung"
+   ]
+  },
+  {
+   "base": "Zeugnis",
+   "gender": "n",
+   "pl": "Zeugnisse",
+   "gloss": "certificate, school report",
+   "parts": [
+    "zeugnis"
+   ]
+  },
+  {
+   "base": "Bewerbung",
+   "gender": "f",
+   "pl": "Bewerbungen",
+   "gloss": "job application",
+   "parts": [
+    "bewerbung"
+   ]
+  },
+  {
+   "base": "Lebenslauf",
+   "gender": "m",
+   "pl": "Lebensläufe",
+   "gloss": "CV, résumé",
+   "parts": [
+    "lebenslauf"
+   ]
+  },
+  {
+   "base": "Leben",
+   "gender": "n",
+   "pl": "Leben",
+   "gloss": "life",
+   "parts": [
+    "leben"
+   ]
+  },
+  {
+   "base": "Lauf",
+   "gender": "m",
+   "pl": "Läufe",
+   "gloss": "run, course",
+   "parts": [
+    "lauf"
+   ]
+  },
+  {
+   "base": "Arzt",
+   "gender": "m",
+   "pl": "Ärzte",
+   "gloss": "doctor",
+   "parts": [
+    "arzt"
+   ]
+  },
+  {
+   "base": "Apotheke",
+   "gender": "f",
+   "pl": "Apotheken",
+   "gloss": "pharmacy",
+   "parts": [
+    "apotheken"
+   ]
+  },
+  {
+   "base": "Helm",
+   "gender": "m",
+   "pl": "Helme",
+   "gloss": "helmet",
+   "parts": [
+    "helm"
+   ]
+  },
+  {
+   "base": "Handschuh",
+   "gender": "m",
+   "pl": "Handschuhe",
+   "gloss": "glove",
+   "parts": [
+    "handschuh"
+   ]
+  },
+  {
+   "base": "Hand",
+   "gender": "f",
+   "pl": "Hände",
+   "gloss": "hand",
+   "parts": [
+    "hand"
+   ]
+  },
+  {
+   "base": "Brille",
+   "gender": "f",
+   "pl": "Brillen",
+   "gloss": "glasses",
+   "parts": [
+    "brillen"
+   ]
+  },
+  {
+   "base": "Halle",
+   "gender": "f",
+   "pl": "Hallen",
+   "gloss": "hall",
+   "parts": [
+    "hallen"
+   ]
+  },
+  {
+   "base": "Material",
+   "gender": "n",
+   "pl": "Materialien",
+   "gloss": "material",
+   "parts": [
+    "material"
+   ]
+  },
+  {
+   "base": "Metall",
+   "gender": "n",
+   "pl": "Metalle",
+   "gloss": "metal",
+   "parts": [
+    "metall"
+   ]
+  },
+  {
+   "base": "Stahl",
+   "gender": "m",
+   "pl": "Stähle",
+   "gloss": "steel",
+   "parts": [
+    "stahl"
+   ]
+  },
+  {
+   "base": "Teil",
+   "gender": "n",
+   "pl": "Teile",
+   "gloss": "component, piece (der Teil = part, portion)",
+   "parts": [
+    "teil"
+   ]
+  },
+  {
+   "base": "Ersatz",
+   "gender": "m",
+   "pl": "",
+   "gloss": "replacement (no plural)",
+   "parts": [
+    "ersatz"
+   ]
+  },
+  {
+   "base": "Lieferung",
+   "gender": "f",
+   "pl": "Lieferungen",
+   "gloss": "delivery",
+   "parts": [
+    "lieferung"
+   ]
+  },
+  {
+   "base": "Kunde",
+   "gender": "m",
+   "pl": "Kunden",
+   "gloss": "customer",
+   "parts": [
+    "kunden"
+   ],
+   "weak": true
+  },
+  {
+   "base": "Rechnung",
+   "gender": "f",
+   "pl": "Rechnungen",
+   "gloss": "invoice, bill",
+   "parts": [
+    "rechnung"
+   ]
+  },
+  {
+   "base": "Auto",
+   "gender": "n",
+   "pl": "Autos",
+   "gloss": "car",
+   "parts": [
+    "auto"
+   ]
+  },
+  {
+   "base": "Rad",
+   "gender": "n",
+   "pl": "Räder",
+   "gloss": "wheel, bike",
+   "parts": [
+    "rad",
+    "räder"
+   ]
+  },
+  {
+   "base": "Mittag",
+   "gender": "m",
+   "pl": "Mittage",
+   "gloss": "midday",
+   "parts": [
+    "mittag"
+   ]
+  },
+  {
+   "base": "Essen",
+   "gender": "n",
+   "pl": "Essen",
+   "gloss": "food, meal",
+   "parts": [
+    "essen"
+   ]
+  },
+  {
+   "base": "Küche",
+   "gender": "f",
+   "pl": "Küchen",
+   "gloss": "kitchen",
+   "parts": [
+    "küchen"
+   ]
+  },
+  {
+   "base": "Zahn",
+   "gender": "m",
+   "pl": "Zähne",
+   "gloss": "tooth",
+   "parts": [
+    "zahn"
+   ]
+  },
+  {
+   "base": "Arbeiter",
+   "gender": "m",
+   "pl": "Arbeiter",
+   "gloss": "worker",
+   "parts": [
+    "arbeiter"
+   ]
+  },
+  {
+   "base": "Geber",
+   "gender": "m",
+   "pl": "Geber",
+   "gloss": "giver (in Arbeitgeber: employer)",
+   "parts": [
+    "geber"
+   ]
+  },
+  {
+   "base": "Nehmer",
+   "gender": "m",
+   "pl": "Nehmer",
+   "gloss": "taker (in Arbeitnehmer: employee)",
+   "parts": [
+    "nehmer"
+   ]
+  },
+  {
+   "base": "Erlaubnis",
+   "gender": "f",
+   "pl": "Erlaubnisse",
+   "gloss": "permission, permit",
+   "parts": [
+    "erlaubnis"
+   ]
+  },
+  {
+   "base": "Genehmigung",
+   "gender": "f",
+   "pl": "Genehmigungen",
+   "gloss": "approval, permit",
+   "parts": [
+    "genehmigung"
+   ]
+  },
+  {
+   "base": "Gemeinde",
+   "gender": "f",
+   "pl": "Gemeinden",
+   "gloss": "municipality",
+   "parts": [
+    "gemeinde"
+   ]
+  },
+  {
+   "base": "Einwohner",
+   "gender": "m",
+   "pl": "Einwohner",
+   "gloss": "resident, inhabitant",
+   "parts": [
+    "einwohner"
+   ]
+  },
+  {
+   "base": "Kraft",
+   "gender": "f",
+   "pl": "Kräfte",
+   "gloss": "strength, worker (Fachkraft)",
+   "parts": [
+    "kraft"
+   ]
+  },
+  {
+   "base": "Fach",
+   "gender": "n",
+   "pl": "Fächer",
+   "gloss": "subject, specialism, compartment",
+   "parts": [
+    "fach"
+   ]
+  },
+  {
+   "base": "Kraftfahrzeug",
+   "gender": "n",
+   "pl": "Kraftfahrzeuge",
+   "gloss": "motor vehicle",
+   "parts": [
+    "kraftfahrzeug"
+   ]
+  },
+  {
+   "base": "Zeug",
+   "gender": "n",
+   "pl": "Zeuge",
+   "gloss": "stuff, gear (Werkzeug, Fahrzeug; plural Zeuge exists but is rare)",
+   "parts": [
+    "zeug"
+   ]
+  },
+  {
+   "base": "Probe",
+   "gender": "f",
+   "pl": "Proben",
+   "gloss": "test, trial",
+   "parts": [
+    "probe"
+   ]
+  },
+  {
+   "base": "Kündigung",
+   "gender": "f",
+   "pl": "Kündigungen",
+   "gloss": "notice of termination",
+   "parts": [
+    "kündigung"
+   ]
+  },
+  {
+   "base": "Frist",
+   "gender": "f",
+   "pl": "Fristen",
+   "gloss": "deadline",
+   "parts": [
+    "frist"
+   ]
+  },
+  {
+   "base": "Ort",
+   "gender": "m",
+   "pl": "Orte",
+   "gloss": "place, town",
+   "parts": [
+    "ort"
+   ]
+  },
+  {
+   "base": "Raum",
+   "gender": "m",
+   "pl": "Räume",
+   "gloss": "room, space",
+   "parts": [
+    "raum"
+   ]
+  },
+  {
+   "base": "Wein",
+   "gender": "m",
+   "pl": "Weine",
+   "gloss": "wine",
+   "parts": [
+    "wein"
+   ]
+  },
+  {
+   "base": "Bier",
+   "gender": "n",
+   "pl": "Biere",
+   "gloss": "beer",
+   "parts": [
+    "bier"
+   ]
+  },
+  {
+   "base": "Wasser",
+   "gender": "n",
+   "pl": "Wasser",
+   "gloss": "water",
+   "parts": [
+    "wasser"
+   ]
+  },
+  {
+   "base": "Kaffee",
+   "gender": "m",
+   "pl": "Kaffees",
+   "gloss": "coffee",
+   "parts": [
+    "kaffee"
+   ]
+  },
+  {
+   "base": "Brot",
+   "gender": "n",
+   "pl": "Brote",
+   "gloss": "bread",
+   "parts": [
+    "brot"
+   ]
+  },
+  {
+   "base": "Mensch",
+   "gender": "m",
+   "pl": "Menschen",
+   "gloss": "human being, person",
+   "parts": [
+    "mensch",
+    "menschen"
+   ],
+   "weak": true
+  },
+  {
+   "base": "Junge",
+   "gender": "m",
+   "pl": "Jungen",
+   "gloss": "boy",
+   "parts": [
+    "junge",
+    "jungen"
+   ],
+   "weak": true
+  },
+  {
+   "base": "Student",
+   "gender": "m",
+   "pl": "Studenten",
+   "gloss": "student (university)",
+   "parts": [
+    "student",
+    "studenten"
+   ],
+   "weak": true
+  },
+  {
+   "base": "Nachbar",
+   "gender": "m",
+   "pl": "Nachbarn",
+   "gloss": "neighbour",
+   "parts": [
+    "nachbar",
+    "nachbarn"
+   ],
+   "weak": true
+  },
+  {
+   "base": "Praktikant",
+   "gender": "m",
+   "pl": "Praktikanten",
+   "gloss": "intern",
+   "parts": [
+    "praktikant",
+    "praktikanten"
+   ],
+   "weak": true
+  },
+  {
+   "base": "Patient",
+   "gender": "m",
+   "pl": "Patienten",
+   "gloss": "patient",
+   "parts": [
+    "patient",
+    "patienten"
+   ],
+   "weak": true
+  },
+  {
+   "base": "Polizist",
+   "gender": "m",
+   "pl": "Polizisten",
+   "gloss": "police officer",
+   "parts": [
+    "polizist",
+    "polizisten"
+   ],
+   "weak": true
+  },
+  {
+   "base": "Experte",
+   "gender": "m",
+   "pl": "Experten",
+   "gloss": "expert",
+   "parts": [
+    "experte",
+    "experten"
+   ],
+   "weak": true
+  },
+  {
+   "base": "Lieferant",
+   "gender": "m",
+   "pl": "Lieferanten",
+   "gloss": "supplier",
+   "parts": [
+    "lieferant",
+    "lieferanten"
+   ],
+   "weak": true
+  },
+  {
+   "base": "Mechaniker",
+   "gender": "m",
+   "pl": "Mechaniker",
+   "gloss": "mechanic",
+   "parts": [
+    "mechaniker"
+   ]
+  },
+  {
+   "base": "Montag",
+   "gender": "m",
+   "pl": "Montage",
+   "gloss": "Monday",
+   "parts": [
+    "montag"
+   ]
+  },
+  {
+   "base": "Stuhl",
+   "gender": "m",
+   "pl": "Stühle",
+   "gloss": "chair",
+   "parts": [
+    "stuhl"
+   ]
+  },
+  {
+   "base": "Uhr",
+   "gender": "f",
+   "pl": "Uhren",
+   "gloss": "clock; o’clock",
+   "parts": [
+    "uhr"
+   ]
+  },
+  {
+   "base": "Morgen",
+   "gender": "m",
+   "pl": "Morgen",
+   "gloss": "morning",
+   "parts": [
+    "morgen"
+   ]
+  },
+  {
+   "base": "Abend",
+   "gender": "m",
+   "pl": "Abende",
+   "gloss": "evening",
+   "parts": [
+    "abend"
+   ]
+  },
+  {
+   "base": "Nacht",
+   "gender": "f",
+   "pl": "Nächte",
+   "gloss": "night",
+   "parts": [
+    "nacht"
+   ]
+  },
+  {
+   "base": "Hunger",
+   "gender": "m",
+   "pl": "",
+   "gloss": "hunger",
+   "parts": [
+    "hunger"
+   ]
+  }
+ ],
+ "parts": [
+  {
+   "form": "kranken",
+   "gloss": "sick — adjective krank with declension -en, as in Krankenhaus, Krankenkasse",
+   "type": "adj-part"
+  },
+  {
+   "form": "wasch",
+   "gloss": "wash — verb stem of waschen (Waschmaschine)",
+   "type": "verb-part"
+  },
+  {
+   "form": "schlaf",
+   "gloss": "sleep — verb stem of schlafen (Schlafzimmer)",
+   "type": "verb-part"
+  },
+  {
+   "form": "fahr",
+   "gloss": "drive, ride — verb stem of fahren (Fahrrad, Fahrzeug, Fahrkarte)",
+   "type": "verb-part"
+  },
+  {
+   "form": "wohn",
+   "gloss": "live, dwell — verb stem of wohnen (Wohnzimmer, Wohnort)",
+   "type": "verb-part"
+  },
+  {
+   "form": "schreib",
+   "gloss": "write — verb stem of schreiben (Schreibtisch)",
+   "type": "verb-part"
+  },
+  {
+   "form": "spiel",
+   "gloss": "play — verb stem of spielen (Spielplatz)",
+   "type": "verb-part"
+  },
+  {
+   "form": "lern",
+   "gloss": "learn — verb stem of lernen (Lernzeit)",
+   "type": "verb-part"
+  },
+  {
+   "form": "bade",
+   "gloss": "bathe — verb stem of baden with -e (Badezimmer)",
+   "type": "verb-part"
+  },
+  {
+   "form": "koch",
+   "gloss": "cook — verb stem of kochen (Kochbuch)",
+   "type": "verb-part"
+  },
+  {
+   "form": "rauch",
+   "gloss": "smoke — verb stem of rauchen (Rauchpause)",
+   "type": "verb-part"
+  },
+  {
+   "form": "schwimm",
+   "gloss": "swim — verb stem of schwimmen (Schwimmhalle)",
+   "type": "verb-part"
+  },
+  {
+   "form": "trink",
+   "gloss": "drink — verb stem of trinken (Trinkwasser)",
+   "type": "verb-part"
+  },
+  {
+   "form": "ess",
+   "gloss": "eat — verb stem of essen (Esszimmer)",
+   "type": "verb-part"
+  },
+  {
+   "form": "park",
+   "gloss": "park — verb stem of parken (Parkplatz)",
+   "type": "verb-part"
+  },
+  {
+   "form": "melde",
+   "gloss": "report, register — verb stem of melden with -e (Meldeamt, Meldebescheinigung)",
+   "type": "verb-part"
+  },
+  {
+   "form": "warte",
+   "gloss": "wait — verb stem of warten with -e (Wartezimmer)",
+   "type": "verb-part"
+  },
+  {
+   "form": "sitz",
+   "gloss": "sit — verb stem of sitzen (Sitzplatz)",
+   "type": "verb-part"
+  },
+  {
+   "form": "lade",
+   "gloss": "load — verb stem of laden with -e (Ladezeit)",
+   "type": "verb-part"
+  },
+  {
+   "form": "mess",
+   "gloss": "measure — verb stem of messen (Messgerät)",
+   "type": "verb-part"
+  },
+  {
+   "form": "bohr",
+   "gloss": "drill — verb stem of bohren (Bohrmaschine)",
+   "type": "verb-part"
+  },
+  {
+   "form": "schweiß",
+   "gloss": "weld — verb stem of schweißen (Schweißgerät)",
+   "type": "verb-part"
+  },
+  {
+   "form": "dreh",
+   "gloss": "turn — verb stem of drehen (Drehbank)",
+   "type": "verb-part"
+  },
+  {
+   "form": "fräs",
+   "gloss": "mill — verb stem of fräsen (Fräsmaschine)",
+   "type": "verb-part"
+  },
+  {
+   "form": "groß",
+   "gloss": "big — adjective as compound part (Großstadt)",
+   "type": "adj-part"
+  },
+  {
+   "form": "hoch",
+   "gloss": "high — adjective as compound part (Hochhaus)",
+   "type": "adj-part"
+  },
+  {
+   "form": "neu",
+   "gloss": "new — adjective as compound part (Neubau)",
+   "type": "adj-part"
+  }
+ ],
+ "adjectives": [
+  {
+   "base": "alt",
+   "gloss": "old"
+  },
+  {
+   "base": "neu",
+   "gloss": "new"
+  },
+  {
+   "base": "groß",
+   "gloss": "big"
+  },
+  {
+   "base": "klein",
+   "gloss": "small"
+  },
+  {
+   "base": "lang",
+   "gloss": "long"
+  },
+  {
+   "base": "kurz",
+   "gloss": "short"
+  },
+  {
+   "base": "sicher",
+   "gloss": "safe, sure"
+  },
+  {
+   "base": "nett",
+   "gloss": "nice"
+  },
+  {
+   "base": "günstig",
+   "gloss": "cheap, good value"
+  },
+  {
+   "base": "teuer",
+   "gloss": "expensive"
+  },
+  {
+   "base": "eigen",
+   "gloss": "own"
+  },
+  {
+   "base": "schwer",
+   "gloss": "heavy, difficult"
+  },
+  {
+   "base": "leicht",
+   "gloss": "light, easy"
+  },
+  {
+   "base": "wichtig",
+   "gloss": "important"
+  },
+  {
+   "base": "krank",
+   "gloss": "sick"
+  },
+  {
+   "base": "gesund",
+   "gloss": "healthy"
+  },
+  {
+   "base": "müde",
+   "gloss": "tired"
+  },
+  {
+   "base": "pünktlich",
+   "gloss": "punctual"
+  },
+  {
+   "base": "fertig",
+   "gloss": "finished, ready"
+  },
+  {
+   "base": "frei",
+   "gloss": "free"
+  },
+  {
+   "base": "voll",
+   "gloss": "full"
+  },
+  {
+   "base": "schnell",
+   "gloss": "fast"
+  },
+  {
+   "base": "langsam",
+   "gloss": "slow"
+  },
+  {
+   "base": "sauber",
+   "gloss": "clean"
+  },
+  {
+   "base": "schmutzig",
+   "gloss": "dirty"
+  },
+  {
+   "base": "kaputt",
+   "gloss": "broken"
+  },
+  {
+   "base": "gültig",
+   "gloss": "valid"
+  },
+  {
+   "base": "offen",
+   "gloss": "open"
+  },
+  {
+   "base": "geschlossen",
+   "gloss": "closed"
+  },
+  {
+   "base": "schwierig",
+   "gloss": "difficult"
+  },
+  {
+   "base": "gut",
+   "gloss": "good"
+  },
+  {
+   "base": "kalt",
+   "gloss": "cold"
+  },
+  {
+   "base": "warm",
+   "gloss": "warm"
+  },
+  {
+   "base": "frisch",
+   "gloss": "fresh"
+  }
+ ],
+ "verbs": [
+  {
+   "inf": "ankommen",
+   "prefix": "an",
+   "separable": true,
+   "stem": "komm",
+   "part2": "angekommen",
+   "part2stem": "komm",
+   "part2end": "en",
+   "aux": "sein",
+   "gloss": "arrive"
+  },
+  {
+   "inf": "aufstehen",
+   "prefix": "auf",
+   "separable": true,
+   "stem": "steh",
+   "part2": "aufgestanden",
+   "part2stem": "stand",
+   "part2end": "en",
+   "aux": "sein",
+   "gloss": "get up"
+  },
+  {
+   "inf": "einladen",
+   "prefix": "ein",
+   "separable": true,
+   "stem": "lad",
+   "part2": "eingeladen",
+   "part2stem": "lad",
+   "part2end": "en",
+   "aux": "haben",
+   "gloss": "invite"
+  },
+  {
+   "inf": "anmelden",
+   "prefix": "an",
+   "separable": true,
+   "stem": "meld",
+   "part2": "angemeldet",
+   "part2stem": "meld",
+   "part2end": "et",
+   "aux": "haben",
+   "gloss": "register"
+  },
+  {
+   "inf": "ausfüllen",
+   "prefix": "aus",
+   "separable": true,
+   "stem": "füll",
+   "part2": "ausgefüllt",
+   "part2stem": "füll",
+   "part2end": "t",
+   "aux": "haben",
+   "gloss": "fill in"
+  },
+  {
+   "inf": "mitbringen",
+   "prefix": "mit",
+   "separable": true,
+   "stem": "bring",
+   "part2": "mitgebracht",
+   "part2stem": "brach",
+   "part2end": "t",
+   "aux": "haben",
+   "gloss": "bring along"
+  },
+  {
+   "inf": "abholen",
+   "prefix": "ab",
+   "separable": true,
+   "stem": "hol",
+   "part2": "abgeholt",
+   "part2stem": "hol",
+   "part2end": "t",
+   "aux": "haben",
+   "gloss": "pick up, collect"
+  },
+  {
+   "inf": "anrufen",
+   "prefix": "an",
+   "separable": true,
+   "stem": "ruf",
+   "part2": "angerufen",
+   "part2stem": "ruf",
+   "part2end": "en",
+   "aux": "haben",
+   "gloss": "call (phone)"
+  },
+  {
+   "inf": "anfangen",
+   "prefix": "an",
+   "separable": true,
+   "stem": "fang",
+   "part2": "angefangen",
+   "part2stem": "fang",
+   "part2end": "en",
+   "aux": "haben",
+   "gloss": "begin"
+  },
+  {
+   "inf": "aufhören",
+   "prefix": "auf",
+   "separable": true,
+   "stem": "hör",
+   "part2": "aufgehört",
+   "part2stem": "hör",
+   "part2end": "t",
+   "aux": "haben",
+   "gloss": "stop"
+  },
+  {
+   "inf": "einkaufen",
+   "prefix": "ein",
+   "separable": true,
+   "stem": "kauf",
+   "part2": "eingekauft",
+   "part2stem": "kauf",
+   "part2end": "t",
+   "aux": "haben",
+   "gloss": "shop"
+  },
+  {
+   "inf": "aufmachen",
+   "prefix": "auf",
+   "separable": true,
+   "stem": "mach",
+   "part2": "aufgemacht",
+   "part2stem": "mach",
+   "part2end": "t",
+   "aux": "haben",
+   "gloss": "open"
+  },
+  {
+   "inf": "zumachen",
+   "prefix": "zu",
+   "separable": true,
+   "stem": "mach",
+   "part2": "zugemacht",
+   "part2stem": "mach",
+   "part2end": "t",
+   "aux": "haben",
+   "gloss": "close"
+  },
+  {
+   "inf": "abgeben",
+   "prefix": "ab",
+   "separable": true,
+   "stem": "geb",
+   "part2": "abgegeben",
+   "part2stem": "geb",
+   "part2end": "en",
+   "aux": "haben",
+   "gloss": "hand in"
+  },
+  {
+   "inf": "umziehen",
+   "prefix": "um",
+   "separable": true,
+   "stem": "zieh",
+   "part2": "umgezogen",
+   "part2stem": "zog",
+   "part2end": "en",
+   "aux": "sein",
+   "gloss": "move house"
+  },
+  {
+   "inf": "verstehen",
+   "prefix": "ver",
+   "separable": false,
+   "stem": "steh",
+   "part2": "verstanden",
+   "part2stem": "stand",
+   "part2end": "en",
+   "aux": "haben",
+   "gloss": "understand"
+  },
+  {
+   "inf": "bezahlen",
+   "prefix": "be",
+   "separable": false,
+   "stem": "zahl",
+   "part2": "bezahlt",
+   "part2stem": "zahl",
+   "part2end": "t",
+   "aux": "haben",
+   "gloss": "pay"
+  },
+  {
+   "inf": "erklären",
+   "prefix": "er",
+   "separable": false,
+   "stem": "klär",
+   "part2": "erklärt",
+   "part2stem": "klär",
+   "part2end": "t",
+   "aux": "haben",
+   "gloss": "explain"
+  },
+  {
+   "inf": "bekommen",
+   "prefix": "be",
+   "separable": false,
+   "stem": "komm",
+   "part2": "bekommen",
+   "part2stem": "komm",
+   "part2end": "en",
+   "aux": "haben",
+   "gloss": "receive"
+  },
+  {
+   "inf": "beantragen",
+   "prefix": "be",
+   "separable": false,
+   "stem": "antrag",
+   "part2": "beantragt",
+   "part2stem": "antrag",
+   "part2end": "t",
+   "aux": "haben",
+   "gloss": "apply for"
+  },
+  {
+   "inf": "unterschreiben",
+   "prefix": "unter",
+   "separable": false,
+   "stem": "schreib",
+   "part2": "unterschrieben",
+   "part2stem": "schrieb",
+   "part2end": "en",
+   "aux": "haben",
+   "gloss": "sign"
+  },
+  {
+   "inf": "vergessen",
+   "prefix": "ver",
+   "separable": false,
+   "stem": "gess",
+   "part2": "vergessen",
+   "part2stem": "gess",
+   "part2end": "en",
+   "aux": "haben",
+   "gloss": "forget"
+  },
+  {
+   "inf": "erhalten",
+   "prefix": "er",
+   "separable": false,
+   "stem": "halt",
+   "part2": "erhalten",
+   "part2stem": "halt",
+   "part2end": "en",
+   "aux": "haben",
+   "gloss": "receive (formal)"
+  },
+  {
+   "inf": "besuchen",
+   "prefix": "be",
+   "separable": false,
+   "stem": "such",
+   "part2": "besucht",
+   "part2stem": "such",
+   "part2end": "t",
+   "aux": "haben",
+   "gloss": "visit"
+  },
+  {
+   "inf": "machen",
+   "prefix": "",
+   "separable": false,
+   "stem": "mach",
+   "part2": "gemacht",
+   "part2stem": "mach",
+   "part2end": "t",
+   "aux": "haben",
+   "gloss": "make, do"
+  },
+  {
+   "inf": "arbeiten",
+   "prefix": "",
+   "separable": false,
+   "stem": "arbeit",
+   "part2": "gearbeitet",
+   "part2stem": "arbeit",
+   "part2end": "et",
+   "aux": "haben",
+   "gloss": "work"
+  },
+  {
+   "inf": "fahren",
+   "prefix": "",
+   "separable": false,
+   "stem": "fahr",
+   "part2": "gefahren",
+   "part2stem": "fahr",
+   "part2end": "en",
+   "aux": "sein",
+   "gloss": "drive, go"
+  },
+  {
+   "inf": "kommen",
+   "prefix": "",
+   "separable": false,
+   "stem": "komm",
+   "part2": "gekommen",
+   "part2stem": "komm",
+   "part2end": "en",
+   "aux": "sein",
+   "gloss": "come"
+  },
+  {
+   "inf": "gehen",
+   "prefix": "",
+   "separable": false,
+   "stem": "geh",
+   "part2": "gegangen",
+   "part2stem": "gang",
+   "part2end": "en",
+   "aux": "sein",
+   "gloss": "go"
+  },
+  {
+   "inf": "helfen",
+   "prefix": "",
+   "separable": false,
+   "stem": "helf",
+   "part2": "geholfen",
+   "part2stem": "holf",
+   "part2end": "en",
+   "aux": "haben",
+   "gloss": "help (+ dative)"
+  },
+  {
+   "inf": "warten",
+   "prefix": "",
+   "separable": false,
+   "stem": "wart",
+   "part2": "gewartet",
+   "part2stem": "wart",
+   "part2end": "et",
+   "aux": "haben",
+   "gloss": "wait"
+  },
+  {
+   "inf": "tragen",
+   "prefix": "",
+   "separable": false,
+   "stem": "trag",
+   "part2": "getragen",
+   "part2stem": "trag",
+   "part2end": "en",
+   "aux": "haben",
+   "gloss": "carry, wear"
+  },
+  {
+   "inf": "legen",
+   "prefix": "",
+   "separable": false,
+   "stem": "leg",
+   "part2": "gelegt",
+   "part2stem": "leg",
+   "part2end": "t",
+   "aux": "haben",
+   "gloss": "lay, put (flat)"
+  },
+  {
+   "inf": "stellen",
+   "prefix": "",
+   "separable": false,
+   "stem": "stell",
+   "part2": "gestellt",
+   "part2stem": "stell",
+   "part2end": "t",
+   "aux": "haben",
+   "gloss": "put (upright)"
+  },
+  {
+   "inf": "schicken",
+   "prefix": "",
+   "separable": false,
+   "stem": "schick",
+   "part2": "geschickt",
+   "part2stem": "schick",
+   "part2end": "t",
+   "aux": "haben",
+   "gloss": "send"
+  }
+ ]
 }

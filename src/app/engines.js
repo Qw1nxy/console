@@ -385,6 +385,7 @@ const OLC_ENGINES = (function () {
       else first += "; here it appears in the irregular stem form " + stem + "-";
     }
     s.push(first + ".");
+    if (entry.why) s.push(entry.why);
     var link = null, i;
     for (i = 0; i < ms.length; i++) if (ms[i].role === "link") { link = ms[i]; break; }
     if (chain.plural) {
@@ -406,7 +407,7 @@ const OLC_ENGINES = (function () {
       var ct = "The case suffix -" + cm.form + " means " + meaning;
       var vv = ["val", "vel"][two(h)];
       if (HU_TWO_FORM[chain["case"]]) ct += "; it is a two-form suffix (-" + HU_TWO_FORM[chain["case"]][0] + "/-" + HU_TWO_FORM[chain["case"]][1] + ") and takes the " + (h === "back" ? "back" : "front") + " form";
-      else if (chain["case"] === "all" || chain["case"] === "sup") ct += "; it is a three-form suffix (" + HU_THREE_FORM[chain["case"]].slice(0, 3).map(function (x) { return "-" + x; }).join("/") + ") chosen by the last non-neutral vowel before it" + (cm.form === "n" ? ", shortened to -n after a vowel" : "");
+      else if (chain["case"] === "all" || chain["case"] === "sup") ct += "; it is a three-form suffix (" + HU_THREE_FORM[chain["case"]].slice(0, 3).map(function (x) { return "-" + x; }).join("/") + ")" + (entry.why ? "" : " chosen by the last non-neutral vowel before it") + (cm.form === "n" ? ", shortened to -n after a vowel" : "");
       else if (chain["case"] === "ins") {
         if (/^v/.test(cm.form)) ct += "; -" + vv + " stays intact after a vowel";
         else if (insDigraph) ct = "The case suffix -" + vv + " means " + meaning + "; its v assimilates to the final digraph " + insDigraph + ", which doubles its first letter (" + insDigraph + " → " + insDigraph[0] + insDigraph + "), so -" + vv + " surfaces as -" + cm.form;
@@ -1191,6 +1192,22 @@ const OLC_ENGINES = (function () {
     return out;
   }
 
+  // A single adjective with no noun: bare base (after sein: "Ich bin müde") or base + ending (the noun is missing).
+  function deParseAdj(word, idx) {
+    if (word.indexOf(" ") >= 0) return [];
+    var w = lc(word), out = [];
+    var a = idx.adjByBase.get(w);
+    if (a) out.push({ lang: "de", word: word, kind: "adjective", morphemes: [M(word, "adj-stem", a.gloss + " — adjective, no ending")],
+      explain: a.base + " = " + a.gloss + ". With no noun after it (Er ist " + a.base + ".) an adjective takes no ending. Before a noun it takes one: der " + deAdjStemFor(a).stem + "e Mann, ein " + deAdjStemFor(a).stem + "er Mann.", entry: a, confidence: 1 });
+    var ms = a ? [] : deAdjMatch(word, idx);
+    for (var i = 0; i < ms.length; i++) {
+      var m = ms[i];
+      out.push({ lang: "de", word: word, kind: "adjective", morphemes: [M(m.stem, "adj-stem", m.adj.gloss + (m.note || "")), M(m.ending, "adj-end", "ending -" + m.ending)],
+        explain: m.adj.base + " = " + m.adj.gloss + " with the ending -" + m.ending + ". Which ending is right depends on the article and the noun after it: type all three together (article, adjective, noun) to see why.", entry: m.adj, confidence: 0.7 });
+    }
+    return out;
+  }
+
   function deParse(input, lexicon) {
     var w = normWord(input);
     if (!w) return [];
@@ -1198,6 +1215,7 @@ const OLC_ENGINES = (function () {
     var out = [];
     var push = function (arr) { for (var i = 0; i < arr.length; i++) out.push(arr[i]); };
     try { push(deParseNP(w, idx)); } catch (e) { /* never let one analyser kill the others */ }
+    try { push(deParseAdj(w, idx)); } catch (e5) { }
     try { push(deParseCompound(w, idx)); } catch (e2) { }
     try { push(deParseVerb(w, idx)); } catch (e3) { }
     try { push(deParseNoun(w, idx)); } catch (e4) { }
@@ -1211,6 +1229,7 @@ const OLC_ENGINES = (function () {
     var b = lc(adj.base);
     if (b === "hoch") return { stem: "hoh", note: " (hoch → hoh- before an ending)" };
     if (/[^aeiouäöü]el$/.test(b) || /[aeiouäöü]er$/.test(b)) return { stem: b.slice(0, -2) + b.slice(-1), note: " (the -e of " + b + " drops before the ending)" };
+    if (/[^e]e$/.test(b)) return { stem: b.slice(0, -1), note: " (the final -e of " + b + " merges with the ending)" };
     return { stem: b, note: "" };
   }
   function deBuild(opts) {

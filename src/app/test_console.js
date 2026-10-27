@@ -54,7 +54,7 @@ function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
     assert(!document.getElementById("view-mission").hidden, "mission view not shown");
     const badge = document.getElementById("voice-badge-hdr");
     assert(!badge.hidden && /no .*voice/i.test(badge.textContent), "text-fallback badge not shown: " + badge.textContent);
-    assert(document.getElementById("voice-badge-de").textContent === "none", "DE voice badge should read none");
+    assert(/no German voice/.test(document.getElementById("voice-badge-de").textContent), "DE voice badge should say there is no German voice");
     assert(storage.getItem("olc.version") === "2", "olc.version not written as 2");
     record("1 boot without errors, text-fallback badge", true);
   } catch (e) { record("1 boot without errors, text-fallback badge", false, e.message); }
@@ -97,9 +97,9 @@ function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
     const g2 = E.de.guessUnknown("Donaudampfschifffahrt", O.deLexicon()); assert(g2 && g2.unknown === true, "guessUnknown de should flag unknown");
     // through the UI
     O.show("decon"); O.parseDecon("zsiráfokban", "hu");
-    assert(/Not in lexicon/.test(document.getElementById("decon-results").textContent), "UI should show Not in lexicon");
+    assert(/Not in the app’s dictionary/.test(document.getElementById("decon-results").textContent), "UI should show Not in the app’s dictionary");
     O.parseDecon("Donaudampfschifffahrt", "de");
-    assert(/Not in lexicon/.test(document.getElementById("decon-results").textContent), "UI should show Not in lexicon (de)");
+    assert(/Not in the app’s dictionary/.test(document.getElementById("decon-results").textContent), "UI should show Not in the app’s dictionary (de)");
     record("4 unknown words do not throw", true);
   } catch (e) { record("4 unknown words do not throw", false, e.message); }
 
@@ -108,6 +108,7 @@ function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
   try {
     const O = window.OLC; const S = O.state;
     S.settings.personaSkippable.de = true; S.settings.firstSessionDate.de = "2020-01-01"; S.settings.lastSessionEnd.hu = 0;
+    S.settings.learnFirst = false; // the classic test path; learn-first has its own test (5b)
     O.show("drill");
     const fams = new Set(O.drills("de").map(d => d.family));
     O.startDrill({ lang: "de", source: "families", families: fams, length: 5, typed: true, skipPersona: true });
@@ -150,6 +151,34 @@ function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
     assert(document.querySelectorAll("#summary-families tbody tr").length >= 1, "family table empty");
     record("5 drill flow", true, "score " + ses.correctInTime + "/" + ses.cues + " in time, " + ses.wrong + " wrong, requeued miss re-asked");
   } catch (e) { record("5 drill flow", false, e.message + (ctx.errors.length ? " | page errors: " + ctx.errors.join("; ") : "")); }
+
+  /* 5b. learn-first: a never-seen item is shown first, then tested; the first right answer comes back tomorrow */
+  try {
+    const O = window.OLC; const S = O.state;
+    S.settings.learnFirst = true; S.drill = null;
+    var savedProgress = JSON.parse(JSON.stringify(S.progress)); for (const k of Object.keys(S.progress)) delete S.progress[k];
+    const fams = new Set(O.drills("de").map(d => d.family));
+    O.startDrill({ lang: "de", source: "families", families: fams, length: 6, typed: true, skipPersona: true });
+    const q = S.drill.queue;
+    assert(q.length === 6, "learn-first queue length " + q.length);
+    assert(q[0]._learn && q[1]._learn && q[2]._learn && q[3]._afterLearn && q[3].id === q[0].id, "expected learn A,B,C then test A: " + q.map(x => (x._learn ? "L:" : x._afterLearn ? "T:" : "") + x.id).join(" "));
+    assert(!document.getElementById("stage-answer-box").hidden, "learn card should show the answer");
+    assert(!document.getElementById("stage-learn").hidden, "learn banner hidden");
+    assert(document.getElementById("stage-answer").textContent === q[0].answer, "learn card answer wrong");
+    assert(document.getElementById("stage-hear").querySelectorAll("a,button").length >= 1, "no tap-to-hear words on the learn card");
+    assert(S.drill.results.length === 0, "learn cards must not be graded");
+    O.nextCue(); O.nextCue(); O.nextCue();
+    assert(S.drill.idx === 3 && document.getElementById("stage-answer-box").hidden, "test card should hide the answer");
+    assert(document.getElementById("stage-learn").hidden, "learn banner should hide on the test card");
+    const it = S.drill.queue[3];
+    document.getElementById("stage-input").value = it.answer; O.submitTyped();
+    assert(S.drill.results.length === 1 && S.drill.results[0].grade === 1, "after-learn test not graded 1");
+    const due = S.progress[it.id].due;
+    assert(due > Date.now() && due <= Date.now() + 86400000 + 1000, "first right answer after learning should come back within a day, got +" + Math.round((due - Date.now()) / 3600000) + " h");
+    O.endSession(); S.drill = null;
+    for (const k of Object.keys(S.progress)) delete S.progress[k]; Object.assign(S.progress, savedProgress); storage.setItem("olc.progress", JSON.stringify(S.progress));
+    record("5b learn-first", true, "learn ×3 → test ×3; first pass due in ≤ 1 day");
+  } catch (e) { record("5b learn-first", false, e.message + (ctx.errors.length ? " | page errors: " + ctx.errors.join("; ") : "")); }
 
   /* 6. persistence */
   try {

@@ -59,6 +59,8 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) fails++
   await page.waitForTimeout(200);
   // grade three cues with keyboard: Enter reveal, then 1/3/2
   for (const k of ['1', '3', '2']) {
+    // learn-first: new items are shown before they are tested; Enter moves past a learn card
+    for (let g = 0; g < 6 && await page.evaluate(() => { const d = window.OLC.state.drill; return !!(d && d.queue[d.idx] && d.queue[d.idx]._learn); }); g++) { await page.keyboard.press('Enter'); await page.waitForTimeout(80); }
     await page.keyboard.press('Enter'); await page.waitForTimeout(120);
     await page.keyboard.press(k); await page.waitForTimeout(120);
     await page.keyboard.press('Enter'); await page.waitForTimeout(120);

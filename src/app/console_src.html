@@ -275,6 +275,7 @@ tr.selected td{background:var(--sel)}
 .block .bt{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:1.35rem;font-weight:600}
 .block .bt.over{color:var(--signal)}
 .block.done{background:var(--signal-soft)}
+.block.done-today{opacity:.8}
 .block .ctl{display:flex;gap:6px;flex-wrap:wrap;grid-column:1/-1}
 .block .logline{grid-column:1/-1;display:flex;gap:6px;flex-wrap:wrap}
 .block .logline input{flex:1 1 180px}
@@ -301,7 +302,7 @@ tr.selected td{background:var(--sel)}
 .manual-toc button:hover,.manual-toc button:focus-visible{background:var(--panel2)}
 .manual-toc .sec-id{font-family:var(--mono);color:var(--faint);font-size:.78rem;flex:none}
 .manual-toc .hit{color:var(--muted);font-size:.82rem;display:block;margin-top:2px;font-weight:400}
-.manual-body{line-height:1.6;max-width:68ch;font-size:1.02rem;scroll-margin-top:calc(60px + env(safe-area-inset-top,0px))}
+.manual-body{overflow-wrap:anywhere;line-height:1.6;max-width:68ch;font-size:1.02rem;scroll-margin-top:calc(60px + env(safe-area-inset-top,0px))}
 @media (min-width:880px){.manual-body{scroll-margin-top:calc(68px + env(safe-area-inset-top,0px))}}
 .manual-body h2{font-size:1.35rem;margin:4px 0 10px;letter-spacing:-.01em}
 .manual-body h3{font-size:1.05rem;margin:18px 0 6px}
@@ -342,6 +343,46 @@ a.res-chip:hover{border-color:var(--fg)}
 .phon-group .field.inline label,.phon-group label.field.inline{color:var(--muted);font-size:.84rem}
 .phon-pair{display:inline-flex;align-items:center;gap:4px;margin-right:6px}
 .phon-w{font-family:var(--mono);font-size:1rem;text-decoration:none}
+/* day-1 QA pass */
+.stat{display:flex;align-items:baseline;gap:.5rem;min-width:0}
+.stat b{font-family:var(--mono);font-size:1.15rem;font-weight:600;font-variant-numeric:tabular-nums}
+.stat span{color:var(--muted);font-size:.86rem}
+#due-grid{display:flex;flex-direction:column;gap:10px}
+#week-grid{display:flex;flex-wrap:wrap;gap:8px 22px}
+.due-lang{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline}
+#block-list,#timer-card,#burn-form,#legend-facts,#decon-results,.res-stage,#drill-stage,#welcome,.fact-row{scroll-margin-top:calc(64px + env(safe-area-inset-top,0px))}
+@media (min-width:880px){#block-list,#timer-card,#burn-form,#legend-facts,#decon-results,.res-stage,#drill-stage,#welcome,.fact-row{scroll-margin-top:calc(72px + env(safe-area-inset-top,0px))}}
+@media (hover:none) and (pointer:coarse){.kbd-hint,.kbd-only{display:none!important}}
+#decon-examples{max-height:none;overflow:visible;gap:8px}
+#decon-examples .chip{text-align:left;justify-content:flex-start;flex-wrap:wrap;gap:0 6px;height:auto}
+#decon-examples .chip .muted{font-size:.78rem}
+.cw{margin:0;font-size:1rem}.cw b{font-size:1.15rem}
+#cm-table td:last-child{white-space:normal;overflow-wrap:anywhere;min-width:140px}
+#stage-submit:disabled{opacity:.45}
+.gloss-list{margin:8px 0 0;display:grid;grid-template-columns:1fr;gap:2px 12px}
+.gloss-list dt{font-weight:700;color:var(--fg);margin-top:6px}
+.gloss-list dd{margin:0}
+@media (min-width:640px){.gloss-list{grid-template-columns:minmax(140px,auto) 1fr}.gloss-list dt{margin-top:0}}
+.milestones table{table-layout:fixed;width:100%}
+.milestones th:first-child,.milestones td:first-child{width:58px}
+.milestones td input{min-width:0;width:100%;font-size:.86rem;padding-inline:6px}
+#summary-families{width:100%}
+#summary-families td.fam{white-space:normal;line-height:1.35}
+#summary-families td.fam .btn{margin-top:4px;padding-inline:0}
+#summary-families .rules{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:.88rem;color:var(--muted);white-space:normal}
+#summary-families .rules b{color:var(--fg);font-family:var(--mono)}
+.persona .fillers{font-family:inherit;font-size:1rem;line-height:1.3;color:inherit;gap:8px}
+.filler{display:inline-flex;flex-direction:column;align-items:flex-start;gap:2px;padding:2px 0}
+.filler .phon-w{font-size:1.1rem}
+.drill-stage.learning .timer-row{display:none}
+.drill-stage.learning .answer{color:var(--lc,var(--fg))}
+#stage-learn{border-left-color:var(--accent)}
+.hear{margin-top:2px}
+.phon-w.play{font-family:inherit;font-weight:700}
+.cue-gloss{margin:2px 0 0}
+.fact-row{display:grid;grid-template-columns:1fr;gap:8px;padding:12px;border-radius:var(--rc);background:var(--panel2)}
+@media (min-width:720px){.fact-row{grid-template-columns:1fr 1fr 1fr auto;align-items:end}}
+.phon-group .sentence{font-family:var(--mono);font-size:1.1rem;margin:0}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation-duration:.01ms!important}}
 
 </style>
@@ -391,12 +432,12 @@ a.res-chip:hover{border-color:var(--fg)}
           <div class="panel-head"><h2>How this works</h2><span class="muted">Two minutes, once.</span></div>
           <ol class="welcome-steps">
             <li><b>Open Mission Control every day.</b> The plan card below tells you which week you're in and what that week is about.</li>
-            <li><b>Work the blocks top to bottom.</b> Each Start runs a timer and opens the right tool. If you only have 45 minutes, keep the 45 min plan.</li>
-            <li><b>In drills, say the answer out loud first,</b> then reveal it and grade yourself honestly: 1 = right and fast, 2 = right but slow, 3 = wrong. Wrong ones go to your mistake log and come back the next day.</li>
-            <li><b>Stuck on what something means?</b> Every block has a Manual link. The Field Manual tab also has the resources list: which video, podcast or book to use, and when.</li>
-            <li><b>Your progress lives only on this device.</b> Back it up weekly: Settings → Export → Copy, paste it into a note.</li>
+            <li><b>Work the blocks top to bottom.</b> Each Start runs a timer and opens the right tool. If you only have 45 minutes, keep the 45-minute plan.</li>
+            <li><b>Drills show you each new item first:</b> read it, see what it means, say it out loud three times. A moment later it comes back as a question. Say the answer out loud, reveal it, and grade yourself honestly: 1 = right, 2 = right but you had to think, 3 = wrong or blank. Wrong ones come back at the end of the session and again tomorrow.</li>
+            <li><b>Stuck on what something means?</b> Every block has a Manual link. The Manual tab also has the resources list: which video, podcast or book to use, and when.</li>
+            <li><b>Your progress lives only on this device.</b> Back it up once a week: Settings → Download backup, and keep the file in Files or iCloud.</li>
           </ol>
-          <div class="row"><button type="button" class="btn primary" id="welcome-start">Start the first block</button><button type="button" class="btn" id="welcome-close">Got it</button></div>
+          <div class="row"><button type="button" class="btn primary" id="welcome-start">Start the first block (Sounds)</button><button type="button" class="btn" id="welcome-close">Got it</button></div>
         </div>
 
         <div class="panel">
@@ -407,8 +448,8 @@ a.res-chip:hover{border-color:var(--fg)}
           <div class="today-plan" id="today-plan"></div>
           <div class="row between">
             <div class="row">
-              <span class="chip static"><span class="lang" data-lang="de">de</span> slot <b class="num" id="slot-de">15:15</b></span>
-              <span class="chip static"><span class="lang" data-lang="hu">hu</span> slot <b class="num" id="slot-hu">19:00</b></span>
+              <span class="chip static" id="slot-de-chip"><span class="lang" data-lang="de">de</span> <span id="slot-de-label">German study time</span> <b class="num" id="slot-de">15:15</b></span>
+              <span class="chip static" id="slot-hu-chip"><span class="lang" data-lang="hu">hu</span> <span id="slot-hu-label">Hungarian study time</span> <b class="num" id="slot-hu">19:00</b></span>
             </div>
             <div class="row">
               <label for="plan-length">Plan</label>
@@ -462,12 +503,12 @@ a.res-chip:hover{border-color:var(--fg)}
           </div>
           <div class="list" id="burn-list"></div>
           <details>
-            <summary class="muted small" style="cursor:pointer">Add a line</summary>
+            <summary class="muted small" style="cursor:pointer" id="burn-add-summary">Add a line</summary>
             <form id="burn-form" class="grid3" style="margin-top:8px">
               <div class="field"><label for="burn-lang">Language</label><select id="burn-lang"><option value="de">German</option><option value="hu">Hungarian</option></select></div>
               <div class="field"><label for="burn-cat">Category</label><select id="burn-cat"></select></div>
-              <div class="field"><label for="burn-produced">Produced (what you said)</label><input type="text" id="burn-produced" required></div>
-              <div class="field"><label for="burn-correct">Correct form</label><input type="text" id="burn-correct" required></div>
+              <div class="field"><label for="burn-produced">What you said</label><input type="text" id="burn-produced" required placeholder="e.g. fur (ü came out as u)"></div>
+              <div class="field"><label for="burn-correct">What it should be</label><input type="text" id="burn-correct" required placeholder="e.g. für"></div>
               <div class="field"><label for="burn-source">Source</label><input type="text" id="burn-source" placeholder="legend, chat, drill, wiretap" value="manual"></div>
               <div class="field" style="justify-content:flex-end"><button type="submit" class="btn primary" id="burn-add">Add line</button></div>
             </form>
@@ -480,7 +521,8 @@ a.res-chip:hover{border-color:var(--fg)}
             <div class="bars" id="hist-bars"></div>
           </div>
           <div class="panel milestones">
-            <div class="panel-head"><h2>Milestones</h2><span class="muted">ILR self-rating, date passed</span></div>
+            <div class="panel-head"><h2>Milestones</h2><span class="muted">date you reached each level</span></div>
+            <p class="note">ILR is the US government’s 0–5 language scale: 0+ = memorised phrases, 1 = basic survival needs, 2 = everyday work and social talk. B1 sits around ILR 1+ to 2. Rate yourself honestly once a month.</p>
             <div class="scroll-x"><table id="milestone-table"><thead><tr><th>Level</th><th>German</th><th>Hungarian</th></tr></thead><tbody></tbody></table></div>
           </div>
         </div>
@@ -490,7 +532,7 @@ a.res-chip:hover{border-color:var(--fg)}
           <div class="scroll-x"><table id="session-table"><thead><tr><th>Date</th><th>Lang</th><th>Module</th><th class="num">Cues</th><th class="num">Score</th><th class="num">In time</th><th class="num">Streak</th><th class="num">Min</th></tr></thead><tbody></tbody></table></div>
         </div>
 
-        <div class="panel">
+        <div class="panel kbd-only">
           <div class="panel-head"><h2>Keyboard</h2></div>
           <div class="keymap" id="keymap"></div>
         </div>
@@ -499,7 +541,7 @@ a.res-chip:hover{border-color:var(--fg)}
       <!-- ===================== DRILL ENGINE ===================== -->
       <section class="view" id="view-drill" hidden>
         <div class="panel" id="drill-setup">
-          <div class="panel-head"><h2>Session setup</h2><span class="muted">Spoken by default. Typed mode grades automatically.</span></div>
+          <div class="panel-head"><h2>Session setup</h2><span class="muted">Say each answer out loud and grade yourself, or type it and the app grades it.</span></div>
           <div class="row">
             <div class="seg" role="group" aria-label="Language">
               <button type="button" data-dlang="de" id="drill-lang-de">German</button>
@@ -517,7 +559,7 @@ a.res-chip:hover{border-color:var(--fg)}
               <button type="button" data-len="20" id="drill-len-20">20</button>
               <button type="button" data-len="30" id="drill-len-30">30</button>
               <button type="button" data-len="40" id="drill-len-40">40</button>
-            </div>
+            </div><span class="muted small">cards per session</span>
             <input type="number" id="drill-length" class="sr" tabindex="-1" aria-hidden="true" aria-label="Session length (fallback)" min="1" max="200" value="20">
           </div>
           <div id="drill-families-wrap" class="col" hidden>
@@ -525,7 +567,7 @@ a.res-chip:hover{border-color:var(--fg)}
             <div class="chips" id="drill-families"></div>
           </div>
           <div class="row between">
-            <div class="field inline"><input type="checkbox" id="drill-typed"><label for="drill-typed">Typed mode (Enter submits, tolerant matching)</label></div>
+            <div class="field inline"><input type="checkbox" id="drill-typed"><label for="drill-typed">Type the answers instead of saying them (capitals and punctuation don’t count)</label></div>
             <div class="row"><span class="muted small num" id="drill-pool-count"></span><button type="button" class="btn primary" id="drill-start">Start session</button></div>
           </div>
           <div id="drill-setup-msg" class="banner" hidden></div>
@@ -541,8 +583,8 @@ a.res-chip:hover{border-color:var(--fg)}
         <div class="panel persona" id="drill-persona" hidden>
           <div class="col" style="gap:14px;align-items:flex-start">
             <h2 id="persona-title">Persona switch</h2>
-            <p class="note">Say the fillers aloud until they feel like yours. The language should already be running before the first cue.</p>
-            <div class="fillers mono" id="persona-fillers"></div>
+            <p class="note" id="persona-intro">These are the little words people say while they think. Tap one to hear it.</p>
+            <div class="chips fillers" id="persona-fillers"></div>
             <div class="countdown num" id="persona-countdown">60</div>
             <p class="note" id="persona-note"></p>
             <div class="row"><button type="button" class="btn primary" id="persona-begin" disabled>Begin</button><button type="button" class="btn" id="persona-cancel">Cancel</button></div>
@@ -551,46 +593,50 @@ a.res-chip:hover{border-color:var(--fg)}
 
         <div class="panel drill-stage" id="drill-stage" hidden>
           <div class="row between">
-            <div class="row"><span class="lang" id="stage-lang">de</span><span class="chip static" id="stage-family"></span><span class="badge" id="stage-mode">spoken</span></div>
-            <button type="button" class="btn sm" id="stage-end">End (Esc)</button>
+            <div class="row"><span class="lang" id="stage-lang">de</span><span class="chip static" id="stage-family"></span><span class="badge" id="stage-mode">spoken</span><span class="badge ok" id="stage-new" hidden>new</span></div>
+            <button type="button" class="btn sm" id="stage-end">End <span class="kbd-hint">(Esc)</span></button>
           </div>
           <div class="progressbar"><i id="stage-progress"></i></div>
           <div class="row stage-meta"><span class="muted num small" id="stage-pos"></span><span class="muted num small">streak <b id="stage-streak">0</b></span></div>
           <div class="cue-box">
             <p class="muted" id="stage-instruction"></p>
             <div class="cue" id="stage-cue"></div>
-            <div class="row"><span class="badge warn" id="stage-novoice" hidden></span><button type="button" class="btn sm" id="stage-replay">Replay (Space)</button></div>
+            <p class="note cue-gloss" id="stage-cue-gloss" hidden></p>
+            <div class="row"><span class="badge warn" id="stage-novoice" hidden></span><button type="button" class="btn sm" id="stage-replay">Replay <span class="kbd-hint">(Space)</span></button></div>
             <div class="timer-row"><svg class="dial" id="stage-dial" viewBox="0 0 64 64" aria-hidden="true"><circle class="track" cx="32" cy="32" r="27"/><circle class="arc" id="stage-arc" cx="32" cy="32" r="27" stroke-dasharray="169.6" stroke-dashoffset="169.6"/></svg><div class="timer num" id="stage-timer">00:00.0</div><span class="target" id="stage-target"></span></div>
           </div>
           <div class="typed col" id="stage-typed" hidden>
             <label for="stage-input">Your answer</label>
             <input type="text" id="stage-input" autocomplete="off" autocapitalize="off" spellcheck="false" lang="de">
-            <div class="row"><button type="button" class="btn primary" id="stage-submit">Submit (Enter)</button></div>
+            <div class="row"><button type="button" class="btn primary" id="stage-submit">Check <span class="kbd-hint">(Enter)</span></button></div>
           </div>
-          <div class="row" id="stage-reveal-row"><button type="button" class="btn primary" id="stage-reveal">Reveal answer (Enter)</button></div>
-          <div class="banner ok" id="stage-hint" hidden><b>How a cue works:</b> read (or hear) the cue and say the full answer out loud. Then press <b>Reveal</b> (Enter) and grade yourself: <b>1</b> right and fast, <b>2</b> right but slow, <b>3</b> wrong. Wrong ones come back tomorrow. <button type="button" class="btn sm" id="stage-hint-ok">Got it</button></div>
+          <div class="row" id="stage-reveal-row"><button type="button" class="btn primary" id="stage-reveal">Reveal answer <span class="kbd-hint">(Enter)</span></button></div>
+          <div class="banner" id="stage-learn" hidden><b>New.</b> Read the answer and what it means. Say it out loud three times<span id="stage-learn-hear">, tapping the words to hear them</span>. It comes back as a question in a moment.</div>
           <div class="col" id="stage-answer-box" hidden>
             <div class="answer" id="stage-answer"></div>
+            <div class="chips hear" id="stage-hear" hidden></div>
             <p class="note" id="stage-gloss" hidden></p>
             <p class="note" id="stage-explain"></p>
             <p class="result" id="stage-result"></p>
           </div>
           <div class="grade-row" id="stage-grades" hidden>
-            <button type="button" class="btn g1" id="grade-1">Correct<small>1</small></button>
-            <button type="button" class="btn g2" id="grade-2">Hesitated<small>2</small></button>
-            <button type="button" class="btn g3" id="grade-3">Missed<small>3</small></button>
+            <button type="button" class="btn g1" id="grade-1">Right<small>1</small></button>
+            <button type="button" class="btn g2" id="grade-2">Had to think<small>2</small></button>
+            <button type="button" class="btn g3" id="grade-3">Wrong<small>3</small></button>
           </div>
-          <div class="row" id="stage-next-row" hidden><button type="button" class="btn primary" id="stage-next">Next (Enter)</button></div>
+          <div class="row" id="stage-next-row" hidden><button type="button" class="btn primary" id="stage-next"><span id="stage-next-label">Next</span> <span class="kbd-hint">(Enter)</span></button><button type="button" class="btn" id="stage-override" hidden>I was right (typo)</button></div>
+          <div class="banner ok" id="stage-hint" hidden><span id="stage-hint-text"><b>How it works:</b> a <b>new</b> card shows you the answer and what it means: say it out loud three times, then tap Next. A moment later it comes back as a question: say the full answer out loud, tap <b>Reveal</b>, then grade yourself: <b>1</b> right, <b>2</b> right but you had to think, <b>3</b> wrong or blank. Low scores in the first weeks are normal; misses come back at the end and tomorrow.</span> <button type="button" class="btn sm" id="stage-hint-ok">Got it</button></div>
         </div>
 
         <div class="panel" id="drill-summary" hidden>
           <div class="panel-head"><h2>Session summary</h2><span class="muted" id="summary-meta"></span></div>
           <div class="grid3" id="summary-stats"></div>
-          <div class="scroll-x"><table id="summary-families"><thead><tr><th>Family</th><th class="num">Cues</th><th class="num">Correct</th><th class="num">Score</th><th>Under 70%</th></tr></thead><tbody></tbody></table></div><p class="note" id="summary-families-note" hidden>"Explain" opens the deconstructor on that family (P-1 step 5: below 70%, halve the set and read the explanation first).</p>
+          <p class="note" id="summary-week1" hidden></p>
+          <div class="scroll-x"><table id="summary-families"><thead><tr><th>Topic</th><th class="num">Cards</th><th class="num">Right</th><th class="num">Score</th></tr></thead><tbody></tbody></table></div><p class="note" id="summary-families-note" hidden>Under 70% on a topic: tap the button under it to see how it works, and do fewer cards of that topic next time.</p>
           <div class="col" id="summary-misses-wrap"><h3>Misses</h3><div class="list" id="summary-misses"></div></div>
           <div class="panel sub" id="summary-bridge">
             <h3>Use it now</h3>
-            <p class="note">Say each one in a real sentence now. Out loud, about your own day.</p>
+            <p class="note" id="summary-bridge-note">Say each one in a real sentence now. Out loud, about your own day.</p>
             <div class="col mono" id="summary-bridge-list"></div>
           </div>
           <div class="row"><button type="button" class="btn primary" id="summary-back">Back to Mission Control</button><button type="button" class="btn" id="summary-again">New session</button></div>
@@ -600,9 +646,10 @@ a.res-chip:hover{border-color:var(--fg)}
       <!-- ===================== DECONSTRUCTOR ===================== -->
       <section class="view" id="view-decon" hidden>
         <div class="panel">
-          <div class="panel-head"><h2>Deconstructor</h2><span class="muted">Enter parses. Ctrl+Enter builds.</span></div>
+          <div class="panel-head"><h2>Word parts</h2><span class="muted">Type one word and see its pieces and why it ends the way it does.</span></div>
+          <p class="note">One German or Hungarian word (Werkstatt, házban), or article + adjective + noun (der neue Chef). Not whole sentences. <span class="kbd-hint">Enter looks it up; Ctrl+Enter opens Build.</span></p>
           <div class="row">
-            <input type="text" id="decon-input" aria-label="Word or phrase to deconstruct" class="decon-input" style="flex:1 1 220px;min-width:0" placeholder="házaimban, dem alten Mann, aufzustehen" autocomplete="off" autocapitalize="off" spellcheck="false">
+            <input type="text" id="decon-input" aria-label="Word to look at" class="decon-input" style="flex:1 1 220px;min-width:0" placeholder="Werkstatt, der neue Chef, házban" autocomplete="off" autocapitalize="off" spellcheck="false">
             <div class="seg" role="group" aria-label="Language override">
               <button type="button" data-xlang="auto" id="decon-lang-auto">Auto</button>
               <button type="button" data-xlang="de" id="decon-lang-de">DE</button>
@@ -611,17 +658,21 @@ a.res-chip:hover{border-color:var(--fg)}
             <select id="decon-lang" class="sr" tabindex="-1" aria-hidden="true" aria-label="Deconstructor language (fallback)"><option value="auto">auto</option><option value="de">de</option><option value="hu">hu</option></select>
           </div>
           <div class="row">
-            <button type="button" class="btn primary" id="decon-parse">Parse</button>
+            <button type="button" class="btn primary" id="decon-parse">Look it up</button>
             <button type="button" class="btn" id="decon-random">Random example</button>
             <button type="button" class="btn" id="decon-build-toggle">Build</button>
             <span class="muted small" id="decon-detected"></span>
           </div>
-          <div class="col">
-            <div class="row between"><label for="decon-filter">Preloaded examples</label><input type="search" id="decon-filter" placeholder="filter" style="width:160px"></div>
-            <div class="chips" id="decon-examples"></div>
-          </div>
+
         </div>
         <div id="decon-results" class="col"></div>
+        <div class="panel" id="decon-examples-panel">
+          <div class="col">
+            <div class="row between"><h3><label for="decon-filter">Examples to tap</label></h3><div class="row"><div class="seg" role="group" aria-label="Example language"><button type="button" data-exlang="de" id="decon-exlang-de">German</button><button type="button" data-exlang="hu" id="decon-exlang-hu">Hungarian</button></div><input type="search" id="decon-filter" placeholder="filter" aria-label="Filter examples" style="width:120px"></div></div>
+            <div class="col" id="decon-examples"></div>
+            <details class="decon-gloss"><summary class="muted small" style="cursor:pointer">What the labels mean</summary><div class="note" id="decon-glossary"></div></details>
+          </div>
+        </div>
 
         <div class="panel" id="decon-build" hidden>
           <div class="panel-head"><h2>Build</h2><span class="muted" id="decon-build-lang"></span></div>
@@ -659,32 +710,27 @@ a.res-chip:hover{border-color:var(--fg)}
       <!-- ===================== WIRETAP ===================== -->
       <section class="view" id="view-wiretap" hidden>
         <div class="panel">
-          <div class="panel-head"><h2>Wiretap</h2><span class="badge">stub</span></div>
-          <div class="banner" id="wiretap-stage-note">Wiretap becomes useful in week 9. Until then, do gisting from Mission Control: the Gisting block gives you a short video and three questions to answer.</div>
+          <div class="panel-head"><h2>Wiretap</h2><span class="badge">from week 9</span></div>
+          <div class="banner" id="wiretap-stage-note">Wiretap becomes useful in week 9. Until then, do gisting from Mission Control: the Gisting block tells you which video to use and what to write down.</div>
           <p class="note">Wiretap trains gisting: you hear or read a short intercept once at natural speed and report who, what, where, when and intent before the detail fades. Each intercept climbs rungs from a clean read to a noisy, half-heard one.</p>
-          <div class="panel sub">
-            <h3>Data model</h3>
-            <pre class="mono small" style="margin:0;white-space:pre-wrap">{ id, lang, module: "wiretap", title, text, rung: 1,
-  key: { who: [], what: [], where: [], when: [], intent: [] } }</pre>
-          </div>
           <form id="wiretap-form" class="col">
             <div class="row">
               <div class="field"><label for="wiretap-lang">Language</label><select id="wiretap-lang"><option value="de">German</option><option value="hu">Hungarian</option></select></div>
               <div class="field" style="flex:1 1 200px"><label for="wiretap-title">Title</label><input type="text" id="wiretap-title" placeholder="Tram announcement, Berlin"></div>
             </div>
-            <div class="field"><label for="wiretap-text">Paste text to create an intercept item</label><textarea id="wiretap-text" placeholder="Paste the intercept text here"></textarea></div>
+            <div class="field"><label for="wiretap-text">Paste a short text (a news item, an announcement) to save it for gisting practice</label><textarea id="wiretap-text" placeholder="Paste the text here"></textarea></div>
             <div class="row"><button type="submit" class="btn primary" id="wiretap-save">Save intercept</button></div>
           </form>
           <div class="list" id="wiretap-list"></div>
-          <p class="note">Timed reveal, scoring and audio arrive in the next build.</p>
+          <p class="note">For now Wiretap stores texts; play the audio in the source app and use the text here to check yourself.</p>
         </div>
       </section>
 
       <!-- ===================== LEGEND ===================== -->
       <section class="view" id="view-legend" hidden>
         <div class="panel">
-          <div class="panel-head"><h2>Legend</h2><span class="badge">stub</span></div>
-          <p class="note">A legend is the cover biography you defend under questioning. Keep every fact anchored to something you can describe in detail, in the target language, without hesitation.</p>
+          <div class="panel-head"><h2>Legend</h2><span class="muted">your story, in the language</span></div>
+          <p class="note">Your legend is your own life story, told in German or Hungarian: who you are, where you’re from, your work, your family. You will be asked about it (at a job interview, at the consulate), so every fact should be one you can talk about in detail without hesitating.</p>
           <div class="row">
             <div class="seg" role="group" aria-label="Legend language">
               <button type="button" data-llang="de" id="legend-lang-de">German</button>
@@ -693,10 +739,10 @@ a.res-chip:hover{border-color:var(--fg)}
             <select id="legend-lang" class="sr" tabindex="-1" aria-hidden="true" aria-label="Legend language (fallback)"><option value="de">de</option><option value="hu">hu</option></select>
           </div>
           <div class="grid3">
-            <div class="field"><label for="legend-name">Name</label><input type="text" id="legend-name"></div>
-            <div class="field"><label for="legend-age">Age</label><input type="text" id="legend-age"></div>
-            <div class="field"><label for="legend-town">Town</label><input type="text" id="legend-town"></div>
-            <div class="field"><label for="legend-job">Job</label><input type="text" id="legend-job"></div>
+            <div class="field"><label for="legend-name">Name</label><input type="text" id="legend-name" placeholder="as you would say it"></div>
+            <div class="field"><label for="legend-age">Age (number)</label><input type="text" id="legend-age"></div>
+            <div class="field"><label for="legend-town">Home town</label><input type="text" id="legend-town"></div>
+            <div class="field"><label for="legend-job">Job (in <span class="legend-lang-name">German</span>)</label><input type="text" id="legend-job" placeholder="e.g. Mechaniker (mechanic), or leave it for now"></div>
           </div>
           <div class="col facts">
             <div class="row between"><h3>Facts</h3><button type="button" class="btn sm" id="legend-add-fact">Add fact</button></div>
@@ -704,7 +750,7 @@ a.res-chip:hover{border-color:var(--fg)}
           </div>
           <div class="row"><button type="button" class="btn primary" id="legend-save">Save legend</button><span class="muted small" id="legend-saved"></span></div>
           <div class="panel sub" id="legend-frames-wrap">
-            <div class="panel-head"><h3>Starter sentences</h3><span class="muted small">Tap Use to add one as a fact, then fill in the blank with your own detail.</span></div>
+            <div class="panel-head"><h3>Starter sentences</h3><span class="muted small">Tap Use to add one to your facts, then replace the ___ with your own detail.</span></div>
             <div class="list" id="legend-frames"></div>
           </div>
         </div>
@@ -713,7 +759,7 @@ a.res-chip:hover{border-color:var(--fg)}
           <div class="grid2" id="scenario-list"></div>
           <div class="row"><button type="button" class="btn primary" id="legend-export">Export for chat</button><span class="muted small" id="legend-export-msg"></span></div>
           <textarea id="legend-export-text" readonly hidden aria-label="Exported prompt"></textarea>
-          <p class="note">Timer, fault counter and shadowing recorder arrive in the next build.</p>
+          <p class="note">Paste the exported prompt into a chat with Claude. Answer out loud or by voice dictation; log any fact you stumble on in the burn book.</p>
         </div>
       </section>
 
@@ -721,7 +767,8 @@ a.res-chip:hover{border-color:var(--fg)}
       <section class="view" id="view-content" hidden>
         <div class="cm-layout">
           <div class="panel">
-            <div class="panel-head"><h2>Content</h2><span class="muted num" id="cm-count"></span></div>
+            <div class="panel-head"><h2>Items</h2><span class="muted num" id="cm-count"></span></div>
+            <p class="note">Every drill, example and dictionary word in the app. You can fix or add your own; built-in updates never overwrite an item you edited.</p>
             <div class="row">
               <div class="field"><label for="cm-lang">Language</label><select id="cm-lang"><option value="">Both</option><option value="de">German</option><option value="hu">Hungarian</option></select></div>
               <div class="field"><label for="cm-module">Module</label><select id="cm-module"><option value="">All</option><option value="drill">Drills</option><option value="decon">Decon examples</option><option value="lexicon">Lexicon</option></select></div>
@@ -753,12 +800,12 @@ a.res-chip:hover{border-color:var(--fg)}
           <div class="panel-head"><h2>Resources</h2><span class="muted">What to use outside the app, and when.</span></div>
           <div class="row">
             <div class="field"><label for="res-lang">Language</label><select id="res-lang"><option value="de">German</option><option value="hu">Hungarian</option></select></div>
-            <div class="field"><label for="res-filter">Show</label><select id="res-filter"><option value="now">For my current stage</option><option value="all">Every stage</option></select></div>
+            <div class="field"><label for="res-filter">Show</label><select id="res-filter"><option value="now">For where I am now</option><option value="all">All, by when they start</option></select></div>
           </div>
           <div id="res-list" class="res-list"></div>
         </div>
         <div class="panel">
-          <div class="panel-head"><h2>Field Manual</h2><span class="muted">The doctrine this console runs. Search a word or a protocol number (P-7).</span></div>
+          <div class="panel-head"><h2>Field Manual</h2><span class="muted">The full method behind the app. Search a word, or a protocol number like P-7.</span></div>
           <div class="row"><input type="search" id="manual-search" placeholder="Search the manual" aria-label="Search the manual" autocomplete="off"><span class="muted small" id="manual-count"></span></div>
           <div class="chips" id="manual-protocols" aria-label="Protocols"></div>
           <div class="manual-toc" id="manual-toc"></div>
@@ -772,14 +819,15 @@ a.res-chip:hover{border-color:var(--fg)}
         <div class="panel">
           <div class="panel-head"><h2>Settings</h2><span class="muted">Saved as you change them.</span></div>
           <div class="grid3">
-            <div class="field"><label for="set-slot-de">German slot</label><input type="time" id="set-slot-de"></div>
-            <div class="field"><label for="set-slot-hu">Hungarian slot</label><input type="time" id="set-slot-hu"></div>
+            <div class="field"><label for="set-slot-de">German study time</label><input type="time" id="set-slot-de"></div>
+            <div class="field"><label for="set-slot-hu">Hungarian study time</label><input type="time" id="set-slot-hu"></div>
             <div class="field"><label for="set-plan">Plan length</label><select id="set-plan"><option value="45">45 min</option><option value="90">90 min</option><option value="150">150 min</option></select></div>
-            <div class="field"><label for="set-gap">Interference gap (60 to 180 min)</label><input type="number" id="set-gap" min="60" max="180" step="5"></div>
+            <div class="field"><label for="set-gap">Minimum break between a German and a Hungarian session (60–180 min)</label><input type="number" id="set-gap" min="60" max="180" step="5"></div>
             <div class="field"><label for="set-exam-de">German exam date</label><input type="date" id="set-exam-de"></div>
             <div class="field"><label for="set-exam-hu">Hungarian exam date</label><input type="date" id="set-exam-hu"></div>
             <div class="field"><label for="set-start-de">German plan started</label><input type="date" id="set-start-de"></div>
             <div class="field"><label for="set-start-hu">Hungarian plan starts</label><input type="date" id="set-start-hu"></div>
+            <div class="field inline"><input type="checkbox" id="set-learnfirst"><label for="set-learnfirst">Show new drill items before testing them</label></div>
           </div>
           <p class="note">The plan dates decide which week you're in and which drills unlock. Hungarian defaults to German week 5; move it later if you're still waiting on the consulate.</p>
           <div class="row"><button type="button" class="btn sm" id="set-welcome">Show the welcome again</button></div>
@@ -788,19 +836,19 @@ a.res-chip:hover{border-color:var(--fg)}
             <div class="field inline"><input type="checkbox" id="set-tts-hu"><label for="set-tts-hu">Speak Hungarian cues</label><span class="badge" id="voice-badge-hu">none</span></div>
           </div>
           <div class="row">
-            <div class="field inline"><input type="checkbox" id="set-persona-de"><label for="set-persona-de">Persona card skippable (German)</label></div>
-            <div class="field inline"><input type="checkbox" id="set-persona-hu"><label for="set-persona-hu">Persona card skippable (Hungarian)</label></div>
+            <div class="field inline"><input type="checkbox" id="set-persona-de"><label for="set-persona-de">Allow skipping the 60-second warm-up (German)</label></div>
+            <div class="field inline"><input type="checkbox" id="set-persona-hu"><label for="set-persona-hu">Allow skipping the 60-second warm-up (Hungarian)</label></div>
           </div>
           <p class="note" id="persona-lock-note"></p>
         </div>
         <div class="panel">
-          <div class="panel-head"><h2>Export</h2><span class="muted">Everything: content, progress, sessions, burn book, legends, settings.</span></div>
-          <div class="row"><button type="button" class="btn primary" id="export-render">Render export</button><button type="button" class="btn" id="export-copy">Copy</button><button type="button" class="btn" id="export-download">Download JSON</button><span class="muted small" id="export-msg"></span></div>
-          <p class="note">If download does nothing here, use Copy.</p>
-          <textarea id="export-text" readonly aria-label="Export JSON" placeholder="Export appears here"></textarea>
+          <div class="panel-head"><h2>Backup</h2><span class="muted">Everything: progress, sessions, burn book, legend, your own items, settings.</span></div>
+          <div class="row"><button type="button" class="btn primary" id="export-download">Download backup</button><button type="button" class="btn" id="export-copy">Copy</button><button type="button" class="btn ghost sm" id="export-render">Show the data</button><span class="muted small" id="export-msg"></span></div>
+          <p class="note">Download saves one file; keep it in Files or iCloud. To restore, choose that file under Import below. If nothing downloads, tap Copy and paste it into a note.</p>
+          <textarea id="export-text" readonly aria-label="Backup data" placeholder="The backup data appears here" hidden></textarea>
         </div>
         <div class="panel">
-          <div class="panel-head"><h2>Import</h2><span class="muted">Paste a full export or a bare array of content items.</span></div>
+          <div class="panel-head"><h2>Import</h2><span class="muted">Restore a backup, or add items someone made for you.</span></div>
           <textarea id="import-text" aria-label="Import JSON" placeholder="Paste JSON here"></textarea>
           <div class="row">
             <div class="field"><label for="import-file">or choose a file</label><input type="file" id="import-file" accept=".json,application/json"></div>
@@ -808,7 +856,7 @@ a.res-chip:hover{border-color:var(--fg)}
           <div class="row">
             <div class="field inline"><input type="radio" name="import-mode" id="import-merge" value="merge" checked><label for="import-merge">Merge content by id</label></div>
             <div class="field inline"><input type="radio" name="import-mode" id="import-replace" value="replace"><label for="import-replace">Replace all</label></div>
-            <div class="field inline"><input type="checkbox" id="import-progress"><label for="import-progress">Import progress</label></div>
+            <div class="field inline"><input type="checkbox" id="import-progress" checked><label for="import-progress">Include progress and settings (keep on when restoring a backup)</label></div>
           </div>
           <div class="row"><button type="button" class="btn primary" id="import-go">Import</button><span id="import-msg" class="small"></span></div>
         </div>
@@ -824,11 +872,11 @@ a.res-chip:hover{border-color:var(--fg)}
   <nav class="tabbar" aria-label="Modules">
     <button type="button" data-nav="mission" id="tab-mission"><svg aria-hidden="true"><use href="#i-mission"/></svg><span>Mission</span></button>
     <button type="button" data-nav="drill" id="tab-drill"><svg aria-hidden="true"><use href="#i-drill"/></svg><span>Drill</span></button>
-    <button type="button" data-nav="decon" id="tab-decon"><svg aria-hidden="true"><use href="#i-decon"/></svg><span>Decon</span></button>
+    <button type="button" data-nav="decon" id="tab-decon"><svg aria-hidden="true"><use href="#i-decon"/></svg><span>Words</span></button>
     <button type="button" data-nav="wiretap" id="tab-wiretap"><svg aria-hidden="true"><use href="#i-wiretap"/></svg><span>Wiretap</span></button>
     <button type="button" data-nav="legend" id="tab-legend"><svg aria-hidden="true"><use href="#i-legend"/></svg><span>Legend</span></button>
     <button type="button" data-nav="manual" id="tab-manual"><svg aria-hidden="true"><use href="#i-manual"/></svg><span>Manual</span></button>
-    <button type="button" data-nav="content" id="tab-content"><svg aria-hidden="true"><use href="#i-content"/></svg><span>Content</span></button>
+    <button type="button" data-nav="content" id="tab-content"><svg aria-hidden="true"><use href="#i-content"/></svg><span>Items</span></button>
     <button type="button" data-nav="settings" id="tab-settings"><svg aria-hidden="true"><use href="#i-settings"/></svg><span>Settings</span></button>
   </nav>
   <div class="toast" id="toast" hidden role="status"></div>
@@ -854,7 +902,13 @@ const DAY = 86400000;
 const LANG_NAME = { de: "German", hu: "Hungarian" };
 const OTHER = { de: "hu", hu: "de" };
 const FILLERS = { de: ["also", "na ja", "genau", "halt", "eben", "tja", "ähm"], hu: ["hát", "szóval", "na", "ugye", "tehát", "izé", "ööö"] };
+const FILLER_GLOSS = {
+  de: { "also": "so / well", "na ja": "oh well", "genau": "exactly", "halt": "just (that’s how it is)", "eben": "exactly / just", "tja": "well… (a shrug)", "ähm": "um" },
+  hu: { "hát": "well", "szóval": "so", "na": "come on / well", "ugye": "right? / isn’t it?", "tehát": "so / therefore", "izé": "thingy (when a word escapes you)", "ööö": "um" }
+};
 const CATEGORIES = ["mouth", "ear", "case", "gender", "adj", "order", "conj", "coverb", "prefix", "harmony", "stem", "lex", "xfer", "legend", "spell"];
+const CATEGORY_LABEL = { mouth: "pronunciation", ear: "hearing", case: "case endings", gender: "der/die/das", adj: "adjective endings", order: "word order", conj: "verb forms", coverb: "verb prefixes (meg-, el- …)", prefix: "separable verbs", harmony: "vowel harmony", stem: "stem changes", lex: "vocabulary", xfer: "mixed up the languages", legend: "legend facts", spell: "spelling" };
+function catLabel(c) { return CATEGORY_LABEL[c] || c; }
 const PLAN_BLOCKS = {
   45: [["Phonology", 5], ["Drills", 12], ["Input", 10], ["Gisting", 8], ["Shadowing / Legend", 7], ["Review", 3]],
   90: [["Phonology", 8], ["Drills", 20], ["Input", 20], ["Gisting", 15], ["Shadowing / Legend", 15], ["Review", 12]],
@@ -865,7 +919,8 @@ const DEFAULT_SETTINGS = {
   slots: { de: "15:15", hu: "19:00" }, planLength: 45, gapMinutes: 90, tts: { de: true, hu: true },
   examDates: { de: "", hu: "" }, startDate: "", lastSessionEnd: { de: 0, hu: 0 }, personaSkippable: { de: false, hu: false },
   firstSessionDate: { de: "", hu: "" }, milestones: {}, todayLang: "de", deconLang: "hu",
-  planStart: { de: "2026-10-26", hu: "" }, welcomeSeen: false, drillHintSeen: false, phonPassed: { de: [], hu: [] }, resFilter: "now"
+  planStart: { de: "2026-10-26", hu: "" }, welcomeSeen: false, drillHintSeen: false, phonPassed: { de: [], hu: [] }, resFilter: "now",
+  learnFirst: true, warmupDone: { de: "", hu: "" }, deconExLang: "", blocksDone: { date: "", keys: [] }
 };
 
 const S = {
@@ -1026,11 +1081,15 @@ function setSeg(groupSelector, attr, value) {
 }
 function on(id, evt, fn) { const el = $(id); if (el) el.addEventListener(evt, fn); }
 function listify(v) { return Array.isArray(v) ? v : (v == null || v === "" ? [] : [v]); }
-function normalizeAnswer(s) {
+function normalizeAnswer(s, lang) {
+  if (lang === "de") s = String(s || "").toLowerCase().replace(/ä/g, "ae").replace(/ö/g, "oe").replace(/ü/g, "ue"); // ue/oe/ae is the standard way to type umlauts without a German keyboard
   return String(s || "").toLowerCase().replace(/ß/g, "ss").replace(/[.,!?;:"'„“”‚‘’()–—-]/g, "").replace(/\s+/g, " ").trim();
 }
 function familyToCategory(family, lang) {
   const f = String(family || "");
+  if (/^basics\.(sein|haben|present|van)$/.test(f)) return "conj";
+  if (f === "basics.questions") return "order";
+  if (f === "sounds") return "mouth";
   if (f === "verb.separable" || f === "verb.inseparable") return "prefix";
   if (f === "tekamolo" || f === "konj2") return f === "tekamolo" ? "order" : "conj";
   if (f === "plural") return lang === "hu" ? "stem" : "gender";
@@ -1041,6 +1100,7 @@ function familyToCategory(family, lang) {
 function categoryToFamily(cat, lang) {
   const de = { case: "case.acc", gender: "gender.chunk", adj: "adj.weak", order: "order.v2", conj: "konj2", prefix: "verb.separable", stem: "plural", lex: "gender.chunk", spell: "gender.chunk", mouth: "gender.chunk", ear: "gender.chunk", xfer: "order.v2", legend: "order.v2", coverb: "verb.separable", harmony: "gender.chunk" };
   const hu = { case: "case.interior", gender: "harmony.2form", adj: "harmony.2form", order: "focus.order", conj: "conj.indef", prefix: "coverb.attached", coverb: "coverb.attached", harmony: "harmony.2form", stem: "stem.alternation", lex: "harmony.2form", spell: "harmony.2form", mouth: "harmony.2form", ear: "harmony.2form", xfer: "focus.order", legend: "focus.order" };
+  if (cat === "mouth" || cat === "ear") return "sounds";
   return (lang === "hu" ? hu : de)[cat] || (lang === "hu" ? "harmony.2form" : "gender.chunk");
 }
 
@@ -1114,7 +1174,7 @@ function collectVoices() {
 function renderVoiceBadges() {
   ["de", "hu"].forEach(l => {
     const b = $("voice-badge-" + l); if (!b) return;
-    b.textContent = S.voices[l] ? S.voices[l].name : "none";
+    b.textContent = S.voices[l] ? S.voices[l].name : "no " + LANG_NAME[l] + " voice on this device";
     b.className = "badge " + (S.voices[l] ? "ok" : "warn");
   });
   const h = $("voice-badge-hdr");
@@ -1145,7 +1205,7 @@ function planStartOf(lang) {
 }
 function planInfo(lang) {
   const start = planStartOf(lang);
-  const days = Math.floor((new Date(todayISO() + "T00:00:00") - new Date(start + "T00:00:00")) / DAY);
+  const days = Math.round((new Date(todayISO() + "T00:00:00") - new Date(start + "T00:00:00")) / DAY); // round, not floor: a daylight-saving change makes the gap 23 or 25 hours
   if (days < 0) return { started: false, startsIn: -days, start, week: 0, day: 0, stage: -1 };
   const week = Math.floor(days / 7) + 1;
   const stage = lang === "de" ? (week <= 4 ? 1 : week <= 8 ? 2 : week <= 12 ? 3 : 4) : (week <= 2 ? 0 : week <= 4 ? 1 : week <= 8 ? 2 : week <= 12 ? 3 : 4);
@@ -1154,21 +1214,21 @@ function planInfo(lang) {
 const STAGE_RANGE = { de: { 1: "weeks 1–4", 2: "weeks 5–8", 3: "weeks 9–12", 4: "month 4 on" }, hu: { 0: "weeks 1–2", 1: "weeks 3–4", 2: "weeks 5–8", 3: "weeks 9–12", 4: "month 4 on" } };
 const TODAY_FOCUS = {
   de: {
-    1: { title: "Sounds and first sentences", steps: ["Sounds block every day: the tap-to-hear pairs (ü, ö, ich, ach).", "Drills: the beginner items only — greetings, sein/haben, numbers, der/die/das words.", "Input: one Nicos Weg A1 episode a day, then the matching FSI Unit audio, repeating out loud.", "Legend: write 10 facts about yourself and turn them into German with the starter sentences."] },
+    1: { title: "Sounds and first sentences", steps: ["Sounds block every day: tap-to-hear word pairs for ü, ö and the two ch sounds.", "Drills: beginner items only — greetings, sein and haben (to be, to have), numbers, nouns with their der/die/das. Each new item is shown to you before you are tested on it.", "Input: one Nicos Weg episode a day (start with A1, lesson 1 “Hallo!”), then the FSI course audio for Unit 1, repeating every line out loud.", "Legend (your own story): write 10 facts about yourself, then turn them into German with the starter sentences."] },
     2: { title: "Cases start working", steps: ["Drills add accusative, dative with mit/zu/bei, separable verbs, modals and the Perfekt.", "Input: Nicos Weg A2 and Nachrichtenleicht with the text open.", "From week 5: one 15-minute legend cross-examination a week (Legend → Export for chat).", "Book a weekly 30-minute tutor if you have not yet."] },
     3: { title: "Sentence structure and politeness", steps: ["Drills: genitive, all adjective endings, weil/dass/ob/wenn, Konjunktiv II politeness.", "Input: Easy German street interviews; Tagesschau in 100 Sekunden for gist only.", "Writing starts: 10 minutes, three times a week (Field Manual D6).", "Scenario cards: job interview, doctor, police stop."] },
     4: { title: "B1 work", steps: ["Full drill set, Wiretap gisting on real news, monthly self-test (Field Manual D5).", "Goethe or telc B1 model papers once a month.", "Swiss German listening from month 10 (SRF)."] }
   },
   hu: {
-    0: { title: "Sounds only", steps: ["Sounds block only: vowel length, gy/ty/ny, the trilled r, first-syllable stress.", "Say your family's names and places out loud until stress and length are right.", "No drills yet — this is on purpose."] },
-    1: { title: "First sentences about yourself and your family", steps: ["Drills: greetings, vagyok/vagy/van, ez/az, numbers, question words.", "Input: FSI Hungarian Unit 1–2 audio, repeating out loud; HungarianPod101 beginner lessons.", "Legend: 15 family facts with the Hungarian starter sentences."] },
+    0: { title: "Sounds only", steps: ["Sounds block only: long and short vowels, gy/ty/ny, the rolled r, stress on the first syllable.", "Say your family’s names and towns out loud (Forvo has them) until the stress and vowel length are right.", "No drills yet — this is on purpose: two weeks of sounds first makes everything after easier."] },
+    1: { title: "First sentences about yourself and your family", steps: ["Drills: greetings, vagyok/vagy/van (I am / you are / is), ez/az (this/that), numbers, question words. New items are shown before you are tested on them.", "Input: FSI Hungarian Unit 1–2 audio, repeating out loud; one HungarianPod101 Absolute Beginner lesson.", "Legend (your own story): 15 family facts with the Hungarian starter sentences."] },
     2: { title: "Cases and conjugations", steps: ["Drills: the nine place endings (-ban, -ra, -hoz …), -nak/-nek, -val/-vel, possessives, both conjugations, -lak/-lek.", "Weekly cross-examination with the consulate scenario card."] },
     3: { title: "Past tense and word order", steps: ["Drills: plural possessives, stem changes (kéz → kezet), coverbs that split off, focus word order, past tense.", "First tutor-run mock interview."] },
     4: { title: "Interview readiness", steps: ["Full drill set; monthly self-test; consulate scenario every week."] }
   }
 };
 const FAMILY_NAMES = {
-  "basics.greet": "Greetings", "basics.sein": "sein (to be)", "basics.haben": "haben (to have)", "basics.present": "Present tense", "basics.numbers": "Numbers", "basics.time": "Time", "basics.questions": "Questions", "basics.neg": "kein / nicht", "basics.van": "van (to be)", "basics.demonstr": "ez / az", "basics.family": "Family words",
+  "sounds": "Pronunciation", "basics.greet": "Greetings", "basics.sein": "sein (to be)", "basics.haben": "haben (to have)", "basics.present": "Present tense", "basics.numbers": "Numbers", "basics.time": "Time", "basics.questions": "Questions", "basics.neg": "kein / nicht", "basics.van": "van (to be)", "basics.demonstr": "ez / az", "basics.family": "Family words",
   "case.nom": "Nominative (der/ein)", "case.acc": "Accusative (den/einen; -t)", "case.dat": "Dative (dem/einem; -nak)", "case.gen": "Genitive (des)", "prep.twoway": "wo/wohin prepositions", "prep.government": "Preposition cases", "verb.government": "Verb + case",
   "adj.strong": "Adjective endings (no article)", "adj.weak": "Adjective endings (after der)", "adj.mixed": "Adjective endings (after ein)", "verb.separable": "Separable verbs", "verb.inseparable": "Inseparable verbs",
   "order.v2": "Verb second", "order.subordinate": "Verb last (weil/dass)", "order.modal": "Modal verbs", "order.perfekt": "Perfekt (past)", "tekamolo": "When–why–how–where order", "konj2": "Polite forms", "gender.chunk": "der/die/das words", "plural": "Plurals", "register.sie": "Sie (formal you)",
@@ -1176,23 +1236,42 @@ const FAMILY_NAMES = {
   "conj.indef": "Verb endings (a/some …)", "conj.def": "Verb endings (the …)", "conj.lak": "-lak/-lek (I … you)", "coverb.attached": "Verb prefixes", "coverb.separated": "Verb prefixes that split", "focus.order": "Focus word order", "stem.alternation": "Stem changes", "numeral.singular": "Singular after numbers", "verb.irregular": "Irregular verbs"
 };
 function famName(f) { return FAMILY_NAMES[f] || f; }
+function fromOf(r, lang) { return lang === "hu" && r.fromStageHu != null ? r.fromStageHu : r.fromStage; }
+function inBlock(r, block, stage) { return listify(r.blocks).includes(block) && (!r.blockStages || !r.blockStages[block] || stage == null || r.blockStages[block].includes(stage)); }
 function resourcesFor(lang, stage, opts) {
   const o = opts || {};
-  return ((S.seed && S.seed.resources) || []).filter(r => (r.lang === lang || r.lang === "both") && (stage == null || ((r.fromStage == null || r.fromStage <= stage) && (r.toStage == null || r.toStage >= stage))) && (!o.core || r.priority === "core") && (!o.protocol || r.protocol === o.protocol));
+  return ((S.seed && S.seed.resources) || []).filter(r => (r.lang === lang || r.lang === "both") && (stage == null || ((fromOf(r, lang) == null || fromOf(r, lang) <= stage) && (r.toStage == null || r.toStage >= stage))) && (!o.core || r.priority === "core") && (!o.protocol || r.protocol === o.protocol) && (!o.block || inBlock(r, o.block, stage)) && (!o.kinds || o.kinds.includes(r.kind)))
+    .sort((a, b) => (a.priority === "core" ? 0 : 1) - (b.priority === "core" ? 0 : 1) || (a.order || 99) - (b.order || 99));
 }
-function resLink(r) { return r.url ? '<a class="chip res-chip" href="' + esc(r.url) + '" target="_blank" rel="noopener">' + esc(r.name) + "</a>" : '<span class="chip static res-chip">' + esc(r.name) + "</span>"; }
+// How to use a resource at a given stage: the most specific useByStage entry at or below the stage, else the general line.
+function resUse(r, stage) {
+  const u = r.useByStage || {}; let best = null;
+  Object.keys(u).forEach(k => { const n = Number(k); if (n <= stage && (best == null || n > best)) best = n; });
+  return best != null ? u[String(best)] : (r.use || "");
+}
+function stageSpan(lang, from, to) {
+  const W = { de: { 1: [1, 4], 2: [5, 8], 3: [9, 12] }, hu: { 0: [1, 2], 1: [3, 4], 2: [5, 8], 3: [9, 12] } }[lang];
+  const a = W[from], b = W[to];
+  const who = lang === "hu" ? "Hungarian " : "";
+  if (from >= 4) return who + "month 4 on";
+  if (to >= 4 || !b) return who + "week " + a[0] + " on";
+  return who + "weeks " + a[0] + "–" + b[1];
+}
+const MEDIA_KINDS = ["video", "audio", "course", "reading"];
+function resLink(r, star) { return r.url ? '<a class="chip res-chip" href="' + esc(r.url) + '" target="_blank" rel="noopener">' + (star ? '<span class="badge ok">start here</span> ' : "") + esc(r.name) + "</a>" : '<span class="chip static res-chip">' + esc(r.name) + "</span>"; }
+function niceDate(iso) { try { return new Date(iso + "T00:00:00").toLocaleDateString(undefined, { month: "short", day: "numeric" }); } catch (e) { return iso; } }
 /* ============================================================
    NAV
    ============================================================ */
-const VIEW_TITLES = { mission: "Mission Control", drill: "Drill Engine", decon: "Deconstructor", wiretap: "Wiretap", legend: "Legend", manual: "Field Manual", content: "Content Manager", settings: "Settings" };
+const VIEW_TITLES = { mission: "Mission Control", drill: "Drill Engine", decon: "Word parts", wiretap: "Wiretap", legend: "Legend", manual: "Field Manual", content: "Items", settings: "Settings" };
 function show(view) {
-  if (S.drill && S.drill.phase === "stage" && view !== "drill") toast("Drill still running — Esc in Drill Engine ends it");
+  if (S.drill && (S.drill.phase === "stage" || S.drill.phase === "persona") && view !== "drill") { if (S.drill.phase === "stage") clearInterval(S.drill.timer); toast("Drill paused. Tap Drill to go back to it."); }
   S.view = view;
   Object.keys(VIEW_TITLES).forEach(v => { const el = $("view-" + v); if (el) el.hidden = v !== view; });
   document.querySelectorAll("[data-nav]").forEach(b => { if (b.getAttribute("data-nav") === view) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current"); });
   $("view-title").textContent = VIEW_TITLES[view];
   if (view === "mission") renderMission();
-  if (view === "drill") renderDrillSetup();
+  if (view === "drill") { if (S.drill && (S.drill.phase === "stage" || S.drill.phase === "persona")) resumeDrill(); else { S.drill = null; renderDrillSetup(); } }
   if (view === "decon") renderDeconExamples();
   if (view === "wiretap") renderWiretap();
   if (view === "legend") renderLegend();
@@ -1234,7 +1313,7 @@ function renderDrillSetup() {
   const dinfo = planInfo(DS.lang); const msg = $("drill-setup-msg");
   if (!dinfo.started) { msg.hidden = false; msg.className = "banner"; msg.textContent = LANG_NAME[DS.lang] + " starts " + dinfo.start + ". Choose All to look ahead anyway."; }
   else if (dinfo.stage === 0) { msg.hidden = false; msg.className = "banner"; msg.textContent = "Hungarian weeks 1–2 are sounds only. Use the Sounds block on Mission Control. Choose All to look ahead anyway."; }
-  else if (DS.source !== "all") { msg.hidden = false; msg.className = "banner ok"; msg.textContent = "Showing items up to stage " + dinfo.stage + " (" + LANG_NAME[DS.lang] + " week " + dinfo.week + "). Harder items unlock as the weeks pass; All shows everything."; }
+  else if (DS.source !== "all") { msg.hidden = false; msg.className = "banner ok"; msg.textContent = "Showing items for " + LANG_NAME[DS.lang] + " week " + dinfo.week + " (stage " + dinfo.stage + "). Harder items unlock as the weeks pass; All shows everything." + (S.settings.learnFirst !== false ? " New items are shown to you before you are tested on them." : ""); }
   else msg.hidden = true;
   ["drill-setup", "drill-guard", "drill-persona", "drill-stage", "drill-summary"].forEach(id => { $(id).hidden = id !== "drill-setup"; });
 }
@@ -1269,7 +1348,21 @@ function buildQueue(lang, source, families, length) {
   // Stage 1: keep the teaching order (only the no-more-than-3-in-a-row rule); later stages also force every topic into the first ten.
   const beginner = source !== "all" && planInfo(lang).stage <= 1;
   ordered = interleave(ordered, families && families.size ? [...families] : Object.keys(familyCounts(lang)), beginner);
+  if (S.settings.learnFirst !== false && source !== "heat") return withLearnFirst(ordered, length);
   return ordered.slice(0, length);
+}
+// Learn-first: a never-seen item is shown first (answer, meaning, rule; say it 3×), then tested a few cards later.
+// New items go in small batches of three: learn A, B, C → test A, B, C. Each new item costs two cards of the session length.
+function withLearnFirst(items, length) {
+  const out = []; let budget = length; let batch = [];
+  const flush = () => { batch.forEach(d => out.push(Object.assign({}, d, { _learn: true }))); batch.forEach(d => out.push(Object.assign({}, d, { _afterLearn: true }))); batch = []; };
+  for (const d of items) {
+    if (budget <= 0) break;
+    if (!progressOf(d.id).reps) { if (budget < 2) continue; batch.push(d); budget -= 2; if (batch.length === 3) flush(); }
+    else { out.push(d); budget -= 1; }
+  }
+  flush();
+  return out;
 }
 function interleave(items, selectedFamilies, keepOrder) {
   // pass 1: no family > 3 consecutive
@@ -1327,15 +1420,21 @@ function renderPersona() {
   const d = S.drill; const lang = d.lang;
   ["drill-setup", "drill-guard", "drill-persona", "drill-stage", "drill-summary"].forEach(id => { $(id).hidden = id !== "drill-persona"; });
   $("persona-title").textContent = "Warm-up: switch into " + LANG_NAME[lang]; $("drill-persona").setAttribute("data-lang", lang);
-  $("persona-fillers").textContent = FILLERS[lang].join("   ");
+  const hasVoice = !!(S.voices[lang] && S.settings.tts[lang]);
+  $("persona-fillers").innerHTML = FILLERS[lang].map(w => '<span class="filler">' + phonWord(w, lang, hasVoice) + '<span class="muted small">' + esc((FILLER_GLOSS[lang] || {})[w] || "") + "</span></span>").join("");
+  wireSay($("persona-fillers"), lang);
+  $("persona-intro").textContent = "These are the little words " + (lang === "de" ? "Germans" : "Hungarians") + " say while they think. " + (hasVoice ? "Tap one to hear it." : "Tap one to hear native speakers on Forvo.");
   const locked = personaLocked(lang);
-  const skippable = !locked && S.settings.personaSkippable[lang];
-  let left = 60;
+  const doneToday = (S.settings.warmupDone || {})[lang] === todayISO();
+  const skippable = doneToday || (!locked && S.settings.personaSkippable[lang]);
+  let left = doneToday ? 0 : 60;
   $("persona-countdown").textContent = left;
-  $("persona-begin").disabled = !skippable;
-  $("persona-note").textContent = "Say these filler words out loud, over and over, for 60 seconds, as if you were thinking in " + LANG_NAME[lang] + ". It switches your mouth and ears over before the drill. " + (locked ? "During your first 14 days the full minute is required." : (skippable ? "You can skip it (Settings), but the minute helps." : "Begin unlocks when the countdown ends."));
+  $("persona-begin").disabled = !skippable && left > 0;
+  $("persona-note").textContent = doneToday
+    ? "You already warmed up in " + LANG_NAME[lang] + " today. Say a few of them once, then Begin."
+    : "Say them out loud, over and over, for 60 seconds, as if you were thinking in " + LANG_NAME[lang] + ". It switches your mouth and ears over before the drill. " + (locked ? "In your first 14 days the full minute is required once a day; later sessions today start right away." : (skippable ? "You can skip it (Settings), but the minute helps." : "Begin unlocks when the countdown ends."));
   clearInterval(d.personaTimer);
-  d.personaTimer = setInterval(() => {
+  if (left > 0) d.personaTimer = setInterval(() => {
     left -= 1; $("persona-countdown").textContent = Math.max(0, left);
     if (left <= 0) { clearInterval(d.personaTimer); $("persona-begin").disabled = false; }
   }, 1000);
@@ -1344,14 +1443,78 @@ function renderPersona() {
 function beginCues() {
   const d = S.drill; clearInterval(d.personaTimer);
   d.phase = "stage";
+  S.settings.warmupDone = S.settings.warmupDone || {}; S.settings.warmupDone[d.lang] = todayISO(); save.settings();
   ["drill-setup", "drill-guard", "drill-persona", "drill-stage", "drill-summary"].forEach(id => { $(id).hidden = id !== "drill-stage"; });
   $("stage-lang").textContent = d.lang; $("stage-lang").setAttribute("data-lang", d.lang); $("drill-stage").setAttribute("data-lang", d.lang); $("stage-mode").textContent = d.typed ? "typed" : "spoken";
   $("stage-typed").hidden = !d.typed; $("stage-reveal-row").hidden = d.typed;
   $("stage-input").setAttribute("lang", d.lang === "de" ? "de" : "hu");
   $("stage-hint").hidden = !!S.settings.drillHintSeen;
+  $("stage-hint-text").innerHTML = d.typed
+    ? "<b>How it works:</b> a <b>new</b> card shows you the answer and what it means: say it out loud three times, then tap Next. A moment later it comes back as a question: type the full answer and tap <b>Check</b>; the app grades it (capitals and punctuation don’t count; ae/oe/ue are fine for ä/ö/ü). Low scores in the first weeks are normal."
+    : "<b>How it works:</b> a <b>new</b> card shows you the answer and what it means: say it out loud three times, then tap Next. A moment later it comes back as a question: say the full answer out loud, tap <b>Reveal</b>, then grade yourself: <b>1</b> right, <b>2</b> right but you had to think, <b>3</b> wrong or blank. Low scores in the first weeks are normal; misses come back at the end and tomorrow.";
   showCue();
 }
 function currentItem() { const d = S.drill; return d.queue[d.idx]; }
+// Coming back to the Drill tab mid-session: same card; an unanswered card restarts its timer.
+function resumeDrill() {
+  const d = S.drill;
+  ["drill-setup", "drill-guard", "drill-persona", "drill-stage", "drill-summary"].forEach(id => { $(id).hidden = id !== (d.phase === "persona" ? "drill-persona" : "drill-stage"); });
+  if (d.phase === "stage" && !d.revealed) showCue();
+}
+// What the voice reads: the cue without the "→ (er)" instruction part.
+function cueSpeech(cue) { return String(cue || "").split(/\s*→/)[0].trim(); }
+function typedInstruction(ins) { return String(ins || "").replace(/^Say\b/, "Type").replace(/\bsay\b/g, "type").replace(/ out loud/g, ""); }
+// Words of an answer, for tap-to-hear chips (punctuation stripped, duplicates and arrows dropped).
+function wordsOf(text) {
+  const seen = new Set();
+  return String(text || "").split(/[\s,;/]+/).map(w => w.replace(/^[„“"'‚‘(¿¡]+|[.,!?;:"'“”’)…]+$/g, "")).filter(w => {
+    if (w.length < 2 || /^[\d→()…\-+=]+$/.test(w)) return false; const k = w.toLowerCase(); if (seen.has(k)) return false; seen.add(k); return true;
+  });
+}
+function hearHtml(text, lang, opts) {
+  const hasVoice = !!(S.voices[lang] && S.settings.tts[lang]);
+  const ws = wordsOf(text).slice(0, 10);
+  let h = "";
+  if (hasVoice) h += '<button type="button" class="chip phon-w play" data-say="' + esc(text) + '" lang="' + lang + '">▶ Play</button>';
+  else if (opts && opts.phrase && ws.length >= 2 && ws.length <= 3) h += phonWord(ws.join(" "), lang, false);
+  return h + ws.map(w => phonWord(w, lang, hasVoice)).join("");
+}
+function wireSay(container, lang) {
+  if (!container) return;
+  container.querySelectorAll("[data-say]").forEach(b => b.addEventListener("click", () => { if (!speak(b.getAttribute("data-say"), lang)) window.open(forvoUrl(b.getAttribute("data-say"), lang), "_blank", "noopener"); }));
+}
+// The trailing ‘…’ in an explanation repeats the meaning line; drop it when it is the same text.
+function explainText(item) {
+  let e = String(item.explain || "");
+  if (item.gloss) { const m = /\s*‘([^’]+)’\.?\s*$/.exec(e); if (m && normalizeAnswer(m[1]) === normalizeAnswer(item.gloss)) e = e.slice(0, m.index).trim(); }
+  return e;
+}
+// Beginner items show what the answer means before you answer, unless the cue already is that meaning.
+function cueGloss(item) {
+  if (!item.gloss || (item.stage || 9) > 1) return "";
+  if (/\bin (German|Hungarian)\b|^Say the number/i.test(item.instruction || "")) return ""; // the cue is already English (or a number)
+  const c = normalizeAnswer(item.cue), g = normalizeAnswer(item.gloss);
+  return c.includes(g) || g.includes(c) ? "" : item.gloss;
+}
+function renderAnswer(item, opts) {
+  const lang = S.drill.lang; const o = opts || {};
+  $("stage-answer").textContent = item.answer || "";
+  const showGloss = item.gloss && !(o.cueGlossShown);
+  $("stage-gloss").hidden = !showGloss; $("stage-gloss").textContent = showGloss ? "Meaning: " + item.gloss : "";
+  $("stage-explain").textContent = explainText(item);
+  const hear = $("stage-hear"); hear.innerHTML = hearHtml(item.answer, lang, { phrase: /^basics\.greet/.test(item.family || "") }); hear.hidden = !hear.innerHTML; wireSay(hear, lang);
+}
+function showLearn(item) {
+  const d = S.drill; const hasVoice = !!(S.voices[d.lang] && S.settings.tts[d.lang]);
+  d.revealed = true; d.graded = true; clearInterval(d.timer);
+  renderAnswer(item);
+  $("stage-answer-box").hidden = false; $("stage-reveal-row").hidden = true; $("stage-typed").hidden = true; $("stage-grades").hidden = true;
+  $("stage-next-row").hidden = false; $("stage-next-label").textContent = "Said it 3× — next";
+  $("stage-learn-hear").textContent = hasVoice ? ", tapping Play to hear it first" : ", tapping the words to hear native speakers on Forvo";
+  $("stage-novoice").hidden = true; $("stage-replay").hidden = !hasVoice;
+  if (hasVoice) speak(item.answer, d.lang);
+  try { $("stage-next").focus({ preventScroll: true }); } catch (e) { /* ignore */ }
+}
 function showCue() {
   { const arc = $("stage-arc"), dial = $("stage-dial"); if (arc) arc.setAttribute("stroke-dashoffset", "169.6"); if (dial) { dial.classList.remove("over"); dial.classList.remove("late"); } }
   const d = S.drill; const item = currentItem();
@@ -1360,18 +1523,24 @@ function showCue() {
   $("stage-pos").textContent = (d.idx + 1) + " / " + d.queue.length;
   $("stage-progress").style.width = Math.round(100 * d.idx / d.queue.length) + "%";
   $("stage-family").textContent = famName(item.family || "other");
-  $("stage-instruction").textContent = item.instruction || "";
+  const learn = !!item._learn;
+  $("drill-stage").classList.toggle("learning", learn); $("stage-new").hidden = !learn; $("stage-learn").hidden = !learn;
+  $("stage-instruction").textContent = d.typed && !learn ? typedInstruction(item.instruction) : (item.instruction || "");
   $("stage-cue").textContent = item.cue || "";
+  const cg = learn ? "" : cueGloss(item); d.cueGlossShown = !!cg;
+  $("stage-cue-gloss").hidden = !cg; $("stage-cue-gloss").textContent = cg ? "Your answer means: " + cg : "";
+  $("stage-next-label").textContent = "Next"; $("stage-override").hidden = true; $("stage-submit").disabled = false;
   $("stage-target").textContent = "target " + (item.speedTargetSec || 5) + " s";
   $("stage-streak").textContent = d.streak;
   $("stage-answer-box").hidden = true; $("stage-grades").hidden = true; $("stage-next-row").hidden = true;
   $("stage-reveal-row").hidden = d.typed; $("stage-typed").hidden = !d.typed;
   $("stage-result").textContent = ""; $("stage-result").className = "result";
   const t = $("stage-timer"); t.textContent = "00:00.0"; t.classList.remove("over");
-  const spoke = item.speakCue && S.settings.tts[d.lang] && S.voices[d.lang] ? speak(item.cue, d.lang) : false;
+  if (learn) { showLearn(item); return; }
+  const spoke = item.speakCue && S.settings.tts[d.lang] && S.voices[d.lang] ? speak(cueSpeech(item.cue), d.lang) : false;
   const badge = $("stage-novoice");
   if (item.speakCue && !spoke) { badge.hidden = false; badge.textContent = "no " + LANG_NAME[d.lang] + " voice on this device — read the cue"; } else badge.hidden = true;
-  $("stage-replay").disabled = !S.voices[d.lang];
+  $("stage-replay").hidden = !(S.voices[d.lang] && S.settings.tts[d.lang] && item.speakCue); $("stage-replay").disabled = false;
   clearInterval(d.timer);
   d.timer = setInterval(tickTimer, 100);
   if (d.typed) { const inp = $("stage-input"); inp.value = ""; inp.disabled = false; try { inp.focus(); } catch (e) { /* ignore */ } }
@@ -1392,19 +1561,18 @@ function reveal() {
   const d = S.drill; if (d.revealed) return;
   stopTimer(); d.revealed = true;
   const item = currentItem();
-  $("stage-answer").textContent = item.answer || ""; $("stage-explain").textContent = item.explain || "";
-  $("stage-gloss").hidden = !item.gloss; $("stage-gloss").textContent = item.gloss ? "Meaning: " + item.gloss : "";
+  renderAnswer(item, { cueGlossShown: d.cueGlossShown });
   $("stage-answer-box").hidden = false; $("stage-reveal-row").hidden = true;
-  if (!d.typed) $("stage-grades").hidden = false;
+  if (!d.typed) { $("stage-grades").hidden = false; try { $("stage-grades").scrollIntoView({ block: "nearest", behavior: "smooth" }); } catch (e) { /* ignore */ } }
 }
 function submitTyped() {
   const d = S.drill; if (d.revealed) return;
   const item = currentItem(); const typed = $("stage-input").value;
   stopTimer(); d.revealed = true; $("stage-input").disabled = true;
-  const target = normalizeAnswer(typed);
-  const ok = [item.answer].concat(listify(item.accepted)).some(a => normalizeAnswer(a) === target);
-  $("stage-answer").textContent = item.answer || ""; $("stage-explain").textContent = item.explain || "";
-  $("stage-gloss").hidden = !item.gloss; $("stage-gloss").textContent = item.gloss ? "Meaning: " + item.gloss : "";
+  const target = normalizeAnswer(typed, d.lang);
+  const ok = [item.answer].concat(listify(item.accepted)).some(a => normalizeAnswer(a, d.lang) === target);
+  $("stage-submit").disabled = true;
+  renderAnswer(item, { cueGlossShown: d.cueGlossShown });
   $("stage-answer-box").hidden = false;
   grade(ok ? 1 : 3, typed);
 }
@@ -1417,7 +1585,10 @@ function grade(g, produced) {
   const inTime = elapsedSec <= targetSec;
   const prev = S.progress[item.id] || {};
   const prevGrade = prev.lastGrade;
+  const streakBefore = d.streak; const errorsBefore = S.errors.length;
   const p = fsrsUpdate(Object.assign({}, prev), g, elapsedSec, targetSec, now);
+  // Just learned a minute ago: a right answer proves short-term memory only, so it comes back tomorrow, not in days.
+  if (item._afterLearn && !prev.reps) { p.stability = Math.min(p.stability, 1); p.due = Math.min(p.due, now + DAY); p.state = "learning"; }
   let wroteError = false;
   if (g === 3 || (g === 2 && prevGrade === 2)) {
     p.heat = true; wroteError = true;
@@ -1427,15 +1598,33 @@ function grade(g, produced) {
   S.progress[item.id] = p; save.progress();
   if (g === 1) { d.streak += 1; d.maxStreak = Math.max(d.maxStreak, d.streak); } else d.streak = 0;
   const fam = item.family || "other"; d.byFamily[fam] = d.byFamily[fam] || { n: 0, ok: 0 }; d.byFamily[fam].n += 1; if (g === 1) d.byFamily[fam].ok += 1;
-  d.results.push({ itemId: item.id, grade: g, elapsedSec: elapsedSec, inTime: inTime, family: fam, answer: item.answer, cue: item.cue, requeued: !!d.queue[d.idx]._requeued });
-  if (g === 3 && !item._requeued) { const again = Object.assign({}, item, { _requeued: true }); d.queue.push(again); }
+  d.results.push({ itemId: item.id, grade: g, elapsedSec: elapsedSec, inTime: inTime, family: fam, answer: item.answer, cue: item.cue, gloss: item.gloss || "", requeued: !!d.queue[d.idx]._requeued });
+  const requeued = g === 3 && !item._requeued;
+  if (requeued) { const again = Object.assign({}, item, { _requeued: true, _learn: false, _afterLearn: false }); d.queue.push(again); }
+  d.lastGrade = { idx: d.idx, prev: JSON.parse(JSON.stringify(prev)), elapsedSec, targetSec, streakBefore, requeued, errId: S.errors.length > errorsBefore ? S.errors[S.errors.length - 1].id : null, resultIndex: d.results.length - 1, overridden: false };
   $("stage-streak").textContent = d.streak;
   const r = $("stage-result");
-  if (g === 1) { r.textContent = inTime ? "Correct, in time (" + elapsedSec.toFixed(1) + " s)." : "Correct, but late (" + elapsedSec.toFixed(1) + " s, target " + targetSec + " s)."; r.className = "result " + (inTime ? "ok" : "late"); }
-  else if (g === 2) { r.textContent = "Hesitated." + (wroteError ? " Second hesitation in a row: logged to the burn book." : ""); r.className = "result late"; }
-  else { r.textContent = "Missed. Logged to the burn book; it comes back at the end of this session."; r.className = "result bad"; }
+  if (g === 1) { r.textContent = inTime ? "Right, in time (" + elapsedSec.toFixed(1) + " s)." : "Right, but over the target time (" + elapsedSec.toFixed(1) + " s; target " + targetSec + " s)."; r.className = "result " + (inTime ? "ok" : "late"); }
+  else if (g === 2) { r.textContent = "Had to think: it comes back sooner." + (wroteError ? " Second time in a row, so it went into the burn book (your mistake log)." : ""); r.className = "result late"; }
+  else { r.textContent = (item._requeued ? "Wrong again. It comes back tomorrow" : "Wrong. It comes back at the end of this session and again tomorrow") + ", and it’s in the burn book (your mistake log)."; r.className = "result bad"; }
   $("stage-grades").hidden = true; $("stage-next-row").hidden = false;
-  try { $("stage-next").focus(); } catch (e) { /* ignore */ }
+  $("stage-override").hidden = !(d.typed && g === 3);
+  try { $("stage-next").focus({ preventScroll: true }); $("stage-next-row").scrollIntoView({ block: "nearest", behavior: "smooth" }); } catch (e) { /* ignore */ }
+}
+// Typed mode can't see a typo the learner knows was one: "I was right" undoes the miss (burn-book line, re-ask, schedule) and counts it as right.
+function overrideTyped() {
+  const d = S.drill; const L = d && d.lastGrade; if (!L || L.idx !== d.idx || L.overridden) return;
+  const item = currentItem(); const now = Date.now();
+  if (L.errId) { S.errors = S.errors.filter(e => e.id !== L.errId); save.errors(); }
+  if (L.requeued) { const k = d.queue.length - 1; if (d.queue[k] && d.queue[k].id === item.id && d.queue[k]._requeued) d.queue.splice(k, 1); }
+  const p = fsrsUpdate(Object.assign({}, L.prev), 1, L.elapsedSec, L.targetSec, now);
+  if (item._afterLearn && !L.prev.reps) { p.stability = Math.min(p.stability, 1); p.due = Math.min(p.due, now + DAY); p.state = "learning"; }
+  S.progress[item.id] = p; save.progress();
+  const res = d.results[L.resultIndex]; res.grade = 1; res.inTime = L.elapsedSec <= L.targetSec;
+  if (d.byFamily[res.family]) d.byFamily[res.family].ok += 1;
+  d.streak = L.streakBefore + 1; d.maxStreak = Math.max(d.maxStreak, d.streak); $("stage-streak").textContent = d.streak;
+  L.overridden = true; $("stage-override").hidden = true;
+  const rr = $("stage-result"); rr.textContent = "Counted as right."; rr.className = "result ok";
 }
 function nextCue() {
   const d = S.drill; if (!d.graded) return;
@@ -1465,22 +1654,35 @@ function renderSummary(rec) {
   ["drill-setup", "drill-guard", "drill-persona", "drill-stage", "drill-summary"].forEach(id => { $(id).hidden = id !== "drill-summary"; });
   const n = rec.cues; const score = pct(rec.correctInTime + rec.correctLate, n); const inTime = pct(rec.correctInTime, n);
   $("summary-meta").textContent = LANG_NAME[rec.lang] + ", " + fmtDate(rec.date) + ", " + (d.typed ? "typed" : "spoken");
-  $("summary-stats").innerHTML = [["Score", score + "%"], ["In time", inTime + "%"], ["Correct, late", rec.correctLate], ["Wrong", rec.wrong], ["Longest streak", rec.maxStreak], ["Duration", fmtClock(rec.durationSec * 1000)]]
+  $("summary-stats").innerHTML = [["Score", score + "%"], ["In time", inTime + "%"], ["Right but over time", rec.correctLate], ["Had to think", rec.hesitated || 0], ["Wrong", rec.wrong], ["Longest streak", rec.maxStreak], ["Duration", fmtClock(rec.durationSec * 1000)]]
     .map((x, i) => '<div class="stat' + (i === 0 ? (score >= 90 ? " pass" : " fail") : i === 1 ? (inTime >= 80 ? " pass" : " fail") : "") + '"><b>' + esc(x[1]) + "</b><span>" + esc(x[0]) + (i === 0 ? " (pass ≥ 90%)" : i === 1 ? " (pass ≥ 80%)" : "") + "</span></div>").join("");
+  const early = planInfo(rec.lang).stage <= 1;
+  const w1 = $("summary-week1"); w1.hidden = !(early && score < 90);
+  w1.textContent = "First weeks: a low score is normal. Every wrong card comes back at the end of a session and again tomorrow, and the score climbs as cards repeat. The score counts only answers graded 1.";
+  $("summary-bridge-note").textContent = early ? "Say each one out loud three times, slowly, then at normal speed." : "Say each one in a real sentence now. Out loud, about your own day.";
   const tb = $("summary-families").querySelector("tbody");
   tb.innerHTML = Object.keys(rec.byFamily).sort().map(f => {
     const x = rec.byFamily[f]; const s = pct(x.ok, x.n);
-    const link = s < 70 ? '<button type="button" class="btn ghost sm" data-decon-fam="' + esc(f) + '" style="white-space:normal;text-align:left">Explain</button>' : "";
-    return "<tr><td>" + esc(famName(f)) + '</td><td class="num">' + x.n + '</td><td class="num">' + x.ok + '</td><td class="num">' + s + "%</td><td>" + link + "</td></tr>";
+    // Explain opens Word parts when there is a worked example for the topic; otherwise the topic's rules open right here.
+    const link = s < 70 ? (deconFor(rec.lang, f) ? '<br><button type="button" class="btn ghost sm" data-decon-fam="' + esc(f) + '">Explain</button>' : '<br><button type="button" class="btn ghost sm" data-rules-fam="' + esc(f) + '">See the rules</button>') : "";
+    const rules = s < 70 ? uniq(d.results.filter(x => x.family === f).map(x => ({ id: x.itemId }))).map(x => byId(x.id)).filter(Boolean) : [];
+    return '<tr><td class="fam">' + esc(famName(f)) + link + '</td><td class="num">' + x.n + '</td><td class="num">' + x.ok + '</td><td class="num">' + s + "%</td></tr>" +
+      (rules.length ? '<tr class="rules-row" data-rules-for="' + esc(f) + '" hidden><td colspan="4"><ul class="rules">' + rules.map(it => "<li><b>" + esc(it.answer) + "</b>" + (it.gloss ? " — " + esc(it.gloss) : "") + "<br>" + esc(explainText(it)) + "</li>").join("") + "</ul></td></tr>" : "");
   }).join("");
+  tb.querySelectorAll("[data-rules-fam]").forEach(b => b.addEventListener("click", () => { const row = tb.querySelector('[data-rules-for="' + b.getAttribute("data-rules-fam") + '"]'); if (row) { row.hidden = !row.hidden; b.textContent = row.hidden ? "See the rules" : "Hide the rules"; } }));
   tb.querySelectorAll("[data-decon-fam]").forEach(b => b.addEventListener("click", () => openDeconForFamily(rec.lang, b.getAttribute("data-decon-fam"))));
-  const sfn = $("summary-families-note"); if (sfn) sfn.hidden = !tb.querySelector("[data-decon-fam]");
+  const sfn = $("summary-families-note"); if (sfn) sfn.hidden = !tb.querySelector("[data-decon-fam], [data-rules-fam]");
   const misses = d.results.filter(r => r.grade === 3 && !r.requeued);
   $("summary-misses-wrap").hidden = misses.length === 0;
-  $("summary-misses").innerHTML = misses.map(r => '<div class="item"><div class="col"><span class="mono">' + esc(r.cue) + '</span><span class="meta">' + esc(r.answer) + '</span></div><div class="field inline"><input type="checkbox" id="heat-' + esc(r.itemId) + '" data-heat="' + esc(r.itemId) + '" checked><label for="heat-' + esc(r.itemId) + '">keep in heat set</label></div></div>').join("");
+  $("summary-misses").innerHTML = misses.map(r => '<div class="item"><div class="col"><span class="mono">' + esc(r.cue) + '</span><span class="meta">' + esc(r.answer) + '</span></div><div class="field inline"><input type="checkbox" id="heat-' + esc(r.itemId) + '" data-heat="' + esc(r.itemId) + '" checked><label for="heat-' + esc(r.itemId) + '">keep in Missed pile</label></div></div>').join("");
   $("summary-misses").querySelectorAll("[data-heat]").forEach(cb => cb.addEventListener("change", () => { const p = S.progress[cb.getAttribute("data-heat")]; if (p) { p.heat = cb.checked; save.progress(); } }));
-  const answers = shuffle(uniq(d.results.map(r => ({ id: r.itemId, a: r.answer })))).slice(0, 3);
-  $("summary-bridge-list").innerHTML = answers.map(x => "<div>" + esc(x.a) + "</div>").join("") || '<span class="empty">No cues this session.</span>';
+  const answers = shuffle(uniq(d.results.map(r => ({ id: r.itemId, a: r.answer, g: r.gloss })))).slice(0, 3);
+  $("summary-bridge-list").innerHTML = answers.map(x => "<div>" + esc(x.a) + (x.g ? ' <span class="muted small">— ' + esc(x.g) + "</span>" : "") + "</div>").join("") || '<span class="empty">No cards this session.</span>';
+}
+function deconFor(lang, family) {
+  const prefix = String(family).split(".")[0];
+  const ex = deconExamples(lang);
+  return ex.find(e => listify(e.tags).includes(family)) || (prefix !== "basics" ? ex.find(e => listify(e.tags).some(t => String(t).split(".")[0] === prefix)) : null) || null;
 }
 function openDeconForFamily(lang, family) {
   const prefix = String(family).split(".")[0];
@@ -1488,7 +1690,7 @@ function openDeconForFamily(lang, family) {
   const match = ex.find(e => listify(e.tags).includes(family)) || ex.find(e => listify(e.tags).some(t => String(t).split(".")[0] === prefix)) || ex[0];
   S.drill = null;
   show("decon");
-  if (match) { DX.lang = lang; setDeconLang(lang); $("decon-input").value = match.word; parseDecon(match.word, lang); }
+  if (match) { DX.lang = lang; setDeconLang("auto"); $("decon-input").value = match.word; parseDecon(match.word, lang); }
 }
 
 /* ============================================================
@@ -1516,12 +1718,91 @@ function resolveLang(text) {
   return d || S.settings.deconLang || DX.lang;
 }
 function setDeconLang(l) { DX.override = l === "auto" ? "auto" : l; setSeg("#view-decon", "data-xlang", DX.override); $("decon-lang").value = DX.override; }
+// Labels in plain English for the morpheme roles and analysis kinds the engines emit.
+const ROLE_NAME = { det: "article", "adj-stem": "adjective", "adj-end": "ending", noun: "noun", "pl-end": "plural ending", pl: "plural", stem: "stem", "case": "case ending", link: "linking vowel", poss: "my/your… ending", "poss-pl": "plural-owned ending", fuge: "linking letter", part: "word part", "part-end": "past ending", ge: "ge- (past)", "sep-prefix": "split-off prefix", "insep-prefix": "fixed prefix", "inf-end": "-en ending", "verb-stem": "verb stem" };
+const KIND_NAME = { np: "article + adjective + noun", noun: "noun", plural: "plural", compound: "compound word", verb: "verb form", adjective: "adjective" };
+function roleName(r) { return ROLE_NAME[r] || r; }
+const PHRASE_NOTES = {
+  "guten morgen": "A greeting. It is short for (Ich wünsche Ihnen einen) guten Morgen, “(I wish you a) good morning” — that is why gut takes the -en ending (accusative, the object form).",
+  "guten tag": "A greeting. Short for (Ich wünsche Ihnen einen) guten Tag, “(I wish you a) good day” — so gut takes -en (accusative, the object form).",
+  "guten abend": "A greeting. Short for (Ich wünsche Ihnen einen) guten Abend, “(I wish you a) good evening” — so gut takes -en (accusative).",
+  "gute nacht": "Said when someone goes to bed. Short for (Ich wünsche Ihnen eine) gute Nacht — Nacht is feminine, so gut takes -e."
+};
+const DECON_GLOSSARY = [
+  ["Nominative", "the basic form, used for the subject (who does it): der Chef ist da."],
+  ["Accusative", "the direct object (who or what is acted on): ich sehe den Chef."],
+  ["Dative", "to or for whom, and after mit, zu, bei, nach, aus, von: mit dem Chef."],
+  ["Genitive", "“of”, and after wegen, trotz, während: das Auto des Chefs."],
+  ["Strong / weak / mixed ending", "German adjective endings. Strong: no article in front, so the adjective shows the case itself (guter Kaffee). Weak: after der/die/das (der gute Kaffee). Mixed: after ein, kein, mein (ein guter Kaffee)."],
+  ["Linking letter (Fuge)", "the extra s, n or e that joins two words into one: Arbeit-s-platz."],
+  ["Split-off prefix", "a front part of a verb that moves to the end of the sentence: aufstehen → ich stehe um sechs auf."],
+  ["ge- … -t / -en", "the past form used with haben or sein: gearbeitet, gekommen."],
+  ["Hungarian case ending", "Hungarian adds endings where English uses little words: ház-ban = in the house, ház-ra = onto the house."],
+  ["Vowel harmony", "Hungarian endings come in back and front versions to match the word’s vowels: házban but kertben."],
+  ["Linking vowel", "a vowel Hungarian puts between a word and its ending: ház-a-t (the house, as an object)."],
+  ["-ban/-ben, -ba/-be, -ból/-ből", "in, into, out of (inessive, illative, elative)."],
+  ["-on/-en/-ön, -ra/-re, -ról/-ről", "on, onto, off or about (superessive, sublative, delative). Most Hungarian towns take -on/-en: Budapesten."],
+  ["-nál/-nél, -hoz/-hez/-höz, -tól/-től", "at, to, from (adessive, allative, ablative)."],
+  ["My / your ending", "Hungarian shows the owner with an ending: ház-am = my house, ház-ad = your house."]
+];
+// Everyday words the morphology engines don't cover (pronouns, verb forms, greetings, numbers, question words).
+// Shown as a plain lookup so the learner never sees an invented "unknown noun" for ich or vagyok.
+const COMMON_WORDS = {
+  de: {
+    "ich": "pronoun: I", "du": "pronoun: you (informal, one person)", "er": "pronoun: he (also “it” for a der-word)", "sie": "pronoun: she, or they; with a capital S, Sie = you (formal)", "es": "pronoun: it", "wir": "pronoun: we", "ihr": "pronoun: you (informal, several people); also “her” or “their”",
+    "bin": "sein (to be): ich bin = I am", "bist": "sein (to be): du bist = you are", "ist": "sein (to be): er/sie/es ist = he/she/it is", "sind": "sein (to be): wir/sie/Sie sind = we/they/you (formal) are", "seid": "sein (to be): ihr seid = you all are", "sein": "to be (also: his)",
+    "habe": "haben (to have): ich habe = I have", "hast": "haben (to have): du hast = you have", "hat": "haben (to have): er/sie/es hat = he/she/it has", "haben": "to have; wir/sie/Sie haben = we/they/you (formal) have", "habt": "haben (to have): ihr habt = you all have",
+    "heiße": "heißen (to be called): ich heiße … = my name is …", "heißt": "heißen: du heißt / er heißt = you are / he is called", "heißen": "to be called; Wie heißen Sie? = What is your name? (formal)",
+    "komme": "kommen (to come): ich komme = I come", "kommst": "kommen: du kommst = you come", "kommt": "kommen: er/sie/es kommt = he/she/it comes", "kommen": "to come",
+    "wohne": "wohnen (to live somewhere): ich wohne = I live", "wohnst": "wohnen: du wohnst = you live", "wohnt": "wohnen: er/sie wohnt = he/she lives", "wohnen": "to live (in a place)",
+    "arbeite": "arbeiten (to work): ich arbeite = I work", "arbeitest": "arbeiten: du arbeitest = you work", "arbeitet": "arbeiten: er/sie arbeitet = he/she works",
+    "lerne": "lernen (to learn): ich lerne = I learn", "lernst": "lernen: du lernst = you learn", "lernt": "lernen: er/sie lernt = he/she learns", "lernen": "to learn",
+    "hallo": "hello (informal)", "danke": "thanks", "bitte": "please; also “you’re welcome”", "tschüss": "bye (informal)", "ja": "yes", "nein": "no", "nicht": "not", "kein": "no / not a (before a noun)", "keine": "no / not a (before a feminine or plural noun)", "keinen": "no / not a (before a masculine object)",
+    "und": "and", "aber": "but", "oder": "or", "aus": "from, out of", "in": "in", "mit": "with", "von": "from, of", "auch": "also", "sehr": "very", "gern": "gladly (ich arbeite gern = I like working)", "gerne": "gladly (same as gern)", "jetzt": "now", "hier": "here", "da": "there; also “here”", "heute": "today",
+    "morgen": "morgen (small m) = tomorrow; der Morgen (capital M) = the morning", "frau": "woman; Mrs (Frau Weber)", "herr": "Mr (Herr Weber); gentleman", "entschuldigung": "sorry, excuse me", "deutsch": "German (the language)", "englisch": "English", "amerika": "America", "mein": "my", "meine": "my (before a feminine or plural noun)", "dein": "your (informal)", "ihre": "her, their; with a capital I, Ihre = your (formal)",
+    "was": "what", "wer": "who", "wo": "where", "woher": "where from", "wohin": "where to", "wann": "when", "wie": "how", "warum": "why", "wie viel": "how much",
+    "null": "0", "eins": "1", "zwei": "2", "drei": "3", "vier": "4", "fünf": "5", "sechs": "6", "sieben": "7", "acht": "8", "neun": "9", "zehn": "10", "elf": "11", "zwölf": "12", "dreizehn": "13", "vierzehn": "14", "fünfzehn": "15", "sechzehn": "16", "siebzehn": "17", "achtzehn": "18", "neunzehn": "19", "zwanzig": "20", "dreißig": "30", "vierzig": "40", "fünfzig": "50", "sechzig": "60", "siebzig": "70", "achtzig": "80", "neunzig": "90", "hundert": "100"
+  },
+  hu: {
+    "vagyok": "van (to be): I am", "vagy": "van (to be): you are (informal); also “or”", "van": "is; there is", "vagyunk": "van (to be): we are", "vagytok": "van (to be): you all are", "vannak": "van (to be): they are; there are", "nincs": "isn’t; there isn’t",
+    "köszönöm": "thank you (literally “I thank it”: köszön = to thank)", "köszi": "thanks (informal)", "szépen": "nicely; köszönöm szépen = thank you very much", "kérem": "please (formal); also “I ask for it”", "kérek": "I’d like (a …)", "tessék": "here you are; also “pardon?” and “go ahead”", "szívesen": "you’re welcome",
+    "igen": "yes", "nem": "no; not", "jó": "good", "napot": "day (object form of nap); jó napot (kívánok) = good day", "kívánok": "I wish; jó napot kívánok = good day (formal)", "reggelt": "morning (object form of reggel); jó reggelt = good morning", "estét": "evening (object form of este); jó estét = good evening", "viszontlátásra": "goodbye (formal)", "szia": "hi; bye (informal)", "elnézést": "excuse me",
+    "lakom": "lakik (to live somewhere): I live", "laksz": "lakik: you live", "lakik": "he/she lives (somewhere)", "lakunk": "lakik: we live", "élek": "él (to live): I live", "születtem": "I was born", "született": "he/she was born", "tanulok": "I learn, I’m learning", "beszélek": "I speak", "dolgozom": "I work",
+    "én": "I", "te": "you (informal)", "ő": "he or she", "mi": "we; also “what”", "ti": "you all (informal)", "ők": "they", "ön": "you (formal)",
+    "ez": "this", "az": "that; also “the” before a vowel", "itt": "here", "ott": "there", "a": "the", "egy": "a; one",
+    "ki": "who", "hol": "where", "hogy": "how; also “that”", "hány": "how many", "mikor": "when", "miért": "why", "honnan": "where from", "hova": "where to", "hová": "where to",
+    "magyar": "Hungarian", "amerikai": "American", "amerikaiak": "Americans: amerikai + linking a + plural -k", "magyarul": "in Hungarian", "angolul": "in English", "még": "still, yet", "éves": "… years old",
+    "anya": "mother", "apa": "father", "testvér": "brother or sister", "nagyapa": "grandfather", "nagymama": "grandmother", "dédnagyapa": "great-grandfather", "nevem": "my name (név → nevem)", "neve": "his/her name",
+    "kettő": "2 (két before a noun)", "két": "2 (before a noun)", "három": "3", "négy": "4", "öt": "5", "hat": "6", "hét": "7; also “week”", "nyolc": "8", "kilenc": "9", "tíz": "10", "húsz": "20", "harminc": "30", "negyven": "40", "ötven": "50", "hatvan": "60", "hetven": "70", "nyolcvan": "80", "kilencven": "90", "száz": "100"
+  }
+};
+function commonWord(word, lang) {
+  const w = String(word || "").toLowerCase().replace(/[.,!?]/g, "").trim();
+  const hit = (COMMON_WORDS[lang] || {})[w]; if (hit) return hit;
+  if (lang === "de") { const m = /^(ein|zwei|drei|vier|fünf|sechs|sieben|acht|neun)und(zwanzig|dreißig|vierzig|fünfzig|sechzig|siebzig|achtzig|neunzig)$/.exec(w); if (m) { const u = ["ein", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun"].indexOf(m[1]) + 1, t = ["zwanzig", "dreißig", "vierzig", "fünfzig", "sechzig", "siebzig", "achtzig", "neunzig"].indexOf(m[2]) + 2; return String(10 * t + u) + ": " + m[1] + "-und-" + m[2] + ", “" + m[1] + " and " + m[2] + "” — German says the units first"; } }
+  return "";
+}
+function dictLink(word, lang) {
+  return lang === "de" ? '<a href="https://www.dict.cc/?s=' + encodeURIComponent(word) + '" target="_blank" rel="noopener">dict.cc</a>' : '<a href="https://en.wiktionary.org/wiki/' + encodeURIComponent(String(word).toLowerCase()) + '#Hungarian" target="_blank" rel="noopener">Wiktionary</a>';
+}
+function exLang() { return DX.exLang || S.settings.deconExLang || S.settings.todayLang || "de"; }
 function renderDeconExamples() {
-  const q = ($("decon-filter").value || "").toLowerCase();
-  const ex = deconExamples().filter(e => !q || (e.word + " " + (e.gloss || "") + " " + listify(e.tags).join(" ")).toLowerCase().includes(q));
-  $("decon-examples").innerHTML = ex.map(e => '<button type="button" class="chip" data-ex="' + esc(e.id) + '"><span class="lang">' + esc(e.lang) + "</span>" + esc(e.word) + "</button>").join("") || '<span class="empty">No examples match.</span>';
-  $("decon-examples").querySelectorAll("[data-ex]").forEach(b => b.addEventListener("click", () => { const e = byId(b.getAttribute("data-ex")); if (!e) return; $("decon-input").value = e.word; setDeconLang(e.lang); parseDecon(e.word, e.lang); }));
+  const q = ($("decon-filter").value || "").toLowerCase(); const lang = exLang();
+  setSeg("#view-decon", "data-exlang", lang);
+  const ex = deconExamples(lang).filter(e => !q || (e.word + " " + (e.gloss || "") + " " + listify(e.tags).join(" ")).toLowerCase().includes(q));
+  // Examples whose topic is already in the learner's drills come first; the rest wait under "later".
+  const st = Math.max(1, planInfo(lang).stage);
+  const fams = new Set(drills(lang).filter(d => (d.stage || 9) <= st).map(d => d.family));
+  const allFams = new Set(drills(lang).map(d => d.family));
+  const fits = e => { const t = listify(e.tags).filter(x => allFams.has(x)); return t.length > 0 && t.every(x => fams.has(x)); };
+  const now = ex.filter(fits), later = ex.filter(e => !fits(e));
+  const chip = e => '<button type="button" class="chip" data-ex="' + esc(e.id) + '" lang="' + esc(e.lang) + '">' + esc(e.word) + (e.gloss ? ' <span class="muted small">' + esc(e.gloss) + "</span>" : "") + "</button>";
+  $("decon-examples").innerHTML = (now.length ? '<span class="muted small">For your current stage</span><div class="chips">' + now.map(chip).join("") + "</div>" : '<span class="muted small">No examples for your stage yet; these come later.</span>') +
+    (later.length ? '<details' + (now.length ? "" : " open") + '><summary class="muted small" style="cursor:pointer">Later stages (' + later.length + ")</summary><div class=\"chips\" style=\"margin-top:6px\">" + later.map(chip).join("") + "</div></details>" : "") +
+    (!ex.length ? '<span class="empty">No examples match.</span>' : "");
+  $("decon-examples").querySelectorAll("[data-ex]").forEach(b => b.addEventListener("click", () => { const e = byId(b.getAttribute("data-ex")); if (!e) return; $("decon-input").value = e.word; setDeconLang("auto"); parseDecon(e.word, e.lang); try { $("decon-results").scrollIntoView({ block: "start", behavior: "smooth" }); } catch (err) { /* ignore */ } }));
   setSeg("#view-decon", "data-xlang", DX.override);
+  const gl = $("decon-glossary"); if (gl && !gl.innerHTML) gl.innerHTML = '<dl class="gloss-list">' + DECON_GLOSSARY.map(g => "<dt>" + esc(g[0]) + "</dt><dd>" + esc(g[1]) + "</dd>").join("") + "</dl>";
 }
 function engineParse(word, lang) {
   if (!E) return { analyses: [], engineMissing: true };
@@ -1542,19 +1823,37 @@ function parseDecon(raw, forcedLang) {
   let lang = forcedLang || resolveLang(word);
   if (!forcedLang && DX.override === "auto") {
     const other = lang === "de" ? "hu" : "de";
-    try { if (!engineParse(word, lang).analyses.length && engineParse(word, other).analyses.length) lang = other; } catch (e) { /* keep detected */ }
+    try {
+      if (!commonWord(word, lang) && commonWord(word, other)) lang = other; // an everyday word beats a guessed suffix split (zwanzig is not zwanz + -ig)
+      else if (!engineParse(word, lang).analyses.length && !commonWord(word, lang) && engineParse(word, other).analyses.length) lang = other;
+    } catch (e) { /* keep detected */ }
   }
   DX.lang = lang; S.settings.deconLang = lang; save.settings();
   $("decon-detected").textContent = (DX.override === "auto" ? "detected " : "") + LANG_NAME[lang];
   const example = deconExamples(lang).find(e => e.word.toLowerCase() === word.toLowerCase());
   const r = engineParse(word, lang);
   let html = "";
+  const pn = lang === "de" && PHRASE_NOTES[word.toLowerCase().replace(/[!.]/g, "")];
+  if (pn) {
+    html += '<div class="banner ok">' + esc(pn) + "</div>";
+    // A greeting is an object (accusative); drop the other grammatically possible readings so the screen doesn't contradict the note.
+    const acc = r.analyses.filter(a => /accusative/.test(JSON.stringify(a.tokens || a.morphemes || "") + " " + (a.explain || "")));
+    if (acc.length) r.analyses = acc;
+  }
+  const cw = word.indexOf(" ") < 0 ? commonWord(word, lang) : "";
+  if (cw) html += '<div class="analysis"><h3>Everyday word <span class="tag">' + esc(LANG_NAME[lang]) + '</span></h3><p class="cw"><b class="mono" lang="' + lang + '">' + esc(word) + "</b> — " + esc(cw) + '</p><p class="note">More examples: ' + dictLink(word, lang) + ".</p></div>";
+  if (!r.analyses.length && !example && word.indexOf(" ") >= 0) {
+    const ws = wordsOf(word);
+    out.innerHTML = '<div class="analysis"><h3>That looks like a sentence</h3><p class="note">This tool reads one word at a time, or article + adjective + noun (der neue Chef). For a whole sentence, use the drill’s explanation or ask Claude (paste the sentence and ask what each word does).</p><span class="muted small">Tap one word to look at it:</span><div class="chips">' + ws.map(w => '<button type="button" class="chip" data-one="' + esc(w) + '">' + esc(w) + "</button>").join("") + "</div></div>";
+    out.querySelectorAll("[data-one]").forEach(b => b.addEventListener("click", () => { $("decon-input").value = b.getAttribute("data-one"); parseDecon(b.getAttribute("data-one"), forcedLang || null); }));
+    return;
+  }
   if (r.analyses.length) {
     html += r.analyses.map((a, i) => renderAnalysis(a, i + 1, r.analyses.length, word, lang)).join("");
   } else if (example) {
     const a = { lang: lang, word: example.word, kind: example.tokens ? "np" : "noun", morphemes: example.morphemes, tokens: example.tokens, explain: example.explain, confidence: 1 };
     html += renderAnalysis(a, 1, 1, word, lang, "from the preloaded example" + (E ? " (engine returned no analysis)" : ""));
-  } else {
+  } else if (!cw) {
     html += renderUnknown(word, lang, r);
   }
   out.innerHTML = html;
@@ -1563,7 +1862,7 @@ function parseDecon(raw, forcedLang) {
 function renderMorphs(ms, unknown) {
   const list = ms || [];
   const isUnk = m => unknown && /unknown/i.test(m.label || m.role);
-  return '<div class="morph-wrap"><div class="morphs">' + list.map(m => '<div class="morph' + (isUnk(m) ? " unknown" : "") + '" data-role="' + esc(m.role) + '"><span class="f">' + esc(m.form) + '</span><span class="r">' + esc(m.role) + "</span></div>").join("") + "</div>" +
+  return '<div class="morph-wrap"><div class="morphs">' + list.map(m => '<div class="morph' + (isUnk(m) ? " unknown" : "") + '" data-role="' + esc(m.role) + '"><span class="f">' + esc(m.form) + '</span><span class="r">' + esc(roleName(m.role)) + "</span></div>").join("") + "</div>" +
     '<ol class="morph-labels">' + list.map(m => '<li' + (isUnk(m) ? ' class="unknown"' : "") + '><b class="mono">' + esc(m.form) + "</b> <span>" + esc(m.label) + "</span></li>").join("") + "</ol></div>";
 }
 function renderAnalysis(a, i, total, word, lang, note) {
@@ -1571,23 +1870,26 @@ function renderAnalysis(a, i, total, word, lang, note) {
   if (a.tokens) body = '<div class="toks">' + a.tokens.map(t => '<div class="tok">' + renderMorphs(t.morphemes, false) + "</div>").join("") + "</div>";
   else body = renderMorphs(a.morphemes, a.unknown);
   const conf = a.confidence != null && a.confidence < 1 ? '<span class="badge warn">heuristic</span>' : "";
-  return '<div class="analysis"><h3>' + (total > 1 ? "Analysis " + i + " of " + total : "Analysis") + ' <span class="tag">' + esc(a.kind || "") + "</span>" + conf + (note ? '<span class="muted small">' + esc(note) + "</span>" : "") + "</h3>" + body +
+  let kindLabel = KIND_NAME[a.kind] || a.kind || "";
+  if (a.kind === "np" && a.tokens) { const roles = a.tokens.map(t => (t.morphemes || []).map(m => m.role)).flat(); kindLabel = [roles.includes("det") && "article", roles.includes("adj-stem") && "adjective", "noun"].filter(Boolean).join(" + "); }
+  return '<div class="analysis"><h3>' + (total > 1 ? "Reading " + i + " of " + total : "Reading") + ' <span class="tag">' + esc(kindLabel) + "</span>" + conf + (note ? '<span class="muted small">' + esc(note) + "</span>" : "") + "</h3>" + body +
     '<p class="note">' + esc(a.explain || "") + "</p>" +
     '<div class="row"><button type="button" class="btn sm" data-todrill="' + i + '">Turn into drill</button></div></div>';
 }
 function renderUnknown(word, lang, r) {
   const g = engineGuess(word, lang);
-  let html = '<div class="analysis"><h3>Not in lexicon <span class="tag">' + esc(lang) + "</span></h3>";
+  let html = '<div class="analysis"><h3>Not in the app’s dictionary yet <span class="tag">' + esc(LANG_NAME[lang]) + "</span></h3>";
   if (r.engineMissing) html += '<p class="note">The analysis engine is not loaded in this build; parsing uses the preloaded examples only.</p>';
   if (r.error) html += '<p class="note">Engine error: ' + esc(r.error) + "</p>";
-  if (g && (g.morphemes || g.tokens)) {
-    html += g.tokens ? '<div class="toks">' + g.tokens.map(t => '<div class="tok">' + renderMorphs(t.morphemes, true) + "</div>").join("") + "</div>" : renderMorphs(g.morphemes, true);
-    html += '<p class="note">' + esc(g.explain || "") + "</p>";
-  } else {
-    html += '<p class="note">No suffix could be peeled. Add the stem below so the word parses.</p>';
+  html += '<p class="note">Look it up in ' + dictLink(word, lang) + ".</p>";
+  if (lang === "hu" && g && (g.morphemes || g.tokens)) {
+    html += '<details class="guess"><summary class="muted small" style="cursor:pointer">The app’s guess at noun endings (often wrong for verbs: lakom = I live, vagyok = I am)</summary>' + (g.tokens ? '<div class="toks">' + g.tokens.map(t => '<div class="tok">' + renderMorphs(t.morphemes, true) + "</div>").join("") + "</div>" : renderMorphs(g.morphemes, true));
+    html += '<p class="note">' + esc(g.explain || "") + "</p></details>";
+  } else if (lang === "hu") {
+    html += '<p class="note">The app doesn’t know this word yet and couldn’t find an ending it recognises. Check the spelling, or add the word below.</p>';
   }
-  const stemGuess = g && g.morphemes ? (g.morphemes.find(m => /stem|noun|unknown/i.test(m.role + " " + m.label)) || g.morphemes[0]).form : word.split(" ").pop();
-  html += '<details open><summary class="muted small" style="cursor:pointer">Add the stem to the lexicon</summary>' + lexiconForm(lang, stemGuess) + "</details>";
+  const stemGuess = lang === "hu" && g && g.morphemes ? (g.morphemes.find(m => /stem|noun|unknown/i.test(m.role + " " + m.label)) || g.morphemes[0]).form : word.split(" ").pop();
+  html += '<details><summary class="muted small" style="cursor:pointer">Add this word to the app’s dictionary</summary>' + lexiconForm(lang, stemGuess) + "</details>";
   html += '<div class="row"><button type="button" class="btn sm" data-todrill="unknown">Turn into drill</button></div></div>';
   return html;
 }
@@ -1694,7 +1996,7 @@ function doBuildHu() {
   let r; try { r = E.hu.build(entry, opts); } catch (e) { r = { error: String(e && e.message || e) }; }
   if (!r || r.error) { out.innerHTML = '<div class="banner bad">' + esc(r ? r.error : "Build failed") + "</div>"; return; }
   out.innerHTML = '<div class="built">' + esc(r.word) + "</div>" + renderMorphs(r.morphemes) + '<p class="note">' + esc(r.explain || "") + '</p><div class="row"><button type="button" class="btn sm" id="built-parse">Parse this</button></div>';
-  on("built-parse", "click", () => { $("decon-input").value = r.word; setDeconLang("hu"); parseDecon(r.word, "hu"); });
+  on("built-parse", "click", () => { $("decon-input").value = r.word; setDeconLang("auto"); parseDecon(r.word, "hu"); });
 }
 function doBuildDe() {
   const noun = byId($("de-noun").value); const out = $("build-out"); out.hidden = false;
@@ -1704,7 +2006,7 @@ function doBuildDe() {
   let r; try { r = E.de.build({ noun: noun, det: $("de-det").value, case: $("de-case").value, number: $("de-number").value, adjective: adj || undefined }); } catch (e) { r = { error: String(e && e.message || e) }; }
   if (!r || r.error) { out.innerHTML = '<div class="banner bad">' + esc(r ? r.error : "Build failed") + "</div>"; return; }
   out.innerHTML = '<div class="built">' + esc(r.word) + '</div><div class="morphs">' + (r.tokens || []).map(t => '<div class="tok">' + (t.morphemes || []).map(m => '<div class="morph"><span class="f">' + esc(m.form) + '</span><span class="r">' + esc(m.role) + '</span><span class="l">' + esc(m.label) + "</span></div>").join("") + "</div>").join("") + '</div><p class="note">' + esc(r.explain || "") + '</p><div class="row"><button type="button" class="btn sm" id="built-parse">Parse this</button></div>';
-  on("built-parse", "click", () => { $("decon-input").value = r.word; setDeconLang("de"); parseDecon(r.word, "de"); });
+  on("built-parse", "click", () => { $("decon-input").value = r.word; setDeconLang("auto"); parseDecon(r.word, "de"); });
 }
 
 /* ============================================================
@@ -1741,6 +2043,7 @@ function renderLegend() {
   const l = legendFor(LG.lang);
   $("legend-name").value = l.name || ""; $("legend-age").value = l.age || ""; $("legend-town").value = l.town || ""; $("legend-job").value = l.job || "";
   renderFacts(l); renderFrames();
+  document.querySelectorAll(".legend-lang-name").forEach(x => { x.textContent = LANG_NAME[LG.lang]; });
   const scns = S.scenarios.filter(s => s.lang === LG.lang);
   $("scenario-list").innerHTML = scns.map(s => {
     const qs = listify(s.seedQuestions);
@@ -1758,12 +2061,20 @@ function renderFrames() {
   box.innerHTML = frames.map(f => '<div class="item"><div class="col"><span class="mono" lang="' + esc(f.lang) + '">' + esc(f.text) + '</span><span class="meta">' + esc(f.gloss || "") + (f.note ? " · " + esc(f.note) : "") + '</span></div><button type="button" class="btn sm" data-frame="' + esc(f.id) + '">Use</button></div>').join("") || '<p class="empty">No starter sentences for this language yet.</p>';
   box.querySelectorAll("[data-frame]").forEach(b => b.addEventListener("click", () => {
     const f = frames.find(x => x.id === b.getAttribute("data-frame")); if (!f) return;
-    const l = readLegendForm(); l.facts = l.facts || []; l.facts.push({ text: f.gloss || "", anchor: "", sentence: f.text }); save.legends(); renderFacts(l); toast("Added. Replace the ___ with your own detail.");
+    const l = readLegendForm(); l.facts = l.facts || []; l.facts.push({ text: f.gloss || "", anchor: "", sentence: f.text }); save.legends(); renderFacts(l);
+    const inp = $("legend-facts").querySelector('[data-fact="' + (l.facts.length - 1) + '"][data-k="sentence"]');
+    if (inp) { try { inp.scrollIntoView({ block: "center", behavior: "smooth" }); } catch (e) { /* ignore */ } setTimeout(() => { try { inp.focus({ preventScroll: true }); const k = inp.value.indexOf("___"); if (k >= 0) inp.setSelectionRange(k, k + 3); } catch (e) { /* ignore */ } }, 300); }
+    toast("Added under Facts. Replace the ___ with your own detail, then Save legend.");
   }));
 }
 function renderFacts(l) {
   const box = $("legend-facts");
-  box.innerHTML = (l.facts || []).map((f, i) => '<div class="item"><input type="text" aria-label="Fact" placeholder="fact" value="' + esc(f.text) + '" data-fact="' + i + '" data-k="text" style="flex:2 1 160px"><input type="text" aria-label="Anchor" placeholder="anchor (what makes it real)" value="' + esc(f.anchor) + '" data-fact="' + i + '" data-k="anchor" style="flex:2 1 160px"><input type="text" aria-label="Sentence in the target language" placeholder="sentence in ' + LANG_NAME[l.lang] + '" value="' + esc(f.sentence) + '" data-fact="' + i + '" data-k="sentence" style="flex:3 1 200px"><button type="button" class="btn sm" data-fact-del="' + i + '">Remove</button></div>').join("") || '<p class="empty">No facts yet. Add the ones an interrogator would probe first.</p>';
+  const ln = LANG_NAME[l.lang || LG.lang];
+  box.innerHTML = (l.facts || []).map((f, i) => '<div class="fact-row">' +
+    '<div class="field"><label for="fact-' + i + '-text">Fact (in English)</label><input type="text" id="fact-' + i + '-text" placeholder="e.g. I work at a garage" value="' + esc(f.text) + '" data-fact="' + i + '" data-k="text"></div>' +
+    '<div class="field"><label for="fact-' + i + '-sentence">In ' + ln + '</label><input type="text" id="fact-' + i + '-sentence" lang="' + esc(l.lang || LG.lang) + '" placeholder="the same fact in ' + ln + '" value="' + esc(f.sentence) + '" data-fact="' + i + '" data-k="sentence"></div>' +
+    '<div class="field"><label for="fact-' + i + '-anchor">A detail you can talk about</label><input type="text" id="fact-' + i + '-anchor" placeholder="e.g. the name of the garage, your boss, the hours" value="' + esc(f.anchor) + '" data-fact="' + i + '" data-k="anchor"></div>' +
+    '<div class="row"><button type="button" class="btn sm" data-fact-del="' + i + '">Remove</button></div></div>').join("") || '<p class="empty">No facts yet. Start with the starter sentences below: the questions you will be asked first.</p>';
   box.querySelectorAll("[data-fact-del]").forEach(b => b.addEventListener("click", () => { readLegendForm(); l.facts.splice(Number(b.getAttribute("data-fact-del")), 1); save.legends(); renderFacts(l); }));
 }
 function readLegendForm() {
@@ -1921,6 +2232,7 @@ function renderMission() {
   $("today-date").textContent = now.toLocaleDateString(undefined, { weekday: "long", year: "numeric", month: "short", day: "numeric" });
   $("hdr-date").textContent = todayISO(now);
   $("slot-de").textContent = S.settings.slots.de; $("slot-hu").textContent = S.settings.slots.hu;
+  ["de", "hu"].forEach(l => { const pi = planInfo(l); $("slot-" + l + "-label").textContent = LANG_NAME[l] + (pi.started ? " study time" : " (from " + niceDate(pi.start) + ")"); });
   setSeg("#plan-seg", "data-plan", S.settings.planLength); $("plan-length").value = S.settings.planLength;
   setSeg("#view-mission", "data-tlang", S.settings.todayLang); $("today-lang").value = S.settings.todayLang;
   renderToday(); renderWelcome();
@@ -1928,6 +2240,7 @@ function renderMission() {
 }
 function renderWelcome() {
   $("welcome").hidden = !!S.settings.welcomeSeen;
+  { const b = currentBlocks()[0]; $("welcome-start").textContent = b ? "Start the first block (" + (b[0] === "Phonology" ? "Sounds" : b[0]) + ")" : "Show today’s plan"; }
   const cu = $("content-update");
   if (S.contentUpdate && (S.contentUpdate.added || S.contentUpdate.refreshed)) {
     cu.hidden = false; cu.textContent = "Built-in content updated: " + S.contentUpdate.added + " new items, " + S.contentUpdate.refreshed + " corrected. Your own items and edits were kept.";
@@ -1943,9 +2256,9 @@ function renderToday() {
     h += '<p class="today-line"><span class="lang" data-lang="' + lang + '">' + lang + '</span> <b>' + LANG_NAME[lang] + " · week " + info.week + ", day " + info.day + "</b> <span class=\"muted\">stage " + info.stage + " (" + (STAGE_RANGE[lang][info.stage] || "") + ")</span></p>";
     if (f) h += '<h3 class="today-title">' + esc(f.title) + '</h3><ul class="today-steps">' + f.steps.map(x => "<li>" + esc(x) + "</li>").join("") + "</ul>";
     const core = resourcesFor(lang, info.stage, { core: true });
-    if (core.length) h += '<div class="today-res"><span class="muted small">Open this week:</span><div class="chips">' + core.map(resLink).join("") + "</div></div>";
+    if (core.length) h += '<div class="today-res"><span class="muted small">Outside the app this stage (Manual tab → Resources explains each):</span><div class="chips">' + core.map((r, i) => resLink(r, i === 0)).join("") + "</div></div>";
   }
-  h += '<p class="note today-other">' + LANG_NAME[other] + ": " + (oi.started ? "week " + oi.week + (other === "hu" && oi.stage === 0 ? " (sounds only)" : "") : "starts " + esc(oi.start)) + ". " + (other === "hu" ? "Hungarian start date is in Settings." : "") + "</p>";
+  h += '<p class="note today-other">' + LANG_NAME[other] + ": " + (oi.started ? "week " + oi.week + (other === "hu" && oi.stage === 0 ? " (sounds only)" : "") : "starts " + esc(niceDate(oi.start)) + " (in " + oi.startsIn + " day" + (oi.startsIn === 1 ? "" : "s") + ")") + "." + (other === "hu" && !oi.started ? " Move the date in Settings if the consulate needs longer." : "") + "</p>";
   $("today-plan").innerHTML = h;
 }
 function daysUntil(iso) { if (!iso) return null; const d = new Date(iso + "T00:00:00").getTime(); return Math.ceil((d - Date.now()) / DAY); }
@@ -1970,18 +2283,23 @@ function currentBlocks() {
   if (lang === "hu" && info.stage === 0) return [["Phonology", 15], ["Input", 10]];
   return PLAN_BLOCKS[S.settings.planLength] || PLAN_BLOCKS[45];
 }
+// Which blocks are done today (kept across reloads, reset each day).
+function doneKey(i) { const b = currentBlocks()[i]; return S.settings.todayLang + ":" + (b ? b[0] : i); }
+function isBlockDone(i) { const bd = S.settings.blocksDone || {}; return bd.date === todayISO() && listify(bd.keys).includes(doneKey(i)); }
+function markBlockDone(i) { let bd = S.settings.blocksDone; if (!bd || bd.date !== todayISO()) bd = S.settings.blocksDone = { date: todayISO(), keys: [] }; if (!bd.keys.includes(doneKey(i))) bd.keys.push(doneKey(i)); save.settings(); }
 function blockTimerKey(i) { return S.settings.todayLang + ":" + S.settings.planLength + ":" + (planInfo(S.settings.todayLang).stage) + ":" + i; }
 function renderBlocks() {
   const blocks = currentBlocks();
   const list = $("block-list");
   const pinfo = planInfo(S.settings.todayLang);
-  if (!pinfo.started) { list.innerHTML = '<p class="empty">' + LANG_NAME[S.settings.todayLang] + " starts on " + esc(pinfo.start) + " (in " + pinfo.startsIn + " day" + (pinfo.startsIn === 1 ? "" : "s") + "). Change the start date in Settings once the consulate confirms you're eligible.</p>"; return; }
+  if (!pinfo.started) { list.innerHTML = '<p class="empty">' + LANG_NAME[S.settings.todayLang] + " starts on " + esc(niceDate(pinfo.start)) + " (in " + pinfo.startsIn + " day" + (pinfo.startsIn === 1 ? "" : "s") + "). Until then, switch the blocks to German above. You can change the start date in Settings.</p>"; return; }
   list.innerHTML = blocks.map((b, i) => {
     const t = S.blockTimers[blockTimerKey(i)];
     const left = t ? Math.max(0, t.endAt - Date.now()) : b[1] * 60000;
-    return '<div class="block' + (t && t.done ? " done" : "") + '" id="block-' + i + '" data-lang="' + esc(S.settings.todayLang) + '"><div class="col"><strong>' + esc(b[0] === "Phonology" ? "Sounds" : b[0]) + '</strong><span class="muted small">' + b[1] + " min · " + blockHint(b[0]) + ' · <button type="button" class="manual-link" data-block-manual="' + i + '">Manual</button></span></div><div class="bt num' + (t && t.done ? " over" : "") + '" id="block-clock-' + i + '">' + fmtClock(left) + "</div>" +
-      '<div class="ctl"><button type="button" class="btn sm primary" data-block-start="' + i + '">Start</button>' + (t ? '<button type="button" class="btn sm" data-block-stop="' + i + '">' + (t.running ? "Pause" : "Resume") + '</button><button type="button" class="btn sm" data-block-reset="' + i + '">Reset</button>' : "") + "</div>" +
-      (t && t.done ? '<div class="logline"><input type="text" id="block-log-' + i + '" placeholder="Log line: what did you do? One sentence." aria-label="Log line"><button type="button" class="btn sm" data-block-log="' + i + '">Log</button></div>' : "") + "</div>";
+    const doneToday = isBlockDone(i);
+    return '<div class="block' + (t && t.done ? " done" : "") + (doneToday && !t ? " done-today" : "") + '" id="block-' + i + '" data-lang="' + esc(S.settings.todayLang) + '"><div class="col"><strong>' + esc(b[0] === "Phonology" ? "Sounds" : b[0]) + (doneToday ? ' <span class="badge ok">✓ done today</span>' : "") + '</strong><span class="muted small">' + b[1] + " min · " + blockHint(b[0]) + ' · <button type="button" class="manual-link" data-block-manual="' + i + '">Manual</button></span></div><div class="bt num' + (t && t.done ? " over" : "") + '" id="block-clock-' + i + '">' + fmtClock(left) + "</div>" +
+      '<div class="ctl"><button type="button" class="btn sm' + (doneToday && !t ? "" : " primary") + '" data-block-start="' + i + '">' + (t && !t.done && !t.running ? "Resume" : t && t.running ? "Open" : doneToday ? "Again" : "Start") + "</button>" + (t ? (t.done ? "" : '<button type="button" class="btn sm" data-block-stop="' + i + '">' + (t.running ? "Pause" : "Resume") + "</button>") + '<button type="button" class="btn sm" data-block-reset="' + i + '">Reset</button>' : "") + "</div>" +
+      (t && t.done ? '<div class="logline"><input type="text" id="block-log-' + i + '" placeholder="Optional: one line on what you did" aria-label="Log line"><button type="button" class="btn sm" data-block-log="' + i + '">Log it</button></div>' : "") + "</div>";
   }).join("");
   list.querySelectorAll("[data-block-start]").forEach(b => b.addEventListener("click", () => startBlock(Number(b.getAttribute("data-block-start")))));
   list.querySelectorAll("[data-block-manual]").forEach(b => b.addEventListener("click", () => { const blk = blocks[Number(b.getAttribute("data-block-manual"))]; const ref = BLOCK_MANUAL[blk[0]] || ["d1", null]; openManual(ref[0], ref[1], ""); }));
@@ -1990,27 +2308,31 @@ function renderBlocks() {
   list.querySelectorAll("[data-block-log]").forEach(b => b.addEventListener("click", () => {
     const i = Number(b.getAttribute("data-block-log")); const txt = $("block-log-" + i).value.trim(); const blk = blocks[i];
     S.sessions.push({ id: uid("ses"), date: Date.now(), lang: S.settings.todayLang, module: blk[0].toLowerCase().split(" ")[0], cues: 0, correctInTime: 0, correctLate: 0, wrong: 0, maxStreak: 0, durationSec: blk[1] * 60, byFamily: {}, note: txt });
-    save.sessions(); delete S.blockTimers[blockTimerKey(i)]; renderMission(); toast("Logged");
+    save.sessions(); markBlockDone(i); delete S.blockTimers[blockTimerKey(i)]; renderMission(); toast("Logged");
   }));
 }
 function blockHint(name) {
   const lang = S.settings.todayLang, st = planInfo(lang).stage;
-  const inputRes = resourcesFor(lang, st, { protocol: "P-4", core: true })[0] || resourcesFor(lang, st, { protocol: "P-4" })[0];
+  const inputRes = resourcesFor(lang, st, { block: "Input", kinds: MEDIA_KINDS })[0];
   const early = st <= 2;
   return {
     "Phonology": "tap-to-hear sound pairs",
-    "Drills": st <= 1 ? "beginner drills for your stage" : "Drill Engine, all your topics",
+    "Drills": st <= 1 ? "beginner drills: learn, then answer" : "Drill Engine, all your topics",
     "Input": inputRes ? inputRes.name : "listen or read, note new words",
-    "Gisting": early ? "watch one video twice, note who/what/where" : "Wiretap",
-    "Shadowing / Legend": early ? "copy a speaker, then say your legend" : "legend cross-examination",
-    "Review": "words that are due + recent misses",
+    "Gisting": early ? "a new video: who, what, where" : "Wiretap",
+    "Shadowing / Legend": early ? "copy a speaker, then say your story" : "your story under questioning",
+    "Review": "cards that are due + recent misses",
     "Writing": "one paragraph, then correct it"
   }[name] || "";
 }
 function startBlock(i) {
   const blocks = currentBlocks(); const b = blocks[i]; const lang = S.settings.todayLang; const stage = planInfo(lang).stage;
   const key = blockTimerKey(i);
-  if (!S.blockTimers[key]) S.blockTimers[key] = { endAt: Date.now() + b[1] * 60000, running: true, done: false, remainingAtPause: 0 };
+  // One block at a time: starting this one pauses any other running block timer.
+  Object.keys(S.blockTimers).forEach(k => { const o = S.blockTimers[k]; if (k !== key && o.running && !o.done) { o.remainingAtPause = Math.max(0, o.endAt - Date.now()); o.running = false; } });
+  const ex = S.blockTimers[key];
+  if (!ex || ex.done) S.blockTimers[key] = { endAt: Date.now() + b[1] * 60000, running: true, done: false, remainingAtPause: 0 };
+  else if (!ex.running) { ex.endAt = Date.now() + ex.remainingAtPause; ex.running = true; }
   ensureBlockTicker();
   const name = b[0];
   if (name === "Drills") { DS.lang = lang; DS.source = "due"; DS.familiesTouched = false; show("drill"); return; }
@@ -2018,13 +2340,17 @@ function startBlock(i) {
   if (name === "Phonology") {
     const phon = drills(lang).filter(d => listify(d.tags).includes("phonology"));
     if (phon.length) { DS.lang = lang; DS.source = "families"; DS.families = new Set(phon.map(d => d.family)); show("drill"); return; }
-    openTimerCard(i, "Sounds — " + LANG_NAME[lang] + " (P-11)", phonologyHtml(lang));
+    openTimerCard(i, "Sounds — " + LANG_NAME[lang], phonologyHtml(lang));
     wirePhonology($("timer-card-body"), lang);
     return;
   }
   if (name === "Input") {
-    const inRes = resourcesFor(lang, stage, { protocol: "P-4" });
-    openTimerCard(i, "Input (P-4)", '<p class="note">' + (inRes.length ? "Use one of these today. Repeat lines out loud; write down 5–10 new words with der/die/das (German) or in a full sentence (Hungarian)." : "Open your input source (podcast, series, article).") + ' When the timer ends, log it.</p>' + (inRes.length ? '<div class="chips">' + inRes.map(resLink).join("") + "</div>" : "") + '<div class="grid3"><div class="field"><label for="input-source">Source</label><input type="text" id="input-source"></div><div class="field"><label for="input-minutes">Minutes</label><input type="number" id="input-minutes" value="' + b[1] + '" min="1"></div><div class="field"><label for="input-chunks">New chunks</label><input type="number" id="input-chunks" value="0" min="0"></div></div><div class="row"><button type="button" class="btn primary" id="input-log">Save input log</button></div>');
+    const media = resourcesFor(lang, stage, { block: "Input", kinds: MEDIA_KINDS }).filter(r => r.priority === "core").slice(0, 3);
+    const dict = resourcesFor(lang, stage, { block: "Input", kinds: ["dictionary"] })[0];
+    const steps = media.map((r, k) => '<li><b>' + (k === 0 ? "First: " : "If time is left: ") + '<a href="' + esc(r.url) + '" target="_blank" rel="noopener">' + esc(r.name) + "</a></b> — " + esc(resUse(r, stage)) + "</li>").join("");
+    openTimerCard(i, "Input — " + LANG_NAME[lang], (steps ? '<ol class="phon-steps">' + steps + "</ol>" : '<p class="note">Open your listening or reading source.</p>') +
+      '<p class="note">Write down 5–10 new words: ' + (lang === "de" ? "every noun with der/die/das and its plural (der Tisch, die Tische)" : "each noun with one ending you know (ház, házban)") + (dict ? ". Look them up in " + '<a href="' + esc(dict.url) + '" target="_blank" rel="noopener">' + esc(dict.name) + "</a>" : "") + '. When the timer ends, save the log.</p>' +
+      '<div class="grid3"><div class="field"><label for="input-source">What you used</label><input type="text" id="input-source" value="' + esc(media[0] ? media[0].name : "") + '"></div><div class="field"><label for="input-minutes">Minutes</label><input type="number" id="input-minutes" value="' + b[1] + '" min="1"></div><div class="field"><label for="input-chunks">New words written down</label><input type="number" id="input-chunks" value="0" min="0"></div></div><div class="row"><button type="button" class="btn primary" id="input-log">Save input log</button></div>');
     on("input-log", "click", () => {
       S.sessions.push({ id: uid("ses"), date: Date.now(), lang: lang, module: "input", cues: Number($("input-chunks").value) || 0, correctInTime: 0, correctLate: 0, wrong: 0, maxStreak: 0, durationSec: (Number($("input-minutes").value) || 0) * 60, byFamily: {}, source: $("input-source").value.trim(), newChunks: Number($("input-chunks").value) || 0 });
       save.sessions(); delete S.blockTimers[key]; $("timer-card").hidden = true; renderMission(); toast("Input logged");
@@ -2033,18 +2359,20 @@ function startBlock(i) {
   }
   if (name === "Gisting") {
     if (stage <= 2) {
-      const gr = resourcesFor(lang, stage, { protocol: "P-2" }).concat(resourcesFor(lang, stage, { protocol: "P-4", core: true }));
-      openTimerCard(i, "Gisting (P-2)", '<ol class="phon-steps"><li>Pick one short video or audio from the list (1–3 minutes).</li><li>First pass, no text: write in English who is talking, what about, and where.</li><li>Second pass with subtitles or transcript: check yourself, then add the when and why.</li><li>Write down 3 words you missed and add them to tomorrow’s input.</li></ol>' + (gr.length ? '<div class="chips">' + gr.slice(0, 4).map(resLink).join("") + "</div>" : ""));
+      const gr = resourcesFor(lang, stage, { block: "Gisting", kinds: ["video", "audio", "reading"] }).slice(0, 3);
+      const first = gr[0];
+      openTimerCard(i, "Gisting — " + LANG_NAME[lang], '<p class="note">Gisting means getting the general idea without the words. You won’t understand the words yet — that is fine. Guess from faces, places, tone and the few words you know.</p><ol class="phon-steps"><li>Pick something you have <b>not</b> watched yet' + (first ? ", for example the next episode of " + '<a href="' + esc(first.url) + '" target="_blank" rel="noopener">' + esc(first.name) + "</a>" : "") + " (1–3 minutes).</li><li>First time, no subtitles: write in English who is talking, about what, and where.</li><li>Second time, with subtitles: check your guesses; add when and why.</li><li>Write down 3 words you heard but didn’t know; look them up tomorrow in Input.</li></ol>" + (gr.length > 1 ? '<div class="chips">' + gr.map(r => resLink(r)).join("") + "</div>" : ""));
       return;
     }
-    show("wiretap"); openTimerCard(i, "Gisting — Wiretap", '<p class="note">Work the intercepts in Wiretap. The timer runs here in Mission Control.</p>'); show("wiretap"); return;
+    openTimerCard(i, "Gisting — Wiretap", '<p class="note">Work the saved texts in Wiretap. The timer keeps running here in Mission Control.</p>'); show("wiretap"); return;
   }
   if (name === "Shadowing / Legend") {
-    const sr = resourcesFor(lang, stage, { protocol: "P-8" });
+    const sr = resourcesFor(lang, stage, { block: "Shadowing / Legend", kinds: ["video", "audio", "course"] }).slice(0, 3);
+    const dlg = resourcesFor(lang, stage).filter(r => r.dialogue)[0];
     const body = stage <= 1
-      ? '<ol class="phon-steps"><li>Shadowing (half the time): play 30 seconds of slow audio, then play it again and speak along half a second behind the speaker, copying the rhythm. Three rounds.</li><li>Legend (other half): open Legend, add starter sentences about yourself, and say each one out loud three times without looking.</li></ol>'
-      : '<p class="note">Shadow one recording for the first half, then drill your legend against a scenario (Legend → Export for chat).</p>';
-    openTimerCard(i, "Shadowing / Legend (P-8, P-6)", body + (sr.length ? '<div class="chips">' + sr.slice(0, 4).map(resLink).join("") + "</div>" : "") + '<div class="row"><button type="button" class="btn" id="goto-legend">Open Legend</button></div>');
+      ? '<ol class="phon-steps"><li><b>Shadowing</b> (half the time): take 30 seconds of a dialogue you already know' + (dlg ? " (from " + esc(dlg.name) + ")" : "") + '. Play it, then play it again and speak along half a second behind the speaker, copying the melody. Three rounds.</li><li><b>Legend</b> (other half): open Legend, add starter sentences about yourself, and say each one out loud three times without looking.</li></ol>'
+      : '<p class="note">Shadow one recording for the first half, then get questioned on your story (Legend → Export for chat, paste it to Claude).</p>';
+    openTimerCard(i, "Shadowing and legend — " + LANG_NAME[lang], body + (sr.length ? '<div class="chips">' + sr.map(r => resLink(r)).join("") + "</div>" : "") + '<div class="row"><button type="button" class="btn" id="goto-legend">Open Legend</button></div>');
     on("goto-legend", "click", () => show("legend")); return;
   }
   if (name === "Writing") { openTimerCard(i, "Writing", '<p class="note">Write one paragraph in ' + LANG_NAME[lang] + ' about today. Then correct it with the Deconstructor and the burn book.</p><textarea id="writing-text" aria-label="Writing" placeholder="Write here"></textarea>'); return; }
@@ -2054,24 +2382,24 @@ function startBlock(i) {
 /* Phonology block (P-11): concrete minimal pairs per language, tap-to-hear, pass tracking per group */
 const PHON = {
   de: {
-    sentence: "Ich komme aus Amerika. Ich lerne Deutsch.",
+    sentence: "Ich komme aus Amerika. Ich lerne Deutsch.", sentenceGloss: "I come from America. I’m learning German.", check: "Is the ch in ich soft (not “ish”)? Does the eu in Deutsch sound like “oy”?",
     groups: [
-      { id: "ue", title: "ü", how: "Say “ee”, then round your lips hard without moving your tongue.", pairs: [["vier", "für"], ["Tier", "Tür"], ["Kissen", "küssen"], ["Mutter", "Mütter"]] },
-      { id: "oe", title: "ö", how: "Say “ay” with no glide, then round your lips.", pairs: [["lesen", "lösen"], ["kennen", "können"], ["helle", "Hölle"]] },
+      { id: "ue", title: "ü", how: "Long ü (für, Tür): say “ee”, then round your lips hard without moving your tongue. Short ü (küssen, Mütter): the i of “bit” with rounded lips.", pairs: [["vier", "für"], ["Tier", "Tür"], ["Kissen", "küssen"], ["Mutter", "Mütter"]] },
+      { id: "oe", title: "ö", how: "Long ö (lösen): say “ay” with no glide, then round your lips. Short ö (können, Hölle): the e of “bet” with rounded lips.", pairs: [["lesen", "lösen"], ["kennen", "können"], ["helle", "Hölle"]] },
       { id: "ich", title: "ich sound", how: "Tongue where the “y” in “yes” is, then just hiss. Not “ish”, not “ick”.", words: ["ich", "nicht", "Milch", "Mädchen"], pairs: [["Kirche", "Kirsche"]] },
       { id: "ach", title: "ach sound", how: "A soft scrape at the back of the throat after a, o, u, au.", words: ["Bach", "Buch", "auch", "Nacht"], pairs: [["Nacht", "nackt"]] },
       { id: "r", title: "r", how: "Start of a word: a light gargle. End of a word: an “uh” sound, no tongue tip.", words: ["rot", "Rede", "Rad", "Bier", "Uhr", "Lehrer"] },
-      { id: "dev", title: "hard endings", how: "b, d, g at the end of a word sound like p, t, k.", pairs: [["Rad", "Rat"], ["Tag", "Tage"], ["Hand", "Hände"]] },
+      { id: "dev", title: "hard endings", how: "b, d, g at the end of a word sound like p, t, k, so Rad (wheel) and Rat (advice) sound exactly the same. Add an ending and the g or d comes back: Tage, Hände.", pairs: [["Rad", "Rat"], ["Tag", "Tage"], ["Hand", "Hände"]] },
       { id: "eiie", title: "ei vs. ie", how: "ei sounds like “eye”, ie like “ee”.", pairs: [["Wein", "Wien"], ["Bein", "Biene"]] },
-      { id: "stress", title: "stress", how: "Separable prefixes are stressed (AUFstehen); inseparable ones are not (verSTEHen).", words: ["aufstehen", "verstehen", "Krankenhaus"] }
+      { id: "stress", title: "stress", how: "Some verb prefixes are stressed (AUFstehen = get up), some never are (verSTEHen = understand). Compound nouns stress the first part (KRANkenhaus = hospital).", words: ["aufstehen", "verstehen", "Krankenhaus"] }
     ]
   },
   hu: {
-    sentence: "Még tanulok magyarul.",
+    sentence: "Még tanulok magyarul.", sentenceGloss: "I’m still learning Hungarian.", check: "Is the stress on the first syllable of each word? Is the é in még long? Is the gy in magyar one soft sound, not d + y?",
     groups: [
-      { id: "a", title: "a vs. á", how: "a is short and rounded (British “hot”); á is long and open (“father”).", pairs: [["kar", "kár"], ["hal", "hál"], ["sok", "sók"]] },
+      { id: "a", title: "a vs. á", how: "a is short and rounded (British “hot”); á is long and open (“father”).", pairs: [["kar", "kár"], ["hal", "hál"], ["hat", "hát"]] },
       { id: "e", title: "e vs. é", how: "e is open (“bet”); é is a long “ay” with no glide.", pairs: [["szel", "szél"], ["kerek", "kerék"]] },
-      { id: "long", title: "long vowels", how: "Same sound, held twice as long. The accent marks length.", pairs: [["irt", "írt"], ["kor", "kór"], ["tör", "tőr"], ["örül", "őrül"], ["hurok", "húrok"]] },
+      { id: "long", title: "long vowels", how: "Same sound, held twice as long. The accent marks length.", pairs: [["irt", "írt"], ["kor", "kór"], ["sok", "sók"], ["tör", "tőr"], ["örül", "őrül"], ["hurok", "húrok"]] },
       { id: "gy", title: "gy, ty, ny", how: "One sound each: tongue blade flat on the roof of the mouth. Not d+y.", words: ["egy", "nagy", "magyar", "kutya", "lány"], pairs: [["hagy", "had"], ["nyár", "jár"]] },
       { id: "r", title: "trilled r", how: "A tongue-tip tap or trill. Never the American r.", words: ["rám", "vár", "kör"] },
       { id: "stress", title: "first-syllable stress", how: "Every word is stressed on its first syllable.", words: ["Budapest", "elnézést", "köszönöm"] },
@@ -2081,7 +2409,8 @@ const PHON = {
   }
 };
 function phonPassed(lang) { const pp = (S.settings.phonPassed = S.settings.phonPassed || { de: [], hu: [] }); pp[lang] = pp[lang] || []; return pp[lang]; }
-function forvoUrl(w, lang) { return "https://forvo.com/word/" + encodeURIComponent(w.toLowerCase()) + "/#" + lang; }
+// Forvo word pages use lower case with underscores for spaces: forvo.com/word/guten_morgen/#de
+function forvoUrl(w, lang) { return "https://forvo.com/word/" + encodeURIComponent(String(w).toLowerCase().replace(/[.,!?;:"„“”‘’]/g, "").trim().replace(/\s+/g, "_")) + "/#" + lang; }
 function phonWord(w, lang, hasVoice) {
   return hasVoice
     ? '<button type="button" class="chip phon-w" data-say="' + esc(w) + '" lang="' + lang + '">' + esc(w) + "</button>"
@@ -2093,8 +2422,8 @@ function phonologyHtml(lang) {
   const today = order.filter(g => !passed.includes(g.id)).slice(0, 2).map(g => g.id);
   let h = '<ol class="phon-steps">' +
     "<li>" + (hasVoice ? "Tap a word to hear it." : "Tap a word to hear native speakers on Forvo (no " + LANG_NAME[lang] + " voice on this device).") + " Say each pair out loud 5 times, slowly, then at normal speed.</li>" +
-    "<li>Work the two groups marked <b>today</b>. When you get a group right 9 times out of 10, tick it as passed.</li>" +
-    "<li>Record yourself saying the sentence at the bottom, compare it with the model, and log the worst sound in the burn book.</li></ol>";
+    "<li>Work the two groups marked <b>today</b>. When your recording sounds like the speaker on 9 tries out of 10, tick the group as passed.</li>" +
+    "<li>At the end, say the sentence at the bottom, record it on your phone, listen back, and log your worst sound in the burn book.</li></ol>";
   h += order.map(g => {
     const isToday = today.includes(g.id), done = passed.includes(g.id);
     const pairs = (g.pairs || []).map(pr => '<span class="phon-pair">' + phonWord(pr[0], lang, hasVoice) + '<span class="muted">–</span>' + phonWord(pr[1], lang, hasVoice) + "</span>").join("");
@@ -2103,27 +2432,37 @@ function phonologyHtml(lang) {
       '<label class="field inline"><input type="checkbox" data-phon-pass="' + esc(g.id) + '"' + (done ? " checked" : "") + '> passed</label></div>' +
       '<p class="note">' + esc(g.how) + '</p><div class="chips">' + words + pairs + "</div></div>";
   }).join("");
-  h += '<div class="phon-group"><strong>Record and compare</strong><p class="note">Record 10 seconds on your phone, then play the model.</p><div class="chips">' + phonWord(P.sentence, lang, hasVoice) + '</div><div class="row"><button type="button" class="btn sm" id="phon-burn">Log a pronunciation fault</button></div></div>';
+  h += '<div class="phon-group"><strong>Say it, record it, listen back</strong><p class="sentence" lang="' + lang + '">' + esc(P.sentence) + '</p><p class="note">' + esc(P.sentenceGloss || "") + '</p><div class="chips">' + (hasVoice ? '<button type="button" class="chip phon-w play" data-say="' + esc(P.sentence) + '" lang="' + lang + '">▶ Play</button>' : "") + wordsOf(P.sentence).map(w => phonWord(w, lang, hasVoice)).join("") + '</div><p class="note">Record it with your phone’s voice recorder and play it back. ' + esc(P.check || "") + '</p><div class="row"><button type="button" class="btn sm" id="phon-burn">Log a pronunciation mistake</button></div></div>';
   return h;
 }
 function wirePhonology(container, lang) {
-  container.querySelectorAll("[data-say]").forEach(b => b.addEventListener("click", () => { if (!speak(b.getAttribute("data-say"), lang)) window.open(forvoUrl(b.getAttribute("data-say"), lang), "_blank", "noopener"); }));
+  wireSay(container, lang);
   container.querySelectorAll("[data-phon-pass]").forEach(cb => cb.addEventListener("change", () => {
     const id = cb.getAttribute("data-phon-pass"); const arr = phonPassed(lang); const k = arr.indexOf(id);
     if (cb.checked && k < 0) arr.push(id); if (!cb.checked && k >= 0) arr.splice(k, 1);
     save.settings(); $("timer-card-body").innerHTML = phonologyHtml(lang); wirePhonology($("timer-card-body"), lang);
+    const g = PHON[lang].groups.find(x => x.id === id); const next = PHON[lang].groups.find(x => !phonPassed(lang).includes(x.id));
+    toast(cb.checked ? (g ? g.title : id) + " passed — moved to the bottom." + (next ? " Next up: " + next.title + "." : " All groups passed.") : (g ? g.title : id) + " is back on the list.");
   }));
   const pb = container.querySelector("#phon-burn");
-  if (pb) pb.addEventListener("click", () => {
-    try { $("burn-lang").value = lang; $("burn-cat").value = "mouth"; $("burn-source").value = "phonology"; $("burn-produced").focus(); $("burn-form").scrollIntoView({ block: "center" }); } catch (e) { /* ignore */ }
-  });
+  if (pb) pb.addEventListener("click", () => openBurnForm(lang, "mouth", "sounds"));
+}
+// Open the burn-book "Add a line" form (it lives inside a closed <details>), prefilled, and bring it into view.
+function openBurnForm(lang, cat, source) {
+  const form = $("burn-form"); if (!form) return;
+  const det = form.closest("details"); if (det) det.open = true;
+  renderBurn();
+  $("burn-lang").value = lang; $("burn-cat").value = cat; $("burn-source").value = source;
+  try { form.scrollIntoView({ block: "center", behavior: "smooth" }); } catch (e) { try { form.scrollIntoView(); } catch (e2) { /* ignore */ } }
+  setTimeout(() => { try { $("burn-produced").focus({ preventScroll: true }); } catch (e) { /* ignore */ } }, 350);
+  toast("Burn book: write what you said, then what it should be.");
 }
 function openTimerCard(i, title, bodyHtml) {
   const card = $("timer-card"); card.hidden = false; card.setAttribute("data-block", String(i));
   $("timer-card-title").textContent = title; $("timer-card-body").innerHTML = bodyHtml;
   const b = currentBlocks()[i]; $("timer-card-target").textContent = b[1] + " min block";
   tickBlocks(); renderBlocks();
-  try { card.scrollIntoView({ block: "nearest" }); } catch (e) { /* ignore */ }
+  try { card.scrollIntoView({ block: "start", behavior: "smooth" }); } catch (e) { try { card.scrollIntoView(); } catch (e2) { /* ignore */ } }
 }
 function toggleBlockTimer(i) {
   const t = S.blockTimers[blockTimerKey(i)]; if (!t) return;
@@ -2139,7 +2478,7 @@ function tickBlocks() {
     const t = S.blockTimers[blockTimerKey(i)]; if (!t) return;
     const left = t.running ? Math.max(0, t.endAt - Date.now()) : t.remainingAtPause;
     const el = $("block-clock-" + i); if (el) el.textContent = fmtClock(left);
-    if (t.running && left <= 0 && !t.done) { t.done = true; t.running = false; t.remainingAtPause = 0; renderBlocks(); const bl = $("block-" + i); if (bl) bl.classList.add("flash"); toast(b[0] + " block finished. Write the log line."); }
+    if (t.running && left <= 0 && !t.done) { t.done = true; t.running = false; t.remainingAtPause = 0; markBlockDone(i); renderBlocks(); const bl = $("block-" + i); if (bl) bl.classList.add("flash"); const nx = blocks[i + 1]; toast((b[0] === "Phonology" ? "Sounds" : b[0]) + " block finished." + (nx ? " Next: tap Start on " + (nx[0] === "Phonology" ? "Sounds" : nx[0]) + "." : " That’s today’s plan done.")); }
     const card = $("timer-card"); if (!card.hidden && card.getAttribute("data-block") === String(i)) { $("timer-card-clock").textContent = fmtClock(left); $("timer-card-clock").classList.toggle("over", left <= 0); }
   });
 }
@@ -2154,7 +2493,7 @@ function dueCounts(lang) {
   return { due, heat, fresh, open };
 }
 function renderDue() {
-  $("due-grid").innerHTML = ["de", "hu"].map(l => { const c = dueCounts(l); return '<div class="stat"><b>' + c.due + "</b><span>" + LANG_NAME[l] + " due for review</span></div><div class=\"stat\"><b>" + c.heat + "</b><span>" + LANG_NAME[l] + " missed recently</span></div><div class=\"stat\"><b>" + c.open + "</b><span>" + LANG_NAME[l] + " open mistakes</span></div>"; }).join("");
+  $("due-grid").innerHTML = ["de", "hu"].map(l => { const c = dueCounts(l); return '<div class="due-lang"><span class="lang" data-lang="' + l + '">' + l + '</span><div class="stat"><b>' + c.due + "</b><span>due for review</span></div><div class=\"stat\"><b>" + c.heat + "</b><span>missed recently</span></div><div class=\"stat\"><b>" + c.open + "</b><span>open mistakes</span></div></div>"; }).join("");
 }
 function weekStart() { const d = new Date(); const day = (d.getDay() + 6) % 7; d.setHours(0, 0, 0, 0); d.setDate(d.getDate() - day); return d.getTime(); }
 function renderWeek() {
@@ -2165,17 +2504,17 @@ function renderWeek() {
   const correct = drillSes.reduce((a, s) => a + (s.correctInTime || 0) + (s.correctLate || 0), 0);
   const inTime = drillSes.reduce((a, s) => a + (s.correctInTime || 0), 0);
   $("week-range").textContent = "from " + fmtDate(ws);
-  $("week-grid").innerHTML = [[minutes, "minutes"], [cues, "cues"], [pct(correct, cues) + "%", "score"], [pct(inTime, cues) + "%", "in time"], [ses.length, "sessions"]].map(x => '<div class="stat"><b>' + x[0] + "</b><span>" + x[1] + "</span></div>").join("");
+  $("week-grid").innerHTML = [[minutes, "minutes"], [cues, "drill cards"], [pct(correct, cues) + "%", "score"], [pct(inTime, cues) + "%", "in time"], [ses.length, "sessions"]].map(x => '<div class="stat"><b>' + x[0] + "</b><span>" + x[1] + "</span></div>").join("");
 }
 
 /* burn book */
 function renderBurn() {
-  const catSel = $("burn-filter-cat"); if (catSel.options.length <= 1) catSel.innerHTML = '<option value="">All</option>' + CATEGORIES.map(c => '<option value="' + c + '">' + c + "</option>").join("");
-  const bc = $("burn-cat"); if (!bc.options.length) bc.innerHTML = CATEGORIES.map(c => '<option value="' + c + '">' + c + "</option>").join("");
+  const catSel = $("burn-filter-cat"); if (catSel.options.length <= 1) catSel.innerHTML = '<option value="">All</option>' + CATEGORIES.map(c => '<option value="' + c + '">' + esc(catLabel(c)) + "</option>").join("");
+  const bc = $("burn-cat"); if (!bc.options.length) bc.innerHTML = CATEGORIES.map(c => '<option value="' + c + '">' + esc(catLabel(c)) + "</option>").join("");
   const lang = $("burn-filter-lang").value, cat = catSel.value, st = $("burn-filter-open").value;
   const rows = S.errors.filter(e => (!lang || e.lang === lang) && (!cat || e.category === cat) && (st === "all" || (st === "open" ? e.open : !e.open))).slice().reverse();
   $("burn-count").textContent = S.errors.filter(e => e.open).length + " open · " + S.errors.length + " total";
-  $("burn-list").innerHTML = rows.slice(0, 60).map(e => '<div class="item"><div class="col"><span><span class="lang">' + esc(e.lang) + '</span> <span class="tag">' + esc(e.category) + '</span> <span class="mono">' + esc(e.produced) + '</span> <span class="muted">→</span> <span class="mono">' + esc(e.correct) + '</span></span><span class="meta">' + fmtDate(e.date) + " · " + esc(e.source) + (e.itemId ? " · " + esc(e.itemId) : "") + (e.open ? "" : " · retired") + '</span></div><div class="row">' + (e.open ? '<button type="button" class="btn sm" data-burn-drill="' + esc(e.id) + '">Add to drills</button><button type="button" class="btn sm" data-burn-retire="' + esc(e.id) + '">Retire</button>' : '<button type="button" class="btn sm" data-burn-reopen="' + esc(e.id) + '">Reopen</button>') + "</div></div>").join("") || '<p class="empty">No lines match. The burn book fills from drill misses and your own entries.</p>';
+  $("burn-list").innerHTML = rows.slice(0, 60).map(e => '<div class="item"><div class="col"><span><span class="lang">' + esc(e.lang) + '</span> <span class="tag">' + esc(catLabel(e.category)) + '</span> <span class="mono">' + esc(e.produced) + '</span> <span class="muted">→</span> <span class="mono">' + esc(e.correct) + '</span></span><span class="meta">' + fmtDate(e.date) + " · " + esc(e.source) + (e.itemId ? " · " + esc(e.itemId) : "") + (e.open ? "" : " · retired") + '</span></div><div class="row">' + (e.open ? '<button type="button" class="btn sm" data-burn-drill="' + esc(e.id) + '">Add to drills</button><button type="button" class="btn sm" data-burn-retire="' + esc(e.id) + '">Retire</button>' : '<button type="button" class="btn sm" data-burn-reopen="' + esc(e.id) + '">Reopen</button>') + "</div></div>").join("") || '<p class="empty">No lines match. The burn book fills from drill misses and your own entries.</p>';
   $("burn-list").querySelectorAll("[data-burn-drill]").forEach(b => b.addEventListener("click", () => burnToDrill(b.getAttribute("data-burn-drill"))));
   $("burn-list").querySelectorAll("[data-burn-retire]").forEach(b => b.addEventListener("click", () => { const e = S.errors.find(x => x.id === b.getAttribute("data-burn-retire")); if (e) { e.open = false; e.retired = Date.now(); save.errors(); renderMission(); } }));
   $("burn-list").querySelectorAll("[data-burn-reopen]").forEach(b => b.addEventListener("click", () => { const e = S.errors.find(x => x.id === b.getAttribute("data-burn-reopen")); if (e) { e.open = true; save.errors(); renderMission(); } }));
@@ -2195,7 +2534,7 @@ function burnToDrill(errId) {
   S.content.push(item); save.content();
   S.progress[id] = { state: "new", reps: 0, lapses: 0, due: Date.now(), heat: true }; save.progress();
   e.drillId = id; save.errors();
-  toast("Drill " + id + " created (in heat set)"); renderMission();
+  toast("Drill created; it’s in your Missed pile"); renderMission();
 }
 function renderHistogram() {
   const d = new Date(); const ms = new Date(d.getFullYear(), d.getMonth(), 1).getTime();
@@ -2203,7 +2542,7 @@ function renderHistogram() {
   const counts = {}; S.errors.filter(e => e.date >= ms).forEach(e => { counts[e.category] = (counts[e.category] || 0) + 1; });
   const max = Math.max(1, ...Object.values(counts));
   const cats = CATEGORIES.filter(c => counts[c]).sort((a, b) => counts[b] - counts[a]);
-  $("hist-bars").innerHTML = cats.map(c => '<div class="bar"><span>' + c + '</span><div class="t"><i style="width:' + Math.round(100 * counts[c] / max) + '%"></i></div><span class="n">' + counts[c] + "</span></div>").join("") || '<p class="empty">No lines this month.</p>';
+  $("hist-bars").innerHTML = cats.map(c => '<div class="bar"><span>' + esc(catLabel(c)) + '</span><div class="t"><i style="width:' + Math.round(100 * counts[c] / max) + '%"></i></div><span class="n">' + counts[c] + "</span></div>").join("") || '<p class="empty">No lines this month.</p>';
 }
 function renderMilestones() {
   const tb = $("milestone-table").querySelector("tbody"); const m = S.settings.milestones || {};
@@ -2280,13 +2619,23 @@ function renderResources() {
   const list = ((S.seed && S.seed.resources) || []).filter(r => r.lang === lang || r.lang === "both");
   if (!list.length) { $("res-list").innerHTML = '<p class="empty">No resources loaded.</p>'; return; }
   const stages = lang === "de" ? [1, 2, 3, 4] : [0, 1, 2, 3, 4];
-  const shown = all ? stages : [Math.max(info.stage, lang === "de" ? 1 : 0)];
-  const card = r => '<div class="res-item' + (r.priority === "core" ? " core" : "") + '"><div class="row between"><span class="res-name">' + (r.url ? '<a href="' + esc(r.url) + '" target="_blank" rel="noopener">' + esc(r.name) + "</a>" : esc(r.name)) + "</span><span class=\"row\">" + (r.priority === "core" ? '<span class="badge ok">core</span>' : '<span class="badge">optional</span>') + '<span class="badge">' + esc(r.cost || "") + "</span></span></div>" +
-    '<p class="note">' + esc(r.what || "") + "</p>" + (r.use ? '<p class="res-use">' + esc(r.use) + "</p>" : "") + (r.verified === false && r.note ? '<p class="note">' + esc(r.note) + "</p>" : "") + "</div>";
-  $("res-list").innerHTML = (!info.started && !all ? '<p class="note">' + LANG_NAME[lang] + " starts " + esc(info.start) + ". These are for its first stage.</p>" : "") + shown.map(st => {
-    const rs = list.filter(r => (r.fromStage == null || r.fromStage <= st) && (r.toStage == null || r.toStage >= st)).sort((a, b) => (a.priority === "core" ? 0 : 1) - (b.priority === "core" ? 0 : 1));
-    return '<div class="res-stage"><h3>Stage ' + st + " · " + (STAGE_RANGE[lang][st] || "") + (info.started && st === info.stage ? ' <span class="badge warn">you are here</span>' : "") + "</h3>" + (rs.map(card).join("") || '<p class="empty">Nothing new at this stage.</p>') + "</div>";
-  }).join("");
+  const cur = Math.max(info.stage, lang === "de" ? 1 : 0);
+  const sorter = (a, b) => (a.priority === "core" ? 0 : 1) - (b.priority === "core" ? 0 : 1) || (a.order || 99) - (b.order || 99);
+  // The app never shows the `note` field: it records how each link was checked, which is for maintainers, not for the learner.
+  const card = (r, st) => '<div class="res-item' + (r.priority === "core" ? " core" : "") + '"><div class="row between"><span class="res-name">' + (r.url ? '<a href="' + esc(r.url) + '" target="_blank" rel="noopener">' + esc(r.name) + "</a>" : esc(r.name)) + "</span><span class=\"row\">" + (r.priority === "core" ? '<span class="badge ok">core</span>' : '<span class="badge">optional</span>') + '<span class="badge">' + esc(r.cost || "") + "</span></span></div>" +
+    '<p class="note">' + esc(r.what || "") + " · " + esc(stageSpan(r.lang === "both" ? lang : r.lang, fromOf(r, lang), r.toStage)) + "</p>" + '<p class="res-use">' + esc(resUse(r, st)) + "</p>" + (r.tip ? '<p class="note">' + esc(r.tip) + "</p>" : "") + "</div>";
+  let h = !info.started && !all ? '<p class="note">' + LANG_NAME[lang] + " starts " + esc(niceDate(info.start)) + ". These are for its first weeks.</p>" : "";
+  if (all) {
+    // Every resource once, under the stage it starts in.
+    h += stages.map(st => {
+      const rs = list.filter(r => (fromOf(r, lang) == null ? stages[0] : fromOf(r, lang)) === st).sort(sorter);
+      return rs.length ? '<div class="res-stage"><h3>Starts in ' + esc(stageSpan(lang, st, st).replace(/^Hungarian /, "Hungarian ")) + (info.started && st === info.stage ? ' <span class="badge warn">you are here</span>' : "") + "</h3>" + rs.map(r => card(r, st)).join("") + "</div>" : "";
+    }).join("");
+  } else {
+    const rs = list.filter(r => (fromOf(r, lang) == null || fromOf(r, lang) <= cur) && (r.toStage == null || r.toStage >= cur)).sort(sorter);
+    h += '<div class="res-stage"><h3>' + esc(stageSpan(lang, cur, cur)) + (info.started ? ' <span class="badge warn">you are here</span>' : "") + "</h3>" + (rs.map(r => card(r, cur)).join("") || '<p class="empty">Nothing at this stage.</p>') + "</div>";
+  }
+  $("res-list").innerHTML = h;
 }
 function protoOwner(n) { return manualSections().find(sec => (sec.protocols || []).includes(String(n))); }
 function openManual(secId, protoNo, query) {
@@ -2338,7 +2687,8 @@ function renderSettings() {
   $("set-tts-de").checked = !!s.tts.de; $("set-tts-hu").checked = !!s.tts.hu;
   $("set-persona-de").checked = !!s.personaSkippable.de; $("set-persona-hu").checked = !!s.personaSkippable.hu;
   const locks = ["de", "hu"].filter(l => personaLocked(l));
-  $("persona-lock-note").textContent = locks.length ? "Persona card stays mandatory for the first 14 days of each language (" + locks.map(l => LANG_NAME[l] + (s.firstSessionDate[l] ? " since " + s.firstSessionDate[l] : ": not started")).join("; ") + ")." : "Both languages are past day 14; the skippable toggles apply.";
+  $("persona-lock-note").textContent = (locks.length ? "The warm-up can’t be skipped in the first 14 days of each language (" + locks.map(l => LANG_NAME[l] + (s.firstSessionDate[l] ? " since " + s.firstSessionDate[l] : ": counts from your first drill session")).join("; ") + ")." : "Both languages are past day 14, so the skip settings apply.") + " Either way, only the first drill session of the day waits the full minute.";
+  $("set-learnfirst").checked = s.learnFirst !== false;
   renderVoiceBadges();
   $("about-line").textContent = "Operative's Linguistic Console v" + APP_VERSION + " · engines " + (E ? E.version : "none") + " · " + S.content.length + " content items · started " + s.startDate;
 }
@@ -2350,6 +2700,7 @@ function readSettings() {
   s.planStart = s.planStart || {}; if ($("set-start-de").value) s.planStart.de = $("set-start-de").value; { const hv = $("set-start-hu").value; s.planStart.hu = hv && hv !== addDaysISO(s.planStart.de || todayISO(), 28) ? hv : ""; }
   s.tts.de = $("set-tts-de").checked; s.tts.hu = $("set-tts-hu").checked;
   s.personaSkippable.de = $("set-persona-de").checked; s.personaSkippable.hu = $("set-persona-hu").checked;
+  s.learnFirst = $("set-learnfirst").checked;
   save.settings();
 }
 function exportObject() {
@@ -2396,6 +2747,7 @@ function importJSON(text) {
   } else {
     items.forEach(it => { const i = S.content.findIndex(x => x.id === it.id); if (i >= 0) { S.content[i] = it; updated++; } else { S.content.push(it); added++; } if (it.srs && typeof it.srs === "object") { S.progress[it.id] = Object.assign(freshProgress(), it.srs); } else if (it.module === "drill" && !S.progress[it.id]) S.progress[it.id] = freshProgress(); });
     if (full && withProgress && full.progress) Object.assign(S.progress, full.progress);
+    if (full && withProgress && full.settings) S.settings = deepMerge(JSON.parse(JSON.stringify(DEFAULT_SETTINGS)), full.settings); // a restore brings back plan dates, ticked sounds, study times
     if (full) { ["sessions", "errors", "wiretap", "legends"].forEach(k => { if (Array.isArray(full[k])) { const have = new Set(S[k].map(x => x.id)); full[k].forEach(x => { if (x && !have.has(x.id)) S[k].push(x); }); } }); }
   }
   // strip srs blobs from content items so they stay pure content
@@ -2406,7 +2758,7 @@ function importJSON(text) {
 function runImport(text) {
   const r = importJSON(text); const m = $("import-msg");
   m.textContent = r.msg; m.className = "small " + (r.ok ? "" : "muted"); m.style.color = r.ok ? "var(--ok)" : "var(--bad)";
-  if (r.ok) { $("import-text").value = ""; toast("Imported"); }
+  if (r.ok) { $("import-text").value = ""; try { $("import-file").value = ""; } catch (e) { /* ignore */ } toast("Imported"); }
 }
 function resetContent() {
   S.content = seedToContent(S.seed); save.content(); $("reset-msg").textContent = "Content reset to the built-in seed (" + S.content.length + " items)."; $("reset-confirm").hidden = true; toast("Content reset");
@@ -2450,7 +2802,8 @@ function wire() {
   on("persona-begin", "click", beginCues);
   on("persona-cancel", "click", () => { clearInterval(S.drill.personaTimer); S.drill = null; renderDrillSetup(); });
   on("stage-end", "click", endSession);
-  on("stage-replay", "click", () => { const it = currentItem(); if (it) speak(it.cue, S.drill.lang); });
+  on("stage-replay", "click", () => { const it = currentItem(); if (it) speak(it._learn ? it.answer : cueSpeech(it.cue), S.drill.lang); });
+  on("stage-override", "click", overrideTyped);
   on("stage-reveal", "click", reveal);
   on("stage-submit", "click", submitTyped);
   on("stage-input", "keydown", ev => { if (ev.key === "Enter") { ev.preventDefault(); ev.stopPropagation(); if (!S.drill.revealed) submitTyped(); else if (S.drill.graded) nextCue(); } });
@@ -2467,6 +2820,7 @@ function wire() {
   on("decon-build-toggle", "click", () => { const b = $("decon-build"); if (!b.hidden) { b.hidden = true; return; } DX.buildLang = DX.override !== "auto" ? DX.override : DX.lang; renderBuild(); });
   on("decon-input", "keydown", ev => { if (ev.key === "Enter") { ev.preventDefault(); if (ev.ctrlKey) { DX.buildLang = resolveLang($("decon-input").value); renderBuild(); } else parseDecon($("decon-input").value); } });
   on("decon-filter", "input", renderDeconExamples);
+  document.querySelectorAll("#view-decon [data-exlang]").forEach(b => b.addEventListener("click", () => { DX.exLang = b.getAttribute("data-exlang"); S.settings.deconExLang = DX.exLang; save.settings(); renderDeconExamples(); }));
   on("hu-stem-search", "input", fillHuStems); on("de-noun-search", "input", fillDeNouns);
   on("hu-poss", "change", () => { const has = !!$("hu-poss").value; $("hu-plpos").disabled = !has; if (!has) $("hu-plpos").checked = false; });
   on("hu-plural", "change", () => { if ($("hu-plural").checked) $("hu-plpos").checked = false; });
@@ -2479,6 +2833,9 @@ function wire() {
   on("legend-lang", "change", () => { LG.lang = $("legend-lang").value; renderLegend(); });
   on("legend-add-fact", "click", () => { const l = readLegendForm(); l.facts.push({ text: "", anchor: "", sentence: "" }); save.legends(); renderFacts(l); });
   on("legend-save", "click", saveLegend);
+  // Legend fields save themselves as you type (Save legend still works and confirms).
+  let legendTimer = null;
+  on("view-legend", "input", ev => { if (!ev.target || ev.target.tagName !== "INPUT") return; clearTimeout(legendTimer); legendTimer = setTimeout(() => { readLegendForm(); save.legends(); $("legend-saved").textContent = "Saved automatically."; }, 500); });
   on("legend-export", "click", exportForChat);
 
   /* content manager */
@@ -2492,20 +2849,24 @@ function wire() {
   on("cm-delete-yes", "click", deleteEditor);
 
   /* settings */
-  ["set-slot-de", "set-slot-hu", "set-plan", "set-gap", "set-exam-de", "set-exam-hu", "set-start-de", "set-start-hu", "set-tts-de", "set-tts-hu", "set-persona-de", "set-persona-hu"].forEach(id => on(id, "change", () => { readSettings(); renderSettings(); }));
+  ["set-slot-de", "set-slot-hu", "set-plan", "set-gap", "set-exam-de", "set-exam-hu", "set-start-de", "set-start-hu", "set-tts-de", "set-tts-hu", "set-persona-de", "set-persona-hu", "set-learnfirst"].forEach(id => on(id, "change", () => { readSettings(); renderSettings(); }));
   on("set-welcome", "click", () => { S.settings.welcomeSeen = false; save.settings(); show("mission"); });
   on("welcome-close", "click", () => { S.settings.welcomeSeen = true; save.settings(); renderWelcome(); });
-  on("welcome-start", "click", () => { S.settings.welcomeSeen = true; save.settings(); renderWelcome(); try { $("block-list").scrollIntoView({ block: "start", behavior: "smooth" }); } catch (e) { /* ignore */ } });
+  on("welcome-start", "click", () => {
+    S.settings.welcomeSeen = true; save.settings(); renderWelcome();
+    if (currentBlocks().length) { startBlock(0); return; }
+    try { $("block-list").scrollIntoView({ block: "start", behavior: "smooth" }); } catch (e) { /* ignore */ }
+  });
   on("stage-hint-ok", "click", () => { S.settings.drillHintSeen = true; save.settings(); $("stage-hint").hidden = true; });
   on("res-lang", "change", renderResources); on("res-filter", "change", () => { S.settings.resFilter = $("res-filter").value; save.settings(); renderResources(); });
-  on("export-render", "click", renderExport);
+  on("export-render", "click", () => { renderExport(); const t = $("export-text"); t.hidden = !t.hidden; });
   on("export-copy", "click", () => { const txt = $("export-text").value || renderExport(); copyText(txt, $("export-text")); });
   on("export-download", "click", downloadExport);
   on("manual-search", "input", () => { MS.query = $("manual-search").value; MS.open = null; renderManual(); });
   on("import-go", "click", () => { const t = $("import-text").value.trim(); if (!t) { $("import-msg").textContent = "Paste JSON or choose a file first."; return; } runImport(t); });
   on("import-file", "change", () => {
     const f = $("import-file").files && $("import-file").files[0]; if (!f) return;
-    try { const r = new FileReader(); r.onload = () => runImport(String(r.result || "")); r.onerror = () => { $("import-msg").textContent = "Could not read the file."; }; r.readAsText(f); } catch (e) { $("import-msg").textContent = "Could not read the file."; }
+    try { const r = new FileReader(); r.onload = () => { $("import-text").value = String(r.result || ""); const m = $("import-msg"); m.style.color = ""; m.textContent = "File loaded (" + Math.round(String(r.result || "").length / 1024) + " KB). Choose Merge or Replace, then tap Import."; }; r.onerror = () => { $("import-msg").textContent = "Could not read the file."; }; r.readAsText(f); } catch (e) { $("import-msg").textContent = "Could not read the file."; }
   });
   on("reset-content", "click", () => { $("reset-confirm").hidden = false; });
   on("reset-no", "click", () => { $("reset-confirm").hidden = true; });
@@ -2527,7 +2888,7 @@ function onKey(ev) {
       if (ev.key === "Escape") { ev.preventDefault(); endSession(); return; }
       if (typing && ev.target.id === "stage-input") return;
       if (ev.key === "Enter") { ev.preventDefault(); if (!d.revealed) reveal(); else if (d.graded) nextCue(); return; }
-      if (ev.key === " ") { ev.preventDefault(); const it = currentItem(); if (it) speak(it.cue, d.lang); return; }
+      if (ev.key === " ") { ev.preventDefault(); const it = currentItem(); if (it && (it._learn || it.speakCue)) speak(it._learn ? it.answer : cueSpeech(it.cue), d.lang); return; }
       if (!d.typed && d.revealed && !d.graded && ["1", "2", "3"].includes(ev.key)) { ev.preventDefault(); grade(Number(ev.key)); return; }
     } else if ((!d || d.phase === "summary") && !typing && (ev.key === "t" || ev.key === "T")) { DS.typed = !DS.typed; $("drill-typed").checked = DS.typed; }
     else if (d && d.phase === "persona" && ev.key === "Escape") { clearInterval(d.personaTimer); S.drill = null; renderDrillSetup(); }

@@ -14,11 +14,11 @@ async function at(ctx, isoDate) { await ctx.addInitScript(d => { const real = Da
   ok(await p.isVisible("#welcome"), "welcome shown on first run");
   const t = await p.textContent("#today-plan");
   ok(/week 1, day 1/.test(t) && /stage 1/.test(t), "Today card: German week 1 day 1 stage 1 — " + t.slice(0, 80).replace(/\s+/g, " "));
-  ok(/Hungarian: starts 2026-11-23/.test(t), "Hungarian start defaults to German week 5 (2026-11-23)");
+  ok(/Hungarian: starts Nov 23 \(in 28 days\)/.test(t) && (await p.evaluate(() => OLC.planStartOf("hu"))) === "2026-11-23", "Hungarian start defaults to German week 5 (2026-11-23)");
   await p.click("#welcome-close"); ok(!(await p.isVisible("#welcome")), "welcome dismisses");
   const blocks = await p.$$eval("#block-list .block", x => x.length); ok(blocks === 6, "German 45-min plan shows 6 blocks (" + blocks + ")");
   await p.click("#today-lang-hu"); await p.waitForTimeout(150);
-  ok(/starts on 2026-11-23/.test(await p.textContent("#block-list")), "Hungarian blocks locked before its start date");
+  ok(/starts on Nov 23/.test(await p.textContent("#block-list")), "Hungarian blocks locked before its start date");
   await p.click("#today-lang-de"); await p.waitForTimeout(100);
   await p.click("[data-block-start=\"0\"]"); await p.waitForTimeout(200);
   ok((await p.$$eval(".phon-group", g => g.length)) >= 8 && (await p.$$eval(".phon-group.today", g => g.length)) === 2, "Sounds card: 8+ groups, 2 marked today");

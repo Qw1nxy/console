@@ -9,7 +9,7 @@ The built app lives at the repository root and is served by GitHub Pages. Everyt
 - **iPhone:** open the site in Safari → Share → **Add to Home Screen**. Open it from the icon from then on.
 - **Android / PC (Chrome or Edge):** open the site → install icon in the address bar.
 
-It works offline after the first load. All progress stays on the device; use **Settings → Export** to back up or move data to another device, and **Import** to restore.
+It works offline after the first load. All progress stays on the device; use **Settings → Download backup** once a week to back up or move data to another device, and **Import** (choose the file) to restore.
 
 ## Layout
 
@@ -19,8 +19,8 @@ It works offline after the first load. All progress stays on the device; use **S
 | `src/app/console_src.html` | App UI source (markup, CSS, JS) with `__SEED__` and `/*__ENGINES__*/` markers |
 | `src/app/engines.js` | German and Hungarian morphology engines (parse / build) |
 | `src/app/build.js` | Assembles the app: inlines engines and content, writes `console.html` (artifact fragment), `console_standalone.html`, and the PWA into `../pwa/dist` |
-| `src/app/test_*.js` | Acceptance tests: engines (node), app (jsdom), real browser (Playwright) |
-| `src/content/*.json` | Drills, deconstructor examples, lexicons; `check_*.py` validate them; `hu_generate.py` is the reference Hungarian generator |
+| `src/app/test_*.js` | Acceptance tests: engines (node), app (jsdom), real browser (Playwright), including the day-1 beginner checks (`test_day1.js`, `test_day1_qa.js`) |
+| `src/content/*.json` | Drills, deconstructor examples, lexicons, legend starter sentences, outside resources by stage; `check_*.py` validate them; `hu_generate.py` is the reference Hungarian generator |
 | `src/content/SCHEMA.md` | Content schema |
 | `src/pwa/manual.json` | The Field Manual sections (the doctrine, Part 1) |
 | `src/app/APP_SPEC.md`, `src/app/ENGINE_API.md` | Build spec and engine contract |
@@ -37,4 +37,4 @@ node test_engines.js && node test_console.js
 
 ## Editing content
 
-Use the in-app **Content Manager**. Export JSON from the app and paste it into `src/content/*.json` only when the shipped defaults should change.
+Use the in-app **Items** tab. Export JSON from the app and paste it into `src/content/*.json` only when the shipped defaults should change.

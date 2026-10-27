@@ -26,7 +26,7 @@ srv.listen(0, async () => {
   const cached = await page.evaluate(async () => { const keys = await caches.keys(); const c = await caches.open(keys[0]); const ks = await c.keys(); return { n: keys.length, items: ks.map(k => new URL(k.url).pathname) }; });
   ok(cached.items.some(x => x.endsWith("/index.html")) && cached.items.some(x => x.endsWith("/manifest.webmanifest")), "shell cached: " + cached.items.join(", "));
   // do a drill grade so there is state, then go offline and reload
-  await page.evaluate(() => { OLC.show("drill"); }); await page.click("#drill-start"); await page.waitForTimeout(100); await page.evaluate(() => OLC.beginCues()); await page.keyboard.press("Enter"); await page.keyboard.press("1"); await page.keyboard.press("Escape"); await page.waitForTimeout(200);
+  await page.evaluate(() => { OLC.show("drill"); }); await page.click("#drill-start"); await page.waitForTimeout(100); await page.evaluate(() => OLC.beginCues()); for (let g = 0; g < 6 && await page.evaluate(() => { const d = OLC.state.drill; return !!(d && d.queue[d.idx] && d.queue[d.idx]._learn); }); g++) await page.keyboard.press("Enter"); await page.keyboard.press("Enter"); await page.keyboard.press("1"); await page.keyboard.press("Escape"); await page.waitForTimeout(200);
   await ctx.setOffline(true);
   await page.reload({ waitUntil: "load" }); await page.waitForTimeout(500);
   const title = await page.title(); const sessions = await page.evaluate(() => window.OLC ? window.OLC.state.sessions.length : -1);

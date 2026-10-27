@@ -287,6 +287,24 @@ const show = (a) => (a.tokens ? a.tokens.map((t) => t.morphemes.map((m) => m.for
   check(g, badRole === null, `unexpected role ${badRole}`);
 }
 
+// ── 10. Adjectives ending in -e (müde) and bare adjectives ───────────────────
+{
+  const g = group("adjectives in -e and bare adjectives");
+  const noun = (b) => deLex.nouns.find((n) => n.base === b), adj = (b) => deLex.adjectives.find((a) => a.base === b);
+  const cases = [
+    [{ noun: noun("Mann"), det: "definite", case: "nom", number: "sg", adjective: adj("müde") }, "der müde Mann"],
+    [{ noun: noun("Mann"), det: "ein", case: "nom", number: "sg", adjective: adj("müde") }, "ein müder Mann"],
+    [{ noun: noun("Mann"), det: "definite", case: "dat", number: "sg", adjective: adj("müde") }, "dem müden Mann"],
+    [{ noun: noun("Mann"), det: "ein", case: "nom", number: "sg", adjective: adj("teuer") }, "ein teurer Mann"]
+  ];
+  for (const [opts, want] of cases) { const got = E.de.build(opts).word; check(g, got === want, "build " + want + " → " + got); }
+  for (const w of ["der müde Mann", "einem müden Mann"]) { const r = E.de.parse(w, deLex); check(g, r.some((a) => a.kind === "np"), "parse " + w + " → " + r.map((a) => a.kind).join(",")); }
+  const bare = E.de.parse("müde", deLex);
+  check(g, bare.length === 1 && bare[0].kind === "adjective" && /tired/.test(bare[0].morphemes[0].label) && !/müdee/.test(bare[0].explain), "bare müde → " + JSON.stringify(bare.map((a) => a.explain)));
+  const inf = E.de.parse("neue", deLex);
+  check(g, inf.some((a) => a.kind === "adjective" && a.morphemes.length === 2 && a.morphemes[1].form === "e"), "neue → neu + e");
+}
+
 // ── report ───────────────────────────────────────────────────────────────────
 for (const g of groups) {
   console.log(`${g.fail ? "FAIL" : "PASS"}  ${g.name}  (${g.pass}/${g.pass + g.fail})`);

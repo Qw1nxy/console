@@ -11,6 +11,8 @@ Checks
 from __future__ import annotations
 import json
 import os
+STAGE1 = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "hu_stage_map.json"), encoding="utf-8")) if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), "hu_stage_map.json")) else {}
+import os
 import re
 import sys
 from collections import Counter
@@ -86,6 +88,8 @@ for d in drills:
     if d["difficulty"] not in (1, 2, 3):
         bad(f"{d['id']}: difficulty must be 1..3")
     want = {1: (3, 4), 2: (5, 6), 3: (7, 8)}[d["difficulty"]]
+    if STAGE1.get(d["id"]) == 1:
+        want = (want[0], max(want[1], 6))  # DAY1_SPEC: first-exposure (stage 1) items get 6 s
     if not (want[0] <= d["speedTargetSec"] <= want[1]):
         bad(f"{d['id']}: speedTargetSec {d['speedTargetSec']} outside {want} for difficulty {d['difficulty']}")
     if len(d["explain"].split()) > 22:

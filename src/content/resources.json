@@ -2,10 +2,10 @@
  {
   "id": "de-fsi-basic",
   "lang": "de",
-  "name": "FSI German Basic Course (Yojik mirror)",
+  "name": "FSI German Basic Course",
   "url": "https://fsi-languages.yojik.eu/languages/FSI/fsi-german-basic-course.html",
   "what": "Public-domain drill course: 24 units, student-text PDFs, tape MP3s",
-  "use": "Open the Volume 1 PDF and the unit's tapes in the Drills block (P-1): say every drill response aloud before the tape does, Units 1–4 in weeks 1–4, then one unit per week; shadow the tape speaker (P-8) when the dialogue is new.",
+  "use": "Free US-government course: a book (PDF) and audio. Its pattern drills are close to this app’s drills.",
   "cost": "free",
   "fromStage": 1,
   "toStage": 3,
@@ -13,15 +13,28 @@
   "protocol": "P-1",
   "verified": true,
   "checked": "2026-10-26",
-  "note": "Whole course also as one ZIP (FSI-German-Basic.zip) on the same page. Live Lingua hosts a copy but its course list was not navigable in the check."
+  "note": "Whole course also as one ZIP (FSI-German-Basic.zip) on the same page. Live Lingua hosts a copy but its course list was not navigable in the check.",
+  "kind": "course",
+  "order": 2,
+  "blocks": [
+   "Input",
+   "Shadowing / Legend"
+  ],
+  "useByStage": {
+   "1": "After Nicos Weg: open Unit 1 (the Volume 1 PDF and the Unit 1 audio files). Play the dialogue, pause after each line and say it out loud. Then do the drills: say the answer before the speaker does. Units 1–4 over weeks 1–4.",
+   "2": "One unit a week: dialogue first, then say every drill answer before the speaker does.",
+   "3": "Keep one unit a week; shadow the dialogue speaker (speak along half a second behind)."
+  },
+  "tip": "The course is from the 1960s, so some words are old-fashioned, but the grammar drills are excellent. The page also offers the whole course as one ZIP file.",
+  "dialogue": true
  },
  {
   "id": "de-nicos-weg",
   "lang": "de",
-  "name": "Nicos Weg (DW)",
+  "name": "Nicos Weg (Deutsche Welle)",
   "url": "https://learngerman.dw.com/en/nicos-weg/c-36519789",
   "what": "Free video course A1–B1 with transcripts and exercises",
-  "use": "Watch one A1 episode per day with the transcript open in the Input block (P-4), enter the new chunks, then replay the audio blind for Gisting (P-2) and copy one line for Dictation (P-3).",
+  "use": "Free video course that follows Nico, who has just arrived in Germany. One episode a day.",
   "cost": "free",
   "fromStage": 1,
   "toStage": 3,
@@ -29,15 +42,29 @@
   "protocol": "P-4",
   "verified": false,
   "checked": "2026-10-26",
-  "note": "learngerman.dw.com is blocked by this session's egress proxy (CONNECT 403), so the page could not be loaded. URL confirmed verbatim via the podcast directory listing for the DW Nicos Weg A1 feed. A1 in stage 1, A2 in stage 2, B1 in stage 3."
+  "note": "learngerman.dw.com is blocked by this session's egress proxy (CONNECT 403), so the page could not be loaded. URL confirmed verbatim via the podcast directory listing for the DW Nicos Weg A1 feed. A1 in stage 1, A2 in stage 2, B1 in stage 3.",
+  "kind": "video",
+  "order": 1,
+  "blocks": [
+   "Input",
+   "Gisting",
+   "Shadowing / Legend"
+  ],
+  "useByStage": {
+   "1": "Start at A1, lesson 1 (“Hallo!”). Watch the episode, then watch it again with the German subtitles on and repeat each line out loud. Do the short exercises under the video. One lesson a day.",
+   "2": "Move on to the A2 episodes: watch once without subtitles, then again with them, repeating the lines you missed.",
+   "3": "B1 episodes: watch without subtitles; check yourself with the transcript afterwards."
+  },
+  "tip": "On the page choose A1, then lesson 1 “Hallo!”. Free; no account needed to watch.",
+  "dialogue": true
  },
  {
   "id": "de-dw-placement",
   "lang": "de",
-  "name": "DW Deutsch lernen placement test",
+  "name": "DW placement test",
   "url": "https://learngerman.dw.com/en/placementDashboard",
   "what": "Free online placement test, A1–C1, instant level",
-  "use": "Take the placement test once at the end of week 12 and again at month 6 as a quick Exam check (D5) before you book the Goethe or telc B1.",
+  "use": "Free online level test. Take it at the end of week 12 and again at month 6.",
   "cost": "free",
   "fromStage": 3,
   "toStage": 4,
@@ -45,7 +72,10 @@
   "protocol": "D5",
   "verified": false,
   "checked": "2026-10-26",
-  "note": "Host blocked by the egress proxy. Path confirmed from a Hochschule Darmstadt handout that gives https://learngerman.dw.com/de/placementDashboard; the /en/ form is the English UI of the same page. If it 404s, use the /de/ form."
+  "note": "Host blocked by the egress proxy. Path confirmed from a Hochschule Darmstadt handout that gives https://learngerman.dw.com/de/placementDashboard; the /en/ form is the English UI of the same page. If it 404s, use the /de/ form.",
+  "kind": "exam",
+  "order": 31,
+  "blocks": []
  },
  {
   "id": "de-easy-german-yt",
@@ -53,7 +83,7 @@
   "name": "Easy German (YouTube)",
   "url": "https://www.youtube.com/@EasyGerman",
   "what": "Street interviews and Super Easy German, dual subtitles",
-  "use": "In stage 3 use one Super Easy German video per day with subtitles in the Input block (P-4) and one street-interview clip blind at Stage 2 for Gisting (P-2).",
+  "use": "Street interviews with Germans. Use the “Super Easy German” videos with subtitles for input, and one ordinary interview without subtitles for gisting.",
   "cost": "free",
   "fromStage": 3,
   "toStage": 4,
@@ -61,7 +91,14 @@
   "protocol": "P-2",
   "verified": true,
   "checked": "2026-10-26",
-  "note": "Playlists are sorted by level on the channel; start with the A1/A2 playlist. Natural-speed interviews are a stage-3 gisting source, not a stage-1 one."
+  "note": "Playlists are sorted by level on the channel; start with the A1/A2 playlist. Natural-speed interviews are a stage-3 gisting source, not a stage-1 one.",
+  "kind": "video",
+  "order": 6,
+  "blocks": [
+   "Input",
+   "Gisting"
+  ],
+  "tip": "The channel sorts videos into playlists by level; start with the beginner playlist."
  },
  {
   "id": "de-easy-german-site",
@@ -69,7 +106,7 @@
   "name": "Easy German site and podcast",
   "url": "https://www.easygerman.org/",
   "what": "Podcast, level guide, paid interactive transcripts and community",
-  "use": "From stage 3 play one podcast episode in the Gisting block (P-2) and, if you pay for membership, shadow 30 s against the interactive transcript (P-8).",
+  "use": "The Easy German podcast: play one episode and note the topics.",
   "cost": "free tier",
   "fromStage": 3,
   "toStage": 4,
@@ -77,7 +114,13 @@
   "protocol": "P-2",
   "verified": true,
   "checked": "2026-10-26",
-  "note": "Podcast page: https://www.easygerman.org/podcast (loaded). Transcripts are members-only; the videos on YouTube carry subtitles for free."
+  "note": "Podcast page: https://www.easygerman.org/podcast (loaded). Transcripts are members-only; the videos on YouTube carry subtitles for free.",
+  "kind": "audio",
+  "order": 21,
+  "blocks": [
+   "Gisting"
+  ],
+  "tip": "Transcripts need a paid membership; the audio is free."
  },
  {
   "id": "de-nachrichtenleicht",
@@ -85,7 +128,7 @@
   "name": "Nachrichtenleicht (Deutschlandfunk)",
   "url": "https://www.nachrichtenleicht.de/",
   "what": "Weekly news in simple German, text plus 1-minute audio",
-  "use": "From week 5 read two items in the Input block (P-4), then play their audio blind for Gisting (P-2) at Stage 1–3, shadow one newsreader (P-8), and take Dictation (P-3) from one item.",
+  "use": "News in simple German, with audio. Read two short articles; then play the audio of one without the text and note who, what and where.",
   "cost": "free",
   "fromStage": 2,
   "toStage": 4,
@@ -93,7 +136,14 @@
   "protocol": "P-2",
   "verified": true,
   "checked": "2026-10-26",
-  "note": "Also as a podcast feed (Spotify/Apple/RSS) and in the Deutschlandfunk app; the site has a Wörter-Buch glossary."
+  "note": "Also as a podcast feed (Spotify/Apple/RSS) and in the Deutschlandfunk app; the site has a Wörter-Buch glossary.",
+  "kind": "reading",
+  "order": 5,
+  "blocks": [
+   "Input",
+   "Gisting"
+  ],
+  "tip": "Also available as a podcast."
  },
  {
   "id": "de-slow-german",
@@ -101,15 +151,22 @@
   "name": "Slow German podcast",
   "url": "https://slowgerman.com/",
   "what": "Slow, clear podcast on German life with read-along texts",
-  "use": "In the Shadowing / Legend block (P-8) play 2 minutes, shadow 3 minutes blind, then 2 minutes with the text, and record one 30-second stretch to compare.",
+  "use": "Podcast spoken slowly by one speaker. Play 2 minutes, then speak along with her without the text, then with the text.",
   "cost": "free tier",
-  "fromStage": 1,
+  "fromStage": 3,
   "toStage": 4,
-  "priority": "core",
+  "priority": "optional",
   "protocol": "P-8",
   "verified": true,
   "checked": "2026-10-26",
-  "note": "Content is pitched at B1+, so in stage 1 use it for rhythm and sounds only, not for comprehension; the free episodes and texts suffice. Premium area is optional."
+  "note": "Content is pitched at B1+, so in stage 1 use it for rhythm and sounds only, not for comprehension; the free episodes and texts suffice. Premium area is optional.",
+  "kind": "audio",
+  "order": 20,
+  "blocks": [
+   "Shadowing / Legend",
+   "Input"
+  ],
+  "tip": "Aimed at intermediate learners, so it is too hard before week 9."
  },
  {
   "id": "de-tagesschau-100",
@@ -117,7 +174,7 @@
   "name": "Tagesschau in 100 Sekunden",
   "url": "https://www.tagesschau.de/100sekunden/",
   "what": "ARD's 100-second national news video, updated hourly",
-  "use": "From week 9 play the latest clip once blind in the Gisting block (P-2) at Stage 1 only (topics, numbers, names) and log the score.",
+  "use": "The day’s news in 100 seconds. Play it once without text and write down the topics, numbers and names you caught.",
   "cost": "free",
   "fromStage": 3,
   "toStage": 4,
@@ -125,7 +182,13 @@
   "protocol": "P-2",
   "verified": false,
   "checked": "2026-10-26",
-  "note": "tagesschau.de is blocked by this session's egress proxy (CONNECT 403). URL confirmed verbatim from third-party scripts that embed the clip. Also available as a video podcast in any podcast app."
+  "note": "tagesschau.de is blocked by this session's egress proxy (CONNECT 403). URL confirmed verbatim from third-party scripts that embed the clip. Also available as a video podcast in any podcast app.",
+  "kind": "video",
+  "order": 7,
+  "blocks": [
+   "Gisting"
+  ],
+  "tip": "Real news at full speed: aim for the topics, not the words."
  },
  {
   "id": "de-ard-audiothek",
@@ -133,7 +196,7 @@
   "name": "ARD Audiothek",
   "url": "https://www.ardaudiothek.de/",
   "what": "Public-broadcaster podcasts and radio features, no transcripts",
-  "use": "From stage 3 pick one short feature per week for Gisting (P-2) at Stage 2 and shadow one 30-second stretch of a clear speaker (P-8).",
+  "use": "German public-radio features and podcasts. Pick one short piece a week and note the topic and the speakers.",
   "cost": "free",
   "fromStage": 3,
   "toStage": 4,
@@ -141,7 +204,13 @@
   "protocol": "P-2",
   "verified": false,
   "checked": "2026-10-26",
-  "note": "Host blocked by this session's egress proxy; URL is the broadcaster's standard domain. Also an app on iOS/Android."
+  "note": "Host blocked by this session's egress proxy; URL is the broadcaster's standard domain. Also an app on iOS/Android.",
+  "kind": "audio",
+  "order": 22,
+  "blocks": [
+   "Gisting",
+   "Shadowing / Legend"
+  ]
  },
  {
   "id": "de-srf-play",
@@ -149,7 +218,7 @@
   "name": "Play SRF (Swiss broadcaster)",
   "url": "https://www.srf.ch/play/tv",
   "what": "Swiss public TV on demand: Tagesschau, Schweiz aktuell",
-  "use": "From month 10 add one Swiss news clip per week to the Gisting block (P-2) to get used to Swiss-accented Hochdeutsch and Swiss German snippets.",
+  "use": "Swiss TV. From month 10, one Swiss news clip a week to get used to Swiss-accented German.",
   "cost": "free",
   "fromStage": 4,
   "toStage": 4,
@@ -157,15 +226,21 @@
   "protocol": "P-2",
   "verified": true,
   "checked": "2026-10-26",
-  "note": "Month 10+ only, per the doctrine; some content is geo-restricted outside Switzerland. SRF news articles are at https://www.srf.ch/ (loaded)."
+  "note": "Month 10+ only, per the doctrine; some content is geo-restricted outside Switzerland. SRF news articles are at https://www.srf.ch/ (loaded).",
+  "kind": "video",
+  "order": 23,
+  "blocks": [
+   "Gisting"
+  ],
+  "tip": "Some videos only play inside Switzerland."
  },
  {
   "id": "de-goethe-b1-model",
   "lang": "de",
-  "name": "Goethe-Zertifikat B1 Prüfungstraining",
+  "name": "Goethe B1 practice exam",
   "url": "https://www.goethe.de/de/spr/prf/ueb/pb1.html",
   "what": "Two free B1 model exams: PDFs, listening audio, word list",
-  "use": "In week 11 do one Lesen task for orientation, then from month 4 run one full module per month under exam timing as the Exam check (D5) and score it with the key.",
+  "use": "The official free B1 practice papers with answers and audio. In week 11 try one reading task to see the level; from month 4 do one full part a month under exam timing.",
   "cost": "free",
   "fromStage": 3,
   "toStage": 4,
@@ -173,15 +248,18 @@
   "protocol": "D5",
   "verified": true,
   "checked": "2026-10-26",
-  "note": "Downloads on the page: Prüfungstraining 1 and 2 (PDF with answer keys, Hören audio), Wortliste B1, Sprechen example video. Use the Erwachsene (adult) set."
+  "note": "Downloads on the page: Prüfungstraining 1 and 2 (PDF with answer keys, Hören audio), Wortliste B1, Sprechen example video. Use the Erwachsene (adult) set.",
+  "kind": "exam",
+  "order": 8,
+  "blocks": []
  },
  {
   "id": "de-telc-b1-model",
   "lang": "de",
-  "name": "telc Deutsch B1 Übungstest",
+  "name": "telc B1 practice exam",
   "url": "https://www.telc.net/sprachpruefungen/deutsch/zertifikat-deutsch-telc-deutsch-b1/",
   "what": "Official telc B1 mock exam with audio, free ZIP",
-  "use": "From month 6 run the telc Übungstest once under timing as a second Exam check (D5) and compare with your Goethe scores before choosing which exam to register for.",
+  "use": "The other accepted B1 exam. From month 6 do its practice test once under timing and compare with your Goethe scores before choosing which exam to book.",
   "cost": "free",
   "fromStage": 4,
   "toStage": 4,
@@ -189,22 +267,32 @@
   "protocol": "D5",
   "verified": true,
   "checked": "2026-10-26",
-  "note": "Direct download named on the page: https://www.telc.net/fileadmin/user_upload/mock_exams/Deutsch/telc_deutsch_b1.zip (test + audio)."
+  "note": "Direct download named on the page: https://www.telc.net/fileadmin/user_upload/mock_exams/Deutsch/telc_deutsch_b1.zip (test + audio).",
+  "kind": "exam",
+  "order": 24,
+  "blocks": []
  },
  {
   "id": "de-dict-cc",
   "lang": "de",
-  "name": "dict.cc",
+  "name": "dict.cc dictionary",
   "url": "https://www.dict.cc/",
   "what": "German–English dictionary with gender, plural, audio",
-  "use": "Look up every new noun in the Input block (P-4) and enter it as a gender-locked chunk with its plural, never as a bare word.",
+  "use": "Look up any word you meet. Write every noun down with der/die/das and its plural (der Tisch, die Tische), never as a bare word.",
   "cost": "free",
   "fromStage": 1,
   "toStage": 4,
   "priority": "core",
   "protocol": "P-4",
   "verified": true,
-  "checked": "2026-10-26"
+  "checked": "2026-10-26",
+  "kind": "dictionary",
+  "order": 3,
+  "blocks": [
+   "Input",
+   "Review"
+  ],
+  "tip": "Many entries have a speaker icon so you can hear the word."
  },
  {
   "id": "de-leo",
@@ -212,14 +300,20 @@
   "name": "LEO German–English",
   "url": "https://dict.leo.org/german-english/",
   "what": "Dictionary with conjugation and declension tables, forums",
-  "use": "Use LEO's tables when a verb form or adjective ending in the Input block (P-4) is unclear, and check the forum for register before using a phrase at work.",
+  "use": "Second dictionary. Its tables show every form of a verb or noun when you are unsure of an ending.",
   "cost": "free",
   "fromStage": 1,
   "toStage": 4,
   "priority": "optional",
   "protocol": "P-4",
   "verified": true,
-  "checked": "2026-10-26"
+  "checked": "2026-10-26",
+  "kind": "dictionary",
+  "order": 25,
+  "blocks": [
+   "Input",
+   "Review"
+  ]
  },
  {
   "id": "de-dwds",
@@ -227,14 +321,20 @@
   "name": "DWDS corpus dictionary",
   "url": "https://www.dwds.de/",
   "what": "Academic dictionary with corpus examples, frequency, collocations",
-  "use": "From stage 2 check collocations and real example sentences for each chunk you add in the Input block (P-4), and use the frequency curve to decide whether a word is worth learning.",
+  "use": "German–German dictionary with real example sentences. From week 5, check how a word is really used before you learn it.",
   "cost": "free",
   "fromStage": 2,
   "toStage": 4,
   "priority": "optional",
   "protocol": "P-4",
   "verified": true,
-  "checked": "2026-10-26"
+  "checked": "2026-10-26",
+  "kind": "dictionary",
+  "order": 26,
+  "blocks": [
+   "Input"
+  ],
+  "tip": "All in German, so it gets easier as you go."
  },
  {
   "id": "de-forvo",
@@ -242,7 +342,7 @@
   "name": "Forvo German",
   "url": "https://forvo.com/languages/de/",
   "what": "Native-speaker recordings of single words",
-  "use": "In the Sounds block (P-11) play a word with a target feature (ü, ö, ch, r), record yourself, compare, and re-record until the pair matches.",
+  "use": "Hear any word said by native speakers. Use it in the Sounds block when your phone has no German voice.",
   "cost": "free",
   "fromStage": 1,
   "toStage": 4,
@@ -250,63 +350,87 @@
   "protocol": "P-11",
   "verified": true,
   "checked": "2026-10-26",
-  "note": "Optional for German because browser de-DE TTS voices are good (D8); use Forvo when you want a human model or a regional variant."
+  "note": "Optional for German because browser de-DE TTS voices are good (D8); use Forvo when you want a human model or a regional variant.",
+  "kind": "audio",
+  "order": 27,
+  "blocks": [
+   "Phonology"
+  ],
+  "tip": "Free; recording your own words needs an account."
  },
  {
   "id": "de-freq-hermitdave",
   "lang": "de",
-  "name": "FrequencyWords German 50k (hermitdave)",
+  "name": "Most common German words (list)",
   "url": "https://raw.githubusercontent.com/hermitdave/FrequencyWords/master/content/2018/de/de_50k.txt",
   "what": "Subtitle-derived German word frequency list, 50,000 forms",
-  "use": "Work down the list 10 lemmas a day in the Input block (P-4), skipping names and function words you already own, and turn each into a sentence chunk with article and plural.",
+  "use": "A plain list of the most frequent German words, from film subtitles. From week 9, use it to check whether a new word is common enough to learn now.",
   "cost": "free",
-  "fromStage": 1,
+  "fromStage": 3,
   "toStage": 4,
   "priority": "optional",
   "protocol": "P-4",
   "verified": true,
   "checked": "2026-10-26",
-  "note": "Raw text file (word, count per line); the GitHub folder view github.com/hermitdave/FrequencyWords/tree/master/content/2018/de was not fetchable from this session (robots/403), the raw file was. Lemmatise by hand: ich/mich/mir are separate lines."
+  "note": "Raw text file (word, count per line); the GitHub folder view github.com/hermitdave/FrequencyWords/tree/master/content/2018/de was not fetchable from this session (robots/403), the raw file was. Lemmatise by hand: ich/mich/mir are separate lines.",
+  "kind": "list",
+  "order": 28,
+  "blocks": [
+   "Input"
+  ],
+  "tip": "It opens as a raw text file (word and count on each line)."
  },
  {
   "id": "de-graded-readers",
   "lang": "de",
-  "name": "Klett DaF Lektüren (graded readers, A1 listing)",
+  "name": "Easy readers (Klett)",
   "url": "https://www.klett-sprachen.de/lektueren/deutsch-als-fremdsprache/a1/c-485",
   "what": "Paid A1–B1 graded readers, many with audio",
-  "use": "Buy one A1 reader in week 3 and read 10 minutes a day in the Input block (P-4), moving to A2 titles in stage 2 and B1 in stage 3; shadow the audio edition if you bought one (P-8).",
-  "cost": "~€8–12 one-off per reader",
-  "fromStage": 1,
+  "use": "Short books written for learners, sorted by level. Around week 5 buy one A1 reader and read 10 minutes a day; A2 later.",
+  "cost": "paid, about €8–12 per book",
+  "fromStage": 2,
   "toStage": 3,
   "priority": "optional",
   "protocol": "P-4",
   "verified": true,
   "checked": "2026-10-26",
-  "note": "Page shows 87 A1 titles with a level filter (A2: 167, B1: 101). Hueber Lesehefte / Lese-Novelas are the equivalent Hueber series, but shop.hueber.de refuses automated fetches so no Hueber listing URL is given. Price range is typical, not read from the page."
+  "note": "Page shows 87 A1 titles with a level filter (A2: 167, B1: 101). Hueber Lesehefte / Lese-Novelas are the equivalent Hueber series, but shop.hueber.de refuses automated fetches so no Hueber listing URL is given. Price range is typical, not read from the page.",
+  "kind": "reading",
+  "order": 29,
+  "blocks": [
+   "Input"
+  ],
+  "tip": "Many titles come with audio."
  },
  {
   "id": "de-menschen",
   "lang": "de",
-  "name": "Menschen A1–B1 coursebook (Hueber)",
+  "name": "Menschen coursebook (Hueber)",
   "url": "https://www.hueber.de/menschen",
   "what": "Paid mainstream DaF coursebook series, A1–B1, with audio",
-  "use": "Only if you want a book: do one lesson's exercises per week as extra Input (P-4) and borrow its dialogues for Dictation (P-3); the FSI drills and Nicos Weg remain the core.",
-  "cost": "paid one-off per volume; price not shown on page",
+  "use": "Only if you want a printed coursebook as well. Nicos Weg and FSI already cover the same ground for free.",
+  "cost": "paid, per volume",
   "fromStage": 1,
   "toStage": 4,
   "priority": "optional",
   "protocol": "P-4",
   "verified": true,
   "checked": "2026-10-26",
-  "note": "Netzwerk neu (Klett) is the equivalent alternative; only Klett component pages (Intensivtrainer, Grammatik) were reachable, so no Netzwerk series URL is given."
+  "note": "Netzwerk neu (Klett) is the equivalent alternative; only Klett component pages (Intensivtrainer, Grammatik) were reachable, so no Netzwerk series URL is given.",
+  "kind": "course",
+  "order": 30,
+  "blocks": [
+   "Input"
+  ],
+  "tip": "Netzwerk neu (Klett) is the equivalent alternative."
  },
  {
   "id": "hu-fsi-basic",
   "lang": "hu",
-  "name": "FSI Hungarian Basic Course (Yojik mirror)",
+  "name": "FSI Hungarian Basic Course",
   "url": "https://fsi-languages.yojik.eu/languages/FSI/fsi-hungarian.html",
   "what": "Public-domain drill course: 24 units, PDFs, tapes, graded reader",
-  "use": "From Hungarian week 3 open the Volume 1 PDF and the unit's tapes in the Drills block (P-1), answer each drill aloud before the tape, and shadow the tape speaker (P-8) for 10 minutes; Units 1–2 in weeks 3–4, 3–5 in weeks 5–8, 6–8 in weeks 9–12.",
+  "use": "Free US-government course: book (PDF) and audio.",
   "cost": "free",
   "fromStage": 1,
   "toStage": 3,
@@ -314,23 +438,45 @@
   "protocol": "P-1",
   "verified": true,
   "checked": "2026-10-26",
-  "note": "The page itself holds the downloads (Volume 1–2 student texts, Unit 01A–24D MP3s, FSI Hungarian Graded Reader with 24 audio selections, and a full ZIP). The tapes are the only native audio at learner tempo."
+  "note": "The page itself holds the downloads (Volume 1–2 student texts, Unit 01A–24D MP3s, FSI Hungarian Graded Reader with 24 audio selections, and a full ZIP). The tapes are the only native audio at learner tempo.",
+  "kind": "course",
+  "order": 4,
+  "blocks": [
+   "Input",
+   "Shadowing / Legend"
+  ],
+  "useByStage": {
+   "1": "From Hungarian week 3: Unit 1 dialogue — pause after each line and say it out loud; then say the drill answers before the speaker. Units 1–2 in weeks 3–4.",
+   "2": "Units 3–5 in weeks 5–8: dialogue first, then the drills out loud.",
+   "3": "Units 6–8 in weeks 9–12; shadow the dialogue speaker."
+  },
+  "tip": "From the 1960s, so some words are dated, but the structure drills are excellent.",
+  "dialogue": true
  },
  {
   "id": "hu-pod101",
   "lang": "hu",
-  "name": "HungarianPod101 (Absolute Beginner)",
+  "name": "HungarianPod101",
   "url": "https://www.hungarianpod101.com/lesson-library",
   "what": "Audio/video lessons with dialogue breakdowns; free tier",
-  "use": "From Hungarian week 3 take one Absolute Beginner lesson per day as Input (P-4), then replay the dialogue blind for Gisting (P-2) at Stage 1–2 and write one line as Dictation (P-3).",
-  "cost": "free tier (Premium ~$10 /month)",
+  "use": "Short audio lessons with English explanations. One Absolute Beginner lesson a day: listen, then repeat the dialogue line by line.",
+  "cost": "free tier; paid plans",
   "fromStage": 1,
   "toStage": 3,
   "priority": "core",
   "protocol": "P-4",
   "verified": true,
   "checked": "2026-10-26",
-  "note": "Free lifetime account: first 3 lessons of every series plus 3–5 new free lessons a week; line-by-line transcripts and lesson notes are Premium. Pricing page listed Basic $4, Premium $10, Premium PLUS $23 per month at full price (sale prices lower)."
+  "note": "Free lifetime account: first 3 lessons of every series plus 3–5 new free lessons a week; line-by-line transcripts and lesson notes are Premium. Pricing page listed Basic $4, Premium $10, Premium PLUS $23 per month at full price (sale prices lower).",
+  "kind": "audio",
+  "order": 5,
+  "blocks": [
+   "Input",
+   "Gisting",
+   "Shadowing / Legend"
+  ],
+  "tip": "A free account gives the first lessons of every series; the rest is paid.",
+  "dialogue": true
  },
  {
   "id": "hu-hungarianreference",
@@ -338,38 +484,53 @@
   "name": "HungarianReference.com",
   "url": "https://www.hungarianreference.com/",
   "what": "Free English-language Hungarian grammar reference",
-  "use": "Read the pronunciation page in weeks 1–2 for the Sounds block (P-11), then look up a case or conjugation only after a drill set misses it, as the 3–6-word gloss for your burn book.",
+  "use": "Clear English explanations of Hungarian.",
   "cost": "free",
   "fromStage": 0,
   "toStage": 4,
-  "priority": "optional",
+  "priority": "core",
   "protocol": "P-11",
   "verified": true,
-  "checked": "2026-10-26"
+  "checked": "2026-10-26",
+  "kind": "grammar",
+  "order": 3,
+  "blocks": [
+   "Phonology",
+   "Review"
+  ],
+  "useByStage": {
+   "0": "Weeks 1–2: read the pronunciation pages (vowels, consonants, stress) while you do the Sounds block.",
+   "1": "Look a grammar point up only after a drill keeps missing it."
+  }
  },
  {
   "id": "hu-magyarok",
   "lang": "hu",
-  "name": "MagyarOK coursebook site (Pécs)",
+  "name": "MagyarOK coursebook",
   "url": "https://mnyi.eu",
   "what": "Coursebook A1–B2; site has free audio, worksheets, sample chapter",
-  "use": "From stage 2 use the free audio and sample chapter texts as Input (P-4) and shadowing material (P-8); buy the A1 book only if you want a structured reader for weeks 9–12.",
-  "cost": "free site; book paid one-off (price not checked)",
+  "use": "Modern Hungarian coursebook; its site has free audio and sample chapters. Optional from week 5.",
+  "cost": "free audio; book paid",
   "fromStage": 2,
   "toStage": 4,
   "priority": "optional",
   "protocol": "P-4",
   "verified": false,
   "checked": "2026-10-26",
-  "note": "Neither mnyi.eu nor magyar-ok.hu could be fetched from this session (permission gate on new hosts). University of Pécs announced the site is moving from magyar-ok.hu to mnyi.eu with both live during a transition; if mnyi.eu does not resolve, try https://www.magyar-ok.hu."
+  "note": "Neither mnyi.eu nor magyar-ok.hu could be fetched from this session (permission gate on new hosts). University of Pécs announced the site is moving from magyar-ok.hu to mnyi.eu with both live during a transition; if mnyi.eu does not resolve, try https://www.magyar-ok.hu.",
+  "kind": "course",
+  "order": 22,
+  "blocks": [
+   "Input"
+  ]
  },
  {
   "id": "hu-m1-hirado",
   "lang": "hu",
-  "name": "M1 Híradó (MédiaKlikk)",
+  "name": "M1 Híradó (TV news)",
   "url": "https://mediaklikk.hu/tema/hirado/",
   "what": "Public TV news bulletins on demand, Hungarian only",
-  "use": "From Hungarian week 9 play the first 2 minutes of the latest Híradó blind in the Gisting block (P-2) at Stage 1 only (place names, numbers, who/what) and log the score.",
+  "use": "Hungarian TV news. From week 9, play the first 2 minutes without text and note place names, numbers and who did what.",
   "cost": "free",
   "fromStage": 3,
   "toStage": 4,
@@ -377,15 +538,20 @@
   "protocol": "P-2",
   "verified": false,
   "checked": "2026-10-26",
-  "note": "The topic page returned a server error to the fetcher; a single Híradó video page on mediaklikk.hu did load, confirming bulletins are hosted there. Context: MTVA news went dark 7 Jul 2026 and the Híradó relaunched 20 Aug 2026 with two daily bulletins; hirado.hu currently shows only a 'service under review' notice. The site has an 18+ age gate."
+  "note": "The topic page returned a server error to the fetcher; a single Híradó video page on mediaklikk.hu did load, confirming bulletins are hosted there. Context: MTVA news went dark 7 Jul 2026 and the Híradó relaunched 20 Aug 2026 with two daily bulletins; hirado.hu currently shows only a 'service under review' notice. The site has an 18+ age gate.",
+  "kind": "video",
+  "order": 7,
+  "blocks": [
+   "Gisting"
+  ]
  },
  {
   "id": "hu-kossuth",
   "lang": "hu",
-  "name": "Kossuth Rádió (MédiaKlikk)",
+  "name": "Kossuth Rádió",
   "url": "https://mediaklikk.hu/kossuth",
   "what": "Public radio live stream and programme archive",
-  "use": "From Hungarian week 9 take one short news item for Gisting (P-2) at Stage 2 and shadow a 30-second stretch of the newsreader (P-8).",
+  "use": "Hungarian public radio. One short news item for gisting; speak along with the newsreader for 30 seconds.",
   "cost": "free",
   "fromStage": 3,
   "toStage": 4,
@@ -393,15 +559,21 @@
   "protocol": "P-2",
   "verified": true,
   "checked": "2026-10-26",
-  "note": "Relaunched 24 Aug 2026 after the public-media shutdown; the page shows an 'élő' (live) label and programme links behind an 18+ age gate."
+  "note": "Relaunched 24 Aug 2026 after the public-media shutdown; the page shows an 'élő' (live) label and programme links behind an 18+ age gate.",
+  "kind": "audio",
+  "order": 23,
+  "blocks": [
+   "Gisting",
+   "Shadowing / Legend"
+  ]
  },
  {
   "id": "hu-telex",
   "lang": "hu",
-  "name": "Telex",
+  "name": "Telex (news site)",
   "url": "https://telex.hu/",
   "what": "Independent Hungarian news site with video",
-  "use": "From stage 2 skim the headlines for 5 minutes in the Input block (P-4) to recognise place names, numbers and dates; do not read articles until stage 4.",
+  "use": "Hungarian news site. From week 5, skim the headlines for place names, numbers and dates; full articles only after month 3.",
   "cost": "free",
   "fromStage": 2,
   "toStage": 4,
@@ -409,15 +581,20 @@
   "protocol": "P-4",
   "verified": false,
   "checked": "2026-10-26",
-  "note": "The homepage refused the automated fetch (client error, likely a bot wall); individual Telex articles and the English edition https://telex.hu/english loaded fine, so the domain is live."
+  "note": "The homepage refused the automated fetch (client error, likely a bot wall); individual Telex articles and the English edition https://telex.hu/english loaded fine, so the domain is live.",
+  "kind": "reading",
+  "order": 24,
+  "blocks": [
+   "Input"
+  ]
  },
  {
   "id": "hu-common-voice",
   "lang": "hu",
-  "name": "Mozilla Common Voice – Hungarian",
+  "name": "Common Voice (Hungarian)",
   "url": "https://commonvoice.mozilla.org/hu",
   "what": "Thousands of short native clips with text; listen in browser",
-  "use": "From Hungarian week 1 open Listen, shadow 10 clips a day (P-8) reading the sentence, then take 3 of them as single-word Dictation (P-3) rung 1.",
+  "use": "Real people reading short sentences. Open Listen, play a clip, then say the sentence yourself. Ten a day.",
   "cost": "free",
   "fromStage": 0,
   "toStage": 4,
@@ -425,15 +602,32 @@
   "protocol": "P-8",
   "verified": true,
   "checked": "2026-10-26",
-  "note": "Page loaded (Common Voice app; /hu is the Hungarian locale) but it is a JavaScript app, so clip content could not be inspected by the fetcher. Bulk dataset download has moved to Mozilla Data Collective: https://datacollective.mozillafoundation.org/datasets/cmj8u3p8900bhnxxb50f37mkm (Scripted Speech 24.0 – Hungarian; redirects to mozilladatacollective.com, which could not be fetched)."
+  "note": "Page loaded (Common Voice app; /hu is the Hungarian locale) but it is a JavaScript app, so clip content could not be inspected by the fetcher. Bulk dataset download has moved to Mozilla Data Collective: https://datacollective.mozillafoundation.org/datasets/cmj8u3p8900bhnxxb50f37mkm (Scripted Speech 24.0 – Hungarian; redirects to mozilladatacollective.com, which could not be fetched).",
+  "kind": "audio",
+  "order": 2,
+  "blocks": [
+   "Input",
+   "Shadowing / Legend",
+   "Phonology"
+  ],
+  "tip": "Volunteer recordings: quality varies, so skip the bad ones.",
+  "useByStage": {
+   "0": "Weeks 1–2: open Listen and play a clip while reading its sentence, then say the sentence yourself. Ten a day; copy the sounds, don’t worry about meaning yet.",
+   "1": "Play ten clips while reading the sentence, then say each one yourself, half a second behind the speaker."
+  },
+  "blockStages": {
+   "Input": [
+    0
+   ]
+  }
  },
  {
   "id": "hu-tatoeba-audio",
   "lang": "hu",
-  "name": "Tatoeba – Hungarian sentences with audio",
+  "name": "Tatoeba (Hungarian audio)",
   "url": "https://tatoeba.org/en/audio/index/hun",
   "what": "About 6,900 Hungarian sentences with native audio and translations",
-  "use": "In the Shadowing / Legend block (P-8) pick 5 short sentences, shadow each three times, then dictate them (P-3) and check against the text.",
+  "use": "Short recorded sentences. Pick five, repeat each three times, then write them from memory and check.",
   "cost": "free",
   "fromStage": 1,
   "toStage": 4,
@@ -441,23 +635,35 @@
   "protocol": "P-8",
   "verified": true,
   "checked": "2026-10-26",
-  "note": "Page lists 6,914 Hungarian recordings (1,000 most recent shown). For sentences with English translations use Advanced search with from=hun, to=eng, has audio=yes."
+  "note": "Page lists 6,914 Hungarian recordings (1,000 most recent shown). For sentences with English translations use Advanced search with from=hun, to=eng, has audio=yes.",
+  "kind": "audio",
+  "order": 20,
+  "blocks": [
+   "Shadowing / Legend"
+  ],
+  "tip": "Click a sentence to see its English translation."
  },
  {
   "id": "hu-sztaki",
   "lang": "hu",
-  "name": "SZTAKI Szótár",
+  "name": "SZTAKI dictionary",
   "url": "https://szotar.sztaki.hu/",
   "what": "Standard free Hungarian–English dictionary",
-  "use": "Look up new words in the Input block (P-4) and record each noun with one case form you have drilled, not as a bare stem.",
+  "use": "The standard Hungarian–English dictionary. Write every new noun down with one ending you know (ház, házban), not as a bare word.",
   "cost": "free",
   "fromStage": 1,
   "toStage": 4,
-  "priority": "optional",
+  "priority": "core",
   "protocol": "P-4",
   "verified": false,
   "checked": "2026-10-26",
-  "note": "The site returned a client error to the automated fetcher (likely bot protection); the address is the long-standing one and is cited by Hungarian press as the main free online dictionary."
+  "note": "The site returned a client error to the automated fetcher (likely bot protection); the address is the long-standing one and is cited by Hungarian press as the main free online dictionary.",
+  "kind": "dictionary",
+  "order": 6,
+  "blocks": [
+   "Input",
+   "Review"
+  ]
  },
  {
   "id": "hu-wiktionary",
@@ -465,7 +671,7 @@
   "name": "Wiktionary – Hungarian entries",
   "url": "https://en.wiktionary.org/wiki/Category:Hungarian_lemmas",
   "what": "31,000+ Hungarian lemmas with full declension and conjugation tables",
-  "use": "After a drill miss on a case or possessive form, open the word's Wiktionary entry and read its declension table once in the Review block, then re-drill (P-1).",
+  "use": "After a drill miss on an ending, open the word’s entry and read its table of forms once, then drill it again.",
   "cost": "free",
   "fromStage": 1,
   "toStage": 4,
@@ -473,31 +679,43 @@
   "protocol": "P-4",
   "verified": true,
   "checked": "2026-10-26",
-  "note": "Many entries carry audio; the tables show stem alternations (kéz → kezet) which the Deconstructor module relies on."
+  "note": "Many entries carry audio; the tables show stem alternations (kéz → kezet) which the Deconstructor module relies on.",
+  "kind": "dictionary",
+  "order": 21,
+  "blocks": [
+   "Review"
+  ],
+  "tip": "Many entries have audio."
  },
  {
   "id": "hu-freq-hermitdave",
   "lang": "hu",
-  "name": "FrequencyWords Hungarian 50k (hermitdave)",
+  "name": "Most common Hungarian words (list)",
   "url": "https://raw.githubusercontent.com/hermitdave/FrequencyWords/master/content/2018/hu/hu_50k.txt",
   "what": "Subtitle-derived Hungarian word frequency list, 50,000 forms",
-  "use": "Work down the list 8 lemmas a day in the Input block (P-4), stripping names and merging inflected forms by hand, and put each into a sentence with one known suffix.",
+  "use": "A plain list of the most frequent Hungarian words (word forms, not dictionary forms). From week 9, use it to check whether a word is common.",
   "cost": "free",
-  "fromStage": 1,
+  "fromStage": 3,
   "toStage": 4,
   "priority": "optional",
   "protocol": "P-4",
   "verified": true,
   "checked": "2026-10-26",
-  "note": "Raw text file (word, count per line). The GitHub folder view was not fetchable from this session; the raw file was. Inflected forms (házat, házban) appear as separate lines."
+  "note": "Raw text file (word, count per line). The GitHub folder view was not fetchable from this session; the raw file was. Inflected forms (házat, házban) appear as separate lines.",
+  "kind": "list",
+  "order": 25,
+  "blocks": [
+   "Input"
+  ],
+  "tip": "Opens as a raw text file."
  },
  {
   "id": "hu-ecl-samples",
   "lang": "hu",
-  "name": "ECL Hungarian sample tests",
+  "name": "ECL Hungarian sample exams",
   "url": "https://ecl.hu/felkeszulest-segito-anyagok-tesztmintak/",
   "what": "Free ECL sample papers, Hungarian as a foreign language A2–C1",
-  "use": "From month 10 run the A2 then B1 Hungarian sample paper under timing as the optional external Exam check (D5) alongside the tutor-run consulate mock interview.",
+  "use": "Sample papers for a recognised Hungarian exam. Optional, from month 10, as an outside check next to the tutor-run mock interview.",
   "cost": "free",
   "fromStage": 4,
   "toStage": 4,
@@ -505,7 +723,10 @@
   "protocol": "D5",
   "verified": false,
   "checked": "2026-10-26",
-  "note": "The sample-test page could not be fetched (permission gate); its URL is quoted by eduline.hu articles from 2015 and 2025. The ECL 'Magyar mint idegen nyelv' exam page https://ecl.hu/?p=7662 did load and confirms A2/B1/B2/C1 levels."
+  "note": "The sample-test page could not be fetched (permission gate); its URL is quoted by eduline.hu articles from 2015 and 2025. The ECL 'Magyar mint idegen nyelv' exam page https://ecl.hu/?p=7662 did load and confirms A2/B1/B2/C1 levels.",
+  "kind": "exam",
+  "order": 26,
+  "blocks": []
  },
  {
   "id": "hu-forvo",
@@ -513,7 +734,7 @@
   "name": "Forvo Hungarian",
   "url": "https://forvo.com/languages/hu/",
   "what": "Native-speaker recordings of single Hungarian words",
-  "use": "From Hungarian week 1 in the Sounds block (P-11) play a word for the day's feature (a/á, ö/ő, gy, ty, sz/s), record yourself, compare, re-record; say your family names and places the same way.",
+  "use": "Hear any Hungarian word said by native speakers. Use it in the Sounds block, and say your family’s names and towns the same way.",
   "cost": "free",
   "fromStage": 0,
   "toStage": 4,
@@ -521,76 +742,100 @@
   "protocol": "P-11",
   "verified": true,
   "checked": "2026-10-26",
-  "note": "Core for Hungarian because browser hu-HU TTS voices are patchy (D8). Request a recording if a family place name is missing."
+  "note": "Core for Hungarian because browser hu-HU TTS voices are patchy (D8). Request a recording if a family place name is missing.",
+  "kind": "audio",
+  "order": 1,
+  "blocks": [
+   "Phonology"
+  ],
+  "tip": "Phone voices for Hungarian are often missing or poor, so this is your main pronunciation model."
  },
  {
   "id": "both-italki",
   "lang": "both",
-  "name": "italki",
+  "name": "italki (tutors)",
   "url": "https://www.italki.com/",
   "what": "Tutor marketplace; community tutors, pay per lesson",
-  "use": "Book the same community tutor for one 30-minute call a week (German from week 3, Hungarian from Hungarian week 10), send the scenario card in advance, and spend the call on Cross-examination (P-7) of your legend.",
+  "use": "Paid online tutors. Book the same tutor for 30 minutes a week (German from week 5; Hungarian from its week 9), send your scenario card ahead and spend the call being questioned about your story.",
   "cost": "~$10–25 /hour, pay per lesson",
-  "fromStage": 1,
+  "fromStage": 2,
   "toStage": 4,
   "priority": "optional",
   "protocol": "P-7",
   "verified": true,
   "checked": "2026-10-26",
-  "note": "Listings seen: German community tutors from about $5–15 per trial, Hungarian tutors $15–25 per hour (59 available). Marked optional because it costs money; the doctrine's minimum dose is 30 min/week per language."
+  "note": "Listings seen: German community tutors from about $5–15 per trial, Hungarian tutors $15–25 per hour (59 available). Marked optional because it costs money; the doctrine's minimum dose is 30 min/week per language.",
+  "kind": "tutor",
+  "order": 10,
+  "blocks": [
+   "Shadowing / Legend"
+  ],
+  "tip": "Community tutors are usually cheaper than professional teachers; try two or three trial lessons before committing.",
+  "fromStageHu": 3
  },
  {
   "id": "both-preply",
   "lang": "both",
-  "name": "Preply",
+  "name": "Preply (tutors)",
   "url": "https://preply.com/",
   "what": "Tutor marketplace, alternative to italki",
-  "use": "Use Preply only if you cannot find a weekly Hungarian tutor on italki; run the same 30-minute Cross-examination (P-7) format with the scenario card sent ahead.",
-  "cost": "pay per lesson; price set by tutor",
-  "fromStage": 1,
+  "use": "Alternative to italki if you can’t find a tutor you like there; same 30-minute weekly format.",
+  "cost": "pay per lesson (tutor sets the price)",
+  "fromStage": 2,
   "toStage": 4,
   "priority": "optional",
   "protocol": "P-7",
   "verified": true,
-  "checked": "2026-10-26"
+  "checked": "2026-10-26",
+  "kind": "tutor",
+  "order": 11,
+  "blocks": []
  },
  {
   "id": "both-tandem",
   "lang": "both",
-  "name": "Tandem",
+  "name": "Tandem (language exchange)",
   "url": "https://tandem.net/",
   "what": "Language-exchange app: text, voice notes, calls",
-  "use": "From month 3 do one 20-minute voice exchange a week per language, half in each language, staying in your legend persona, and log faults in the burn book afterwards (P-7 informal).",
+  "use": "Free language-exchange app. From month 3, one 20-minute voice call a week, half in each language.",
   "cost": "free tier",
   "fromStage": 3,
   "toStage": 4,
   "priority": "optional",
   "protocol": "P-7",
   "verified": true,
-  "checked": "2026-10-26"
+  "checked": "2026-10-26",
+  "kind": "tutor",
+  "order": 12,
+  "blocks": []
  },
  {
   "id": "both-hellotalk",
   "lang": "both",
-  "name": "HelloTalk",
+  "name": "HelloTalk (language exchange)",
   "url": "https://www.hellotalk.com/",
   "what": "Language-exchange app with corrections and voice rooms",
-  "use": "From month 3 post one Writing-block text (P-12 German / P-13 Hungarian) a week for native corrections, and use voice rooms for a 20-minute exchange if Tandem yields no partner.",
+  "use": "Language-exchange app. From month 3, post one short text a week and let native speakers correct it.",
   "cost": "free tier",
   "fromStage": 3,
   "toStage": 4,
   "priority": "optional",
   "protocol": "P-12",
   "verified": true,
-  "checked": "2026-10-26"
+  "checked": "2026-10-26",
+  "kind": "tutor",
+  "order": 13,
+  "blocks": [
+   "Writing"
+  ]
  },
  {
   "id": "both-claude-chat",
   "lang": "both",
-  "name": "Claude in chat",
+  "name": "Claude (chat)",
   "url": "https://claude.ai",
   "what": "Cross-examiner, writing corrector, and drill-item generator",
-  "use": "Once a week per language paste your legend and a scenario card and ask for 15 random questions with follow-up probes for Cross-examination (P-7); monthly paste one message for Writing correction (P-12/P-13).",
+  "use": "Your tutor between sessions.",
   "cost": "free tier",
   "fromStage": 1,
   "toStage": 4,
@@ -598,6 +843,19 @@
   "protocol": "P-7",
   "verified": true,
   "checked": "2026-10-26",
-  "note": "Not a web page to fetch: this is the chat you are already in. Cross-examination starts German week 3 and Hungarian week 10 per D8; the linguistic-console-sessions skill holds the session formats."
+  "note": "Not a web page to fetch: this is the chat you are already in. Cross-examination starts German week 3 and Hungarian week 10 per D8; the linguistic-console-sessions skill holds the session formats.",
+  "kind": "chat",
+  "order": 4,
+  "blocks": [
+   "Review",
+   "Shadowing / Legend",
+   "Writing"
+  ],
+  "useByStage": {
+   "1": "Stuck on a drill? Paste the cue and the answer and ask why it is built that way, or ask for five more example sentences at your level.",
+   "2": "Once a week: Legend → Export for chat, paste it here and get questioned about your story for 15 minutes. Keep asking “why” about drill answers you don’t understand.",
+   "3": "Weekly legend questioning as before; once a month paste a paragraph you wrote and ask for corrections with a one-line reason for each."
+  },
+  "tip": "Open the Claude app or claude.ai in a new chat. For Hungarian, ask it to use the formal Ön form, like the consulate will."
  }
 ]

@@ -16,7 +16,10 @@ REQUIRED = {
     "cost": str, "fromStage": int, "toStage": int, "priority": str,
     "protocol": str, "verified": bool, "checked": str,
 }
-OPTIONAL = {"note": str}
+OPTIONAL = {"note": str, "tip": str, "kind": str, "order": int, "blocks": list, "useByStage": dict, "blockStages": dict, "dialogue": bool, "fromStageHu": int}
+KINDS = {"video", "audio", "course", "reading", "dictionary", "grammar", "chat", "exam", "tutor", "list"}
+BLOCKS = {"Phonology", "Drills", "Input", "Gisting", "Shadowing / Legend", "Review", "Writing"}
+CODE_RE = re.compile(r"\b(P-\d{1,2}|D\d)\b|egress|proxy|fetch")
 LANGS = {"de", "hu", "both"}
 PRIORITIES = {"core", "optional"}
 PROTOCOL_RE = re.compile(r"^(P-([1-9]|1[0-3])|D5|D6)$")
@@ -90,8 +93,20 @@ for i, item in enumerate(data):
     nwords = len(item["what"].split())
     if nwords > WHAT_MAX_WORDS:
         err(f"{tag}: 'what' has {nwords} words (max {WHAT_MAX_WORDS})")
-    if not re.search(r"\b(P-\d{1,2}|D5|D6)\b", item["use"]):
-        err(f"{tag}: 'use' must name a protocol (P-n, D5 or D6)")
+    # user-facing text: no protocol codes, no verification notes (those stay in 'note', which the app never shows)
+    for key in ("use", "tip", "what"):
+        if isinstance(item.get(key), str) and CODE_RE.search(item[key]):
+            err(f"{tag}: '{key}' contains a protocol code or a verification note")
+    for st, txt in (item.get("useByStage") or {}).items():
+        if not re.match(r"^[0-4]$", st) or not isinstance(txt, str) or not txt.strip():
+            err(f"{tag}: useByStage keys must be '0'..'4' with non-empty text")
+        elif CODE_RE.search(txt):
+            err(f"{tag}: useByStage[{st}] contains a protocol code")
+    if "kind" in item and item["kind"] not in KINDS:
+        err(f"{tag}: kind '{item['kind']}' not in {sorted(KINDS)}")
+    for b in item.get("blocks") or []:
+        if b not in BLOCKS:
+            err(f"{tag}: unknown block '{b}'")
     if item["url"] == "claude.ai":
         pass  # spec: Claude in chat has no URL
     elif not URL_RE.match(item["url"]):
@@ -112,18 +127,18 @@ for dup, n in ids.items():
     if n > 1:
         err(f"duplicate id '{dup}' ({n} times)")
 
-# core counts per language at the language's start (fromStage <= 1); 'both' counts for each
+# core counts per language at the language's first stage (German 1, Hungarian 0); 'both' counts for each
 core_start = {"de": [], "hu": []}
+FIRST = {"de": 1, "hu": 0}
 for item in data:
     if not isinstance(item, dict) or item.get("priority") != "core":
         continue
-    if item.get("fromStage", 99) <= 1:
-        for lang in ("de", "hu"):
-            if item.get("lang") in (lang, "both"):
-                core_start[lang].append(item["id"])
+    for lang in ("de", "hu"):
+        if item.get("lang") in (lang, "both") and item.get("fromStage", 99) <= FIRST[lang]:
+            core_start[lang].append(item["id"])
 for lang, found in core_start.items():
     if not (CORE_STAGE1_MIN <= len(found) <= CORE_STAGE1_MAX):
-        err(f"{lang}: {len(found)} core items at fromStage<=1 (need {CORE_STAGE1_MIN}-{CORE_STAGE1_MAX}): {found}")
+        err(f"{lang}: {len(found)} core items at the first stage (need {CORE_STAGE1_MIN}-{CORE_STAGE1_MAX}): {found}")
 
 # summary
 by_lang = Counter(i["lang"] for i in data if isinstance(i, dict))
@@ -134,7 +149,7 @@ print(f"{PATH}: {len(data)} resources")
 for lang in ("de", "hu", "both"):
     print(f"  {lang}: {by_lang.get(lang, 0)} total, {by_lang_prio.get((lang, 'core'), 0)} core, {by_lang_prio.get((lang, 'optional'), 0)} optional")
 for lang, found in core_start.items():
-    print(f"  core at start ({lang}, fromStage<=1): {len(found)} -> {', '.join(found)}")
+    print(f"  core at start ({lang}, first stage): {len(found)} -> {', '.join(found)}")
 print(f"  verified: {len(data) - len(unverified)} / unverified: {len(unverified)}")
 for rid, note in unverified:
     print(f"    - {rid}: {note[:110]}{'…' if len(note) > 110 else ''}")
