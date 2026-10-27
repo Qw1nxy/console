@@ -1,0 +1,1813 @@
+[
+  {
+    "id": "de-drill-b001",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "response",
+    "family": "basics.greet",
+    "instruction": "Say it in German.",
+    "cue": "Good morning!",
+    "answer": "Guten Morgen!",
+    "accepted": [
+      "Guten Morgen",
+      "Morgen"
+    ],
+    "explain": "Guten Morgen = the morning greeting (until about 10–11); later in the day: Guten Tag. ‘Good morning!’",
+    "tags": [
+      "greeting",
+      "morning"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": false,
+    "stage": 1,
+    "gloss": "Good morning!"
+  },
+  {
+    "id": "de-drill-b002",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "response",
+    "family": "basics.greet",
+    "instruction": "Say it in German.",
+    "cue": "Hello! (formal, daytime)",
+    "answer": "Guten Tag!",
+    "accepted": [
+      "Guten Tag"
+    ],
+    "explain": "Guten Tag = the formal daytime hello (‘good day’); evening: Guten Abend. Informal: Hallo. ‘Hello!’",
+    "tags": [
+      "greeting",
+      "formal"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": false,
+    "stage": 1,
+    "gloss": "Hello! / Good day!"
+  },
+  {
+    "id": "de-drill-b003",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "response",
+    "family": "basics.greet",
+    "instruction": "Say it in German.",
+    "cue": "Goodbye! (formal)",
+    "answer": "Auf Wiedersehen!",
+    "accepted": [
+      "Auf Wiedersehen"
+    ],
+    "explain": "Auf Wiedersehen = formal goodbye (‘until we see each other again’). Informal: Tschüss. ‘Goodbye!’",
+    "tags": [
+      "greeting",
+      "goodbye",
+      "formal"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": false,
+    "stage": 1,
+    "gloss": "Goodbye!"
+  },
+  {
+    "id": "de-drill-b004",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "response",
+    "family": "basics.greet",
+    "instruction": "Say it in German.",
+    "cue": "Thank you very much!",
+    "answer": "Vielen Dank!",
+    "accepted": [
+      "Vielen Dank",
+      "Danke schön",
+      "Dankeschön",
+      "Danke sehr",
+      "Danke vielmals",
+      "Herzlichen Dank"
+    ],
+    "explain": "Vielen Dank = ‘many thanks’. Danke schön and Danke sehr mean the same. ‘Thank you very much!’",
+    "tags": [
+      "politeness",
+      "thanks"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": false,
+    "stage": 1,
+    "gloss": "Thank you very much!"
+  },
+  {
+    "id": "de-drill-b005",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "response",
+    "family": "basics.greet",
+    "instruction": "Reply to the thanks with the standard German answer.",
+    "cue": "Vielen Dank!",
+    "answer": "Bitte!",
+    "accepted": [
+      "Bitte",
+      "Bitte schön",
+      "Bitte sehr",
+      "Gern geschehen",
+      "Gerne",
+      "Gern",
+      "Nichts zu danken",
+      "Keine Ursache"
+    ],
+    "explain": "Bitte answers Danke: ‘you're welcome’. Bitte also means ‘please’.",
+    "tags": [
+      "politeness",
+      "reply"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "You're welcome!"
+  },
+  {
+    "id": "de-drill-b006",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "substitution",
+    "family": "basics.sein",
+    "instruction": "Swap the subject (the person) for the cued pronoun (er = he) and change sein (to be) to match.",
+    "cue": "Ich bin Azubi. → (er)",
+    "answer": "Er ist Azubi.",
+    "accepted": [
+      "Er ist Azubi"
+    ],
+    "explain": "sein: ich bin → er ist. No article before a job. ‘He is an apprentice.’",
+    "tags": [
+      "sein",
+      "er",
+      "present",
+      "job"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "He is an apprentice."
+  },
+  {
+    "id": "de-drill-b007",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "substitution",
+    "family": "basics.sein",
+    "instruction": "Swap the subject (the person) for the cued pronoun (ich = I) and change sein (to be) to match.",
+    "cue": "Er ist müde. → (ich)",
+    "answer": "Ich bin müde.",
+    "accepted": [
+      "Ich bin müde"
+    ],
+    "explain": "sein: er ist → ich bin. ‘I am tired.’",
+    "tags": [
+      "sein",
+      "ich",
+      "present"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "I am tired."
+  },
+  {
+    "id": "de-drill-b008",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "substitution",
+    "family": "basics.sein",
+    "instruction": "Swap the subject (the person) for the cued pronoun (du = you, informal) and change sein (to be) to match.",
+    "cue": "Ich bin aus Amerika. → (du)",
+    "answer": "Du bist aus Amerika.",
+    "accepted": [
+      "Du bist aus Amerika"
+    ],
+    "explain": "sein: du bist (informal you, one person). ‘You are from America.’",
+    "tags": [
+      "sein",
+      "du",
+      "present",
+      "origin"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "You are from America."
+  },
+  {
+    "id": "de-drill-b009",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "substitution",
+    "family": "basics.sein",
+    "instruction": "Swap the subject (the person) for the cued pronoun (wir = we) and change sein (to be) to match.",
+    "cue": "Er ist neu hier. → (wir)",
+    "answer": "Wir sind neu hier.",
+    "accepted": [
+      "Wir sind neu hier"
+    ],
+    "explain": "sein: wir sind. ‘We are new here.’",
+    "tags": [
+      "sein",
+      "wir",
+      "present"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "We are new here."
+  },
+  {
+    "id": "de-drill-b010",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "substitution",
+    "family": "basics.sein",
+    "instruction": "Swap the subject (the person) for the cued pronoun (Sie = you, formal) and change sein (to be) to match.",
+    "cue": "Du bist Mechaniker. → (Sie)",
+    "answer": "Sie sind Mechaniker.",
+    "accepted": [
+      "Sie sind Mechaniker"
+    ],
+    "explain": "Formal you = Sie sind, always with a capital S. ‘You are a mechanic.’",
+    "tags": [
+      "sein",
+      "Sie",
+      "formal",
+      "present",
+      "job"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "You (formal) are a mechanic."
+  },
+  {
+    "id": "de-drill-b011",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "substitution",
+    "family": "basics.sein",
+    "instruction": "Swap the subject (the person) for the cued pronoun (sie = she) and change sein (to be) to match.",
+    "cue": "Die Chefin ist da. → (sie)",
+    "answer": "Sie ist da.",
+    "accepted": [
+      "Sie ist da"
+    ],
+    "explain": "sie (she) takes ist, like er. Small sie = she; capital Sie = formal you. ‘She is here.’",
+    "tags": [
+      "sein",
+      "sie",
+      "present"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "She is here."
+  },
+  {
+    "id": "de-drill-b012",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "substitution",
+    "family": "basics.haben",
+    "instruction": "Swap the subject for the cued pronoun (er = he) and change haben (to have) to match.",
+    "cue": "Ich habe Zeit. → (er)",
+    "answer": "Er hat Zeit.",
+    "accepted": [
+      "Er hat Zeit"
+    ],
+    "explain": "haben is irregular: er hat (not habt). ‘He has time.’",
+    "tags": [
+      "haben",
+      "er",
+      "present"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "He has time."
+  },
+  {
+    "id": "de-drill-b013",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "substitution",
+    "family": "basics.haben",
+    "instruction": "Swap the subject for the cued pronoun (ich = I) and change haben (to have) to match.",
+    "cue": "Er hat heute frei. → (ich)",
+    "answer": "Ich habe heute frei.",
+    "accepted": [
+      "Ich habe heute frei"
+    ],
+    "explain": "haben: ich habe. frei haben = to have time off. ‘I'm off today.’",
+    "tags": [
+      "haben",
+      "ich",
+      "present",
+      "work"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "I have the day off today."
+  },
+  {
+    "id": "de-drill-b014",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "substitution",
+    "family": "basics.haben",
+    "instruction": "Swap the subject for the cued pronoun (du = you, informal) and change haben (to have) to match.",
+    "cue": "Ich habe eine Frage. → (du)",
+    "answer": "Du hast eine Frage.",
+    "accepted": [
+      "Du hast eine Frage"
+    ],
+    "explain": "haben: du hast (the b drops out). ‘You have a question.’",
+    "tags": [
+      "haben",
+      "du",
+      "present"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "You have a question."
+  },
+  {
+    "id": "de-drill-b015",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "substitution",
+    "family": "basics.haben",
+    "instruction": "Swap the subject for the cued pronoun (wir = we) and change haben (to have) to match.",
+    "cue": "Ich habe Hunger. → (wir)",
+    "answer": "Wir haben Hunger.",
+    "accepted": [
+      "Wir haben Hunger"
+    ],
+    "explain": "wir haben = the dictionary form (infinitive). Hunger haben = to be hungry. ‘We are hungry.’",
+    "tags": [
+      "haben",
+      "wir",
+      "present"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "We are hungry."
+  },
+  {
+    "id": "de-drill-b016",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "substitution",
+    "family": "basics.haben",
+    "instruction": "Swap the subject for the cued pronoun (Sie = you, formal) and change haben (to have) to match.",
+    "cue": "Du hast einen Termin. → (Sie)",
+    "answer": "Sie haben einen Termin.",
+    "accepted": [
+      "Sie haben einen Termin"
+    ],
+    "explain": "Formal Sie uses haben. ‘You have an appointment.’",
+    "tags": [
+      "haben",
+      "Sie",
+      "formal",
+      "present"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "You (formal) have an appointment."
+  },
+  {
+    "id": "de-drill-b017",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "substitution",
+    "family": "basics.present",
+    "instruction": "Swap the subject for the cued pronoun (er = he) and change the verb ending to match.",
+    "cue": "Ich heiße Lukas. → (er)",
+    "answer": "Er heißt Lukas.",
+    "accepted": [
+      "Er heißt Lukas"
+    ],
+    "explain": "heißen: ich heiße → er heißt (-t). ‘His name is Lukas.’",
+    "tags": [
+      "heißen",
+      "er",
+      "present"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "His name is Lukas."
+  },
+  {
+    "id": "de-drill-b018",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "response",
+    "family": "basics.present",
+    "instruction": "Answer the formal question with ich + the verb in second position, using the cued name.",
+    "cue": "Wie heißen Sie? → (Anna Berg)",
+    "answer": "Ich heiße Anna Berg.",
+    "accepted": [
+      "Ich heiße Anna Berg"
+    ],
+    "explain": "Wie heißen Sie? → Ich heiße ... (-e for ich). ‘My name is Anna Berg.’",
+    "tags": [
+      "heißen",
+      "ich",
+      "present",
+      "response"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "My name is Anna Berg."
+  },
+  {
+    "id": "de-drill-b019",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "substitution",
+    "family": "basics.present",
+    "instruction": "Swap the subject for the cued pronoun (sie = she) and change the verb ending to match.",
+    "cue": "Anna kommt aus Amerika. → (sie)",
+    "answer": "Sie kommt aus Amerika.",
+    "accepted": [
+      "Sie kommt aus Amerika"
+    ],
+    "explain": "kommen: sie kommt (-t), same as er. ‘She comes from America.’",
+    "tags": [
+      "kommen",
+      "sie",
+      "present",
+      "origin"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "She comes from America."
+  },
+  {
+    "id": "de-drill-b020",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "substitution",
+    "family": "basics.present",
+    "instruction": "Swap the subject for the cued pronoun (du = you, informal) and change the verb ending to match.",
+    "cue": "Ich komme aus Chicago. → (du)",
+    "answer": "Du kommst aus Chicago.",
+    "accepted": [
+      "Du kommst aus Chicago"
+    ],
+    "explain": "du form = stem (verb minus -en) + -st: du kommst. ‘You come from Chicago.’",
+    "tags": [
+      "kommen",
+      "du",
+      "present",
+      "origin"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "You come from Chicago."
+  },
+  {
+    "id": "de-drill-b021",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "transformation",
+    "family": "basics.present",
+    "instruction": "Change the informal du question into the formal Sie question.",
+    "cue": "Wohnst du in Hamburg? → Sie",
+    "answer": "Wohnen Sie in Hamburg?",
+    "accepted": [
+      "Wohnen Sie in Hamburg"
+    ],
+    "explain": "du wohnst → Sie wohnen (Sie takes the -en form). ‘Do you live in Hamburg?’",
+    "tags": [
+      "wohnen",
+      "Sie",
+      "du",
+      "formal",
+      "question"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "Do you (formal) live in Hamburg?"
+  },
+  {
+    "id": "de-drill-b022",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "substitution",
+    "family": "basics.present",
+    "instruction": "Swap the subject for the cued pronoun (er = he) and change the verb ending to match.",
+    "cue": "Ich arbeite in der Werkstatt. → (er)",
+    "answer": "Er arbeitet in der Werkstatt.",
+    "accepted": [
+      "Er arbeitet in der Werkstatt"
+    ],
+    "explain": "The stem arbeit- ends in -t, so an e is added: er arbeitet. ‘He works in the workshop.’",
+    "tags": [
+      "arbeiten",
+      "er",
+      "present",
+      "work"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "He works in the workshop."
+  },
+  {
+    "id": "de-drill-b023",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "substitution",
+    "family": "basics.present",
+    "instruction": "Swap the subject for the cued pronoun (du = you, informal) and change the verb ending to match.",
+    "cue": "Ich arbeite heute. → (du)",
+    "answer": "Du arbeitest heute.",
+    "accepted": [
+      "Du arbeitest heute"
+    ],
+    "explain": "du arbeitest: extra e before -st because the stem arbeit- ends in -t. ‘You are working today.’",
+    "tags": [
+      "arbeiten",
+      "du",
+      "present",
+      "work"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "You are working today."
+  },
+  {
+    "id": "de-drill-b024",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "substitution",
+    "family": "basics.present",
+    "instruction": "Swap the subject for the cued pronoun (wir = we) and change the verb ending to match.",
+    "cue": "Ich lerne Deutsch. → (wir)",
+    "answer": "Wir lernen Deutsch.",
+    "accepted": [
+      "Wir lernen Deutsch"
+    ],
+    "explain": "wir form = the dictionary form (infinitive): wir lernen. ‘We are learning German.’",
+    "tags": [
+      "lernen",
+      "wir",
+      "present"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "We are learning German."
+  },
+  {
+    "id": "de-drill-b025",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "response",
+    "family": "basics.numbers",
+    "instruction": "Say the number in German (as one word).",
+    "cue": "20",
+    "answer": "zwanzig",
+    "accepted": [
+      "zwanzig"
+    ],
+    "explain": "20 = zwanzig. Tens: zwanzig, dreißig, vierzig, fünfzig, sechzig, siebzig, achtzig, neunzig. ‘twenty’",
+    "tags": [
+      "numbers",
+      "tens"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": false,
+    "stage": 1,
+    "gloss": "twenty"
+  },
+  {
+    "id": "de-drill-b026",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "response",
+    "family": "basics.numbers",
+    "instruction": "Say the number in German (as one word).",
+    "cue": "21",
+    "answer": "einundzwanzig",
+    "accepted": [
+      "einundzwanzig"
+    ],
+    "explain": "Ones first, then und, then tens: ein-und-zwanzig. Note ein, not eins. ‘twenty-one’",
+    "tags": [
+      "numbers",
+      "compound"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": false,
+    "stage": 1,
+    "gloss": "twenty-one"
+  },
+  {
+    "id": "de-drill-b027",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "response",
+    "family": "basics.numbers",
+    "instruction": "Say the number in German (as one word).",
+    "cue": "35",
+    "answer": "fünfunddreißig",
+    "accepted": [
+      "fünfunddreißig"
+    ],
+    "explain": "fünf-und-dreißig, written as one word; dreißig has ß. ‘thirty-five’",
+    "tags": [
+      "numbers",
+      "compound",
+      "ß"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": false,
+    "stage": 1,
+    "gloss": "thirty-five"
+  },
+  {
+    "id": "de-drill-b028",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "response",
+    "family": "basics.numbers",
+    "instruction": "Say the number in German (as one word).",
+    "cue": "17",
+    "answer": "siebzehn",
+    "accepted": [
+      "siebzehn"
+    ],
+    "explain": "13–19 = ones + zehn; 17 shortens sieben to sieb-: siebzehn. ‘seventeen’",
+    "tags": [
+      "numbers",
+      "teens"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": false,
+    "stage": 1,
+    "gloss": "seventeen"
+  },
+  {
+    "id": "de-drill-b029",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "response",
+    "family": "basics.time",
+    "instruction": "Answer the question with the clock time as a full sentence starting with Es ist.",
+    "cue": "Wie spät ist es? → (8:00)",
+    "answer": "Es ist acht Uhr.",
+    "accepted": [
+      "Es ist acht Uhr",
+      "Es ist acht"
+    ],
+    "explain": "Full hours: Es ist + number + Uhr. ‘It is eight o'clock.’",
+    "tags": [
+      "time",
+      "clock",
+      "Uhr"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": false,
+    "stage": 1,
+    "gloss": "It is eight o'clock."
+  },
+  {
+    "id": "de-drill-b030",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "response",
+    "family": "basics.time",
+    "instruction": "Answer the question with the clock time as a full sentence starting with Es ist.",
+    "cue": "Wie spät ist es? → (8:30)",
+    "answer": "Es ist halb neun.",
+    "accepted": [
+      "Es ist halb neun",
+      "Es ist acht Uhr dreißig"
+    ],
+    "explain": "halb neun = half an hour before nine = 8:30. Official style: acht Uhr dreißig. ‘It's half past eight.’",
+    "tags": [
+      "time",
+      "clock",
+      "halb"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": false,
+    "stage": 1,
+    "gloss": "It is half past eight (8:30)."
+  },
+  {
+    "id": "de-drill-b031",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "transformation",
+    "family": "basics.questions",
+    "instruction": "Ask the formal question that this sentence answers: question word first, verb second, Sie third.",
+    "cue": "Ich heiße Anna Berg. → Wie ...?",
+    "answer": "Wie heißen Sie?",
+    "accepted": [
+      "Wie heißen Sie"
+    ],
+    "explain": "Wie (how) + verb + Sie: Wie heißen Sie? ‘What is your name?’",
+    "tags": [
+      "question",
+      "wie",
+      "heißen",
+      "Sie"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "What is your name? (formal)"
+  },
+  {
+    "id": "de-drill-b032",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "transformation",
+    "family": "basics.questions",
+    "instruction": "Ask the formal question that this sentence answers: question word first, verb second, Sie third.",
+    "cue": "Ich komme aus Amerika. → Woher ...?",
+    "answer": "Woher kommen Sie?",
+    "accepted": [
+      "Woher kommen Sie"
+    ],
+    "explain": "Woher = from where. Woher kommen Sie? ‘Where are you from?’",
+    "tags": [
+      "question",
+      "woher",
+      "kommen",
+      "Sie"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "Where do you come from? (formal)"
+  },
+  {
+    "id": "de-drill-b033",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "transformation",
+    "family": "basics.questions",
+    "instruction": "Ask the formal question that this sentence answers: question word first, verb second, Sie third.",
+    "cue": "Ich wohne in Köln. → Wo ...?",
+    "answer": "Wo wohnen Sie?",
+    "accepted": [
+      "Wo wohnen Sie"
+    ],
+    "explain": "Wo = where (a place). Wo wohnen Sie? ‘Where do you live?’",
+    "tags": [
+      "question",
+      "wo",
+      "wohnen",
+      "Sie"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "Where do you live? (formal)"
+  },
+  {
+    "id": "de-drill-b034",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "transformation",
+    "family": "basics.questions",
+    "instruction": "Ask the formal question that this sentence answers: question word first, verb second, Sie third.",
+    "cue": "Ich bin Mechaniker. → Was ... von Beruf?",
+    "answer": "Was sind Sie von Beruf?",
+    "accepted": [
+      "Was sind Sie von Beruf"
+    ],
+    "explain": "Fixed phrase: Was sind Sie von Beruf? (‘what are you by profession?’). ‘What do you do for a living?’",
+    "tags": [
+      "question",
+      "was",
+      "sein",
+      "Beruf",
+      "Sie"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "What do you do for a living? (formal)"
+  },
+  {
+    "id": "de-drill-b035",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "transformation",
+    "family": "basics.questions",
+    "instruction": "Turn the statement into a yes/no question: put the verb first.",
+    "cue": "Sie kommen aus Amerika. → Frage",
+    "answer": "Kommen Sie aus Amerika?",
+    "accepted": [
+      "Kommen Sie aus Amerika"
+    ],
+    "explain": "Yes/no question: verb first, subject second, no ‘do’. ‘Are you from America?’",
+    "tags": [
+      "question",
+      "yes-no",
+      "kommen",
+      "Sie"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "Do you (formal) come from America?"
+  },
+  {
+    "id": "de-drill-b036",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "transformation",
+    "family": "basics.questions",
+    "instruction": "Turn the statement into a yes/no question: put the verb first.",
+    "cue": "Du arbeitest heute. → Frage",
+    "answer": "Arbeitest du heute?",
+    "accepted": [
+      "Arbeitest du heute"
+    ],
+    "explain": "Verb first, then du: Arbeitest du heute? ‘Are you working today?’",
+    "tags": [
+      "question",
+      "yes-no",
+      "arbeiten",
+      "du"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "Are you working today?"
+  },
+  {
+    "id": "de-drill-b037",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "transformation",
+    "family": "order.v2",
+    "instruction": "Start with the cued phrase; keep the verb in second position and move the subject behind it.",
+    "cue": "Ich arbeite heute. → Heute ...",
+    "answer": "Heute arbeite ich.",
+    "accepted": [
+      "Heute arbeite ich"
+    ],
+    "explain": "Verb stays in slot 2: Heute arbeite ich. ‘Today I'm working.’",
+    "tags": [
+      "v2",
+      "inversion",
+      "heute"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "Today I am working."
+  },
+  {
+    "id": "de-drill-b038",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "transformation",
+    "family": "order.v2",
+    "instruction": "Start with the cued phrase; keep the verb in second position and move the subject behind it.",
+    "cue": "Er wohnt jetzt in Berlin. → Jetzt ...",
+    "answer": "Jetzt wohnt er in Berlin.",
+    "accepted": [
+      "Jetzt wohnt er in Berlin"
+    ],
+    "explain": "Fronted jetzt, verb second, then er. ‘Now he lives in Berlin.’",
+    "tags": [
+      "v2",
+      "inversion",
+      "jetzt"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "Now he lives in Berlin."
+  },
+  {
+    "id": "de-drill-b039",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "transformation",
+    "family": "order.v2",
+    "instruction": "Start with the cued phrase; keep the verb in second position and move the subject behind it.",
+    "cue": "Wir lernen am Montag Deutsch. → Am Montag ...",
+    "answer": "Am Montag lernen wir Deutsch.",
+    "accepted": [
+      "Am Montag lernen wir Deutsch"
+    ],
+    "explain": "Am Montag fills slot 1, lernen stays in slot 2. ‘On Monday we learn German.’",
+    "tags": [
+      "v2",
+      "inversion",
+      "day"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "On Monday we are learning German."
+  },
+  {
+    "id": "de-drill-b040",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "transformation",
+    "family": "order.v2",
+    "instruction": "Start with the cued phrase; keep the verb in second position and move the subject behind it.",
+    "cue": "Die Schicht beginnt um sechs Uhr. → Um sechs Uhr ...",
+    "answer": "Um sechs Uhr beginnt die Schicht.",
+    "accepted": [
+      "Um sechs Uhr beginnt die Schicht"
+    ],
+    "explain": "Time phrase first, verb second, subject third. ‘The shift starts at six.’",
+    "tags": [
+      "v2",
+      "inversion",
+      "time",
+      "work"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "At six o'clock the shift begins."
+  },
+  {
+    "id": "de-drill-b041",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "response",
+    "family": "gender.chunk",
+    "instruction": "Say each noun with its article (der/die/das), then its plural with die.",
+    "cue": "Auto, Chef",
+    "answer": "das Auto, die Autos; der Chef, die Chefs",
+    "accepted": [
+      "das Auto, die Autos; der Chef, die Chefs"
+    ],
+    "explain": "Plural -s for many short or foreign words: das Auto, die Autos. ‘car, boss’",
+    "tags": [
+      "gender",
+      "plural",
+      "-s",
+      "chunk"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "the car, the cars; the boss, the bosses"
+  },
+  {
+    "id": "de-drill-b042",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "response",
+    "family": "gender.chunk",
+    "instruction": "Say each noun with its article (der/die/das), then its plural with die.",
+    "cue": "Schicht, Arbeit",
+    "answer": "die Schicht, die Schichten; die Arbeit, die Arbeiten",
+    "accepted": [
+      "die Schicht, die Schichten; die Arbeit, die Arbeiten"
+    ],
+    "explain": "Feminine nouns mostly add -en in the plural. ‘shift, work’",
+    "tags": [
+      "gender",
+      "feminine",
+      "plural",
+      "-en",
+      "chunk"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "the shift, the shifts; the job, the jobs"
+  },
+  {
+    "id": "de-drill-b043",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "response",
+    "family": "gender.chunk",
+    "instruction": "Say each noun with its article (der/die/das), then its plural with die.",
+    "cue": "Tisch, Beruf",
+    "answer": "der Tisch, die Tische; der Beruf, die Berufe",
+    "accepted": [
+      "der Tisch, die Tische; der Beruf, die Berufe"
+    ],
+    "explain": "Many masculine nouns add -e in the plural. ‘table, profession’",
+    "tags": [
+      "gender",
+      "masculine",
+      "plural",
+      "-e",
+      "chunk"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "the table, the tables; the profession, the professions"
+  },
+  {
+    "id": "de-drill-b044",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "response",
+    "family": "gender.chunk",
+    "instruction": "Say each noun with its article (der/die/das), then its plural with die.",
+    "cue": "Maschine, Kollege",
+    "answer": "die Maschine, die Maschinen; der Kollege, die Kollegen",
+    "accepted": [
+      "die Maschine, die Maschinen; der Kollege, die Kollegen"
+    ],
+    "explain": "Nouns ending in -e add -n in the plural. ‘machine, colleague’",
+    "tags": [
+      "gender",
+      "plural",
+      "-n",
+      "chunk"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "the machine, the machines; the colleague, the colleagues"
+  },
+  {
+    "id": "de-drill-b045",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "response",
+    "family": "gender.chunk",
+    "instruction": "Say each noun with its article (der/die/das), then its plural with die.",
+    "cue": "Werkstatt, Stuhl",
+    "answer": "die Werkstatt, die Werkstätten; der Stuhl, die Stühle",
+    "accepted": [
+      "die Werkstatt, die Werkstätten; der Stuhl, die Stühle"
+    ],
+    "explain": "Umlaut plurals: a → ä, u → ü, plus an ending. ‘workshop, chair’",
+    "tags": [
+      "gender",
+      "plural",
+      "umlaut",
+      "chunk"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "the workshop, the workshops; the chair, the chairs"
+  },
+  {
+    "id": "de-drill-b046",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "transformation",
+    "family": "basics.neg",
+    "instruction": "Make the sentence negative: kein for a noun with no article or with ein, nicht otherwise.",
+    "cue": "Ich habe Zeit. → Negation",
+    "answer": "Ich habe keine Zeit.",
+    "accepted": [
+      "Ich habe keine Zeit"
+    ],
+    "explain": "Noun without article → kein; Zeit is feminine → keine. ‘I have no time.’",
+    "tags": [
+      "negation",
+      "kein",
+      "feminine"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "I have no time."
+  },
+  {
+    "id": "de-drill-b047",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "transformation",
+    "family": "basics.neg",
+    "instruction": "Make the sentence negative: kein for a noun with no article or with ein, nicht otherwise.",
+    "cue": "Er hat ein Auto. → Negation",
+    "answer": "Er hat kein Auto.",
+    "accepted": [
+      "Er hat kein Auto"
+    ],
+    "explain": "ein → kein (neuter: kein Auto). ‘He doesn't have a car.’",
+    "tags": [
+      "negation",
+      "kein",
+      "neuter"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "He has no car."
+  },
+  {
+    "id": "de-drill-b048",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "transformation",
+    "family": "basics.neg",
+    "instruction": "Make the sentence negative: kein for a noun with no article or with ein, nicht otherwise.",
+    "cue": "Ich arbeite heute. → Negation",
+    "answer": "Ich arbeite heute nicht.",
+    "accepted": [
+      "Ich arbeite heute nicht",
+      "Heute arbeite ich nicht"
+    ],
+    "explain": "No noun to negate → nicht, at the end. ‘I'm not working today.’",
+    "tags": [
+      "negation",
+      "nicht",
+      "verb"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 1,
+    "gloss": "I am not working today."
+  },
+  {
+    "id": "de-drill-b049",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "substitution",
+    "family": "case.acc",
+    "instruction": "Replace the direct object (the thing acted on) with the cued noun; masculine der becomes den.",
+    "cue": "Ich brauche das Werkzeug. → (der Schlüssel)",
+    "answer": "Ich brauche den Schlüssel.",
+    "accepted": [
+      "Ich brauche den Schlüssel"
+    ],
+    "explain": "Direct object → accusative: der → den. ‘I need the key.’",
+    "tags": [
+      "accusative",
+      "masculine",
+      "brauchen"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 4,
+    "speakCue": true,
+    "stage": 2,
+    "gloss": "I need the key."
+  },
+  {
+    "id": "de-drill-b050",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "substitution",
+    "family": "case.acc",
+    "instruction": "Replace the direct object with the cued noun; masculine ein becomes einen.",
+    "cue": "Er kauft ein Auto. → (der Tisch)",
+    "answer": "Er kauft einen Tisch.",
+    "accepted": [
+      "Er kauft einen Tisch"
+    ],
+    "explain": "Accusative masculine: ein → einen. ‘He is buying a table.’",
+    "tags": [
+      "accusative",
+      "masculine",
+      "einen",
+      "kaufen"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 4,
+    "speakCue": true,
+    "stage": 2,
+    "gloss": "He is buying a table."
+  },
+  {
+    "id": "de-drill-b051",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "response",
+    "family": "case.acc",
+    "instruction": "Answer with Ich habe + the cued noun as the object (ein → einen for masculine).",
+    "cue": "Was hast du? → (ein Termin)",
+    "answer": "Ich habe einen Termin.",
+    "accepted": [
+      "Ich habe einen Termin"
+    ],
+    "explain": "haben takes the accusative: einen Termin. ‘I have an appointment.’",
+    "tags": [
+      "accusative",
+      "masculine",
+      "einen",
+      "haben",
+      "response"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 4,
+    "speakCue": true,
+    "stage": 2,
+    "gloss": "I have an appointment."
+  },
+  {
+    "id": "de-drill-b052",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "substitution",
+    "family": "case.acc",
+    "instruction": "Replace the direct object (the thing acted on) with the cued noun; masculine der becomes den.",
+    "cue": "Wir sehen die Chefin. → (der Kollege)",
+    "answer": "Wir sehen den Kollegen.",
+    "accepted": [
+      "Wir sehen den Kollegen"
+    ],
+    "explain": "den + n-noun: Kollege adds -n → den Kollegen. ‘We see the colleague.’",
+    "tags": [
+      "accusative",
+      "masculine",
+      "n-noun",
+      "sehen"
+    ],
+    "difficulty": 2,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 2,
+    "gloss": "We see the (male) colleague."
+  },
+  {
+    "id": "de-drill-b053",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "substitution",
+    "family": "case.acc",
+    "instruction": "Replace the direct object with the cued noun; only masculine changes, das stays das.",
+    "cue": "Er sucht den Schlüssel. → (das Formular)",
+    "answer": "Er sucht das Formular.",
+    "accepted": [
+      "Er sucht das Formular"
+    ],
+    "explain": "Neuter accusative = das, unchanged. ‘He is looking for the form.’",
+    "tags": [
+      "accusative",
+      "neuter",
+      "suchen"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 4,
+    "speakCue": true,
+    "stage": 2,
+    "gloss": "He is looking for the form."
+  },
+  {
+    "id": "de-drill-b054",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "substitution",
+    "family": "case.acc",
+    "instruction": "Replace the object with the cued noun; kein becomes keinen for masculine.",
+    "cue": "Er hat kein Auto. → (der Führerschein)",
+    "answer": "Er hat keinen Führerschein.",
+    "accepted": [
+      "Er hat keinen Führerschein"
+    ],
+    "explain": "kein takes the same ending as ein: keinen Führerschein. ‘He has no driver's license.’",
+    "tags": [
+      "accusative",
+      "masculine",
+      "kein",
+      "keinen"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 4,
+    "speakCue": true,
+    "stage": 2,
+    "gloss": "He doesn't have a driver's license."
+  },
+  {
+    "id": "de-drill-b055",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "substitution",
+    "family": "case.dat",
+    "instruction": "Replace the noun after mit with the cued noun; mit always takes the dative (der/das → dem, die → der).",
+    "cue": "Ich fahre mit dem Auto. → (der Bus)",
+    "answer": "Ich fahre mit dem Bus.",
+    "accepted": [
+      "Ich fahre mit dem Bus"
+    ],
+    "explain": "mit + dative: der → dem. ‘I go by bus.’",
+    "tags": [
+      "dative",
+      "masculine",
+      "mit",
+      "prep-government"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 4,
+    "speakCue": true,
+    "stage": 2,
+    "gloss": "I go by bus."
+  },
+  {
+    "id": "de-drill-b056",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "substitution",
+    "family": "case.dat",
+    "instruction": "Replace the noun after mit with the cued noun; mit always takes the dative (der/das → dem, die → der).",
+    "cue": "Er arbeitet mit dem Chef. → (die Chefin)",
+    "answer": "Er arbeitet mit der Chefin.",
+    "accepted": [
+      "Er arbeitet mit der Chefin"
+    ],
+    "explain": "mit + dative: feminine die → der. ‘He works with the boss.’",
+    "tags": [
+      "dative",
+      "feminine",
+      "mit",
+      "prep-government"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 4,
+    "speakCue": true,
+    "stage": 2,
+    "gloss": "He works with the (female) boss."
+  },
+  {
+    "id": "de-drill-b057",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "substitution",
+    "family": "case.dat",
+    "instruction": "Replace the noun after mit with the cued noun; mit always takes the dative (der/das → dem, die → der).",
+    "cue": "Er arbeitet mit der Maschine. → (das Werkzeug)",
+    "answer": "Er arbeitet mit dem Werkzeug.",
+    "accepted": [
+      "Er arbeitet mit dem Werkzeug"
+    ],
+    "explain": "mit + dative: neuter das → dem. ‘He works with the tool.’",
+    "tags": [
+      "dative",
+      "neuter",
+      "mit",
+      "prep-government"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 4,
+    "speakCue": true,
+    "stage": 2,
+    "gloss": "He works with the tool."
+  },
+  {
+    "id": "de-drill-b058",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "substitution",
+    "family": "case.dat",
+    "instruction": "Replace the noun after zu with the cued noun; zu + dem = zum, zu + der = zur.",
+    "cue": "Ich gehe zum Chef. → (die Chefin)",
+    "answer": "Ich gehe zur Chefin.",
+    "accepted": [
+      "Ich gehe zur Chefin",
+      "Ich gehe zu der Chefin"
+    ],
+    "explain": "zu + dative: zu der → zur. ‘I'm going to the boss.’",
+    "tags": [
+      "dative",
+      "feminine",
+      "zu",
+      "zur",
+      "prep-government"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 4,
+    "speakCue": true,
+    "stage": 2,
+    "gloss": "I am going to the (female) boss."
+  },
+  {
+    "id": "de-drill-b059",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "substitution",
+    "family": "case.dat",
+    "instruction": "Replace the noun after zu with the cued noun; zu + dem = zum, zu + der = zur.",
+    "cue": "Wir gehen zur Arbeit. → (der Bahnhof)",
+    "answer": "Wir gehen zum Bahnhof.",
+    "accepted": [
+      "Wir gehen zum Bahnhof",
+      "Wir gehen zu dem Bahnhof"
+    ],
+    "explain": "zu + dative: zu dem → zum. ‘We're going to the station.’",
+    "tags": [
+      "dative",
+      "masculine",
+      "zu",
+      "zum",
+      "prep-government"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 4,
+    "speakCue": true,
+    "stage": 2,
+    "gloss": "We are going to the train station."
+  },
+  {
+    "id": "de-drill-b060",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "substitution",
+    "family": "case.dat",
+    "instruction": "Replace the noun after bei with the cued noun; bei takes the dative (plural = den).",
+    "cue": "Er wohnt beim Onkel. → (die Eltern)",
+    "answer": "Er wohnt bei den Eltern.",
+    "accepted": [
+      "Er wohnt bei den Eltern"
+    ],
+    "explain": "bei + dative plural: den Eltern (Eltern already ends in -n). ‘He lives with his parents.’",
+    "tags": [
+      "dative",
+      "plural",
+      "bei",
+      "prep-government"
+    ],
+    "difficulty": 2,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 2,
+    "gloss": "He lives with his parents."
+  },
+  {
+    "id": "de-drill-b061",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "transformation",
+    "family": "verb.separable",
+    "instruction": "Make a present-tense sentence from the parts; the first part (prefix) of the two-part verb goes to the very end.",
+    "cue": "ich / aufstehen / um fünf Uhr",
+    "answer": "Ich stehe um fünf Uhr auf.",
+    "accepted": [
+      "Ich stehe um fünf Uhr auf",
+      "Um fünf Uhr stehe ich auf"
+    ],
+    "explain": "aufstehen splits: stehe in slot 2, auf at the end. ‘I get up at five.’",
+    "tags": [
+      "separable",
+      "present",
+      "aufstehen"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 4,
+    "speakCue": false,
+    "stage": 2,
+    "gloss": "I get up at five o'clock."
+  },
+  {
+    "id": "de-drill-b062",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "transformation",
+    "family": "verb.separable",
+    "instruction": "Make a present-tense sentence from the parts; the first part (prefix) of the two-part verb goes to the very end.",
+    "cue": "er / anrufen / den Chef",
+    "answer": "Er ruft den Chef an.",
+    "accepted": [
+      "Er ruft den Chef an"
+    ],
+    "explain": "anrufen: ruft ... an. ‘He calls the boss.’",
+    "tags": [
+      "separable",
+      "present",
+      "anrufen"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 4,
+    "speakCue": false,
+    "stage": 2,
+    "gloss": "He is calling the boss."
+  },
+  {
+    "id": "de-drill-b063",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "transformation",
+    "family": "verb.separable",
+    "instruction": "Make a present-tense sentence from the parts; the first part (prefix) of the two-part verb goes to the very end.",
+    "cue": "wir / einkaufen / heute",
+    "answer": "Wir kaufen heute ein.",
+    "accepted": [
+      "Wir kaufen heute ein",
+      "Heute kaufen wir ein"
+    ],
+    "explain": "einkaufen: kaufen ... ein. ‘We're doing the shopping today.’",
+    "tags": [
+      "separable",
+      "present",
+      "einkaufen"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 4,
+    "speakCue": false,
+    "stage": 2,
+    "gloss": "We are shopping today."
+  },
+  {
+    "id": "de-drill-b064",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "transformation",
+    "family": "verb.separable",
+    "instruction": "Make a present-tense sentence from the parts; the first part (prefix) of the two-part verb goes to the very end.",
+    "cue": "die Chefin / ausfüllen / das Formular",
+    "answer": "Die Chefin füllt das Formular aus.",
+    "accepted": [
+      "Die Chefin füllt das Formular aus"
+    ],
+    "explain": "ausfüllen: füllt ... aus; the object sits in between. ‘The boss fills in the form.’",
+    "tags": [
+      "separable",
+      "present",
+      "ausfüllen"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 4,
+    "speakCue": false,
+    "stage": 2,
+    "gloss": "The boss is filling in the form."
+  },
+  {
+    "id": "de-drill-b065",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "transformation",
+    "family": "verb.separable",
+    "instruction": "Make a present-tense sentence from the parts; the first part (prefix) of the two-part verb goes to the very end.",
+    "cue": "ich / zumachen / die Tür",
+    "answer": "Ich mache die Tür zu.",
+    "accepted": [
+      "Ich mache die Tür zu"
+    ],
+    "explain": "zumachen: mache ... zu. ‘I close the door.’",
+    "tags": [
+      "separable",
+      "present",
+      "zumachen"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 4,
+    "speakCue": false,
+    "stage": 2,
+    "gloss": "I am closing the door."
+  },
+  {
+    "id": "de-drill-b066",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "transformation",
+    "family": "order.modal",
+    "instruction": "Add the cued modal verb in second position; the main verb goes to the end as an infinitive (-en form).",
+    "cue": "Ich arbeite heute. → können",
+    "answer": "Ich kann heute arbeiten.",
+    "accepted": [
+      "Ich kann heute arbeiten"
+    ],
+    "explain": "ich kann + infinitive at the end. ‘I can work today.’",
+    "tags": [
+      "modal",
+      "können",
+      "arbeiten"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 4,
+    "speakCue": true,
+    "stage": 2,
+    "gloss": "I can work today."
+  },
+  {
+    "id": "de-drill-b067",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "transformation",
+    "family": "order.modal",
+    "instruction": "Add the cued modal verb in second position; the main verb goes to the end as an infinitive (-en form).",
+    "cue": "Er lernt Deutsch. → wollen",
+    "answer": "Er will Deutsch lernen.",
+    "accepted": [
+      "Er will Deutsch lernen"
+    ],
+    "explain": "wollen: er will (no -t); lernen goes last. ‘He wants to learn German.’",
+    "tags": [
+      "modal",
+      "wollen",
+      "lernen"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 4,
+    "speakCue": true,
+    "stage": 2,
+    "gloss": "He wants to learn German."
+  },
+  {
+    "id": "de-drill-b068",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "transformation",
+    "family": "order.modal",
+    "instruction": "Add the cued modal verb in second position; the main verb goes to the end as an infinitive (-en form).",
+    "cue": "Wir fahren nach Berlin. → müssen",
+    "answer": "Wir müssen nach Berlin fahren.",
+    "accepted": [
+      "Wir müssen nach Berlin fahren"
+    ],
+    "explain": "wir müssen + fahren at the end. ‘We have to go to Berlin.’",
+    "tags": [
+      "modal",
+      "müssen",
+      "fahren"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 4,
+    "speakCue": true,
+    "stage": 2,
+    "gloss": "We have to go to Berlin."
+  },
+  {
+    "id": "de-drill-b069",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "transformation",
+    "family": "order.modal",
+    "instruction": "Add the cued modal verb to the question; the modal takes first position, the infinitive goes last.",
+    "cue": "Kommst du morgen? → können",
+    "answer": "Kannst du morgen kommen?",
+    "accepted": [
+      "Kannst du morgen kommen"
+    ],
+    "explain": "Yes/no question: modal first (Kannst du), infinitive last. ‘Can you come tomorrow?’",
+    "tags": [
+      "modal",
+      "können",
+      "question",
+      "kommen"
+    ],
+    "difficulty": 2,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 2,
+    "gloss": "Can you come tomorrow?"
+  },
+  {
+    "id": "de-drill-b070",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "transformation",
+    "family": "order.perfekt",
+    "instruction": "Put the sentence into the Perfekt (spoken past): haben or sein in second position, the ge- form (participle) at the end.",
+    "cue": "Er lernt Deutsch. → Perfekt",
+    "answer": "Er hat Deutsch gelernt.",
+    "accepted": [
+      "Er hat Deutsch gelernt"
+    ],
+    "explain": "Regular participle ge + lern + t = gelernt, at the end. ‘He learned German.’",
+    "tags": [
+      "perfekt",
+      "haben",
+      "lernen"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 4,
+    "speakCue": true,
+    "stage": 2,
+    "gloss": "He has learned German."
+  },
+  {
+    "id": "de-drill-b071",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "transformation",
+    "family": "order.perfekt",
+    "instruction": "Put the sentence into the Perfekt (spoken past): haben or sein in second position, the ge- form (participle) at the end.",
+    "cue": "Wir arbeiten heute. → Perfekt",
+    "answer": "Wir haben heute gearbeitet.",
+    "accepted": [
+      "Wir haben heute gearbeitet",
+      "Heute haben wir gearbeitet"
+    ],
+    "explain": "arbeiten → gearbeitet (-et after a t-stem). ‘We worked today.’",
+    "tags": [
+      "perfekt",
+      "haben",
+      "arbeiten"
+    ],
+    "difficulty": 1,
+    "speedTargetSec": 4,
+    "speakCue": true,
+    "stage": 2,
+    "gloss": "We worked today."
+  },
+  {
+    "id": "de-drill-b072",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "transformation",
+    "family": "order.perfekt",
+    "instruction": "Put the sentence into the Perfekt (spoken past): haben or sein in second position, the ge- form (participle) at the end.",
+    "cue": "Sie fährt nach Berlin. → Perfekt",
+    "answer": "Sie ist nach Berlin gefahren.",
+    "accepted": [
+      "Sie ist nach Berlin gefahren"
+    ],
+    "explain": "Movement → sein; irregular participle gefahren. ‘She went to Berlin.’",
+    "tags": [
+      "perfekt",
+      "sein",
+      "fahren",
+      "irregular"
+    ],
+    "difficulty": 2,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 2,
+    "gloss": "She went (drove/travelled) to Berlin."
+  },
+  {
+    "id": "de-drill-b073",
+    "lang": "de",
+    "module": "drill",
+    "drillType": "transformation",
+    "family": "order.perfekt",
+    "instruction": "Put the sentence into the Perfekt (spoken past): haben or sein in second position, the ge- form (participle) at the end.",
+    "cue": "Ich gehe nach Hause. → Perfekt",
+    "answer": "Ich bin nach Hause gegangen.",
+    "accepted": [
+      "Ich bin nach Hause gegangen",
+      "Ich bin nachhause gegangen"
+    ],
+    "explain": "gehen → sein + gegangen (irregular). ‘I went home.’",
+    "tags": [
+      "perfekt",
+      "sein",
+      "gehen",
+      "irregular"
+    ],
+    "difficulty": 2,
+    "speedTargetSec": 6,
+    "speakCue": true,
+    "stage": 2,
+    "gloss": "I went home."
+  }
+]

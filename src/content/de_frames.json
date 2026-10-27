@@ -1,0 +1,122 @@
+[
+  {
+    "id": "de-frame-01",
+    "lang": "de",
+    "text": "Ich heiße ___.",
+    "gloss": "My name is ___.",
+    "note": "heißen = to be called; ich heiße (-e). Verb in second position.",
+    "topic": "identity"
+  },
+  {
+    "id": "de-frame-02",
+    "lang": "de",
+    "text": "Ich komme aus ___.",
+    "gloss": "I come from ___.",
+    "note": "aus = from. Most countries and cities take no article (aus Amerika, aus Chicago); exceptions: aus den USA, aus der Schweiz.",
+    "topic": "origin"
+  },
+  {
+    "id": "de-frame-03",
+    "lang": "de",
+    "text": "Ich bin ___ Jahre alt.",
+    "gloss": "I am ___ years old.",
+    "note": "Number word + Jahre alt: Ich bin zwanzig Jahre alt. Short form: Ich bin zwanzig.",
+    "topic": "age"
+  },
+  {
+    "id": "de-frame-04",
+    "lang": "de",
+    "text": "Ich wohne in ___.",
+    "gloss": "I live in ___.",
+    "note": "wohnen = to live (reside). in + city or state, no article: in Illinois, in Berlin.",
+    "topic": "residence"
+  },
+  {
+    "id": "de-frame-05",
+    "lang": "de",
+    "text": "Ich arbeite zurzeit als ___.",
+    "gloss": "I currently work as a(n) ___.",
+    "note": "zurzeit = at the moment (one word). als + job title without article: als Monteur, als Lagerarbeiter.",
+    "topic": "job"
+  },
+  {
+    "id": "de-frame-06",
+    "lang": "de",
+    "text": "Ich möchte eine Ausbildung als ___ machen.",
+    "gloss": "I would like to do an apprenticeship as a ___.",
+    "note": "möchte = would like (polite); machen goes to the end. Job ads and textbooks mostly say: eine Ausbildung zum ___ (masc.) / zur ___ (fem.) machen.",
+    "topic": "goal"
+  },
+  {
+    "id": "de-frame-07",
+    "lang": "de",
+    "text": "Ich interessiere mich für ___.",
+    "gloss": "I am interested in ___.",
+    "note": "sich interessieren für + accusative. General nouns need no article: für Technik, für Autos, für Maschinen.",
+    "topic": "interests"
+  },
+  {
+    "id": "de-frame-08",
+    "lang": "de",
+    "text": "Ich möchte in Deutschland leben und arbeiten.",
+    "gloss": "I would like to live and work in Germany.",
+    "note": "Modal möchte in second position; both infinitives at the end. For Switzerland: in der Schweiz (always with article).",
+    "topic": "motivation"
+  },
+  {
+    "id": "de-frame-09",
+    "lang": "de",
+    "text": "Ich habe ___.",
+    "gloss": "I have ___ (family member).",
+    "note": "Fill with an accusative phrase: einen Bruder (masc. → einen), eine Schwester, zwei Geschwister, keine Geschwister.",
+    "topic": "family"
+  },
+  {
+    "id": "de-frame-10",
+    "lang": "de",
+    "text": "Meine Hobbys sind ___ und ___.",
+    "gloss": "My hobbies are ___ and ___.",
+    "note": "German plural spelling: Hobbys (not Hobbies). Fill with nouns: Sport, Autos, Fitness, Computerspiele.",
+    "topic": "hobbies"
+  },
+  {
+    "id": "de-frame-11",
+    "lang": "de",
+    "text": "Ich spreche Englisch und ein bisschen Deutsch.",
+    "gloss": "I speak English and a little German.",
+    "note": "Language names are capitalised nouns. ein bisschen = a little. Later add: und ich lerne Ungarisch.",
+    "topic": "languages"
+  },
+  {
+    "id": "de-frame-12",
+    "lang": "de",
+    "text": "Ich lerne seit ___ Deutsch.",
+    "gloss": "I have been learning German for ___.",
+    "note": "seit + dative time span, and German uses the present tense: seit zwei Monaten, seit einem Jahr, seit drei Wochen.",
+    "topic": "languages"
+  },
+  {
+    "id": "de-frame-13",
+    "lang": "de",
+    "text": "Ich kann ab ___ anfangen.",
+    "gloss": "I can start from ___.",
+    "note": "ab + month, or ab sofort (immediately): ab August, ab sofort. anfangen stays whole at the end as an infinitive.",
+    "topic": "start"
+  },
+  {
+    "id": "de-frame-14",
+    "lang": "de",
+    "text": "Könnten Sie das bitte wiederholen?",
+    "gloss": "Could you please repeat that?",
+    "note": "Polite request with Könnten Sie (formal you). Use it whenever you miss a question.",
+    "topic": "interview"
+  },
+  {
+    "id": "de-frame-15",
+    "lang": "de",
+    "text": "Vielen Dank für Ihre Zeit.",
+    "gloss": "Thank you very much for your time.",
+    "note": "Ihre = your (formal), capital I. für + accusative (die Zeit → Ihre Zeit).",
+    "topic": "politeness"
+  }
+]

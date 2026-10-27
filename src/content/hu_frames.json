@@ -1,0 +1,122 @@
+[
+  {
+    "id": "hu-frame-01",
+    "lang": "hu",
+    "text": "A nevem ___.",
+    "gloss": "My name is ___.",
+    "note": "név = name → nevem = my name (the é shortens before -em). The blank is your name with no ending. Alternative: ___ vagyok. = I am ___.",
+    "topic": "identity"
+  },
+  {
+    "id": "hu-frame-02",
+    "lang": "hu",
+    "text": "___ éves vagyok.",
+    "gloss": "I am ___ years old.",
+    "note": "éves = years old; vagyok = I am. The blank is a number word with no ending, e.g. huszonegy éves vagyok (21). Inside a number 2 is két, not kettő: huszonkét éves.",
+    "topic": "age"
+  },
+  {
+    "id": "hu-frame-03",
+    "lang": "hu",
+    "text": "A születési helyem ___.",
+    "gloss": "My place of birth is ___.",
+    "note": "születési hely = place of birth; helyem = my place. The blank is the town's name with no ending (A születési helyem Rockford.).",
+    "topic": "birth"
+  },
+  {
+    "id": "hu-frame-04",
+    "lang": "hu",
+    "text": "___-ban/-ben születtem.",
+    "gloss": "I was born in ___ (year).",
+    "note": "születtem = I was born. The year takes -ban or -ben by its last number word: -ban after …háromban, …hatban, …nyolcban, …húszban; -ben after …egyben, …kettőben, …négyben, …ötben, …hétben, …kilencben, …tízben, …kétezerben, …kilencvenben. Examples: kétezer-ötben (2005), kétezer-hatban (2006), ezerkilencszázkilencvenben (1990). Written with digits: 2005-ben.",
+    "topic": "birth"
+  },
+  {
+    "id": "hu-frame-05",
+    "lang": "hu",
+    "text": "Amerikai állampolgár vagyok.",
+    "gloss": "I am an American citizen.",
+    "note": "állampolgár = citizen (állam = state + polgár = citizen). Nationality words are lowercase: amerikai, magyar. No blank.",
+    "topic": "origin"
+  },
+  {
+    "id": "hu-frame-06",
+    "lang": "hu",
+    "text": "___ államban lakom, az Egyesült Államokban.",
+    "gloss": "I live in the state of ___, in the United States.",
+    "note": "állam = state → államban = in the state; lakom = I live. The blank is the state's English name with no ending (Illinois államban lakom). Egyesült Államok = United States.",
+    "topic": "residence"
+  },
+  {
+    "id": "hu-frame-07",
+    "lang": "hu",
+    "text": "Az édesanyám neve ___.",
+    "gloss": "My mother's name is ___.",
+    "note": "édesanya = mother (the respectful word used in official settings; anya is the everyday word) → édesanyám = my mother; neve = his/her name. The blank is the name with no ending.",
+    "topic": "parents"
+  },
+  {
+    "id": "hu-frame-08",
+    "lang": "hu",
+    "text": "Az édesapám neve ___.",
+    "gloss": "My father's name is ___.",
+    "note": "édesapa = father (respectful) → édesapám = my father. Same pattern as the mother frame: X neve = X's name. The blank is the name with no ending.",
+    "topic": "parents"
+  },
+  {
+    "id": "hu-frame-09",
+    "lang": "hu",
+    "text": "A nagyapám neve ___.",
+    "gloss": "My grandfather's name is ___.",
+    "note": "nagyapa = grandfather → nagyapám = my grandfather. For a grandmother: A nagymamám neve ___. The blank is the name with no ending.",
+    "topic": "grandparents"
+  },
+  {
+    "id": "hu-frame-10",
+    "lang": "hu",
+    "text": "A dédnagyapám Magyarországon született.",
+    "gloss": "My great-grandfather was born in Hungary.",
+    "note": "dédnagyapa = great-grandfather → dédnagyapám = my great-grandfather; Magyarországon = in Hungary (Hungary takes the -on ending); született = was born. No blank.",
+    "topic": "ancestry"
+  },
+  {
+    "id": "hu-frame-11",
+    "lang": "hu",
+    "text": "A dédnagyapám születési helye ___.",
+    "gloss": "My great-grandfather's place of birth is ___.",
+    "note": "születési helye = his place of birth (-e = his/her). Put the Hungarian town's name in the blank with no ending (… születési helye Debrecen.).",
+    "topic": "ancestry"
+  },
+  {
+    "id": "hu-frame-12",
+    "lang": "hu",
+    "text": "Magyar állampolgár szeretnék lenni, mert a családom magyar származású.",
+    "gloss": "I would like to become a Hungarian citizen, because my family is of Hungarian descent.",
+    "note": "szeretnék lenni = I would like to be; mert = because; családom = my family; magyar származású = of Hungarian origin. No blank.",
+    "topic": "motivation"
+  },
+  {
+    "id": "hu-frame-13",
+    "lang": "hu",
+    "text": "___ hónapja tanulok magyarul.",
+    "gloss": "I have been learning Hungarian for ___ months.",
+    "note": "hónapja = for … months (for years say éve: két éve); tanulok = I learn; magyarul = (in) Hungarian. The blank is a number word with no ending: két, három, hat.",
+    "topic": "language"
+  },
+  {
+    "id": "hu-frame-14",
+    "lang": "hu",
+    "text": "A foglalkozásom ___.",
+    "gloss": "My occupation is ___.",
+    "note": "foglalkozás = occupation → foglalkozásom = my occupation. The blank is a job noun with no ending, e.g. munkás (worker), mérnök (engineer), tanár (teacher).",
+    "topic": "job"
+  },
+  {
+    "id": "hu-frame-15",
+    "lang": "hu",
+    "text": "A testvérem neve ___.",
+    "gloss": "My sibling's name is ___.",
+    "note": "testvér = sibling (brother or sister) → testvérem = my sibling. More specific: a bátyám (my older brother), a nővérem (my older sister), az öcsém (my younger brother), a húgom (my younger sister). The blank is the name with no ending.",
+    "topic": "family"
+  }
+]

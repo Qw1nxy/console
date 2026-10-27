@@ -36,17 +36,27 @@ const huDecon = readJSON(path.join(CONTENT, "hu_decon.json"), [], "hu_decon.json
 const huLex = readJSON(path.join(CONTENT, "hu_lexicon.json"), [], "hu_lexicon.json");
 const deLex = readJSON(path.join(CONTENT, "de_lexicon.json"), { nouns: [], parts: [], adjectives: [], verbs: [] }, "de_lexicon.json");
 const scenarios = readJSON(path.join(APP, "SEED_SCENARIOS.json"), [], "SEED_SCENARIOS.json");
+// Day-1 overhaul: beginner drills, per-item stages, legend starter sentences, resources by stage
+const deBeginner = readJSON(path.join(CONTENT, "de_drills_beginner.json"), [], "de_drills_beginner.json");
+const huBeginner = readJSON(path.join(CONTENT, "hu_drills_beginner.json"), [], "hu_drills_beginner.json");
+const deStage = readJSON(path.join(CONTENT, "de_stage_map.json"), {}, "de_stage_map.json");
+const huStage = readJSON(path.join(CONTENT, "hu_stage_map.json"), {}, "hu_stage_map.json");
+const frames = [...readJSON(path.join(CONTENT, "de_frames.json"), [], "de_frames.json"), ...readJSON(path.join(CONTENT, "hu_frames.json"), [], "hu_frames.json")];
+const resources = readJSON(path.join(CONTENT, "resources.json"), [], "resources.json");
+const withStage = (list, map) => (Array.isArray(list) ? list : []).map(d => (map && map[d.id] != null && d.stage == null) ? Object.assign({}, d, { stage: map[d.id] }) : d);
 
 const arr = x => (Array.isArray(x) ? x : (x && Array.isArray(x.items) ? x.items : []));
 const seed = {
-  drills: [...arr(deDrills), ...arr(huDrills)],
+  drills: [...withStage(deBeginner, null), ...withStage(arr(deDrills), deStage), ...withStage(huBeginner, null), ...withStage(arr(huDrills), huStage)],
   decon: [...arr(deDecon), ...arr(huDecon)],
   lexicon: {
     hu: arr(huLex),
     de: { nouns: arr(deLex.nouns), parts: arr(deLex.parts), adjectives: arr(deLex.adjectives), verbs: arr(deLex.verbs) }
   },
   scenarios: arr(scenarios),
-  manual: arr(readJSON(path.join(__dirname, "..", "pwa", "manual.json"), [], "manual"))
+  manual: arr(readJSON(path.join(__dirname, "..", "pwa", "manual.json"), [], "manual")),
+  frames: arr(frames),
+  resources: arr(resources)
 };
 let seedJSON = JSON.stringify(seed).replace(/<\/script/gi, "<\\/script").replace(/<!--/g, "<\\!--");
 

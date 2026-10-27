@@ -55,7 +55,7 @@ function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
     const badge = document.getElementById("voice-badge-hdr");
     assert(!badge.hidden && /no .*voice/i.test(badge.textContent), "text-fallback badge not shown: " + badge.textContent);
     assert(document.getElementById("voice-badge-de").textContent === "none", "DE voice badge should read none");
-    assert(storage.getItem("olc.version") === "1", "olc.version not written as 1");
+    assert(storage.getItem("olc.version") === "2", "olc.version not written as 2");
     record("1 boot without errors, text-fallback badge", true);
   } catch (e) { record("1 boot without errors, text-fallback badge", false, e.message); }
 
